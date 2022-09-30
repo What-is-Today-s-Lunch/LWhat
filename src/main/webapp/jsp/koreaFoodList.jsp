@@ -72,7 +72,7 @@
 
 			</ul>
 		</div>
-
+		
 		<div class="contents0">/</div>
 		<div class="contents1">
 			<ul class="icons">
@@ -84,7 +84,6 @@
 						<img src="../image/koreafood.png">
 					</div>
 					
-					
 					<div class="contents1_bold">${rstaurantlist.restaurantID},${c.index+1}</div>
 					<div class="contents2">별점</div>
 					<div class="contents3">후기 카운트</div>
@@ -92,7 +91,7 @@
 					</c:forEach>
 			</ul>
 		</div>
-		<!-- 들어가야할 내용  -->
+		<!-- 들어가야할 내용ㅁㄴㅇ  -->
 	</div>
 
 
