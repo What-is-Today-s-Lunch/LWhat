@@ -3,13 +3,14 @@ package lwhat.dao.impl.restaurant;
 import java.util.List;
 
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
+import lwhat.dto.FoodimageDTO;
 import lwhat.dto.RestaurantDTO;
 import lwhat.service.restaurant.RestaurantService;
 
 public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl implements RestaurantService {
 
 	@Override
-	public List<RestaurantDTO> listLRestaurant(int bid) throws Exception {
+	public List<RestaurantDTO> listLRestaurant(String restaurantID) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -20,7 +21,7 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 	}
 
 	@Override
-	public int deleteRestaurant() throws Exception {
+	public int deleteRestaurant(String restaurantID) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -39,7 +40,7 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 	}
 
 	@Override
-	public int fileUploadRestaurant() throws Exception {
+	public int fileUploadRestaurant(String restaurantID, List<FoodimageDTO>list) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class FoodimageDTO implements Serializable{
 	public static final long serialVersionUID = 321478938942843983L;
-	private String fImageID;
+	private int fImageID;
 	private String restaurantID_FK; // restaurant의 restaurantID와 연결(외래키)	
 	private String imageCategory; // 카테고리 테이블에서 값 받아오기
 	private String content;
@@ -13,10 +13,10 @@ public class FoodimageDTO implements Serializable{
 	
 	public FoodimageDTO() {}
 	
-	public String getfImageID() {
+	public int getfImageID() {
 		return fImageID;
 	}
-	public void setfImageID(String fImageID) {
+	public void setfImageID(int fImageID) {
 		this.fImageID = fImageID;
 	}
 	public String getRestaurantID_FK() {
