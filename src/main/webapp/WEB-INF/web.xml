@@ -6,12 +6,12 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>DBCPInit</servlet-name>
-    <servlet-class>project.util.DBCPInitServlet</servlet-class>
+    <servlet-class>lwhat.util.DBCPInitServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet>
     <servlet-name>controller</servlet-name>
-    <servlet-class>project.controller.MVCController</servlet-class>
+    <servlet-class>lwhat.controller.MVCController</servlet-class>
     <init-param>
       <param-name>commandFile</param-name>
       <param-value>/WEB-INF/props/command.properties</param-value>
