@@ -8,11 +8,11 @@ import lwhat.service.LWhatService;
 
 public interface RestaurantService extends LWhatService {
 
-	public int writeRestaurant(int restaurantID, RestaurantDTO restarauntDTO) throws Exception;
+	public int writeRestaurant( RestaurantDTO restarauntDTO) throws Exception;
 
 	public int deleteRestaurant(String restaurantID) throws Exception;
 
-	public int updateRestaurant() throws Exception;
+	public int updateRestaurant(String restaurantID, RestaurantDTO restaurantDTO) throws Exception;
 
 	public int viewRestaurant() throws Exception;
 

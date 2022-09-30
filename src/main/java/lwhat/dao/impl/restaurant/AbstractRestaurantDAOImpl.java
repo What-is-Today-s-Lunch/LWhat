@@ -16,7 +16,7 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 	}
 
 	@Override
-	public int writeRestaurant(int restaurantID, RestaurantDTO restarauntDTO) throws Exception {
+	public int writeRestaurant( RestaurantDTO restarauntDTO) throws Exception {
 		return 0;
 	}
 
@@ -27,7 +27,7 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 	}
 
 	@Override
-	public int updateRestaurant() throws Exception {
+	public int updateRestaurant(String restaurantID,RestaurantDTO restaurantDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
