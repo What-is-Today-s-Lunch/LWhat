@@ -1,45 +1,48 @@
 package lwhat.dao.impl.restaurant;
 
+import java.util.List;
+
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
+import lwhat.dto.RestaurantDTO;
 import lwhat.service.restaurant.RestaurantService;
 
 public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl implements RestaurantService {
 
 	@Override
-	public  void writeRestaurant() throws Exception {
+	public List<RestaurantDTO> listLRestaurant(int bid) throws Exception {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void deleteRestaurant() throws Exception {
-		// TODO Auto-generated method stub
-		
+	public int writeRestaurant(int restaurantID, RestaurantDTO restarauntDTO) throws Exception {
+		return 0;
 	}
 
 	@Override
-	public void updateRestaurant() throws Exception {
+	public int deleteRestaurant() throws Exception {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
-	public void listRestaurant() throws Exception {
+	public int updateRestaurant() throws Exception {
 		// TODO Auto-generated method stub
-		
+		return 0;
+	}
+
+
+	@Override
+	public int viewRestaurant() throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
-	public void viewRestaurant() throws Exception {
+	public int fileUploadRestaurant() throws Exception {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
-	@Override
-	public void fileUploadRestaurant() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	
 
 }

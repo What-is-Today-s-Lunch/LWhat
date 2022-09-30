@@ -1,12 +1,18 @@
 package lwhat.dao.impl.restaurant;
 
+import java.util.List;
+
+import lwhat.dto.RestaurantDTO;
+
 public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 
 	@Override
-	public void listRestaurant() throws Exception {
+	public List<RestaurantDTO> listLRestaurant(int bid) throws Exception {
 		// TODO Auto-generated method stub
-		super.listRestaurant();
+		return super.listLRestaurant(bid);
 	}
 
+
+	
 
 }
