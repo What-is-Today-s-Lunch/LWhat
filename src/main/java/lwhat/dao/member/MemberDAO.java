@@ -4,35 +4,14 @@ import lwhat.service.member.MemberService;
 
 public interface MemberDAO extends MemberService{
 
-	@Override
-	default void joinMember() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+	public void joinMember() throws Exception;
 
-	@Override
-	default void deleteMember() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+	public void deleteMember() throws Exception;
 
-	@Override
-	default void updateMember() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+	public void updateMember() throws Exception;
 
-	@Override
-	default void viewMembers() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	default int loginMember(String memberID, String memberPW) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	public void viewMembers() throws Exception;
 	
+	public int loginMember(String memberID, String memberPW) throws Exception;
 
 }
