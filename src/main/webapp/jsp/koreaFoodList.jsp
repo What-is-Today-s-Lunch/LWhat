@@ -1,9 +1,23 @@
+<%@page import="java.util.List"%>
+<%@page import="lwhat.dto.RestaurantDTO"%>
+<%@page import="lwhat.dao.impl.restaurant.RestaurantListDAOImpl"%>
+<%@page import="lwhat.service.restaurant.RestaurantService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.Map"%>
+	
+<%
+	String gPostingIDParam = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
+	RestaurantService restaurantService = new RestaurantListDAOImpl();
+	
+	List<RestaurantDTO> restaurantDTO = restaurantService.listLRestaurant();
+	pageContext.setAttribute("rslist", restaurantDTO);
+%>
+
+
 	
 <!DOCTYPE html>
 <html lang="ko">
@@ -40,28 +54,42 @@
 		<div class="contents1">
 			<ul class="icons">
 			
+					<c:set var="listSize" value="${rslist.size()}" />
+					<c:forEach var="rstaurantlist"  items="${rslist}" varStatus="c" end="3">
+					<c:set var="bno" value="${rslistSize-stat.count+1}" />
 				<li>
 					<div class="icon_img">
 						<img src="../image/koreafood.png">
 					</div>
-					<div class="contents1_bold">제주돈가</div>
+					
+					
+					<div class="contents1_bold">${rstaurantlist.restaurantID},${c.index+1}</div>
 					<div class="contents2">별점</div>
 					<div class="contents3">후기 카운트</div>
 				</li>
+					</c:forEach>
 				
-				<li>123</li>
-				<li>123</li>
-				<li>123</li>
+
 			</ul>
 		</div>
 
 		<div class="contents0">/</div>
 		<div class="contents1">
 			<ul class="icons">
-				<li>123</li>
-				<li>123</li>
-				<li>123</li>
-				<li>123</li>
+					<c:set var="listSize" value="${rslist.size()}" />
+					<c:forEach var="rstaurantlist"  items="${rslist}" varStatus="c" begin="4" end="7">
+					<c:set var="bno" value="${rslistSize-stat.count+1}" />
+				<li>
+					<div class="icon_img">
+						<img src="../image/koreafood.png">
+					</div>
+					
+					
+					<div class="contents1_bold">${rstaurantlist.restaurantID},${c.index+1}</div>
+					<div class="contents2">별점</div>
+					<div class="contents3">후기 카운트</div>
+				</li>
+					</c:forEach>
 			</ul>
 		</div>
 		<!-- 들어가야할 내용  -->

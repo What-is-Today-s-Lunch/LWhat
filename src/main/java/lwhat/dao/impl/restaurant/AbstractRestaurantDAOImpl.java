@@ -34,9 +34,9 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 
 
 	@Override
-	public int viewRestaurant() throws Exception {
+	public RestaurantDTO viewRestaurant(String restaurantID) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override

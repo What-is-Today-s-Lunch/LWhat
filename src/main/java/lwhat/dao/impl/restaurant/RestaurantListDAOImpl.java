@@ -27,7 +27,9 @@ public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 			restaurantDTO.setAddresssAPI(rs.getString("addressAPI"));
 			restaurantDTO.setlatitude(rs.getString("latitude"));
 			restaurantDTO.setLongitude(rs.getString("longitude"));
+			list.add(restaurantDTO);
 		}
+		
 		closeConnection(rs, pstmt, conn);
 		return list;
 	}
