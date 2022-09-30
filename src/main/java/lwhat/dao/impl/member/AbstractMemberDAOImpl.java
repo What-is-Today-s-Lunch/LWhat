@@ -7,9 +7,9 @@ import lwhat.service.member.MemberService;
 public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl implements MemberService {
 
 	@Override
-	public void joinMember() throws Exception {
+	public int joinMember(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
