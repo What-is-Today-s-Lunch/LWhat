@@ -1,6 +1,7 @@
 package lwhat.dao.impl.member;
 
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
+import lwhat.dto.MemberDTO;
 import lwhat.service.member.MemberService;
 
 public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl implements MemberService {
@@ -31,9 +32,7 @@ public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl imple
 
 	@Override
 	public int loginMember(String memberID, String memberPW) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
+		// TODO Auto-generated method stub
 	}
-
-
 }
