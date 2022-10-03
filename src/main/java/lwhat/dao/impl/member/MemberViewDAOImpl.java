@@ -31,6 +31,7 @@ public class MemberViewDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 			memberDTO.setName(rs.getString("Name"));
 			memberDTO.setjoinDate(rs.getTimestamp("joinDate"));
 		}
+		System.out.println("---------------"+memberDTO+"---------------");
 		return memberDTO;
 	}
 }
