@@ -21,7 +21,6 @@ public class MemberViewDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 		
 		ResultSet rs=pstmt.executeQuery();
 		
-		
 		if(rs.next()) {
 			memberDTO = new MemberDTO();
 			memberDTO.setMemberID(rs.getString("memberID"));
