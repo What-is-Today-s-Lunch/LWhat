@@ -1,5 +1,7 @@
 package lwhat.dao.impl.member;
 
+import java.util.ArrayList;
+
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
 import lwhat.dto.MemberDTO;
 import lwhat.service.member.MemberService;
@@ -25,7 +27,8 @@ public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl imple
 	}
 
 	@Override
-	public void viewMembers(String memberID) throws Exception {
+	public MemberDTO viewMembers(String memberID) throws Exception {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
