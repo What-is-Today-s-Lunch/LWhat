@@ -29,7 +29,7 @@ request.setCharacterEncoding("utf-8");
 		script.println("location.href = 'mainForm.jsp'");
 		script.println("</script>");
 	}
-		
+
 	// MemberDAOImpl 인스턴스 생성
 	MemberLoginDAOImpl memberLoginDAOImpl = new MemberLoginDAOImpl();
 	// 로그인시도 함수실행
