@@ -10,18 +10,18 @@
 <body>
    <div id="top">
    <br>
-   <h1>회 원 가 입</h1>
+   <h1>마 이 페 이 지</h1>
    </div>
    <br><br>
     <div id="bottom">
         <form method="post" action="joinProc.jsp">
             아이디<br><input type="text" name="memberID"></br>
-            비밀번호<br><input type="password" name="memberPW"></br>
             이름<br><input type="text" name="name"></br>
             이메일<br><input type="text" name="email"></br>
             닉네임<br><input type="text" name="nickName"><br>
-             <input type="submit" value="등록">
-             <a href="../jsp/loginForm.jsp" id="create">로그인하기</a><br>
+             <input type="submit" value="회원정보 수정">
+             <a href="javascript:window.history.back();">뒤로가기</a>
+             <a href="../jsp/logoutProc.jsp" id="create">로그아웃하기</a>
         </form>
     </div>
 </body>

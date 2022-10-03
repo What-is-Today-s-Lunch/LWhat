@@ -11,7 +11,7 @@ public interface MemberService extends LWhatService {
 
 	public void updateMember() throws Exception;
 
-	public void viewMembers() throws Exception;
+	public void viewMembers(String memberID) throws Exception;
 	
 	public int loginMember(String memberID, String memberPW) throws Exception;
 }

@@ -25,7 +25,7 @@ public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl imple
 	}
 
 	@Override
-	public void viewMembers() throws Exception {
+	public void viewMembers(String memberID) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
