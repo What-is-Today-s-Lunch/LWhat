@@ -12,6 +12,9 @@ String memberID = (String) session.getAttribute("memberID");
 MemberDeleteDAOImpl memberdeleteDAOImpl = new MemberDeleteDAOImpl();
 memberdeleteDAOImpl.deleteMember(memberID);
 
+// 세션 삭제
+session.invalidate();
+
 PrintWriter script = response.getWriter();
 script.println("<script>");
 script.println("alert('회원탈퇴가 완료 되었습니다.')");
