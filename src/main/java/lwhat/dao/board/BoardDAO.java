@@ -8,10 +8,8 @@ import lwhat.service.board.BoardService;
 public interface BoardDAO extends BoardService{
 
 	@Override
-	default int writeBoard(GboardDTO gboardDTO) throws Exception {
+	default int writeBoard(GboardDTO gboardDTO, String memberID) throws Exception {
 		return 0;
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

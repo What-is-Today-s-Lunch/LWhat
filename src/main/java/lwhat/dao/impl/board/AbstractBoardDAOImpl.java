@@ -10,10 +10,8 @@ import lwhat.service.board.BoardService;
 public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implements BoardService {
 
 	@Override
-	public int writeBoard(GboardDTO gboardDTO) throws Exception {
-		return 0;
-		// TODO Auto-generated method stub
-		
+	public int writeBoard(GboardDTO gboardDTO, String memberID) throws Exception {
+		return 0;	
 	}
 
 	@Override

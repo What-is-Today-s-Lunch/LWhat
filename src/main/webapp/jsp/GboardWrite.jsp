@@ -1,8 +1,8 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,6 +15,19 @@
 <title>글쓰기</title>
 </head>
 <body>
+<% 
+
+	String memberID = (String) session.getAttribute("memberID"); 
+	
+	if(memberID == null){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인이 되어있지 않습니다!')");
+		script.println("location.href = 'loginForm.jsp'");
+		script.println("</script>");
+	}
+	%>
+
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">

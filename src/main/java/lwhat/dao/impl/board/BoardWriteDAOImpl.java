@@ -13,14 +13,14 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
 	
 	@Override
-	public int writeBoard(GboardDTO gboardDTO) throws Exception {
+	public int writeBoard(GboardDTO gboardDTO, String memberID) throws Exception {
 		Connection conn = getConnection();
 		System.out.println(gboardDTO);
 
 		String SQL = " insert into generalposting ( memberID_FK, boardCategory, imageCategory, title, content, wdate, mdate) values ( ?, ?, ?, ?, ?, now(), now()) ";
 		PreparedStatement pstmt = conn.prepareStatement(SQL);
 //		pstmt.setInt(1, getNext());
-		pstmt.setString(1, getMemberFK());
+		pstmt.setString(1, getMemberFK(memberID));
 		pstmt.setString(2, gboardDTO.getBoardCategory());
 		pstmt.setString(3, gboardDTO.getImageCategory());
 		pstmt.setString(4, gboardDTO.getTitle());
@@ -59,10 +59,11 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 		 return -1;
 	 }
 	 
-	 public String getMemberFK() {
-		 String sql = " SELECT * FROM memberinfo WHERE memberID= 'test' ";
+	 public String getMemberFK(String memberID) {
+		 String sql = " SELECT * FROM memberinfo WHERE memberID= ? ";
 		 try {
 			 PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			 pstmt.setString(1, memberID);
 			 rs = pstmt.executeQuery();
 			 if(rs.next()) {
 				 return rs.getString(1);

@@ -19,7 +19,7 @@
 <title>마이페이지</title>
 <%
 	//1. 한글설정 & 변수생성
-	String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
+	String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수  
 	//1-1.id값확인 -없으면 로그인페이지로 이동
 	if(memberID == null){
 		PrintWriter script = response.getWriter();
