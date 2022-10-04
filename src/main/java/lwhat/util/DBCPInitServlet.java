@@ -54,8 +54,7 @@ public class DBCPInitServlet extends HttpServlet {
 			poolableConnFactory.setPool(connectionPool);
 
 			Class.forName((String) DBCPConstants.props.get("JDBC_POOLING_DRIVER_NAME"));
-
-			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver((String)DBCPConstants.props.get("jdbc:apache:commons:dbcp:"));
+			PoolingDriver driver = (PoolingDriver) DriverManager.getDriver((String)DBCPConstants.props.get("JDBC_POOLING_DRIVER"));
 			driver.registerPool((String)DBCPConstants.props.get("ConnectionPool"), connectionPool);
 		} catch (Exception ex) {
 			ex.printStackTrace(); 
