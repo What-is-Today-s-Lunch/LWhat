@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import lwhat.handler.CommandHandler;
 
@@ -53,15 +54,15 @@ public class MVCController extends HttpServlet implements Serializable {
 
 	} // int()
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		processRequest(req, resp);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp, HttpSession sess) throws ServletException, IOException {
+		processRequest(req, resp, sess);
 	}
 
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		processRequest(req, resp);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp, HttpSession sess) throws ServletException, IOException {
+		processRequest(req, resp, sess);
 	}
 
-	public void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void processRequest(HttpServletRequest req, HttpServletResponse resp, HttpSession sess) throws ServletException, IOException {
 		String command = req.getRequestURI();
 		if (command.indexOf(req.getContextPath()) == 0) {
 			command = command.substring(req.getContextPath().length() + 1);
@@ -69,7 +70,7 @@ public class MVCController extends HttpServlet implements Serializable {
 		CommandHandler handler = (CommandHandler) commandMap.get(command);
 		String viewPage = null;
 		try {
-			viewPage = handler.process(req, resp);
+			viewPage = handler.process(req, resp, sess);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
