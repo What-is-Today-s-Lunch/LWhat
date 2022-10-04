@@ -15,6 +15,7 @@ public class CodeTableDTO implements Serializable{
 	public String getCodeValue() {
 		return codeValue;
 	}
+	
 	public void setCodeValue(String codeValue) {
 		this.codeValue = codeValue;
 	}
