@@ -1,5 +1,14 @@
+<%@page import="lwhat.dto.board.GboardDTO" %>
+<%@page import="lwhat.dao.impl.board.BoardListDAOImpl" %>
+<%@page import="lwhat.service.board.BoardService" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.Map" %>
+<%@page import="java.util.HashMap" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+	
+	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,6 +21,43 @@
 <title>종합 게시판</title>
 </head>
 <body>
+<%
+	int pageNumber = 1;
+	if (request.getParameter("pageNumber") != null){
+		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+	}
+	
+	String bdomainParam = request.getParameter("memberID_FK") == null? "" : request.getParameter("memberID_FK");
+    String searchDomainParam = request.getParameter("searchDomain") == null? "" : request.getParameter("searchDomain");
+    String searchTextParam = request.getParameter("searchText") == null? "" : request.getParameter("searchText");
+   
+    // 검색을 버튼을 눌렀을 때, 어떤 기준으로 찾을 것인지 (제목, 작성자, 제목 + 작성자)의 값과 검색 내용을 map으로 묶어서 넘겨준다. 
+    Map<String,String> map = new HashMap<>();
+   // (제목, 작성자, 제목 + 작성자)
+   map.put("searchDomain", searchDomainParam);
+   // 검색 내용
+   map.put("searchText", searchTextParam);
+   
+   // domain이 전체일 경우
+    if(bdomainParam == null || bdomainParam.equals("")){
+       // 검색 내용 X
+       if(searchTextParam == null || searchTextParam.equals("")){
+          pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(pageNumber));   
+       }
+       else{   // 검색 내용 O
+          pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(bdomainParam, map));   
+       }
+   }else{   // domain이 특정 값일 경우
+      // 검색 내용 X
+      if(searchTextParam == null || searchTextParam.equals("")){
+         pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(pageNumber));
+      }
+      else{   // 검색 내용 O
+         pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(bdomainParam, map));
+      }
+   }
+	
+%>
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
@@ -45,62 +91,46 @@
 						<div class="board_list">
 							<div class="top">
 								<div class="num">번호</div>
+								<div class="category">카테고리</div>
 								<div class="title">제목</div>
 								<div class="write">글쓴이</div>
 								<div class="date">작성일</div>
 								<div class="count">조회</div>
 							</div>
 							<div>
-								<div class="num">5</div>
-								<div class="title"><a href="#">글 제목</a></div>
-								<div class="write">이름</div>
-								<div class="date">날짜</div>
-								<div class="count">0</div>
-							</div>
-							<div>
-								<div class="num">4</div>
-								<div class="title"><a href="#">글 제목</a></div>
-								<div class="write">이름</div>
-								<div class="date">날짜</div>
-								<div class="count">0</div>
-							</div>
-							<div>
-								<div class="num">3</div>
-								<div class="title"><a href="#">글 제목</a></div>
-								<div class="write">이름</div>
-								<div class="date">날짜</div>
-								<div class="count">0</div>
-							</div>
-							<div>
-								<div class="num">2</div>
-								<div class="title"><a href="#">글 제목</a></div>
-								<div class="write">이름</div>
-								<div class="date">날짜</div>
-								<div class="count">0</div>
-							</div>
-							<div>
-								<div class="num">1</div>
-								<div class="title"><a href="#">글 제목</a></div>
-								<div class="write">이름</div>
-								<div class="date">날짜</div>
-								<div class="count">0</div>
+							<%
+								BoardService boardService = new BoardListDAOImpl();
+								GboardDTO gboardDTO = new GboardDTO();
+								ArrayList<GboardDTO> list = boardService.listBoard(pageNumber);
+								for(int i = 0; i < list.size(); i++){
+							%>
+								<div class="num"><%= list.get(i).getgPostingID() %></div>
+								<div class="category"><%= list.get(i).getBoardCategory() %></div>
+								<div class="title"><a href="GboardView.jsp?gPostingID=<%= list.get(i).getgPostingID() %>"><%= list.get(i).getTitle() %></a></div>
+								<div class="write"><%= list.get(i).getMemberID_FK() %></div>
+								<div class="date"><%= list.get(i).getmDate()%></div>
+								<div class="count"><%= list.get(i).getClickCount() %></div>
+							<% } %>
+							
 							</div>
 						</div>
+						
 						<div class="board_page">
-							<a href="#" class="bt first"><<</a>
-							<a href="#" class="bt prev"><</a>
-							
-							<a href="#" class="num on">1</a>
-							<a href="#" class="num">2</a>
-							<a href="#" class="num">3</a>
-							<a href="#" class="num">4</a>
-							<a href="#" class="num">5</a>
-							
-							<a href="#" class="bt next">></a>
-							<a href="#" class="bt last">>></a>
+						<%
+							BoardListDAOImpl boardServiceNextPage = new BoardListDAOImpl();
+							if(pageNumber != 1){
+						%>
+							<a href="totalBoardForm.jsp?pageNumber=<%=pageNumber-1 %>" class="bt prev"><</a>
+						<% 
+							} if(boardServiceNextPage.nextPage(pageNumber + 1)){		
+						%>
+							<a href="totalBoardForm.jsp?pageNumber=<%=pageNumber+1 %>" class="bt next">></a>
+						<%
+							}
+						%>
 						</div>
 						<div class="bt_wrap">
-							<a href="#" class="on">등록</a>
+							<a href="GboardWrite.jsp" class="on">등록</a>
 							<!--<a href="#" >수정</a>-->
 						</div>
 					</div>
@@ -108,12 +138,15 @@
 		<!-- 들어가야할 내용  -->
 		</div>
 		<div class="contents1">
+		<form name="searchDomain" action="../jsp/totalBoardForm.jsp">
 			<select name="searchDomain">
 				<option value="">전체</option>
 				<option value="">제목</option>
 				<option value="">작성자</option>
-			</select>&nbsp; <input type="text" placeholder="검색">&nbsp; <input
-				type="button" value="검색"><br /> <br />
+			</select>&nbsp; 
+			<input type="text" name="searchText" placeholder="검색">&nbsp; 
+			<input type="button" value="검색" onclick="this.form.submit()"><br /> <br />
+			</form>
 		</div>
 	</div>
 

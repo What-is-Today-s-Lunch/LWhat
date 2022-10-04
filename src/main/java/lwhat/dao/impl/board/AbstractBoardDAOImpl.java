@@ -1,44 +1,51 @@
 package lwhat.dao.impl.board;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
+import lwhat.dto.board.GboardDTO;
 import lwhat.service.board.BoardService;
 
 public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implements BoardService {
 
 	@Override
-	public void writeBoard() throws Exception {
+	public int writeBoard(GboardDTO gboardDTO) throws Exception {
+		return 0;
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteBoard() throws Exception {
+	public int deleteBoard(int gPostingID) throws Exception {
 		// TODO Auto-generated method stub
-		
+		return 0;
 	}
 
 	@Override
-	public void updateBoard() throws Exception {
+	public int updateBoard(GboardDTO gboardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		
+		return 0;
+	}
+	@Override
+	public ArrayList<GboardDTO> listBoard(int pageNumber) throws Exception{
+		return null;
+	}
+	@Override
+	public ArrayList<GboardDTO> listBoard(String bdomain, Map<String, String> search) throws Exception{
+		return null;
 	}
 
 	@Override
-	public void listBoard() throws Exception {
+	public GboardDTO viewBoard(int gPostingID) throws Exception {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void viewBoard() throws Exception {
-		// TODO Auto-generated method stub
-		
+	public int fileUploadBoard(String cImage, String sImage, int gPostingID) throws Exception {
+		return 0;
 	}
 
-	@Override
-	public void fileUploadBoard() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
