@@ -1,4 +1,5 @@
-<%@page import="lwhat.dto.Review"%>
+<%@page import="lwhat.dto.ReviewDTO"%>
+<%@page import="lwhat.dto.ReviewDTO"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantViewDAOImpl"%>
 <%@page import="lwhat.dto.RestaurantDTO"%>
@@ -24,7 +25,7 @@
    session.setAttribute("restaurantID", restaurantIDParam);
    
    RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-   List<Review>revlistDTO = restaurantreviewService.listLReview(restaurantIDParam);
+   List<ReviewDTO>revlistDTO = restaurantreviewService.listLReview(restaurantIDParam);
    pageContext.setAttribute("revlist", revlistDTO);
 %> 
 
@@ -96,7 +97,7 @@
          </form>
          <div id="reviewDiv">
             			
-         <table>
+         	<table>
             		<colgroup>
             			<col width="70px" />
             			<col width="700px" />
@@ -115,10 +116,10 @@
             				<th>수정/삭제</th>
             			</tr>
             		</thead>
+            		<tbody>
             			<c:set var="listSize" value="${revlist.size()}" />
 						<c:forEach var="reviewlist"  items="${revlist}"  varStatus="i">
 						<c:set var="bno" value="${revlistSize-stat.count+1}" />
-            		<tbody>
             			<tr>
             				<td>${i.count}</td>
             				<td>${reviewlist.content}</td>
@@ -127,8 +128,8 @@
             				<td>${reviewlist.score}</td>
             				<td><button onclick="location.href=''">[수정]</button>[삭제]</td>
             			</tr>
-            		</tbody>
             			</c:forEach>
+            		</tbody>
             	</table>
       </div>
    
