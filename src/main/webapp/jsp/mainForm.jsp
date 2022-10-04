@@ -73,7 +73,7 @@
 				</div>
 				<div class="contents1_bold">한식</div>
 				<div class="contents2">contents</div>
-				<div class="more"><a href="../jsp/koreaFoodList.jsp">MORE</a></div>
+				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AA';">MORE</a></div>
 			</li>
 
 			<li>
@@ -82,7 +82,7 @@
 				</div>
 				<div class="contents1_bold">양식</div>
 				<div class="contents2">contents</div>
-				<div class="more"><a href="../jsp/koreaFoodList.jsp">MORE</a></div>
+				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AC';">MORE</a></div>			
 			</li>
 
 			<li>
@@ -91,8 +91,7 @@
 				</div>
 				<div class="contents1_bold">중식</div>
 				<div class="contents2">contents</div>
-				<div class="more"><a href="../jsp/koreaFoodList.jsp">MORE</a></div>
-			</li>
+				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AB';">MORE</a></div>			</li>
 
 			<li>
 				<div class="icon_img">
@@ -100,7 +99,7 @@
 				</div>
 				<div class="contents1_bold">기타</div>
 				<div class="contents2">contents</div>
-				<div class="more"><a href="../jsp/koreaFoodList.jsp">MORE</a></div>
+				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AE';">MORE</a></div>
 			</li>
 
 		</ul>
