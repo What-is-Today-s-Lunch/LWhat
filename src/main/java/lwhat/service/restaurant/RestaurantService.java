@@ -25,4 +25,8 @@ public interface RestaurantService extends LWhatService {
 	
 	public List<ReviewDTO> listLReview(String restaurantID) throws Exception;
 
+	public int deleteRestaurantReview(int revID) throws Exception;
+
+	public int updateRestaurantReview(int revID,ReviewDTO reviewDTO) throws Exception;
+
 }

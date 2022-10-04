@@ -53,4 +53,16 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 	public List<ReviewDTO> listLReview(String restaurantID) throws Exception{
 		return null;
 	}
+
+	@Override
+	public int deleteRestaurantReview(int revID) throws Exception {
+		return 0;
+	}
+
+	@Override
+	public int updateRestaurantReview(int revID, ReviewDTO reviewDTO) throws Exception {
+		return 0;
+	}
+
+
 }
