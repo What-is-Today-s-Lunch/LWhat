@@ -1,3 +1,5 @@
+<%@page import="lwhat.dto.Review"%>
+<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantViewDAOImpl"%>
 <%@page import="lwhat.dto.RestaurantDTO"%>
 <%@page import="java.util.List"%>
@@ -5,12 +7,13 @@
 <%@page import="lwhat.service.restaurant.RestaurantService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--레스토랑ID와 매칭되는 리스트 가져오기 --%>
-<%-- <%
+<%
    String restaurantIDParam = 
    request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
-   
+  out.print(restaurantIDParam);
    
    RestaurantService restaurantViewService = new RestaurantViewDAOImpl();
    
@@ -18,9 +21,12 @@
    out.print(restautantIDDTO);
    pageContext.setAttribute("rsIDlist", restautantIDDTO);
    
-   
    session.setAttribute("restaurantID", restaurantIDParam);
-%> --%>
+   
+   RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
+   List<Review>revlistDTO = restaurantreviewService.listLReview(restaurantIDParam);
+   pageContext.setAttribute("revlist", revlistDTO);
+%> 
 
    
 <!DOCTYPE html>
@@ -89,6 +95,7 @@
             </div>
          </form>
          <div id="reviewDiv">
+            			
          <table>
             		<colgroup>
             			<col width="70px" />
@@ -105,30 +112,27 @@
             				<th>작성자</th>
             				<th>작성시간</th>
             				<th>별점</th>
-            				<th>수정?삭제?</th>
+            				<th>수정/삭제</th>
             			</tr>
             		</thead>
+            			<c:set var="listSize" value="${revlist.size()}" />
+						<c:forEach var="reviewlist"  items="${revlist}"  varStatus="i">
+						<c:set var="bno" value="${revlistSize-stat.count+1}" />
             		<tbody>
             			<tr>
-            				<td>2</td>
-            				<td>후기내용 자리입니다</td>
-            				<td>윤기영</td>
-            				<td>작성시간</td>
-            				<td>별5개</td>
-            				<td>[수정]</td>
-            			</tr>
-            			<tr>
-            				<td>1</td>
-            				<td>후기내용 자리입니다</td>
-            				<td>한지민</td>
-            				<td>작성시간</td>
-            				<td>별3개</td>
-            				<td>[수정]</td>
+            				<td>${i.count}</td>
+            				<td>${reviewlist.content}</td>
+            				<td>${reviewlist.memberID_FK}</td>
+            				<td>${reviewlist.wDate}</td>
+            				<td>${reviewlist.score}</td>
+            				<td><button onclick="location.href=''">[수정]</button>[삭제]</td>
             			</tr>
             		</tbody>
+            			</c:forEach>
             	</table>
       </div>
    
+   </div>
    </div>
    <!-- 들어가야할 내용 div 끝점  -->
 

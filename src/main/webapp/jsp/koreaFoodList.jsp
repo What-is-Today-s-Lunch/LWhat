@@ -27,7 +27,7 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/foodListStyle.css">
-<title>한식</title>
+<title><%=request.getParameter("category") %></title>
 </head>
 <body>
 	<div class="wrap">
@@ -50,7 +50,7 @@
 	</div>
 
 	<div class="main_text0">
-		<h1>한식</h1>
+		<h1><%=request.getParameter("category") %></h1>
 		<div class="contents1">
 			<ul class="icons">
 			

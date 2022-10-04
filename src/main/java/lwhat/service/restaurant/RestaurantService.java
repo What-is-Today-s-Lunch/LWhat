@@ -23,6 +23,6 @@ public interface RestaurantService extends LWhatService {
 	
 	public int writeReview(Review review) throws Exception;
 	
-	public List<Review> listLReview() throws Exception;
+	public List<Review> listLReview(String restaurantID) throws Exception;
 
 }

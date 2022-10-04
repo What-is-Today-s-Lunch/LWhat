@@ -16,11 +16,11 @@ public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl{
 				
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
-		pstmt.setInt(1, review.getRevID());
-		pstmt.setString(2,review.getMemberID_FK());
-		pstmt.setString(3, review.getRestaurantID_FK());
-		pstmt.setInt(4, review.getScore());
-		pstmt.setString(5, review.getContent());
+		
+		pstmt.setString(1,review.getMemberID_FK());
+		pstmt.setString(2, review.getRestaurantID_FK());
+		pstmt.setInt(3, review.getScore());
+		pstmt.setString(4, review.getContent());
 		
 		int result = pstmt.executeUpdate();
 		closeConnection(pstmt,conn);

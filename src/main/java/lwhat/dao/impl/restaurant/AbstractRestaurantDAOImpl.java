@@ -50,7 +50,7 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 		return 0;
 	}
 	@Override
-	public List<Review> listLReview() throws Exception{
+	public List<Review> listLReview(String restaurantID) throws Exception{
 		return null;
 	}
 }

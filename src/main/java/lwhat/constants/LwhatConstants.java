@@ -12,7 +12,7 @@ public class LwhatConstants {
 	static {
 		querys = new Properties();
 		try {
-			File file = new File("C:/eclipse_workspace/LWhat/src/main/webapp/WEB-INF/props/query.properties");
+			File file = new File("C:/eclipse_workspace/LWhat/src/main/webapp/WEB-INF/props/restaurant.properties");
 			Reader reader = new FileReader(file);
 			querys.load(reader);
 		} catch (Exception ex) {
