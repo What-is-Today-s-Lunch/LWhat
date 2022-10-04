@@ -9,7 +9,7 @@ public class CodeTableDTO implements Serializable{
 	private String codeName;
 	
 	public CodeTableDTO() {
-		
+		 
 	}// default g
 	
 	public String getCodeValue() {
