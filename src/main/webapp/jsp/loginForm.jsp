@@ -17,7 +17,7 @@
    <h3>우리만의 점심 커뮤니티</h3>
    </div>
     <div>
-        <form method="post" action="${webapproot}/fileupload" enctype="multipart/form-data">
+        <form method="post" action="../jsp/loginProc.jsp">
             <input type="text" placeholder="아이디" class="in" name="memberID">
             <input type="password" placeholder="비밀번호" class="in" name="memberPW">
             <input type="submit" id="button" value="로그인"><br>
