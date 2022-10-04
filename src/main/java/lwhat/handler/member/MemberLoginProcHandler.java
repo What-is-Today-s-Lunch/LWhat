@@ -1,4 +1,4 @@
-package lwhat.handler;
+package lwhat.handler.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.member.MemberLoginDAOImpl;
 import lwhat.dto.MemberDTO;
+import lwhat.handler.CommandHandler;
 
 public class MemberLoginProcHandler implements CommandHandler {
 	@Override
