@@ -19,7 +19,7 @@
 <title>마이페이지</title>
 <%
 	//1. 한글설정 & 변수생성
-	String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수  
+	String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
 	//1-1.id값확인 -없으면 로그인페이지로 이동
 	if(memberID == null){
 		PrintWriter script = response.getWriter();
@@ -39,7 +39,8 @@
 <body>
 <div id="top">
    <br>
-   <h1>마 이 페 이 지</h1>
+   <h1>오 늘 뭐 먹 지 ?</h1>
+   <h2>마 이 페 이 지</h2>
    </div>
 <br>
     <div id="bottom">
@@ -50,10 +51,14 @@
             회원이메일 : <%=memberDTO.getEmail() %><br><br>
             회원닉네임 : <%=memberDTO.getNickName() %><br><br>
             회원가입일 : <%=memberDTO.getjoinDate() %><br><br>
-             <a href="../jsp/mypageUpdateForm.jsp" id="create">회원정보수정하기</a>
-             <a href="javascript:history.back();">뒤로가기</a>
-             <a href="../jsp/logoutProc.jsp">로그아웃</a><br>
-             <a href="../jsp/memberDeleteForm.jsp">회원탈퇴하기</a>
+             <input type="button" class="in" onclick="location.href='../jsp/mypageUpdateForm.jsp'" 
+             id="button" value="회원정보수정하기"><br>
+             <input type="button" class="in" onclick="location.href='../jsp/logoutProc.jsp'" 
+             id="button" value="로그아웃"><br>
+             <input type="button" class="in" onclick="location.href='javascript:history.back();'" 
+             id="button" value="뒤로가기"><br>
+             <input type="button" class="in" onclick="location.href='../jsp/memberDeleteForm.jsp'" 
+             id="button" value="회원탈퇴하기"><br>
         </form>
     </div>
 <% 
