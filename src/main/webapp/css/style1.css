@@ -30,7 +30,7 @@ a{
 	/*
 	html의 폰트사이즈 곱하기 rem의 사이즈 한값이 된다. 
 	*/ 
-}
+} 
 .board_title p{
 	margin-top: 5px;
 	font-size: 1.4rem;
