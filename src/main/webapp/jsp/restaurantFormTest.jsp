@@ -1,5 +1,3 @@
-<%@page import="lwhat.dto.Review"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantViewDAOImpl"%>
 <%@page import="lwhat.dto.RestaurantDTO"%>
 <%@page import="java.util.List"%>
@@ -9,7 +7,7 @@
    pageEncoding="UTF-8"%>
    
 <%--레스토랑ID와 매칭되는 리스트 가져오기 --%>
-<%
+<%-- <%
    String restaurantIDParam = 
    request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
    
@@ -22,13 +20,7 @@
    
    
    session.setAttribute("restaurantID", restaurantIDParam);
-   
-   RestaurantService reviewListService = new RestaurantReviewListDTOImpl();
-   
-   List<Review>reviewList = reviewListService.listLReview();
-   pageContext.setAttribute("rvlist", reviewList);
-   
-%>
+%> --%>
 
    
 <!DOCTYPE html>
@@ -88,21 +80,54 @@
       <div class="contents4">
             <div class="text">
                <p>후기쓰기</p>
-            
             </div>
-         
-         <form action="restaurantReviewProc.jsp" name="review" method="post" >
+            
+         <form action="restaurantReviewProc.jsp" name="review" method="get" >
             <div class="bt_wrap">
             <textarea name="content" placeholder="정성스런 후기를 작성해주세요~~!"></textarea>
-            <input type="button" value="버튼"  onclick="this.form.submit()" >
+            	<input type="button" value="등록"  onclick="this.form.submit()">
             </div>
          </form>
-         
-         <div>
-            
-         </div>
+         <div id="reviewDiv">
+         <table>
+            		<colgroup>
+            			<col width="70px" />
+            			<col width="700px" />
+            			<col width="100px" />
+            			<col width="150px" />
+            			<col width="100px" />
+            			<col width="150px" />
+            		</colgroup>
+            		<thead>
+            			<tr>
+            				<th>번호</th>
+            				<th>후기내용</th>
+            				<th>작성자</th>
+            				<th>작성시간</th>
+            				<th>별점</th>
+            				<th>수정?삭제?</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+            			<tr>
+            				<td>2</td>
+            				<td>후기내용 자리입니다</td>
+            				<td>윤기영</td>
+            				<td>작성시간</td>
+            				<td>별5개</td>
+            				<td>[수정]</td>
+            			</tr>
+            			<tr>
+            				<td>1</td>
+            				<td>후기내용 자리입니다</td>
+            				<td>한지민</td>
+            				<td>작성시간</td>
+            				<td>별3개</td>
+            				<td>[수정]</td>
+            			</tr>
+            		</tbody>
+            	</table>
       </div>
-      
    
    </div>
    <!-- 들어가야할 내용 div 끝점  -->
