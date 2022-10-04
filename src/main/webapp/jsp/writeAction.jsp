@@ -22,7 +22,7 @@ String memberID = (String) session.getAttribute("memberID");
 <jsp:setProperty name="gboard" property="title" />
 <jsp:setProperty name="gboard" property="content" />
 <jsp:setProperty name="gboard" property="boardCategory" />
-
+ 
 <%
 
 //write
