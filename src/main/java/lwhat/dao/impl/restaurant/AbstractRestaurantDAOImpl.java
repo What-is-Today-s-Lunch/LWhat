@@ -5,6 +5,7 @@ import java.util.List;
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
 import lwhat.dto.FoodimageDTO;
 import lwhat.dto.RestaurantDTO;
+import lwhat.dto.Review;
 import lwhat.service.restaurant.RestaurantService;
 
 public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl implements RestaurantService {
@@ -44,6 +45,12 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-
+	@Override
+	public int writeReview(Review review) throws Exception{
+		return 0;
+	}
+	@Override
+	public List<Review> listLReview() throws Exception{
+		return null;
+	}
 }

@@ -63,7 +63,10 @@
 					</div>
 					
 					
-					<div class="contents1_bold">${rstaurantlist.restaurantID},${c.index+1}</div>
+					<div class="contents1_bold">
+					<a href="#" onclick="location.href='restaurantFormTest.jsp?restaurantID=${rstaurantlist.restaurantID}';" >
+					${rstaurantlist.restaurantID}</a>
+					</div>
 					<div class="contents2">별점</div>
 					<div class="contents3">후기 카운트</div>
 				</li>
@@ -83,15 +86,17 @@
 					<div class="icon_img">
 						<img src="../image/koreafood.png">
 					</div>
-					
-					<div class="contents1_bold">${rstaurantlist.restaurantID},${c.index+1}</div>
+					<p>왜 안먹니?</p>
+					<div class="contents1_bold">
+					<a href="restaurantFormTest.jsp" class="on">${rstaurantlist.restaurantID}</a>
+					</div>
 					<div class="contents2">별점</div>
 					<div class="contents3">후기 카운트</div>
 				</li>
 					</c:forEach>
 			</ul>
 		</div>
-		<!-- 들어가야할 내용ㅁㄴㅇ  -->
+		<!-- 들어가야할 내용ㅁㄴㅇㅁㄴㅇ  -->
 	</div>
 
 
