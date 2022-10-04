@@ -10,7 +10,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/join.css">
+<link rel="stylesheet" type="text/css" href="../css/member.css">
+<link
+   href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+   rel="stylesheet">
 
 <title>회원가입 화면</title>
 <%
@@ -38,9 +41,9 @@
         <form method="post" action="mypageUpdateProc.jsp">
         회원아이디<br><%=memberDTO.getMemberID()%><br>
         회원비밀번호 변경<br><input type="text" class="in" name="password" value="<%=memberDTO.getMemberPW()%>"><br>
-        회원이름 변경<br><input type="text" class="in" name="name" value="<%=memberDTO.getMemberPW()%>"><br>
-        회원이메일 변경<br><input type="text" class="in" name="email" value="<%=memberDTO.getMemberPW()%>"><br>
-        회원닉네임 변경<br><input type="text" class="in" name="nickName" value="<%=memberDTO.getMemberPW()%>"><br>
+        회원이름 변경<br><input type="text" class="in" name="name" value="<%=memberDTO.getName()%>"><br>
+        회원이메일 변경<br><input type="text" class="in" name="email" value="<%=memberDTO.getEmail()%>"><br>
+        회원닉네임 변경<br><input type="text" class="in" name="nickName" value="<%=memberDTO.getNickName()%>"><br>
             가입일<br><%=memberDTO.getjoinDate() %><br>
              <input type = "submit" value="회원정보 수정"><br>
              <a href="javascript:history.back();">뒤로가기</a>

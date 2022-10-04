@@ -11,7 +11,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/join.css">
+<link rel="stylesheet" type="text/css" href="../css/member.css">
+<link
+   href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+   rel="stylesheet">
 
 <title>마이페이지</title>
 <%
@@ -36,18 +39,18 @@
 <body>
 <div id="top">
    <br>
-   <h1>회 원 가 입</h1>
+   <h1>마 이 페 이 지</h1>
    </div>
-<br><br>
+<br>
     <div id="bottom">
         <form>
-            회원아이디<br><%=memberDTO.getMemberID()%></br>
-            회원비밀번호<br><%=memberDTO.getMemberPW() %></br>
-            회원이름<br><%=memberDTO.getName() %></br>
-            회원이메일<br><%=memberDTO.getEmail() %></br>
-            회원닉네임<br><%=memberDTO.getNickName() %><br>
-            회원가입일<br><%=memberDTO.getjoinDate() %><br>
-             <a href="../jsp/mypageUpdateForm.jsp" id="create">회원정보수정하기</a><br>
+            회원아이디 : <%=memberDTO.getMemberID()%><br><br>
+            회원비밀번호 : <%=memberDTO.getMemberPW() %><br><br>
+            회원이름 : <%=memberDTO.getName() %><br><br>
+            회원이메일 : <%=memberDTO.getEmail() %><br><br>
+            회원닉네임 : <%=memberDTO.getNickName() %><br><br>
+            회원가입일 : <%=memberDTO.getjoinDate() %><br><br>
+             <a href="../jsp/mypageUpdateForm.jsp" id="create">회원정보수정하기</a>
              <a href="javascript:history.back();">뒤로가기</a>
              <a href="../jsp/logoutProc.jsp">로그아웃</a><br>
              <a href="../jsp/memberDeleteForm.jsp">회원탈퇴하기</a>

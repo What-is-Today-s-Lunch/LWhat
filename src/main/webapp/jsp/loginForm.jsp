@@ -2,13 +2,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-<html>
 <head>
 <meta charset="UTF-8">
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
    rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="../css/member.css">
 <title>로그인 페이지</title>
 </head>
 <body>
@@ -21,9 +20,10 @@
         <form method="post" action="loginProc.jsp">
             <input type="text" placeholder="아이디" class="in" name="memberID">
             <input type="password" placeholder="비밀번호" class="in" name="memberPW">
-            <input type="submit" id="login" value="로그인"><br>
-            <a href="../jsp/joinForm.jsp" id="create">회원가입 하기</a><br>
-            <a href="../jsp/pwFind.jsp" id="create">비밀번호 찾기</a>
+            <input type="submit" id="button" value="로그인"><br>
+            <input type="button" id="button" class="in"
+            onclick="location.href='../jsp/joinForm.jsp'" value="회원가입하기"><br>
+            <!-- <input type="button" id="button" onclick="location.href='../jsp/pwFind.jsp'" value="비밀번호 찾기"><br> -->
         </form>
     </div>
 </body>
