@@ -10,8 +10,4 @@ function slideThree() {
 	document.querySelector('.container').style.transform = 'translate(-200vw)';
 }
 
-function upScroll(){
-	window.scrollTo(0, 0);
-}
-
 

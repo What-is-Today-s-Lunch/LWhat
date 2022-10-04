@@ -15,15 +15,14 @@ public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl imple
 	}
 
 	@Override
-	public void deleteMember() throws Exception {
+	public void deleteMember(String MemberID) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateMember() throws Exception {
+	public void updateMember(MemberDTO memberDTO) throws Exception {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

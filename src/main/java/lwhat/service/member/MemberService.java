@@ -9,9 +9,9 @@ public interface MemberService extends LWhatService {
 
 	public int joinMember(MemberDTO memberDTO) throws Exception;
 
-	public void deleteMember() throws Exception;
+	public void deleteMember(String MemberID) throws Exception;
 
-	public void updateMember() throws Exception;
+	public void updateMember(MemberDTO memberDTO) throws Exception;
 
 	public MemberDTO viewMembers(String memberID) throws Exception;
 	

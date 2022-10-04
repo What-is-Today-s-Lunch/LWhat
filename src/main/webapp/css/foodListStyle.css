@@ -159,7 +159,7 @@ h1 {
 .main_text0>.contents4 {
    display: flex;
    width: 1280px;
-   height: 180px;
+   height: auto;
    background: #e8e8e8;
    margin: auto;
    
@@ -326,6 +326,7 @@ button{
    display: flex;
    background: #1f1f1f;
    padding: 30px;
+   margin-top: 150px;
 }
 
 .footer>div:first-child {
@@ -364,4 +365,11 @@ button{
    /*on 버튼이 활성화 되었을 때 배경색을 지정*/
 }
 
+#reviewDiv{
+	position: absolute;
+	margin-top: 150px;
+}
 
+th, td{
+	text-align: center;
+}
