@@ -1,7 +1,5 @@
 package lwhat.service.member;
 
-import java.util.ArrayList;
-
 import lwhat.dto.MemberDTO;
 import lwhat.service.LWhatService;
 
