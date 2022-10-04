@@ -10,7 +10,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/join.css">
+<link rel="stylesheet" type="text/css" href="../css/member.css">
+<link
+   href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+   rel="stylesheet">
 
 <title>마이페이지</title>
 <%
@@ -25,31 +28,28 @@
 	MemberDTO memberDTO = new MemberDTO();
 	memberDTO = memberService.viewMembers(memberID);
 	//3. 데이터처리 : 테이블로 표현
-	if(memberDTO != null){
 %>
 </head>
 <body>
 <div id="top">
    <br>
-   <h1>회 원 가 입</h1>
+   <h1>오 늘 뭐 먹 지 ?</h1>
+    <h1>정말 탈퇴 하시겠습니까?</h1>
    </div>
 <br><br>
     <div id="bottom">
         <form method ="post" action = "memberDeleteProc.jsp">
-          <h1>정말 탈퇴 하시겠습니까?</h1>
-            회원아이디<br><%=memberDTO.getMemberID()%></br>
-            회원비밀번호<br><%=memberDTO.getMemberPW() %></br>
-            회원이름<br><%=memberDTO.getName() %></br>
-            회원이메일<br><%=memberDTO.getEmail() %></br>
-            회원닉네임<br><%=memberDTO.getNickName() %><br>
-            회원가입일<br><%=memberDTO.getjoinDate() %><br>
-             <input type = "submit" value="삭제하기"><br>
-             <a href="javascript:history.back();">뒤로가기</a>
+            회원아이디 : <%=memberDTO.getMemberID()%><br><br>
+            회원비밀번호 : <%=memberDTO.getMemberPW() %><br><br>
+            회원이름 : <%=memberDTO.getName() %><br><br>
+            회원이메일 : <%=memberDTO.getEmail() %><br><br>
+            회원닉네임 : <%=memberDTO.getNickName() %><br><br>
+            회원가입일 : <%=memberDTO.getjoinDate() %><br><br>
+             <input type="submit" class="in" id="button" value="탈퇴하기"><br>
+             <input type="button" class="in" id = "button" value="뒤로가기"
+             onclick="location.href='javascript:history.back();'">
         </form>
     </div>
-<% 
-} 
-%>
     </div>
 </body>
 </html>
