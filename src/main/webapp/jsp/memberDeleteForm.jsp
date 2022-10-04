@@ -1,4 +1,3 @@
-<%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="lwhat.service.member.MemberService"%>
 <%@page import="lwhat.util.ConnectionManager"%>
@@ -19,11 +18,7 @@
 	String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
 	//1-1.id값확인 -없으면 로그인페이지로 이동
 	if(memberID == null){
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('로그인이 되어있지 않습니다!')");
-		script.println("location.href = 'loginForm.jsp'");
-		script.println("</script>");
+		response.sendRedirect("loginForm.jsp");
 	}
 	//2. 회원정보 가져오는 메서드생성
 	MemberService memberService = new MemberViewDAOImpl();
@@ -40,17 +35,16 @@
    </div>
 <br><br>
     <div id="bottom">
-        <form>
+        <form method ="post" action = "memberDeleteProc.jsp">
+          <h1>정말 삭제하시겠습니까?</h1>
             회원아이디<br><%=memberDTO.getMemberID()%></br>
             회원비밀번호<br><%=memberDTO.getMemberPW() %></br>
             회원이름<br><%=memberDTO.getName() %></br>
             회원이메일<br><%=memberDTO.getEmail() %></br>
             회원닉네임<br><%=memberDTO.getNickName() %><br>
             회원가입일<br><%=memberDTO.getjoinDate() %><br>
-             <a href="../jsp/mypageUpdateForm.jsp" id="create">회원정보수정하기</a><br>
+             <input type = "submit" value="삭제하기"><br>
              <a href="javascript:history.back();">뒤로가기</a>
-             <a href="../jsp/logoutProc.jsp">로그아웃</a><br>
-             <a href="../jsp/memberDeleteForm.jsp">회원탈퇴하기</a>
         </form>
     </div>
 <% 

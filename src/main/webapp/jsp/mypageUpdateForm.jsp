@@ -31,23 +31,19 @@
 <body>
 <div id="top">
    <br>
-   <h1>회 원 가 입</h1>
+   <h1>회원정보 수정</h1>
    </div>
 <br><br>
     <div id="bottom">
-        <form>
-        <input type="text" placeholder="<%=memberDTO.getMemberID()%>" class="in" name="memberID"><br>
-        <input type="text" placeholder="<%=memberDTO.getMemberPW()%>" class="in" name="memberPW"><br>
-        <input type="text" placeholder="<%=memberDTO.getName()%>" class="in" name="name"><br>
-        <input type="text" placeholder="<%=memberDTO.getEmail()%>" class="in" name="email"><br>
-            비밀번호<br><%=memberDTO.getMemberPW() %></br>
-            이름<br><%=memberDTO.getName() %></br>
-            이메일<br><%=memberDTO.getEmail() %></br>
-            닉네임<br><%=memberDTO.getNickName() %><br>
+        <form method="post" action="mypageUpdateProc.jsp">
+        회원아이디<br><%=memberDTO.getMemberID()%><br>
+        회원비밀번호 변경<br><input type="text" class="in" name="password" value="<%=memberDTO.getMemberPW()%>"><br>
+        회원이름 변경<br><input type="text" class="in" name="name" value="<%=memberDTO.getMemberPW()%>"><br>
+        회원이메일 변경<br><input type="text" class="in" name="email" value="<%=memberDTO.getMemberPW()%>"><br>
+        회원닉네임 변경<br><input type="text" class="in" name="nickName" value="<%=memberDTO.getMemberPW()%>"><br>
             가입일<br><%=memberDTO.getjoinDate() %><br>
-             <a href="../jsp/.jsp" id="create">회원정보수정하기</a><br>
+             <input type = "submit" value="회원정보 수정"><br>
              <a href="javascript:history.back();">뒤로가기</a>
-             <a href="../jsp/logoutProc.jsp">로그아웃</a>
         </form>
     </div>
 <% 
