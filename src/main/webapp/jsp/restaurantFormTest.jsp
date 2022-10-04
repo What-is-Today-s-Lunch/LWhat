@@ -1,5 +1,4 @@
 <%@page import="lwhat.dto.ReviewDTO"%>
-<%@page import="lwhat.dto.ReviewDTO"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantViewDAOImpl"%>
 <%@page import="lwhat.dto.RestaurantDTO"%>
@@ -70,15 +69,21 @@
       <div class="contents1">.</div>
       <!-- 들어가야할 내용 div 시작점  -->
       <!-- 들어가야할 내용  -->
-
+			
       <!-- 지도 그려주기 -->
       <div class="contents2">
-         <div id="map"></div>
+         <div id="map">
+         	<input type="hidden" id="longtitude" value="${rsIDlist.longitude}"/>
+         	<input type="hidden" id="latitude" value="${rsIDlist.latitude}"/>
+         </div>
+
          <div id="roadview"></div>
          <div class="restinfo" >
             <h1>${rsIDlist.restaurantID}</h1>
             주소 : ${rsIDlist.address} <br /> 
-            연락처 : ${rsIDlist.rTelNum}
+            연락처 : ${rsIDlist.rTelNum}<br/>
+            위도 : ${rsIDlist.longitude}<br/>
+            경도 : ${rsIDlist.latitude}
          </div>
          <div id="resimage">
          이미지
