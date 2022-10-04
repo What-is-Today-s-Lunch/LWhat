@@ -36,7 +36,7 @@
 <br><br>
     <div id="bottom">
         <form method ="post" action = "memberDeleteProc.jsp">
-          <h1>정말 삭제하시겠습니까?</h1>
+          <h1>정말 탈퇴 하시겠습니까?</h1>
             회원아이디<br><%=memberDTO.getMemberID()%></br>
             회원비밀번호<br><%=memberDTO.getMemberPW() %></br>
             회원이름<br><%=memberDTO.getName() %></br>
