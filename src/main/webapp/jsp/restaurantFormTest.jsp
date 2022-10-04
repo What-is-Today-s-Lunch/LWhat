@@ -1,3 +1,5 @@
+<%@page import="lwhat.dto.Review"%>
+<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantViewDAOImpl"%>
 <%@page import="lwhat.dto.RestaurantDTO"%>
 <%@page import="java.util.List"%>
@@ -20,6 +22,12 @@
    
    
    session.setAttribute("restaurantID", restaurantIDParam);
+   
+   RestaurantService reviewListService = new RestaurantReviewListDTOImpl();
+   
+   List<Review>reviewList = reviewListService.listLReview();
+   pageContext.setAttribute("rvlist", reviewList);
+   
 %>
 
    
@@ -80,15 +88,21 @@
       <div class="contents4">
             <div class="text">
                <p>후기쓰기</p>
-            </div>
             
-         <form action="restaurantReviewProc.jsp" name="review" method="get" >
+            </div>
+         
+         <form action="restaurantReviewProc.jsp" name="review" method="post" >
             <div class="bt_wrap">
             <textarea name="content" placeholder="정성스런 후기를 작성해주세요~~!"></textarea>
-            	<input type="button" value="등록"  onclick="this.form.submit()">
+            <input type="button" value="버튼"  onclick="this.form.submit()" >
             </div>
          </form>
+         
+         <div>
+            
+         </div>
       </div>
+      
    
    </div>
    <!-- 들어가야할 내용 div 끝점  -->
