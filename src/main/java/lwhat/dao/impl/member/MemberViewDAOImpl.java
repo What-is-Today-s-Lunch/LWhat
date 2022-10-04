@@ -3,7 +3,6 @@ package lwhat.dao.impl.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import lwhat.constants.MemberConstants;
 import lwhat.dto.MemberDTO;
@@ -15,8 +14,9 @@ public class MemberViewDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 	public MemberDTO viewMembers(String memberID) throws Exception {
 		MemberDTO memberDTO =null;
 		Connection conn = getConnection();
-		String sql = "select * from memberinfo where memberID=?";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
+		/* String sql = "select * from memberinfo where memberID=?"; */
+		PreparedStatement pstmt 
+		= conn.prepareStatement(MemberConstants.props.getProperty("MEMBER_VIEW_SQL"));
 		pstmt.setString(1, memberID);
 		
 		ResultSet rs=pstmt.executeQuery();
