@@ -3,7 +3,7 @@ package lwhat.dto;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Review implements Serializable{
+public class ReviewDTO implements Serializable{
 	public static final long serialVersionUID = 321478938942543983L;
 	private int revID;
 	private String memberID_FK;
@@ -13,7 +13,7 @@ public class Review implements Serializable{
 	private Timestamp wDate;
 	private Timestamp mdate;
 	
-	public Review() {
+	public ReviewDTO() {
 		
 	}
 

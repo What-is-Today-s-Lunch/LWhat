@@ -4,7 +4,7 @@ import java.util.List;
 
 import lwhat.dto.FoodimageDTO;
 import lwhat.dto.RestaurantDTO;
-import lwhat.dto.Review;
+import lwhat.dto.ReviewDTO;
 import lwhat.service.LWhatService;
 
 public interface RestaurantService extends LWhatService {
@@ -21,8 +21,8 @@ public interface RestaurantService extends LWhatService {
 
 	public List<RestaurantDTO> listLRestaurant() throws Exception;
 	
-	public int writeReview(Review review) throws Exception;
+	public int writeReview(ReviewDTO review) throws Exception;
 	
-	public List<Review> listLReview(String restaurantID) throws Exception;
+	public List<ReviewDTO> listLReview(String restaurantID) throws Exception;
 
 }
