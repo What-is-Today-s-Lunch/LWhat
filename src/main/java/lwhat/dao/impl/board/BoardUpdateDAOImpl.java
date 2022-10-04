@@ -12,8 +12,8 @@ public class BoardUpdateDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
 	
 	@Override
-	public int updateBoard(GboardDTO gboardDTO) throws Exception {
-		String SQL = " UPDATE generalposting SET boardCategory=?, title=?, content=?, mDate= now() WHERE gPostingID=?";
+	public int updateBoard(GboardDTO gboardDTO, String memberID) throws Exception {
+		String SQL = " UPDATE generalposting SET boardCategory=?, title=?, content=?, mDate= now() WHERE gPostingID=? AND memberID_FK=?";
 		PreparedStatement pstmt = getConnection().prepareStatement(SQL);
 		
 		pstmt.setString(1, gboardDTO.getBoardCategory());
@@ -21,6 +21,7 @@ public class BoardUpdateDAOImpl extends AbstractBoardDAOImpl {
 		pstmt.setString(3, gboardDTO.getContent());
 		//pstmt.setString(4, getDate());
 		pstmt.setInt(4, gboardDTO.getgPostingID());
+		pstmt.setString(5, memberID);
 		
 		int result = pstmt.executeUpdate();
 		ConnectionManager.closeConnection(pstmt,getConnection());

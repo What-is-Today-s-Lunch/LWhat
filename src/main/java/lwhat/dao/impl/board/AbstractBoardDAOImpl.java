@@ -21,8 +21,7 @@ public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implem
 	}
 
 	@Override
-	public int updateBoard(GboardDTO gboardDTO) throws Exception {
-		// TODO Auto-generated method stub
+	public int updateBoard(GboardDTO gboardDTO, String memberID) throws Exception {
 		return 0;
 	}
 	@Override

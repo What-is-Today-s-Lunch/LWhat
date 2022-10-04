@@ -19,6 +19,7 @@
 </head>
 <body>
 <%
+String memberID = (String) session.getAttribute("memberID"); 
 int gPostingID = 0;
 if(request.getParameter("gPostingID") != null){
 	gPostingID =Integer.parseInt(request.getParameter("gPostingID"));

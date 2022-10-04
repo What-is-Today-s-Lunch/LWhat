@@ -16,6 +16,7 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
+String memberID = (String) session.getAttribute("memberID"); 
 %>
 <jsp:useBean id="gboard" class="lwhat.dto.board.GboardDTO" scope="page"></jsp:useBean>
 <jsp:setProperty name="gboard" property="title" />
@@ -63,7 +64,17 @@ gboardDTO.setBoardCategory(boardCategory);
 gboardDTO.setImageCategory(imageCategory);
 gboardDTO.setTitle(title);
 gboardDTO.setContent(content);
-boardService.writeBoard(gboardDTO); 
+
+if(title == null || content == null){
+	PrintWriter script = response.getWriter();
+	script.println("<script>");
+	script.println("alert('입력이 안 된 사항이 있습니다.')");
+	script.println("history.back()");
+	script.println("</script>");
+}
+
+
+boardService.writeBoard(gboardDTO, memberID); 
 
 
 int gPostindID = 90;

@@ -20,12 +20,12 @@
 </head>
 <body>
 	<%
-	String memberID = null;
+	String memberID = (String) session.getAttribute("memberID"); 
+	/* String memberID = null;
 	if(session.getAttribute("memberID") != null){
 		memberID = (String) session.getAttribute("memberID");
-	}
-	
-	
+	} */
+	System.out.println("22222222222" + memberID);
 	int gPostingID = 0;
 	if(request.getParameter("gPostingID") != null){
 		gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
@@ -94,8 +94,11 @@
 				
 				<div class="bt_wrap">
 					<a href="totalBoardForm.jsp" class="on">목록</a> 
+					<%
+					if(memberID.equals(gboardDTO.getMemberID_FK())){ %>
 					<a href="GboardUpdate.jsp?gPostingID=<%=gboardDTO.getgPostingID() %>">수정하기</a>
 					<a href="deleteAction.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">삭제하기</a>
+					<%} %>
 				</div>
 			</div>
 			

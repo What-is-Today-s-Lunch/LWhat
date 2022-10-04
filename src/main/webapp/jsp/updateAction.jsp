@@ -7,6 +7,7 @@
 <%@ page import="lwhat.dao.impl.board.BoardUpdateDAOImpl"%>
 <%
 request.setCharacterEncoding("UTF-8");
+String memberID = (String) session.getAttribute("memberID"); 
 %>
 <jsp:useBean id="gboard" class="lwhat.dto.board.GboardDTO" scope="request"></jsp:useBean>
 <jsp:setProperty name="gboard" property="title" />
@@ -16,7 +17,7 @@ request.setCharacterEncoding("UTF-8");
 String gPostingID = request.getParameter("gPostingID") == null ? "" : request.getParameter("gPostingID");
 BoardService boardService = new BoardUpdateDAOImpl();
 gboard.setgPostingID(Integer.parseInt(gPostingID));
-int result = boardService.updateBoard(gboard);
+int result = boardService.updateBoard(gboard, memberID);
 
 if(result > 0){
 	out.println("<script>");

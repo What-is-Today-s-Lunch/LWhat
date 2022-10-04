@@ -20,8 +20,7 @@ public interface BoardDAO extends BoardService{
 	}
 
 	@Override
-	default int updateBoard(GboardDTO gboardDTO) throws Exception {
-		// TODO Auto-generated method stub
+	default int updateBoard(GboardDTO gboardDTO, String memberID) throws Exception {
 		return 0;
 	}
 
