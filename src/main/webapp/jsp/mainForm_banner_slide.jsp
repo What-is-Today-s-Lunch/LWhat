@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="../css/style_banner_slide.css">
 <script type="text/javascript" src="../js/slide.js"></script>
+<script type="text/javascript" src="../js/upBtn.js"></script>
 <script 
   src="http://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -132,7 +133,7 @@
 		</ul>
 
 	</div>
-	<div class="up-btn" onclick="upScroll();">↑</div>
+	<div class="up-btn" onclick="scrollToTop();">↑</div>
 	<div class="footer">
 		<div>PROJECT</div>
 		<div>
