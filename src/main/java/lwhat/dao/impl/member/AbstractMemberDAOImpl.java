@@ -1,7 +1,5 @@
 package lwhat.dao.impl.member;
 
-import java.util.ArrayList;
-
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
 import lwhat.dto.MemberDTO;
 import lwhat.service.member.MemberService;
