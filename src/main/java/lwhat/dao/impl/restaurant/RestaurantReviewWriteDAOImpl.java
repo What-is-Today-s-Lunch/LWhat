@@ -8,7 +8,7 @@ import lwhat.dto.ReviewDTO;
 
 public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl{
 	@Override
-	public int writeReview(ReviewDTO reviewDTO) throws Exception {
+	public int writeRestaurantReview(ReviewDTO reviewDTO) throws Exception {
 		
 		Connection conn = getConnection();
 		String sql = LwhatConstants.querys.getProperty("REVIEW_WRITE_SQL");

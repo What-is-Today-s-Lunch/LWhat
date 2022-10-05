@@ -11,7 +11,7 @@ import lwhat.service.restaurant.RestaurantService;
 public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl implements RestaurantService {
 
 	@Override
-	public List<RestaurantDTO> listLRestaurant() throws Exception {
+	public List<RestaurantDTO> listRestaurant() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -46,22 +46,26 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 		return 0;
 	}
 	@Override
-	public int writeReview(ReviewDTO reviewDTO) throws Exception{
+	public int writeRestaurantReview(ReviewDTO reviewDTO) throws Exception{
 		return 0;
 	}
 	@Override
-	public List<ReviewDTO> listLReview(String restaurantID) throws Exception{
+	public List<ReviewDTO> listRestaurantReview(String restaurantID) throws Exception{
 		return null;
 	}
 
 	@Override
-	public int deleteRestaurantReview(int revID) throws Exception {
-		return 0;
+	public void deleteRestaurantReview(int revID) throws Exception {
 	}
 
 	@Override
 	public int updateRestaurantReview(int revID, ReviewDTO reviewDTO) throws Exception {
 		return 0;
+	}
+
+	@Override
+	public ReviewDTO viewRestaurantReview(int revID) throws Exception {
+		return null;
 	}
 
 

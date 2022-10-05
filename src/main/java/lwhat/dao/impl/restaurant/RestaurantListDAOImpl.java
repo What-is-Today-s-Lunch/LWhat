@@ -12,7 +12,7 @@ import lwhat.dto.RestaurantDTO;
 public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 
 	@Override
-	public List<RestaurantDTO> listLRestaurant() throws Exception {
+	public List<RestaurantDTO> listRestaurant() throws Exception {
 		Connection conn = getConnection();
 		String sql = LwhatConstants.querys.getProperty("RESTAURANT_LIST_SEARCH_SQL_PREPEND");
 		PreparedStatement pstmt =  conn.prepareStatement(sql);

@@ -13,7 +13,7 @@ public interface RestaurantDAO extends RestaurantService{
 	
 	public int updateRestaurant() throws Exception; 
 	
-	public int listRestaurant() throws Exception; 
+	public List<RestaurantDTO> listRestaurant() throws Exception; 
 	
 	public int viewRestaurant() throws Exception; 
 	

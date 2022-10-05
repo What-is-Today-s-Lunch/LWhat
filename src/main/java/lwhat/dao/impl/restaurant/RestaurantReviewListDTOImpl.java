@@ -11,7 +11,7 @@ import lwhat.dto.ReviewDTO;
 
 public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 	@Override
-	public List<ReviewDTO> listLReview(String restaurantID) throws Exception {
+	public List<ReviewDTO> listRestaurantReview(String restaurantID) throws Exception {
 		System.out.println("리뷰의 레스토랑 아이디 : "+restaurantID);
 		Connection conn = getConnection();
 		String sql = LwhatConstants.querys.getProperty("REVIEW_LIST_SEARCH_SQL_PREPEND");
