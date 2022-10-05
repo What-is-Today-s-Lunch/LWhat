@@ -126,7 +126,7 @@ h1 {
 /* main_text0 */
 .main_text0 {
    width: 100%;
-   height: 850px;
+   height: auto !important;
    margin-top: -132px;
    background: #f1f2f3;
 }
@@ -159,7 +159,7 @@ h1 {
 .main_text0>.contents4 {
    display: flex;
    width: 1280px;
-   height: auto;
+   height: 200px;
    background: #e8e8e8;
    margin: auto;
    
@@ -218,9 +218,20 @@ button{
    font-size: 20px;
    margin: auto;
 }
+.dd button{
+	width:50px;
+	height: 40px;
+	padding: 5px;
+	box-sizing: border-box;
+	border: solid 2px #7c7c7c;
+	border-radius: 5px;
+	font-size: 10px;
+	margin: auto;
+}
 
 .icons {
    display: flex;
+   flex-wrap:wrap;
    width: 1280px;
    height: 302px;
    /* background: orange; */
@@ -231,6 +242,7 @@ button{
    flex: 1;
    background: white;
    margin-top: 49px;
+   width:calc(100%/4);
    height: 302px;
    text-align: center;
 }
@@ -326,7 +338,8 @@ button{
    display: flex;
    background: #1f1f1f;
    padding: 30px;
-   margin-top: 150px;
+   left: 0;
+   bottom: 0px;
 }
 
 .footer>div:first-child {
@@ -365,11 +378,9 @@ button{
    /*on 버튼이 활성화 되었을 때 배경색을 지정*/
 }
 
-#reviewDiv{
-	position: absolute;
-	margin-top: 150px;
-}
-
-th, td{
-	text-align: center;
+.board_list_wrap{
+	width: 80%;
+	margin-top: 50px;
+	margin-left: 10%;
+	box-sizing: border-box;
 }
