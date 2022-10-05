@@ -11,6 +11,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--레스토랑ID와 매칭되는 리스트 가져오기 --%>
 <%
+request.setCharacterEncoding("utf-8");
+response.setCharacterEncoding("utf-8");
+
    String restaurantIDParam = 
    request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
   out.print(restaurantIDParam);

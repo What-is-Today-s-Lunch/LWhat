@@ -16,6 +16,7 @@
 <meta charset="UTF-8" />
 <%
 request.setCharacterEncoding("utf-8");
+response.setCharacterEncoding("utf-8");
 
 String seMemID = (String)session.getAttribute("memberID");
 int revID = Integer.parseInt(request.getParameter("revID"));
@@ -69,7 +70,8 @@ pageContext.setAttribute("review", restaurantService.viewRestaurantReview(revID)
             		  		<input name="content" value='${review.content}'>
             		  		<a>${review.memberID_FK}</a>
             		  		<a><%=sdf.format(reviewDTO.getmDate())%></a>
-            		  		<input name="score" value='${review.score}'>
-	<button type="submit">[수정]</button>
-            			</form>
-</html>
+            		  		<input name="score" value='${review.score}' />
+							<button type="submit">[수정]</button> 
+ 						</form>
+ 						</html>
+ 						
