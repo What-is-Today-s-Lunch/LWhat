@@ -91,15 +91,25 @@
 				</div>
 				<div class="contents1_bold">중식</div>
 				<div class="contents2">contents</div>
-				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AB';">MORE</a></div>			</li>
+				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AB';">MORE</a></div>			
+				</li>
 
 			<li>
 				<div class="icon_img">
-					<img src="../image/etc.png">
+					<img src="../image/japanfood.png">
 				</div>
-				<div class="contents1_bold">기타</div>
+				<div class="contents1_bold">일식</div>
 				<div class="contents2">contents</div>
 				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AE';">MORE</a></div>
+			</li>
+		
+			<li>
+				<div class="icon_img">
+					<img src="../image/coffee.png">
+				</div>
+				<div class="contents1_bold">카페</div>
+				<div class="contents2">contents</div>
+				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AZ';">MORE</a></div>
 			</li>
 
 		</ul>
