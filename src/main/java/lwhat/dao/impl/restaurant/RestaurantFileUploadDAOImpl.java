@@ -1,39 +1,49 @@
 package lwhat.dao.impl.restaurant;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
-
-import lwhat.constants.LwhatConstants;
-import lwhat.dto.FoodimageDTO;
-import lwhat.dto.RestaurantDTO;
+import java.sql.SQLException;
 
 public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 
-	@Override
-	public int fileUploadRestaurant(String restaurantID, List<FoodimageDTO>list ) throws Exception {
-		Connection conn = getConnection();
-		String sql = LwhatConstants.querys.getProperty("FOOD_IMAGE_WRITE_SQL");
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1,restaurantID);
-		int result = 0;
-		if(list!=null) {
-			for(FoodimageDTO foodimageDTO : list) {
-				pstmt.setInt(1, foodimageDTO.getfImageID());
-				pstmt.setString(2, foodimageDTO.getRestaurantID_FK());
-				pstmt.setString(3, foodimageDTO.getImageCategory());
-				pstmt.setString(4, foodimageDTO.getContent());
-				pstmt.setString(5, foodimageDTO.getClmage());
-				pstmt.setString(6, foodimageDTO.getsImage());
-				result = pstmt.executeUpdate();
-				result = result * result;
-			}
-		}
-		closeConnection(pstmt, conn);
-		return result;
-		
-	}
+	private ResultSet rs;
+	   @Override
+	   public int fileUploadRestaurant(String cImage, String sImage, String restaurantID) throws Exception {
+	      String SQL = " INSERT INTO foodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
+	      
+	      try {
+	         PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+	         pstmt.setInt(1, getRestaurantID(restaurantID));
+	         pstmt.setString(2, "testCategory");
+	         pstmt.setString(3, cImage);
+	         pstmt.setString(4, sImage);
+	         int result = pstmt.executeUpdate();
+	         closeConnection(pstmt, getConnection());
+	         return result;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return -1;
+	   }
+	   
+	   public int getRestaurantID(String restaurantID) {
+	       String sql = " SELECT restaurantID FROM restaurant WHERE restaurantID= ? ";
+	       try {
+	   
+	          PreparedStatement pstmt = getConnection().prepareStatement(sql);
+	          pstmt.setString(1,restaurantID );
+	          rs = pstmt.executeQuery();
+	          if(rs.next()) {
+	             return rs.getInt(1);
+	          }
+	       } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	       return 0;
+	    }
+
+
 
 
 }

@@ -21,7 +21,7 @@
 	reviewDTO.setScore(4);
 	reviewDTO.setContent(strcontent);	
 	RestaurantService restaurantService = new RestaurantReviewWriteDAOImpl();
-	restaurantService.writeReview(reviewDTO);
+	restaurantService.writeRestaurantReview(reviewDTO);
 	
 %>
 <body>
