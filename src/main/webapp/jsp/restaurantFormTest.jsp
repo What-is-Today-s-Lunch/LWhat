@@ -24,7 +24,7 @@
    session.setAttribute("restaurantID", restaurantIDParam);
    
    RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-   List<ReviewDTO>revlistDTO = restaurantreviewService.listLReview(restaurantIDParam);
+   List<ReviewDTO>revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
    pageContext.setAttribute("revlist", revlistDTO);
 %> 
 
