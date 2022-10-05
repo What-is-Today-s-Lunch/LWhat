@@ -1,3 +1,6 @@
+<%@page import="lwhat.dto.CodeTableDTO"%>
+<%@page import="lwhat.dao.impl.code.CodeDAOImpl"%>
+<%@page import="lwhat.service.code.CodeService"%>
 <%@page import="java.util.List"%>
 <%@page import="lwhat.dto.RestaurantDTO"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantListDAOImpl"%>
@@ -10,14 +13,17 @@
 <%@page import="java.util.Map"%>
 	
 <%
-	String restaurantID = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
-	RestaurantService restaurantService = new RestaurantListDAOImpl();
-	
-	List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant();
-	pageContext.setAttribute("rslist", restaurantDTO);
+String gPostingIDParam = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
+RestaurantService restaurantService = new RestaurantListDAOImpl();
 
-	int scoreAVG= restaurantService.scoreViewRestaurantReview(restaurantID);
-//	pageContext.setAttribute("scoreAVG", scoreAVG);
+
+String restaurantTableCode = request.getParameter("category");
+CodeService findcodename = new CodeDAOImpl();
+CodeTableDTO code = findcodename.codeView(restaurantTableCode);
+
+List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant(restaurantTableCode);
+pageContext.setAttribute("cdlist", code);
+pageContext.setAttribute("rslist", restaurantDTO);
 %>
 	
 <!DOCTYPE html>

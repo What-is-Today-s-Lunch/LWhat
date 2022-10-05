@@ -19,7 +19,7 @@ public interface RestaurantService extends LWhatService {
 
 	public int fileUploadRestaurant(String restaurantID, List<FoodimageDTO>list) throws Exception;
 
-	public List<RestaurantDTO> listRestaurant() throws Exception;
+	public List<RestaurantDTO> listRestaurant(String code) throws Exception;
 	
 	public int writeRestaurantReview(ReviewDTO review) throws Exception;
 	

@@ -12,13 +12,13 @@ import lwhat.dto.RestaurantDTO;
 public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 
 	@Override
-	public List<RestaurantDTO> listRestaurant() throws Exception {
+	public List<RestaurantDTO> listRestaurant(String code) throws Exception {
 		Connection conn = getConnection();
 		String sql = LwhatConstants.querys.getProperty("RESTAURANT_LIST_SEARCH_SQL_PREPEND");
 		String sql2 = " select round(avg(score),1) from review r  inner join restaurant r2  on r.restaurantID_FK = r2.restaurantID where restaurantID_FK = ? ";
 		PreparedStatement pstmt =  conn.prepareStatement(sql);
 		PreparedStatement pstmt2 =  conn.prepareStatement(sql2);
-		
+		pstmt.setString(1, code);
 		ResultSet rs = pstmt.executeQuery();
 		List<RestaurantDTO>list = new ArrayList<RestaurantDTO>();
 		while(rs.next()) {

@@ -11,7 +11,7 @@ import lwhat.service.restaurant.RestaurantService;
 public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl implements RestaurantService {
 
 	@Override
-	public List<RestaurantDTO> listRestaurant() throws Exception {
+	public List<RestaurantDTO> listRestaurant(String code) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
