@@ -93,7 +93,7 @@ pageContext.setAttribute("revlist", revlistDTO);
 			<form action="restaurantReviewWriteProc.jsp" name="review" method="get">
 				<div class="bt_wrap">
 					<div id="score" align="right">
-						<select id="select_value" onchange="ChangeValue()">
+						<select id="select_value" name="score" onchange="ChangeValue()">
 							<option value="">--별점선택--</option>
 							<option value="1">★</option>
 							<option value="2">★★</option>

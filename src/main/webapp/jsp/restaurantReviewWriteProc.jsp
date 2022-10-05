@@ -12,13 +12,14 @@
 	String strmemID = (String)session.getAttribute("memberID");
 	String strresID = (String)session.getAttribute("restaurantID");
 	String strcontent = request.getParameter("content");
-
+	int strscore = Integer.parseInt(request.getParameter("score"));
+	
 	
 	ReviewDTO reviewDTO = new ReviewDTO();
 	
 	reviewDTO.setMemberID_FK(strmemID);
 	reviewDTO.setRestaurantID_FK(strresID);
-	reviewDTO.setScore(4);
+	reviewDTO.setScore(strscore);
 	reviewDTO.setContent(strcontent);	
 	RestaurantService restaurantService = new RestaurantReviewWriteDAOImpl();
 	restaurantService.writeRestaurantReview(reviewDTO);
