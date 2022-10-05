@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="lwhat.dto.GeneralcommentDTO"%>
+<%@page import="lwhat.dao.impl.board.BoardConmentListDAOImpl"%>
+<%@page import="javax.swing.plaf.metal.MetalBorders.OptionDialogBorder"%>
 <%@page import="java.io.File"%>
 <%@page import="lwhat.service.board.BoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -20,20 +24,23 @@
 </head>
 <body>
 	<%
-	String memberID = (String) session.getAttribute("memberID"); 
-	/* String memberID = null;
-	if(session.getAttribute("memberID") != null){
-		memberID = (String) session.getAttribute("memberID");
-	} */
-	System.out.println("22222222222" + memberID);
+	request.setCharacterEncoding("UTF-8");
+	String memberID = (String) session.getAttribute("memberID");
+	
 	int gPostingID = 0;
-	if(request.getParameter("gPostingID") != null){
+	 if(request.getParameter("gPostingID") != null){
 		gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
+	} 
+	
+	
+	int pageNumber = 1;
+	if (request.getParameter("pageNumber") != null){
+		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 	}
 	
 	BoardService boardService = new BoardViewDAOImpl();
 	GboardDTO gboardDTO = new GboardDTO();
-
+		
 	gboardDTO = boardService.viewBoard(gPostingID);
 	%>
 
@@ -88,32 +95,66 @@
 						</dl>
 					</div>
 					<div class="cont"><%=gboardDTO.getContent()%>
-		
+							<%  %>
 					</div>
+					
+					<div>
+						<div>
+							<%
+							BoardService boardListService = new BoardConmentListDAOImpl();
+							GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
+							ArrayList<GeneralcommentDTO> list = boardListService.conmentListBoard(pageNumber);
+							for(int i =0; i < list.size(); i++){
+								if(gPostingID == list.get(i).getPostingID_FK()){
+							%>
+							<div class="category"><%=list.get(i).getMemberID_FK() %></div>
+							<div class="content"><%=list.get(i).getContent() %></div>
+							<div class="date"><%=list.get(i).getmDate() %></div>
+							<%if(memberID.equals(list.get(i).getMemberID_FK())){ %>
+								<a href="GboardUpdateConment.jsp?gCommentID=<%=list.get(i).getgCommentID() %>">수정</a>
+								<a href="deleteConmentAction.jsp?gCommentID=<%=list.get(i).getgCommentID() %>">삭제</a>
+							<%		} %>
+							<%	} %>
+							<%} %>
+						</div>
+						<div class="board_page">
+						<%
+						BoardConmentListDAOImpl boardCommentServiceNextPage = new BoardConmentListDAOImpl();
+							if(pageNumber != 1){
+						%>
+							<a href="GboardView.jsp?pageNumber=<%=pageNumber-1 %>&&gPostingID=<%=gboardDTO.getgPostingID() %>" class="bt prev"><</a>
+						<% 
+							} if(boardCommentServiceNextPage.nextPage(pageNumber + 1)){		
+						%>
+							<a href="GboardView.jsp?pageNumber=<%=pageNumber+1 %>&&gPostingID=<%=gboardDTO.getgPostingID() %>" class="bt next">></a>
+						<%
+							}
+						%>
+						
+						</div>
+						<div>
+							<form method="post" action="commentWriteAction.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">
+								<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+									<tr>
+										<td style="border-bottom:none;" valign="middle"><br><br><%=memberID%></td>
+										<td><input type="text" style="height:50px;" class="form-control" placeholder="상대방을 존중하는 댓글을 남깁시다." name = "content"></td>
+										<td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
+									</tr>
+								</table>
+							</form>
+						</div>
+				</div>
 				</div>
 				
 				<div class="bt_wrap">
 					<a href="totalBoardForm.jsp" class="on">목록</a> 
 					<%
 					if(memberID.equals(gboardDTO.getMemberID_FK())){ %>
-					<a href="GboardUpdate.jsp?gPostingID=<%=gboardDTO.getgPostingID() %>">수정하기</a>
+					<a href="GboardUpdate.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">수정하기</a>
 					<a href="deleteAction.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">삭제하기</a>
 					<%} %>
 				</div>
 			</div>
-			
-			<!--  
-			<div class="num">번호 :<%=gboardDTO.getgPostingID()%></div>
-			<div class="boardCategory">카테고리 :<%=gboardDTO.getBoardCategory()%></div>
-			<div class="title">제목 :<%=gboardDTO.getTitle()%></div>
-			<div class="date">작성일자 :<%=gboardDTO.getmDate()%></div>
-			<div class="content">내용 :<%=gboardDTO.getContent()%></div>
-
-			<a href="totalBoardForm.jsp">글 목록</a>
-			<a href="GboardUpdate.jsp?gPostingID=<%=gboardDTO.getgPostingID() %>">수정하기</a>
-			<a href="deleteAction.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">삭제하기</a>
-			-->
-
 		</div>
 	</div>
 

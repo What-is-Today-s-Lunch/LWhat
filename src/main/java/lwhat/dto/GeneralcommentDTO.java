@@ -10,8 +10,8 @@ public class GeneralcommentDTO implements Serializable{
 	private int postingID_FK; //genralposting의 gPostingID에 연결 (외래키)
 	private String boardCategory;
 	private String content;
-	private Timestamp wDate;
-	private Timestamp mDate;
+	private String wDate;
+	private String mDate;
 	
 	public GeneralcommentDTO() {}
 	
@@ -34,16 +34,16 @@ public class GeneralcommentDTO implements Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Timestamp getwDate() {
+	public String getwDate() {
 		return wDate;
 	}
-	public void setwDate(Timestamp wDate) {
+	public void setwDate(String wDate) {
 		this.wDate = wDate;
 	}
-	public Timestamp getmDate() {
+	public String getmDate() {
 		return mDate;
 	}
-	public void setmDate(Timestamp mDate) {
+	public void setmDate(String mDate) {
 		this.mDate = mDate;
 	}
 	public String getMemberID_FK() {

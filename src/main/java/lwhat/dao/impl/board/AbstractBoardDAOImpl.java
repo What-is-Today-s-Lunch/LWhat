@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
+import lwhat.dto.GeneralcommentDTO;
 import lwhat.dto.board.GboardDTO;
 import lwhat.service.board.BoardService;
 
@@ -43,6 +44,29 @@ public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implem
 	public int fileUploadBoard(String cImage, String sImage, int gPostingID) throws Exception {
 		return 0;
 	}
+	
+	//conment
+	@Override
+	public int conmentWriteBoard(GeneralcommentDTO generalcommentDTO ,String memberID, String boardCategory,int gPostingID) throws Exception{
+		return 0;
+	}
+	@Override
+	public int conmentDeleteBoard(int gCommentID) throws Exception{
+		return 0;
+	}
+	@Override
+	public int conmentUpdateBoard(GeneralcommentDTO generalcommentDTO, String memberID_FK) throws Exception{
+		return 0;
+	}
+	@Override
+	public ArrayList<GeneralcommentDTO> conmentListBoard(int pageNumber) throws Exception{
+		return null;
+	}
+	@Override
+	public int conmentViewBoard() throws Exception{
+		return 0;
+	}
+	
 
 
 }

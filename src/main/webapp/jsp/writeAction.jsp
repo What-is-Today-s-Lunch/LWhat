@@ -73,13 +73,12 @@ if(title == null || content == null){
 	script.println("</script>");
 }
 
+ 
+int gPostingNum = boardService.writeBoard(gboardDTO, memberID); 
 
-boardService.writeBoard(gboardDTO, memberID); 
-
-
-int gPostindID = 90;
+int gPostindID = gboardDTO.getgPostingID();
 BoardService boardService2 = new BoardFileUploadDAOImpl();
-boardService2.fileUploadBoard(fileName, fileRealName, gPostindID);
+boardService2.fileUploadBoard(fileName, fileRealName, gPostingNum);
 
 
 out.println("<script>");

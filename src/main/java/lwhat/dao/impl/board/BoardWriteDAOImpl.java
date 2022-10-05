@@ -26,9 +26,19 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 		pstmt.setString(4, gboardDTO.getTitle());
 		pstmt.setString(5, gboardDTO.getContent());
 		
-		int result = pstmt.executeUpdate();
+		//recent id select sql
+		pstmt.executeUpdate();
+		
+		String SQL2 = " SELECT gPostingID FROM generalposting ORDER BY gPostingID DESC LIMIT 1 ";
+		PreparedStatement pstmt2 = getConnection().prepareStatement(SQL2);
+		rs = pstmt2.executeQuery();
+		int resultId = 0;
+		if (rs!=null && rs.next()) {
+			resultId = rs.getInt("gPostingID");
+		}
 		ConnectionManager.closeConnection(pstmt, getConnection());
-		return result;
+		
+		return resultId;
 	}
 	
 	 public String getDate() {	 
