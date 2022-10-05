@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 import lwhat.constants.LwhatConstants;
@@ -14,6 +15,7 @@ public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 	public ReviewDTO viewRestaurantReview(int revID) throws Exception {
 		
 	Connection conn = getConnection();
+	Timestamp t = new Timestamp(System.currentTimeMillis());
 	
 	String sql = " select memberID_FK, score, content, mDate from review where revID=? ";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -24,6 +26,7 @@ public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 		 reviewDTO.setMemberID_FK(rs.getString("memberID_FK"));
 		reviewDTO.setContent(rs.getString("content"));
 		reviewDTO.setScore(rs.getInt("score"));
+		reviewDTO.setmDate(t);
 	 }
 	 // System.out.println(rs.getString("memberID_FK"));
 	//수정시간을 null 값으로 주고 리뷰 업데이트 할 때, now 를 받게끔 함. 

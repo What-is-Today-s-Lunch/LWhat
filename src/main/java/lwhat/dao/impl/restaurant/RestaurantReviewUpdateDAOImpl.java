@@ -16,7 +16,6 @@ public class RestaurantReviewUpdateDAOImpl extends AbstractRestaurantDAOImpl{
 		String sqlU = LwhatConstants.querys.getProperty("REVIEW_UPDATE_SQL");
 		System.out.println("rev-U 쿼리 로딩"+sqlU);
 		PreparedStatement pstmtU = conn.prepareStatement(sqlU);
-		System.out.println(reviewDTO.getRevID());
 		// TODO : 로그인한 사람의 멤버아이디를 받아오고 멤버아이디가 가진 리뷰아이디를 연결시켜줘야함. 일단은 메소드테스트
 		//if (revID==session.getRevID()){
 		pstmtU.setInt(1, reviewDTO.getScore());

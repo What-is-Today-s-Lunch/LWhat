@@ -11,7 +11,7 @@ public class ReviewDTO implements Serializable{
 	private int score;
 	private String content;
 	private Timestamp wDate;
-	private Timestamp mdate;
+	private Timestamp mDate;
 	
 	public ReviewDTO() {
 		
@@ -65,18 +65,19 @@ public class ReviewDTO implements Serializable{
 		this.wDate = wDate;
 	}
 
-	public Timestamp getMdate() {
-		return mdate;
+	public Timestamp getmDate() {
+		return mDate;
 	}
 
-	public void setMdate(Timestamp mdate) {
-		this.mdate = mdate;
+	public void setmDate(Timestamp mdate) {
+		this.mDate = mdate;
 	}
 
 	@Override
 	public String toString() {
-		return "Review [revID=" + revID + ", memberID_FK=" + memberID_FK + ", restaurantID_FK=" + restaurantID_FK
-				+ ", content=" + content + ", score=" + score + ", wDate=" + wDate + ", mdate=" + mdate + "]";
+		return "ReviewDTO [revID=" + revID + ", memberID_FK=" + memberID_FK + ", restaurantID_FK=" + restaurantID_FK
+				+ ", score=" + score + ", content=" + content + ", wDate=" + wDate + ", mDate=" + mDate + "]";
 	}
+
 	
 }

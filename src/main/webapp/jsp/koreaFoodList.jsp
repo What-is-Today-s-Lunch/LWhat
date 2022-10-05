@@ -13,7 +13,7 @@
 	String gPostingIDParam = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
 	RestaurantService restaurantService = new RestaurantListDAOImpl();
 	
-	List<RestaurantDTO> restaurantDTO = restaurantService.listLRestaurant();
+	List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant();
 	pageContext.setAttribute("rslist", restaurantDTO);
 %>
 

@@ -28,7 +28,7 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 			reviewDTO.setScore(rs.getInt("score"));
 			reviewDTO.setContent(rs.getString("content"));
 			reviewDTO.setwDate(rs.getTimestamp("wDate"));
-			reviewDTO.setMdate(rs.getTimestamp("mDate"));
+			reviewDTO.setmDate(rs.getTimestamp("mDate"));
 			list.add(reviewDTO);
 		}
 		

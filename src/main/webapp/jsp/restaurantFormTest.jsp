@@ -132,7 +132,9 @@
             				<td>${reviewlist.memberID_FK}</td>
             				<td>${reviewlist.wDate}</td>
             				<td>${reviewlist.score}</td>
-            				<td><button onclick="location.href=''">[수정]</button>[삭제]</td>
+            				<td><button onclick="location.href='restaurantReviewUpdateForm.jsp?revID=${reviewlist.revID}'">[수정]</button>
+            				    <button onclick="location.href='restaurantReviewDeleteProc.jsp?revID=${reviewlist.revID}'">[삭제]</button>
+            				</td>
             			</tr>
             			</c:forEach>
             		</tbody>
