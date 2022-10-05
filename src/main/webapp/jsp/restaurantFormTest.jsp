@@ -75,6 +75,7 @@
          <div id="map">
          	<input type="hidden" id="longtitude" value="${rsIDlist.longitude}"/>
          	<input type="hidden" id="latitude" value="${rsIDlist.latitude}"/>
+         	<input type="hidden" id="resID" value="${rsIDlist.restaurantID}"/>
          </div>
 
          <div id="roadview"></div>

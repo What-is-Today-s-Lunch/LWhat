@@ -55,7 +55,7 @@
 			<ul class="icons">
 			
 					<c:set var="listSize" value="${rslist.size()}" />
-					<c:forEach var="rstaurantlist"  items="${rslist}" varStatus="c" end="3">
+					<c:forEach var="rstaurantlist"  items="${rslist}" varStatus="c" >
 					<c:set var="bno" value="${rslistSize-stat.count+1}" />
 				<li>
 					<div class="icon_img">
@@ -75,27 +75,7 @@
 
 			</ul>
 		</div>
-		
-		<div class="contents0">/</div>
-		<div class="contents1">
-			<ul class="icons">
-					<c:set var="listSize" value="${rslist.size()}" />
-					<c:forEach var="rstaurantlist"  items="${rslist}" varStatus="c" begin="4" end="7">
-					<c:set var="bno" value="${rslistSize-stat.count+1}" />
-				<li>
-					<div class="icon_img">
-						<img src="../image/koreafood.png">
-					</div>
-					<p>왜 안먹니?</p>
-					<div class="contents1_bold">
-					<a href="restaurantFormTest.jsp" class="on">${rstaurantlist.restaurantID}</a>
-					</div>
-					<div class="contents2">별점</div>
-					<div class="contents3">후기 카운트</div>
-				</li>
-					</c:forEach>
-			</ul>
-		</div>
+
 		<!-- 들어가야할 내용ㅁㄴㅇㅁㄴㅇ  -->
 	</div>
 
