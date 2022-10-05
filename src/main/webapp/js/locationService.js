@@ -2,17 +2,20 @@ var map;
 var mapContainer;
 
 window.onload = function() {
-	mapContainer = document.getElementById('map'),
+	var maplongtitude = document.getElementById('longtitude').value;
+	var maplatitude = document.getElementById('latitude').value;
+	var maprestaurantID = document.getElementById('resID').value;
+	var mapContainer = document.getElementById('map'),
 		mapOption = {
-			center: new kakao.maps.LatLng(35.17280112492927, 129.13146732394424), // 지도의 중심좌표
+			center: new kakao.maps.LatLng(maplongtitude, maplatitude), // 지도의 중심좌표
 			level: 3
 		};
-		
+		console.log("안나온다 이말이가?"+maprestaurantID+maplongtitude+maplatitude);
 		map = new  kakao.maps.Map(mapContainer, mapOption)
 		
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapCenter = new kakao.maps.LatLng(35.17280112492927, 129.13146732394424), // 지도의 중심 좌표
+		    mapCenter = new kakao.maps.LatLng(maplongtitude, maplatitude), // 지도의 중심 좌표
 		    mapOption = {
 		        center: mapCenter, // 지도의 중심 좌표
 		        level: 4 // 지도의 확대 레벨
@@ -30,7 +33,7 @@ window.onload = function() {
 		// 지도에 올릴 장소명 인포윈도우 입니다.
 		var mLabel = new kakao.maps.InfoWindow({
 		    position: mapCenter, // 지도의 중심좌표에 올립니다.
-		    content: '제주돈가' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
+		    content: maprestaurantID // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
 		});
 		mLabel.open(map, mMarker); // 지도에 올리면서, 두번째 인자로 들어간 마커 위에 올라가도록 설정합니다.
 
@@ -56,7 +59,7 @@ window.onload = function() {
 		    // 로드뷰에 올릴 장소명 인포윈도우를 생성합니다.
 		    var rLabel = new kakao.maps.InfoWindow({
 		        position: mapCenter,
-		        content: '제주돈가'
+		        content: maprestaurantID
 		    });
 		    rLabel.open(rv, rMarker);
 
