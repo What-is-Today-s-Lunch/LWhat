@@ -3,11 +3,8 @@ package lwhat.dao.impl.restaurant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Time;
 import java.sql.Timestamp;
 
-import lwhat.constants.LwhatConstants;
 import lwhat.dto.ReviewDTO;
 
 public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
@@ -34,5 +31,6 @@ public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 	 closeConnection(rs, pstmt, conn);
 	 return reviewDTO;
 	}//view
+
 
 }//class

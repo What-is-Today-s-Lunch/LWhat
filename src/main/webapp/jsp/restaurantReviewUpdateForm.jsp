@@ -37,8 +37,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 /*
 if(seMemID!=reviewDTO.getMemberID_FK()){
 
-	out.print("alert('남의 댓글은 수정하지 마라탕.')");
-	
+	out.print("남의 후기는 수정하지 마라탕~");
 }else{
 */
 pageContext.setAttribute("review", restaurantService.viewRestaurantReview(revID));

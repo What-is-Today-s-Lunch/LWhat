@@ -87,5 +87,6 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 	}
 
 
+
 	
 }

@@ -34,5 +34,6 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 		
 		closeConnection(rs, pstmt, conn);
 		return list;
-	}
-}
+	}//list
+
+}//class

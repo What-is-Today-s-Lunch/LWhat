@@ -10,14 +10,15 @@
 <%@page import="java.util.Map"%>
 	
 <%
-	String gPostingIDParam = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
+	String restaurantID = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
 	RestaurantService restaurantService = new RestaurantListDAOImpl();
 	
 	List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant();
 	pageContext.setAttribute("rslist", restaurantDTO);
+
+	int scoreAVG= restaurantService.scoreViewRestaurantReview(restaurantID);
+//	pageContext.setAttribute("scoreAVG", scoreAVG);
 %>
-
-
 	
 <!DOCTYPE html>
 <html lang="ko">
@@ -67,7 +68,7 @@
 					<a href="#" onclick="location.href='restaurantFormTest.jsp?restaurantID=${rstaurantlist.restaurantID}';" >
 					${rstaurantlist.restaurantID}</a>
 					</div>
-					<div class="contents2">별점</div>
+					<div class="contents2">별점${rstaurantlist.scoreAvg}</div>
 					<div class="contents3">후기 카운트</div>
 				</li>
 					</c:forEach>
