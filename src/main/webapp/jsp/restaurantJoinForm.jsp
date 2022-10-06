@@ -38,27 +38,19 @@
 		
 		<div class="contents2">-->
 		<!-- 들어가야할 내용  -->
+		
 				<div class="board_wrap">
 					<div class="board_title">
 						<strong>식당 등록</strong>
 						<p>등록은 항상 정확하게!!</p>
 					</div>
+					<form method="post" action="restaurantJoinProc.jsp" enctype="multipart/form-data" accept-charset="UTF-8">
 					<div class="board_write_wrap">
 						<div class="board_write">
 							<div class="title">
 								<dl>
 									<dt>식당 ID</dt>
-									<dd><input type = "text" placeholder ="식당 ID 입력"/></dd>
-								</dl>
-							</div>
-							<div class="info">
-								<dl>
-									<dt>관리자 ID</dt>
-									<dd><input type = "text" placeholder ="관리자 ID 입력"/></dd>
-								</dl>
-								<dl>
-									<dt>비밀번호</dt>
-									<dd><input type = "password" placeholder ="비밀번호 입력"/></dd>
+									<dd><input type = "text" name="restaurantID" placeholder ="식당 ID 입력"/></dd>
 								</dl>
 							</div>
 							
@@ -103,20 +95,11 @@
 						</div>
 					
 						<div class="bt_wrap">
-							<a href="totalBoardView.jsp" class="on">등록</a>
-							<a href="totalBoardForm.jsp" >취소</a>
+							<input type ="submit" class ="on" value ="등록" />
+							<a href="mainForm.jsp" >취소</a>
 						</div>
 					</div>
-				<!-- </div> -->
-		<!-- 들어가야할 내용  -->
-		</div>
-		<div class="contents1">
-			<select name="searchDomain">
-				<option value="">전체</option>
-				<option value="">제목</option>
-				<option value="">작성자</option>
-			</select>&nbsp; <input type="text" placeholder="검색">&nbsp; <input
-				type="button" value="검색"><br /> <br />
+					</form>
 		</div>
 	</div>
 
