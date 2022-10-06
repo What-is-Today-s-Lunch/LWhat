@@ -69,7 +69,7 @@ GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 			<div class="board_title">
 				<strong>댓글 수정</strong>
 			</div>
-			<form method="post" action="updateConmentAction.jsp?gCommentID=<%=gCommentID %>">
+			<form method="post" action="updateConmentAction.jsp?gCommentID=<%=gCommentID %>&&gPostingID=<%=gPostingID %> ">
 				
 				<div class="board_write_wrap">
 						<div class="board_write">

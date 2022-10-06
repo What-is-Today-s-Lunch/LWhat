@@ -117,8 +117,8 @@
 							<div class="content"><%=list.get(i).getContent() %></div>
 							<div class="date"><%=list.get(i).getmDate() %></div>
 							<%if(memberID.equals(list.get(i).getMemberID_FK())){ %>
-								<a href="GboardUpdateConment.jsp?gCommentID=<%=list.get(i).getgCommentID() %>">수정</a>
-								<a href="deleteConmentAction.jsp?gCommentID=<%=list.get(i).getgCommentID() %>">삭제</a>
+								<a href="GboardUpdateConment.jsp?gCommentID=<%=list.get(i).getgCommentID() %>&&gPostingID=<%=gPostingID%>">수정</a>
+								<a href="deleteConmentAction.jsp?gCommentID=<%=list.get(i).getgCommentID() %>&&gPostingID=<%=gPostingID%>">삭제</a>
 							<%		} %>
 							<%	} %>
 							<%} %>

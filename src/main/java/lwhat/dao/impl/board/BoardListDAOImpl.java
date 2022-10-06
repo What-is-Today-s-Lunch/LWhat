@@ -44,8 +44,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	
 	@Override
 	public ArrayList<GboardDTO> listBoard(String gPostingID, Map<String, String> search) throws Exception{
-	      String prependSQL = LwhatConstants.querys.getProperty("GBOARD_LIST_SEARCH_SQL_PREPEND");
-	      String appendSQL = LwhatConstants.querys.getProperty("GBOARD_LIST_SEARCH_SQL_APPEND");
+	      String prependSQL = LwhatConstants.querys.getProperty(" select * from generalposting ");
+	      String appendSQL = LwhatConstants.querys.getProperty(" order by gPostingID desc ");
 	      String whereSQL = "";
 	      
 	      if(gPostingID!=null) {
@@ -58,7 +58,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	      
 	      if(search!=null && !search.isEmpty()) {
 	         String searchgPostingIDValue = search.get("searchDomain");
-	         String searchTextValue = search.get("searchText");
+	         String searchTextValue = search.get("title");
 	         whereSQL += " and "+searchgPostingIDValue+"like '%"+searchTextValue+"%' ";
 	      }
 	      

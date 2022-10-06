@@ -6,20 +6,24 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String gCommentID = request.getParameter("gCommentID") == null ? "" : request.getParameter("gCommentID");
+
+int gPostingID = 0;
+if(request.getParameter("gPostingID") != null){
+	gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
+}
 %>
 <%
 BoardService boardService = new BoardConmentDeleteDAOImpl();
 int result = boardService.conmentDeleteBoard(Integer.parseInt(gCommentID));
 
 if(result > 0){
-	out.println("<script>");
-	out.println("alert('정상적으로 입력 되었습니다')");
-	out.println("location.href='../jsp/totalBoardForm.jsp'");
-	out.println("</script> ");
+	request.setAttribute("gPostingID", gPostingID);
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/GboardView.jsp");
+	dispatcher.forward(request, response);
 }else{
-	out.println("<script>");
-	out.println("alert('오류가 발생했습니다')");
-	out.println("location.href='../jsp/totalBoardForm.jsp'");
-	out.println("</script> ");
+	request.setAttribute("gPostingID", gPostingID);
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/GboardView.jsp");
+	dispatcher.forward(request, response);
 }
+%>
 %>

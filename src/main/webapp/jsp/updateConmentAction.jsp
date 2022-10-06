@@ -1,3 +1,4 @@
+<%@page import="lwhat.dto.board.GboardDTO"%>
 <%@page import="lwhat.service.board.BoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,6 +14,11 @@ String memberID_FK = (String) session.getAttribute("memberID");
 String gCommentID = request.getParameter("gCommentID") == null ? "" : request.getParameter("gCommentID");
 String content = request.getParameter("content");
 
+int gPostingID = 0;
+if(request.getParameter("gPostingID") != null){
+	gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
+}
+
 %>
 
 <%
@@ -25,14 +31,12 @@ generalcommentDTO.setgCommentID((Integer.parseInt(gCommentID)));
 int result = boardService.conmentUpdateBoard(generalcommentDTO, memberID_FK);
 
 if(result > 0){
-	out.println("<script>");
-	out.println("alert('정상적으로 입력 되었습니다')");
-	out.println("location.href='../jsp/totalBoardForm.jsp'");
-	out.println("</script> ");
+	request.setAttribute("gPostingID", gPostingID);
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/GboardView.jsp");
+	dispatcher.forward(request, response);
 }else{
-	out.println("<script>");
-	out.println("alert('오류가 발생했습니다')");
-	out.println("location.href='../jsp/totalBoardForm.jsp'");
-	out.println("</script> ");
+	request.setAttribute("gPostingID", gPostingID);
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/GboardView.jsp");
+	dispatcher.forward(request, response);
 }
 %>

@@ -29,14 +29,14 @@
 	
 	String bdomainParam = request.getParameter("memberID_FK") == null? "" : request.getParameter("memberID_FK");
     String searchDomainParam = request.getParameter("searchDomain") == null? "" : request.getParameter("searchDomain");
-    String searchTextParam = request.getParameter("searchText") == null? "" : request.getParameter("searchText");
+    String searchTextParam = request.getParameter("title") == null? "" : request.getParameter("title");
    
     // 검색을 버튼을 눌렀을 때, 어떤 기준으로 찾을 것인지 (제목, 작성자, 제목 + 작성자)의 값과 검색 내용을 map으로 묶어서 넘겨준다. 
     Map<String,String> map = new HashMap<>();
    // (제목, 작성자, 제목 + 작성자)
    map.put("searchDomain", searchDomainParam);
    // 검색 내용
-   map.put("searchText", searchTextParam);
+   map.put("title", searchTextParam);
    
    // domain이 전체일 경우
     if(bdomainParam == null || bdomainParam.equals("")){
