@@ -65,6 +65,10 @@
 									<dt>전화번호</dt>
 									<dd><input type = "text" placeholder = "전화번호 입력"/></dd>
 								</dl>
+								<dl>
+									<dt>대표 사진 등록</dt>
+									<dd><input type = "file" placeholder = "사진 등록"/></dd>
+								</dl>
 							</div>
 							<div class= "info">
 								<dl>

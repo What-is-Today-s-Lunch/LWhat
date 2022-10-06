@@ -22,13 +22,14 @@ public class RestaurantUpdateDAOImpl extends AbstractRestaurantDAOImpl {
 		PreparedStatement pstmtU = conn.prepareStatement(sqlU);
 		
 		if (restaurantID==restaurantDTO.getRestaurantID()){
-		pstmtU.setString(1,restaurantDTO.getfoodCategory());
+		pstmtU.setString(1,restaurantDTO.getFoodCategory());
 		pstmtU.setString(2,restaurantDTO.getrTelNum() );
-		pstmtU.setString(3,restaurantDTO.getAddress() );
-		pstmtU.setString(4,restaurantDTO.getlatitude() );
+		pstmtU.setString(3,restaurantDTO.getAddressDetail() );
+		pstmtU.setString(4,restaurantDTO.getLatitude() );
 		pstmtU.setString(5,restaurantDTO.getLongitude() );
 		pstmtU.setString(6,restaurantDTO.getAddresssAPI() );
-		pstmtU.setString(7,restaurantDTO.getRestaurantID() );
+		pstmtU.setString(7,restaurantDTO.getContent());
+		pstmtU.setString(8,restaurantDTO.getRestaurantID() );
 		// 완료 : 쿼리 수정됨에 따라 순서 바꿔줘야함 
 		
 		int result = pstmtU.executeUpdate(); 

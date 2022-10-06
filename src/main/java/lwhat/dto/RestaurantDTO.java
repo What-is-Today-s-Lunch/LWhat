@@ -7,15 +7,24 @@ public class RestaurantDTO implements Serializable{
 	private String restaurantID;
 	private String foodCategory;
 	private String rTelNum;
-	private String address;
+	private String addressDetail;
 	private String addresssAPI;
 	private String latitude;
 	private String longitude;
 	private double scoreAvg;
+	private String content;
 	
 	public RestaurantDTO() {
 	}
 	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public double getScoreAvg() {
 		return scoreAvg;
 	}
@@ -28,11 +37,11 @@ public class RestaurantDTO implements Serializable{
 	public void setRestaurantID(String restaurantID) {
 		this.restaurantID = restaurantID;
 	}
-	public String getAddress() {
-		return address;
+	public String getAddressDetail() {
+		return addressDetail;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
 	}
 	public String getrTelNum() {
 		return rTelNum;
@@ -40,16 +49,16 @@ public class RestaurantDTO implements Serializable{
 	public void setrTelNum(String rTelNum) {
 		this.rTelNum = rTelNum;
 	}
-	public String getfoodCategory() {
+	public String getFoodCategory() {
 		return foodCategory;
 	}
-	public void setfoodCategory(String foodCategory) {
+	public void setFoodCategory(String foodCategory) {
 		this.foodCategory = foodCategory;
 	}
-	public String getlatitude() {
+	public String getLatitude() {
 		return latitude;
 	}
-	public void setlatitude(String latitude) {
+	public void setLatitude(String latitude) {
 		this.latitude = latitude;
 	}
 	public String getLongitude() {
@@ -64,11 +73,14 @@ public class RestaurantDTO implements Serializable{
 	public void setAddresssAPI(String addresssAPI) {
 		this.addresssAPI = addresssAPI;
 	}
+
 	@Override
 	public String toString() {
 		return "RestaurantDTO [restaurantID=" + restaurantID + ", foodCategory=" + foodCategory + ", rTelNum=" + rTelNum
-				+ ", address=" + address + ", addresssAPI=" + addresssAPI + ", latitude=" + latitude + ", longitude="
-				+ longitude + ", scoreAvg=" + scoreAvg + "]";
+				+ ", addressDetail=" + addressDetail + ", addresssAPI=" + addresssAPI + ", latitude=" + latitude + ", longitude="
+				+ longitude + ", scoreAvg=" + scoreAvg + ", content=" + content + "]";
 	}
+
+	
 	
 }

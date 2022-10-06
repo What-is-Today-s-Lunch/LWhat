@@ -4,19 +4,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
+import lwhat.dto.FoodimageDTO;
 
+public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
+// =Write
 	private ResultSet rs;
 	   @Override
-	   public int fileUploadRestaurant(String cImage, String sImage, String restaurantID) throws Exception {
+	   public int fileUploadRestaurant(String restaurantID, FoodimageDTO foodimageDTO) throws Exception {
 	      String SQL = " INSERT INTO foodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
 	      
 	      try {
 	         PreparedStatement pstmt = getConnection().prepareStatement(SQL);
-	         pstmt.setInt(1, getRestaurantID(restaurantID));
-	         pstmt.setString(2, "testCategory");
-	         pstmt.setString(3, cImage);
-	         pstmt.setString(4, sImage);
+	         pstmt.setString(1, restaurantID); // 구지? 라서 바로 박아줌 
+	         pstmt.setString(2, foodimageDTO.getImageCategory());
+	         pstmt.setString(3, foodimageDTO.getClmage());
+	         pstmt.setString(4, foodimageDTO.getsImage());
 	         int result = pstmt.executeUpdate();
 	         closeConnection(pstmt, getConnection());
 	         return result;
@@ -27,7 +29,8 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 	      return -1;
 	   }
 	   
-	   public int getRestaurantID(String restaurantID) {
+	   // 게시판에서 밑에껄 써줘야 등록하면서 생기는 글의 아이디를 얻어 올 수 있다. 근데 레스토랑에서는 구지? 
+/*	   public int getRestaurantID(String restaurantID) {
 	       String sql = " SELECT restaurantID FROM restaurant WHERE restaurantID= ? ";
 	       try {
 	   
@@ -43,7 +46,7 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 	       return 0;
 	    }
 
+*/
 
 
-
-}
+}//  class

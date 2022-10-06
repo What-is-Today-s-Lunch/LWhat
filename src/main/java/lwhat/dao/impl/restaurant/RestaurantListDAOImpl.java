@@ -26,12 +26,13 @@ public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 			restaurantDTO.setRestaurantID(rs.getString("restaurantID"));
 			pstmt2.setString(1, rs.getString("restaurantID"));
 			ResultSet rs2 = pstmt2.executeQuery();
-			restaurantDTO.setfoodCategory(rs.getString("foodCategory"));
+			restaurantDTO.setFoodCategory(rs.getString("foodCategory"));
 			restaurantDTO.setrTelNum(rs.getString("rTelNum"));
-			restaurantDTO.setAddress(rs.getString("address"));
+			restaurantDTO.setAddressDetail(rs.getString("address"));
 			restaurantDTO.setAddresssAPI(rs.getString("addressAPI"));
-			restaurantDTO.setlatitude(rs.getString("latitude"));
+			restaurantDTO.setLatitude(rs.getString("latitude"));
 			restaurantDTO.setLongitude(rs.getString("longitude"));
+			restaurantDTO.setContent(rs.getString("content"));
 			while(rs2.next()) {
 			restaurantDTO.setScoreAvg(rs2.getDouble(1));
 			}
