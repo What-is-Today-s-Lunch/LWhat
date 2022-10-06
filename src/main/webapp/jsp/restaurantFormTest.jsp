@@ -82,7 +82,7 @@ pageContext.setAttribute("revlist", revlistDTO);
 			<div id="roadview"></div>
 			<div class="restinfo">
 				<h1>${rsIDlist.restaurantID}</h1>
-				주소 : ${rsIDlist.address} <br /> 연락처 : ${rsIDlist.rTelNum}<br /> 위도
+				주소 : ${rsIDlist.addressDetail} <br /> 연락처 : ${rsIDlist.rTelNum}<br /> 위도
 				: ${rsIDlist.longitude}<br /> 경도 : ${rsIDlist.latitude}
 			</div>
 			<div id="resimage">이미지</div>
