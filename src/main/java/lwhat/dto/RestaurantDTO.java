@@ -8,7 +8,7 @@ public class RestaurantDTO implements Serializable{
 	private String foodCategory;
 	private String rTelNum;
 	private String addressDetail;
-	private String addresssAPI;
+	private String addressAPI;
 	private String latitude;
 	private String longitude;
 	private double scoreAvg;
@@ -67,17 +67,17 @@ public class RestaurantDTO implements Serializable{
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
-	public String getAddresssAPI() {
-		return addresssAPI;
+	public String getAddressAPI() {
+		return addressAPI;
 	}
-	public void setAddresssAPI(String addresssAPI) {
-		this.addresssAPI = addresssAPI;
+	public void setAddressAPI(String addressAPI) {
+		this.addressAPI = addressAPI;
 	}
 
 	@Override
 	public String toString() {
 		return "RestaurantDTO [restaurantID=" + restaurantID + ", foodCategory=" + foodCategory + ", rTelNum=" + rTelNum
-				+ ", addressDetail=" + addressDetail + ", addresssAPI=" + addresssAPI + ", latitude=" + latitude + ", longitude="
+				+ ", addressDetail=" + addressDetail + ", addressAPI=" + addressAPI + ", latitude=" + latitude + ", longitude="
 				+ longitude + ", scoreAvg=" + scoreAvg + ", content=" + content + "]";
 	}
 

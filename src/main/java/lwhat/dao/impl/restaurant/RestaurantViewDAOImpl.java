@@ -23,7 +23,7 @@ public class RestaurantViewDAOImpl extends AbstractRestaurantDAOImpl {
 			restaurantDTO.setFoodCategory(rs.getString("foodCategory"));
 			restaurantDTO.setrTelNum(rs.getString("rTelNum"));
 			restaurantDTO.setAddressDetail(rs.getString("addressDetail"));
-			restaurantDTO.setAddresssAPI(rs.getString("addressAPI"));
+			restaurantDTO.setAddressAPI(rs.getString("addressAPI"));
 			restaurantDTO.setLatitude(rs.getString("latitude"));
 			restaurantDTO.setLongitude(rs.getString("longitude"));
 			restaurantDTO.setContent(rs.getString("content"));

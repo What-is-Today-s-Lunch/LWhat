@@ -92,6 +92,7 @@ pageContext.setAttribute("revlist", revlistDTO);
 				<p>후기쓰기</p>
 			</div>
 			<form action="restaurantReviewWriteProc.jsp" name="review" method="get">
+				<input type="hidden" name="restaurantID" value="${rsIDlist.restaurantID}"/>
 				<div class="bt_wrap">
 					<div id="score" align="right">
 						<select id="select_value" name="score" onchange="ChangeValue()">
@@ -129,7 +130,7 @@ pageContext.setAttribute("revlist", revlistDTO);
 						<div class="score">${reviewlist.score}</div>
 						<div class="dd">
 							<button onclick="location.href='restaurantReviewUpdateForm.jsp?revID=${reviewlist.revID}';">[수정]</button>
-							<button onclick="location.href='restaurantReviewDeleteProc.jsp?revID=${reviewlist.revID}';">[삭제]</button>
+							<button onclick="location.href='restaurantReviewDeleteProc.jsp?revID=${reviewlist.revID}&&restaurantID=${rsIDlist.restaurantID}';">[삭제]</button>
 						</div>
 					</c:forEach>
 				</div>

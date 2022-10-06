@@ -22,9 +22,6 @@ String content = request.getParameter("content");
 int score = Integer.parseInt(request.getParameter("score"));
 int revID = Integer.parseInt(request.getParameter("revID"));
 
-out.print(content);
-out.print(score);
-out.print(revID);
 
 ReviewDTO reviewDTO = new ReviewDTO();
 reviewDTO.setContent(content);
@@ -35,8 +32,9 @@ out.print(reviewDTO.getScore());
 RestaurantService restaurantService = new RestaurantReviewUpdateDAOImpl();
 restaurantService.updateRestaurantReview(revID, reviewDTO);
 
-System.out.print(request.getParameter("restaurantID"));
-System.out.print("유알알"+url);
+
+
+RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/restaurantFormTest.jsp");
+dispatcher.forward(request, response);
 
 %>
-<script>window.history.go(-2);</script>

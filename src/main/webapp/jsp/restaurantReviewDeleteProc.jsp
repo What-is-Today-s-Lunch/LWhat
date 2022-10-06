@@ -4,11 +4,13 @@
     pageEncoding="UTF-8"%>
 <%
 int revID = Integer.parseInt(request.getParameter("revID"));
-out.print("-----------------------------"+revID);
 
 RestaurantService restaurantService = new RestaurantReviewDeleteDAOImpl();
 restaurantService.deleteRestaurantReview(revID);
 
 
+request.removeAttribute("revID");
+RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/restaurantFormTest.jsp");
+dispatcher.forward(request, response);
+
 %>
-<script>history.go(-1);</script>

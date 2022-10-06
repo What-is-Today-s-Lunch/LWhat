@@ -24,7 +24,10 @@
 	RestaurantService restaurantService = new RestaurantReviewWriteDAOImpl();
 	restaurantService.writeRestaurantReview(reviewDTO);
 	
+	
+	request.removeAttribute("content");
+	request.removeAttribute("score");
+	RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/restaurantFormTest.jsp");
+	dispatcher.forward(request, response);
+	
 %>
-<body>
-<script>alert('후기 등록완료'); window.history.back(); </script>
-</body>

@@ -1,3 +1,4 @@
+<%@page import="com.oreilly.servlet.MultipartResponse"%>
 <%@page import="lwhat.dto.FoodimageDTO"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantWriteDAOImpl"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantFileUploadDAOImpl"%>
@@ -21,35 +22,39 @@
 	realFolder = context.getRealPath(saveFolder);
 	MultipartRequest multipartRequest = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 	
-	//파라미터 받음
-	String resID=multipartRequest.getParameter("restaurantID");//식당명
-	String foodCat=multipartRequest.getParameter("");//식당카테고리
-	String TelNum=multipartRequest.getParameter("telNum");//식당전화번호
-	String adreAPI=multipartRequest.getParameter("address");//식당주소API
-	String adre=multipartRequest.getParameter("address_detail");//상세식당주소
+	//레스토랑파라미터 받음
+	String resID = multipartRequest.getParameter("restaurantID");//식당명
+	String restaurantCat = multipartRequest.getParameter("restaurantcategory");//식당카테고리
+	String TelNum = multipartRequest.getParameter("telNum");//식당전화번호
+	String adreAPI = multipartRequest.getParameter("address");//식당주소API
+	String adre = multipartRequest.getParameter("address_detail");//상세식당주소
 	String latitu = multipartRequest.getParameter("lat");//위도등록
 	String longti = multipartRequest.getParameter("long");//경도등록
 	
+	//레스토랑 이미지 파라미터 받음
 	String file = multipartRequest.getOriginalFileName("file1");//대표사진
 	String filename = multipartRequest.getFilesystemName("file1");
+	
+	String foodname = multipartRequest.getParameter("foodname");
+	
 	
 	//restaurantDTO 설정 
 	RestaurantDTO restaurantDTO = new RestaurantDTO();
 	restaurantDTO.setRestaurantID(resID);
-	restaurantDTO.setFoodCategory(foodCat);
+	restaurantDTO.setFoodCategory(restaurantCat);
 	restaurantDTO.setrTelNum(TelNum);
-	restaurantDTO.setAddresssAPI(adreAPI);
+	restaurantDTO.setAddressAPI(adreAPI);
 	restaurantDTO.setAddressDetail(adre);
 	restaurantDTO.setLatitude(latitu);
 	restaurantDTO.setLongitude(longti);
 	
 	//foodImageDTO 설정
 	FoodimageDTO foodimageDTO = new FoodimageDTO();
-	foodimageDTO.setRestaurantID_FK(restaurantID_FK);
-	foodimageDTO.setImageCategory(imageCategory);
-	foodimageDTO.setContent(content);//사진의 음식이름 	
-	foodimageDTO.setCImage(clmage);	
-	foodimageDTO.setSImage(sImage);	
+	foodimageDTO.setRestaurantID_FK(resID);
+	foodimageDTO.setImageCategory(restaurantCat);//사진의 카테고리?? 
+	foodimageDTO.setContent(foodname);//사진의 음식이름 	
+	foodimageDTO.setCImage(file);	
+	foodimageDTO.setSImage(filename);	
 	// 식당에 따라 사진 등록되는건 바로 보여줄 필요가 없어서 재귀등록 필요 X 
 	
 	//식당 업로드 Impl
@@ -69,10 +74,8 @@
 		oldFile.renameTo(newFile);
 	}
 	
-	out.println("<script>");
-	out.println("location.href = '../jsp/mainForm.jsp'");
-	out.println("</script>");
-	
+
+	response.sendRedirect("mainForm.jsp");
 %>
 
 

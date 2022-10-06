@@ -19,7 +19,7 @@ public class RestaurantWriteDAOImpl extends AbstractRestaurantDAOImpl {
 		pstmt.setString(2, restaurantDTO.getFoodCategory());
 		pstmt.setString(3, restaurantDTO.getrTelNum());
 		pstmt.setString(4, restaurantDTO.getAddressDetail());
-		pstmt.setString(5, restaurantDTO.getAddresssAPI());
+		pstmt.setString(5, restaurantDTO.getAddressAPI());
 		pstmt.setString(6, restaurantDTO.getLatitude());
 		pstmt.setString(7, restaurantDTO.getLongitude());
 		pstmt.setString(8, restaurantDTO.getContent());

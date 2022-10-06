@@ -27,7 +27,7 @@ public class RestaurantUpdateDAOImpl extends AbstractRestaurantDAOImpl {
 		pstmtU.setString(3,restaurantDTO.getAddressDetail() );
 		pstmtU.setString(4,restaurantDTO.getLatitude() );
 		pstmtU.setString(5,restaurantDTO.getLongitude() );
-		pstmtU.setString(6,restaurantDTO.getAddresssAPI() );
+		pstmtU.setString(6,restaurantDTO.getAddressAPI() );
 		pstmtU.setString(7,restaurantDTO.getContent());
 		pstmtU.setString(8,restaurantDTO.getRestaurantID() );
 		// 완료 : 쿼리 수정됨에 따라 순서 바꿔줘야함 
