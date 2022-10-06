@@ -17,8 +17,8 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 	         PreparedStatement pstmt = getConnection().prepareStatement(SQL);
 	         pstmt.setString(1, restaurantID); // 구지? 라서 바로 박아줌 
 	         pstmt.setString(2, foodimageDTO.getImageCategory());
-	         pstmt.setString(3, foodimageDTO.getClmage());
-	         pstmt.setString(4, foodimageDTO.getsImage());
+	         pstmt.setString(3, foodimageDTO.getCImage());
+	         pstmt.setString(4, foodimageDTO.getSImage());
 	         int result = pstmt.executeUpdate();
 	         closeConnection(pstmt, getConnection());
 	         return result;

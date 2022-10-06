@@ -25,8 +25,8 @@ public class RestaurantFileListDAOImpl extends AbstractRestaurantDAOImpl {
 				foodimageDTO.setRestaurantID_FK(rs.getString("restaurantID_FK"));
 				foodimageDTO.setContent(rs.getString("content"));
 				foodimageDTO.setImageCategory(rs.getString("imageCategory"));
-				foodimageDTO.setClmage(rs.getString("cImage"));
-				foodimageDTO.setsImage(rs.getString("sImage"));
+				foodimageDTO.setCImage(rs.getString("cImage"));
+				foodimageDTO.setSImage(rs.getString("sImage"));
 				list.add(foodimageDTO);
 				System.out.println("이미지 리스트 등록"+list);
 			}//inner while

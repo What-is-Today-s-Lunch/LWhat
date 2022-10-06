@@ -86,6 +86,12 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 		return null;
 	}
 
+	@Override
+	public int listCountRestaurantReview(String restaurandID) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 	

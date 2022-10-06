@@ -1,3 +1,4 @@
+<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
 <%@page import="lwhat.dto.CodeTableDTO"%>
 <%@page import="lwhat.dao.impl.code.CodeDAOImpl"%>
 <%@page import="lwhat.service.code.CodeService"%>
@@ -11,11 +12,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.Map"%>
-	
 <%
 String gPostingIDParam = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
 RestaurantService restaurantService = new RestaurantListDAOImpl();
-
+//restaurantService.listCountRestaurantReview(restaurandID);
 
 String restaurantTableCode = request.getParameter("category");
 CodeService findcodename = new CodeDAOImpl();
@@ -24,8 +24,12 @@ CodeTableDTO code = findcodename.codeView(restaurantTableCode);
 List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant(restaurantTableCode);
 pageContext.setAttribute("cdlist", code);
 pageContext.setAttribute("rslist", restaurantDTO);
+//후기 개수 구하기 임플객체를 담아줘서 메소드 바로 실행하게함 
+RestaurantReviewListDTOImpl rLDAO = new RestaurantReviewListDTOImpl();
+pageContext.setAttribute("rLDAO", rLDAO);
+
 %>
-	
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,7 +66,7 @@ pageContext.setAttribute("rslist", restaurantDTO);
 			<ul class="icons">
 			
 					<c:set var="listSize" value="${rslist.size()}" />
-					<c:forEach var="rstaurantlist"  items="${rslist}" varStatus="c" >
+					<c:forEach var="restaurantlist"  items="${rslist}" varStatus="c" >
 					<c:set var="bno" value="${rslistSize-stat.count+1}" />
 				<li>
 					<div class="icon_img">
@@ -71,11 +75,11 @@ pageContext.setAttribute("rslist", restaurantDTO);
 					
 					
 					<div class="contents1_bold">
-					<a href="#" onclick="location.href='restaurantFormTest.jsp?restaurantID=${rstaurantlist.restaurantID}';" >
-					${rstaurantlist.restaurantID}</a>
+					<a href="#" onclick="location.href='restaurantFormTest.jsp?restaurantID=${restaurantlist.restaurantID}';" >
+					${restaurantlist.restaurantID}</a>
 					</div>
-					<div class="contents2">별점${rstaurantlist.scoreAvg}</div>
-					<div class="contents3">후기 카운트</div>
+					<div class="contents2">★${restaurantlist.scoreAvg}</div>
+					<div class="contents3">(${rLDAO.listCountRestaurantReview(restaurantlist.restaurantID)})</div>
 				</li>
 					</c:forEach>
 				

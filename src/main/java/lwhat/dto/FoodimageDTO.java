@@ -8,7 +8,7 @@ public class FoodimageDTO implements Serializable{
 	private String restaurantID_FK; // restaurant의 restaurantID와 연결(외래키)	
 	private String imageCategory; // 카테고리 테이블에서 값 받아오기
 	private String content;
-	private String clmage;
+	private String cImage;
 	private String sImage;
 	
 	public FoodimageDTO() {}
@@ -37,24 +37,24 @@ public class FoodimageDTO implements Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getClmage() {
-		return clmage;
+	public String getCImage() {
+		return cImage;
 	}
-	public void setClmage(String clmage) {
-		this.clmage = clmage;
+	public void setCImage(String cImage) {
+		this.cImage = cImage;
 	}
-	public String getsImage() {
+	public String getSImage() {
 		return sImage;
 	}
-	public void setsImage(String sImage) {
+	public void setSImage(String sImage) {
 		this.sImage = sImage;
 	}
+
 	@Override
 	public String toString() {
 		return "FoodimageDTO [fImageID=" + fImageID + ", restaurantID_FK=" + restaurantID_FK + ", imageCategory="
-				+ imageCategory + ", content=" + content + ", clmage=" + clmage + ", sImage=" + sImage + "]";
+				+ imageCategory + ", content=" + content + ", cImage=" + cImage + ", sImage=" + sImage + "]";
 	}
-	
 	
 	
 }

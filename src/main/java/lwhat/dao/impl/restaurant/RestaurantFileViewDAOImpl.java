@@ -25,8 +25,8 @@ public class RestaurantFileViewDAOImpl extends AbstractRestaurantDAOImpl {
 				foodimageDTO.setRestaurantID_FK(rs.getString("restaurantID_FK"));
 				foodimageDTO.setImageCategory(null);
 				foodimageDTO.setContent(null);
-				foodimageDTO.setClmage(rs.getString("cImage"));
-				foodimageDTO.setsImage(rs.getString("sImage"));
+				foodimageDTO.setCImage(rs.getString("cImage"));
+				foodimageDTO.setSImage(rs.getString("sImage"));
 				System.out.println("View Loading...");
 		}//if	
 		closeConnection(rs, pstmt, conn);
