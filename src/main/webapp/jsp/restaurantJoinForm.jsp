@@ -11,6 +11,8 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/style_category.css">
 <link rel="stylesheet" href="../css/css.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>종합 게시판</title>
 </head>
 <body>
@@ -76,13 +78,13 @@
 							</div>
 							<div class= "info">
 								<dl>
-									<dt>메뉴 사진등록(최대 6개)</dt>
+									<dt>식당 외관 사진</dt>
 									<dd><input type = "file" name="file1" placeholder = "대표메뉴"/></dd>
 									
 								</dl>
 								<dl>
-									<dt>메뉴명</dt>
-									<dd><input type = "text" name= "foodname"placeholder = "메뉴에 대한 이름을 써주세여"/></dd>
+									<dt>메뉴판 사진</dt>
+									<dd><input type = "file" name= "file2"placeholder = "메뉴판"/></dd>
 								</dl>
 							</div>
 							<div class= "info">
