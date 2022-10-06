@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/member.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/member.css">
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
    rel="stylesheet">

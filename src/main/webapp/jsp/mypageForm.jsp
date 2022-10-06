@@ -32,7 +32,6 @@
             회원이름 : ${memberDTO.name}<br><br>
             회원이메일 : ${memberDTO.email}<br><br>
             회원닉네임 : ${memberDTO.nickName}<br><br>
-            회원가입일 : ${memberDTO.joinDate}<br><br>
              <input type="button" class="in" onclick="location.href='${webapproot}/memberupdateform.do'" 
              id="button" value="회원정보수정하기"><br>
              <input type="button" class="in" onclick="location.href='${webapproot}/memberlogoutproc.do'" 

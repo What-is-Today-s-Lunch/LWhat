@@ -7,7 +7,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style_banner_slide.css">
+<link rel="stylesheet" type="text/css" href="LWhat/css/style_banner_slide.css">
 <script type="text/javascript" src="../js/slide.js"></script>
 <script type="text/javascript" src="../js/upBtn.js"></script>
 <title>오늘 뭐 먹지?</title>
