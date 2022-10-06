@@ -95,7 +95,13 @@
 						</dl>
 					</div>
 					<div class="cont"><%=gboardDTO.getContent()%>
-							<%  %>
+							<%
+							String real = "C:\\eclipse_workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp9\\wtpwebapps\\LWhat\\jsp\\upload";
+							File viewFile = new File(real+"\\"+gPostingID+"file.jpg");
+							if(viewFile.exists()){
+							%>
+							<img src="upload/<%=gPostingID%>file.jpg">
+							<%} %>
 					</div>
 					
 					<div>

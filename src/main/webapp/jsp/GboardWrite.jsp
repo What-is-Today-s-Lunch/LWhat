@@ -77,7 +77,7 @@
 								<textarea type="text" name="content" placeholder="내용 입력" ></textarea>
 							</div>
 							<div>
-								파일 : <input type="file" name="file" ><br>
+								파일 : <input type="file" name="filename" ><br>
 							</div>
 						</div>
 					
