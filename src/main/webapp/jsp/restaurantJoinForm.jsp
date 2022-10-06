@@ -57,11 +57,11 @@
 							<div class= "info">
 								<dl>
 									<dt>전화번호</dt>
-									<dd><input type = "text" placeholder = "전화번호 입력"/></dd>
+									<dd><input type = "text" name= "telNum"placeholder = "전화번호 입력"/></dd>
 								</dl>
 								<dl>
 									<dt>대표 사진 등록</dt>
-									<dd><input type = "file" placeholder = "사진 등록"/></dd>
+									<dd><input type = "file" name="file1" placeholder = "사진 등록"/></dd>
 								</dl>
 							</div>
 							<div class= "info">
@@ -77,11 +77,11 @@
 							<div class= "info">
 								<dl>
 									<dt>위도</dt>
-									<dd><input type = "text" placeholder = "위도 입력"/></dd>
+									<dd><input type = "text" name ="lat" placeholder = "위도 입력"/></dd>
 								</dl>
 								<dl>
 									<dt>경도</dt>
-									<dd><input type = "text" placeholder = "경도 입력"/></dd>
+									<dd><input type = "text" name ="long" placeholder = "경도 입력"/></dd>
 								</dl>
 							</div>
 							<div class= "info">
