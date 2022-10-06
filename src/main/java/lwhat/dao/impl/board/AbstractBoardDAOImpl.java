@@ -1,7 +1,10 @@
 package lwhat.dao.impl.board;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Map;
+
+import javax.websocket.Encoder.BinaryStream;
 
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
 import lwhat.dto.GeneralcommentDTO;
@@ -42,6 +45,11 @@ public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implem
 
 	@Override
 	public int fileUploadBoard(String cImage, String sImage, int gPostingID) throws Exception {
+		return 0;
+	}
+	
+	@Override
+	public int fileUploadBoardDB(String cImage, String sImage,FileInputStream content ,int gPostingID) throws Exception{
 		return 0;
 	}
 	
