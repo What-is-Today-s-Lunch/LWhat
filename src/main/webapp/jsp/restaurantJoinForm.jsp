@@ -59,9 +59,30 @@
 									<dt>전화번호</dt>
 									<dd><input type = "text" name= "telNum"placeholder = "전화번호 입력"/></dd>
 								</dl>
+								 <dl>
+			                        <dt>카테고리</dt>
+			                        <dd>
+			                           <select id="select_value" name="foodcategory" onchange="ChangeValue()">
+			                              <option value="">ex) 한식, 양식, ...</option>
+			                              <option value="A1AA">한식</option>
+			                              <option value="A1AC">양식</option>
+			                              <option value="A1AB">중식</option>
+			                              <option value="A1AE">일식</option>
+			                              <option value="A1AD">카페</option>
+			                              <option value="A1AZ">기타</option>
+			                              </select>
+			                        </dd>
+			                    </dl>
+							</div>
+							<div class= "info">
 								<dl>
-									<dt>대표 사진 등록</dt>
-									<dd><input type = "file" name="file1" placeholder = "사진 등록"/></dd>
+									<dt>메뉴 사진등록(최대 6개)</dt>
+									<dd><input type = "file" name="file1" placeholder = "대표메뉴"/></dd>
+									
+								</dl>
+								<dl>
+									<dt>메뉴명</dt>
+									<dd><input type = "text" name= "foodname"placeholder = "메뉴에 대한 이름을 써주세여"/></dd>
 								</dl>
 							</div>
 							<div class= "info">
@@ -76,11 +97,11 @@
 							</div>
 							<div class= "info">
 								<dl>
-									<dt>위도</dt>
+									<dd>위도(정확하게 쓰지않으면 다른곳을 표시합니다.)</dd>
 									<dd><input type = "text" name ="lat" placeholder = "위도 입력"/></dd>
 								</dl>
 								<dl>
-									<dt>경도</dt>
+									<dd>경도(정확하게 쓰지않으면 다른곳을 표시합니다.)</dd>
 									<dd><input type = "text" name ="long" placeholder = "경도 입력"/></dd>
 								</dl>
 							</div>
