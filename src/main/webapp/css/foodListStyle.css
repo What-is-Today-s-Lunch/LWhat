@@ -233,7 +233,6 @@ button{
    display: flex;
    flex-wrap:wrap;
    width: 1280px;
-   height: 302px;
    /* background: orange; */
    margin: auto;
 }
@@ -241,7 +240,7 @@ button{
 .icons>li {
    flex: 1;
    background: white;
-   margin-top: 49px;
+   margin: 50px 20px 50px 0px;
    width:calc(100%/4);
    height: 302px;
    text-align: center;
@@ -251,9 +250,7 @@ button{
    margin-top: 45px;
 }
 
-.icons>li:not(:last-child) {
-   margin-right: 20px;
-}
+
 
 .icons .contents2 {
    width: 280px;
