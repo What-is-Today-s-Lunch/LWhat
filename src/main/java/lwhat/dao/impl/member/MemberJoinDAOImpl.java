@@ -3,7 +3,6 @@ package lwhat.dao.impl.member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import lwhat.constants.CommonConstants;
 import lwhat.constants.MemberConstants;
 import lwhat.dto.MemberDTO;
 import lwhat.service.member.MemberService;

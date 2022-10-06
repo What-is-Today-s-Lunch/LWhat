@@ -22,6 +22,7 @@ request.setCharacterEncoding("utf-8");
 	if(session.getAttribute("memberID") != null) {
 		memberID = (String)session.getAttribute("memberID");
 	}
+	
 	// memberID 에 세션값이 부여 되어 있다면 (중복 로그인 방지)
 	if (memberID != null){
 		script.println("<script>");
@@ -29,7 +30,7 @@ request.setCharacterEncoding("utf-8");
 		script.println("location.href = 'mainForm.jsp'");
 		script.println("</script>");
 	}
-
+	
 	// MemberDAOImpl 인스턴스 생성
 	MemberLoginDAOImpl memberLoginDAOImpl = new MemberLoginDAOImpl();
 	// 로그인시도 함수실행

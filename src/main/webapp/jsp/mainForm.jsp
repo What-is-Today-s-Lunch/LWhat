@@ -7,7 +7,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style_banner_slide.css">
+<link rel="stylesheet" type="text/css" href="LWhat/css/style_banner_slide.css">
 <script type="text/javascript" src="../js/slide.js"></script>
 <script type="text/javascript" src="../js/upBtn.js"></script>
 <title>오늘 뭐 먹지?</title>
@@ -25,7 +25,7 @@
 				<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
 				<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
 				<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
-				<li><a href="../jsp/loginForm.jsp">회원정보수정</a></li>
+				<li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
 			</ul>
 		</div>
 		<div class="slide">

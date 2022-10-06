@@ -17,6 +17,7 @@
 	Object memberID_ = session.getAttribute("memberID");
 	String memberID = (String)memberID_;
 	MemberDTO memberDTO = new MemberDTO();
+	
  	memberDTO.setMemberID(memberID);
 	memberDTO.setMemberPW(request.getParameter("password") == null ? "" : request.getParameter("password"));
 	memberDTO.setNickName(request.getParameter("nickName") == null ? "" : request.getParameter("nickName"));
@@ -25,11 +26,20 @@
 	MemberUpdateDAOImpl memberUpdateDAOImpl = new MemberUpdateDAOImpl();
 	memberUpdateDAOImpl.updateMember(memberDTO);
 	
-	PrintWriter script = response.getWriter();
-	script.println("<script>");
-	script.println("alert('회원정보 수정이 완료 되었습니다.')");
-	script.println("location.href = 'mainForm.jsp'");
-	script.println("</script>");
+	if(memberDTO.getMemberPW() == "" || memberDTO.getEmail() == "" 
+		|| memberDTO.getNickName() == "" || memberDTO.getName() == "") { 
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('작성하지 않은 회원정보가 있습니다!')");
+		script.println("history.back()");
+		script.println("</script>");
+	}else{
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('회원정보 수정이 완료 되었습니다.')");
+		script.println("location.href = 'mainForm.jsp'");
+		script.println("</script>");
+	}
 %>
 <body>
 </body>
