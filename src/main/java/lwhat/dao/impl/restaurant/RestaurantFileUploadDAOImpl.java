@@ -1,8 +1,10 @@
 package lwhat.dao.impl.restaurant;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import lwhat.dto.FoodimageDTO;
 
@@ -29,24 +31,25 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 	      return -1;
 	   }
 	   
-	   // 게시판에서 밑에껄 써줘야 등록하면서 생기는 글의 아이디를 얻어 올 수 있다. 근데 레스토랑에서는 구지? 
-/*	   public int getRestaurantID(String restaurantID) {
-	       String sql = " SELECT restaurantID FROM restaurant WHERE restaurantID= ? ";
-	       try {
+	   @Override
+	   public int filesUploadRestaurant(String restaurantID, List<FoodimageDTO> list) throws Exception {
+	   Connection conn = getConnection();
+	   String SQL = " INSERT INTO foodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
+	   PreparedStatement pstmt = conn.prepareStatement(SQL);
+	   int result = 0;
+	   if(list!=null) {
+		   for(FoodimageDTO foodimageDTO : list) {
+			   pstmt.setString(1, foodimageDTO.getRestaurantID_FK());
+			   pstmt.setString(2,foodimageDTO.getImageCategory() );
+			   pstmt.setString(3,foodimageDTO.getCImage() );
+			   pstmt.setString(4,foodimageDTO.getSImage() );
+			   result = pstmt.executeUpdate();
+			   result = result*result;
+		   }//for
+	   }//if
 	   
-	          PreparedStatement pstmt = getConnection().prepareStatement(sql);
-	          pstmt.setString(1,restaurantID );
-	          rs = pstmt.executeQuery();
-	          if(rs.next()) {
-	             return rs.getInt(1);
-	          }
-	       } catch (SQLException e) {
-	         e.printStackTrace();
-	      }
-	       return 0;
-	    }
-
-*/
-
+	   closeConnection(pstmt, conn);
+	   return result;
+	   }
 
 }//  class

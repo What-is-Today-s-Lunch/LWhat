@@ -92,6 +92,12 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 		return 0;
 	}
 
+	@Override
+	public int filesUploadRestaurant(String restaurantID, List<FoodimageDTO> list) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 	
