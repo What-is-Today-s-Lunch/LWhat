@@ -16,7 +16,7 @@
    rel="stylesheet">
 
 <title>마이페이지</title>
-<%
+<%-- <%
 	//1. 한글설정 & 변수생성
 	String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
 	//1-1.id값확인 -없으면 로그인페이지로 이동
@@ -28,7 +28,7 @@
 	MemberDTO memberDTO = new MemberDTO();
 	memberDTO = memberService.viewMembers(memberID);
 	//3. 데이터처리 : 테이블로 표현
-%>
+%> --%>
 </head>
 <body>
 <div id="top">
@@ -38,18 +38,17 @@
    </div>
 <br><br>
     <div id="bottom">
-        <form method ="post" action = "memberDeleteProc.jsp">
-            회원아이디 : <%=memberDTO.getMemberID()%><br><br>
-            회원비밀번호 : <%=memberDTO.getMemberPW() %><br><br>
-            회원이름 : <%=memberDTO.getName() %><br><br>
-            회원이메일 : <%=memberDTO.getEmail() %><br><br>
-            회원닉네임 : <%=memberDTO.getNickName() %><br><br>
-            회원가입일 : <%=memberDTO.getjoinDate() %><br><br>
+        <form method ="post" action = "${webapproot}/memberdeleteproc.do">
+            회원아이디 : ${memberDTO.memberID}<br><br>
+            회원비밀번호 : ${memberDTO.memberPW}<br><br>
+            회원이름 : ${memberDTO.name}<br><br>
+            회원이메일 : ${memberDTO.email}<br><br>
+            회원닉네임 : ${memberDTO.nickName}<br><br>
+            회원가입일 : ${memberDTO.joinDate}<br><br>
              <input type="submit" class="in" id="button" value="탈퇴하기"><br>
              <input type="button" class="in" id = "button" value="뒤로가기"
              onclick="location.href='javascript:history.back();'">
         </form>
-    </div>
     </div>
 </body>
 </html>

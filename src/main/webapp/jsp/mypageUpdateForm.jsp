@@ -39,7 +39,7 @@
    </div>
 <br><br>
     <div id="bottom">
-        <form method="post" action="mypageUpdateProc.jsp">
+        <form method="post" action="${webapproot}/membermypageform.do">
         회원아이디 : <%=memberDTO.getMemberID()%><br><br>
         회원비밀번호 변경<br><input type="password" class="in" name="password" value="<%=memberDTO.getMemberPW()%>"><br>
         회원이름 변경<br><input type="text" class="in" name="name" value="<%=memberDTO.getName()%>"><br>

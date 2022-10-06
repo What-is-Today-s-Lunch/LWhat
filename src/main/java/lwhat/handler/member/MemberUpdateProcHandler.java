@@ -5,10 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import lwhat.handler.CommandHandler;
 
-public class MemberLoginFormHandler implements CommandHandler {
+public class MemberUpdateProcHandler implements CommandHandler {
+
 	@Override
-	public String process(HttpServletRequest request, HttpServletResponse response) {
+	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		return "/jsp/loginForm.jsp";
+		return null;
 	}
+
 }

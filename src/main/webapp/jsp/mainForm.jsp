@@ -25,7 +25,7 @@
 				<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
 				<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
 				<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
-				<li><a href="../jsp/loginForm.jsp">회원정보수정</a></li>
+				<li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
 			</ul>
 		</div>
 		<div class="slide">

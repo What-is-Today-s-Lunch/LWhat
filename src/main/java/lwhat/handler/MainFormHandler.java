@@ -1,14 +1,12 @@
-package lwhat.handler.member;
+package lwhat.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import lwhat.handler.CommandHandler;
-
-public class MemberLoginFormHandler implements CommandHandler {
+public class MainFormHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		
-		return "/jsp/loginForm.jsp";
+		return "/jsp/mainForm.jsp";
 	}
 }
