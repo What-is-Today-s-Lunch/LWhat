@@ -48,19 +48,20 @@ String fileName = multipartRequest.getOriginalFileName("file");
 String fileRealName = multipartRequest.getFilesystemName("file"); */
 
 String realFolder = "";
-String saveFolder = "jsp\\upload";
+String saveFolder = "C:\\eclipse_workspace\\LWhat\\src\\main\\webapp\\upload";
 String encType = "UTF-8";
 int maxSize = 5*1024*1024;
 ServletContext context = this.getServletContext();
 realFolder = context.getRealPath(saveFolder);
-MultipartRequest multipartRequest = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+MultipartRequest multipartRequest = new MultipartRequest(request, saveFolder, maxSize, encType, new DefaultFileRenamePolicy());
 
 String file = multipartRequest.getOriginalFileName("filename");
 String fileName = multipartRequest.getFilesystemName("filename");
 
+//HttpServletRequest req = null;
 //db 이미지 저장 테스트 imageFile, contentTest
-/* File imageFile = new File("C:\\eclipse_workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp9\\wtpwebapps\\LWhat\\jsp\\upload\\file1.png"); // 경로 지정 실패 
-FileInputStream contentTest = new FileInputStream(imageFile); */
+//File imageFile = new File(req.getSession().getServletContext().getRealPath("file1.png")); // 경로 지정 실패 
+//FileInputStream contentTest = new FileInputStream(imageFile);
 
 //write 변수
 String title = multipartRequest.getParameter("title");
@@ -97,11 +98,11 @@ BoardService boardService2 = new BoardFileUploadDAOImpl();
 boardService2.fileUploadBoard(file, fileName, gPostingNum);
 //boardService2.fileUploadBoardDB(file, fileName, contentTest, gPostingNum);   // 파일 db저장 서비스  테스트 
 
-if(fileName != null){
-	File oldFile = new File(realFolder + "\\" + fileName);
-	File newFile = new File(realFolder+ "\\" + (gPostingNum) + "file.jpg");
+if (fileName != null){
+	File oldFile = new File(saveFolder + "\\" + fileName);
+	File newFile = new File(saveFolder+ "\\" + (gPostingNum) + "file.jpg");
 	oldFile.renameTo(newFile);
-}
+} 
 
 out.println("<script>");
 out.println("location.href = '../jsp/totalBoardForm.jsp'");

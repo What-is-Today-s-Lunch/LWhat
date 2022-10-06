@@ -82,7 +82,7 @@
 						</div>
 					
 						<div class="bt_wrap">
-							<input type="submit" class="on" value="등록">
+							<input type="submit" class="on" value="등록" />
 							<a href="totalBoardForm.jsp" >취소</a>
 						</div>
 					</div>
