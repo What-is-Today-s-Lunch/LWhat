@@ -4,6 +4,8 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type ="text/javascript" src="../js/kakaoAdressAPI.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
@@ -69,7 +71,11 @@
 							<div class= "info">
 								<dl>
 									<dt>주소입력</dt>
-									<dd><input type = "text" placeholder = "주소 입력"/></dd>
+									<dd><input type="text" id="address_kakao" name="address" placeholder="주소입력" readonly /></dd>
+								</dl>
+								<dl>
+									<dt>상세주소입력</dt>
+									<dd><input type="text" name="address_detail" placeholder="상세주소입력" /></dd>
 								</dl>
 							</div>
 							<div class= "info">
