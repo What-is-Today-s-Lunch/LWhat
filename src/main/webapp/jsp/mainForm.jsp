@@ -8,30 +8,43 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../css/style_banner_slide.css">
+<script type="text/javascript" src="../js/slide.js"></script>
+<script type="text/javascript" src="../js/upBtn.js"></script>
 <title>오늘 뭐 먹지?</title>
 </head>
 <body>
 	<div class="wrap">
-		<div class="intro_bg">
-			<div class="header">
-				<div class="searchArea">
-					<form>
-						<input type="search" placeholder="search"> <span>검색</span>
-					</form>
-				</div>
-				<ul class="nav">
-					<li><a href="../jsp/mainForm.jsp">오늘뭐먹지</a></li>
-					<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
-					<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
-					<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
-					<li><a href="../jsp/mypageForm.jsp">마이페이지</a></li>
-				</ul>
+		<div class="header">
+			<div class="searchArea">
+				<form>
+					<input type="search" placeholder="search"> <span>검색</span>
+				</form>
 			</div>
-			<div class="intro_text">
-				<h1>오늘 뭐먹지 ?</h1>
-				<h4 class="contents1">우리만의 점심 커뮤니티</h4>
+			<ul class="nav">
+				<li><a href="../jsp/mainForm.jsp">오늘뭐먹지</a></li>
+				<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
+				<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
+				<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
+				<li><a href="../jsp/loginForm.jsp">회원정보수정</a></li>
+			</ul>
+		</div>
+		<div class="slide">
+			<div class="container">
+				<div class="inner">
+					<image src="../image/배민1.jpg">
+				</div>
+				<div class="inner">
+					<image src="../image/요기요1.jpg">
+				</div>
+				<div class="inner">
+					<image src="../image/쿠팡이츠1.jpg">
+				</div>
 			</div>
 		</div>
+		<p id="slidebutton" align="right">
+		<button class="버튼1" onclick="slideOne();">1</button>
+		<button class="버튼2" onclick="slideTwo();">2</button>
+		<button class="버튼3" onclick="slideThree();">3</button>
 	</div>
 	<!-- intro end-->
 	<ul class="amount">
@@ -109,12 +122,22 @@
 				</div>
 				<div class="contents1_bold">카페</div>
 				<div class="contents2">contents</div>
+				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AD';">MORE</a></div>
+			</li>
+
+			<li>
+				<div class="icon_img">
+					<img src="../image/etc.png">
+				</div>
+				<div class="contents1_bold">기타</div>
+				<div class="contents2">contents</div>
 				<div class="more"><a href="#" onclick="location.href='koreaFoodList.jsp?category=A1AZ';">MORE</a></div>
 			</li>
 
 		</ul>
 
 	</div>
+	<div class="up-btn" onclick="scrollToTop();">↑</div>
 	<div class="footer">
 		<div>PROJECT</div>
 		<div>
