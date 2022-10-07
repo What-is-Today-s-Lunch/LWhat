@@ -20,7 +20,7 @@
 <title>글쓰기</title>
 </head>
 <body>
-<%
+<%-- <%
 String memberID = (String) session.getAttribute("memberID"); 
 //int gCommentID = (int)(session.getAttribute("gCommentID"));
 int gCommentID = 0;
@@ -40,7 +40,7 @@ gboardDTO = boardService.viewBoard(gPostingID);
 
 GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 	
-%>
+%> --%>
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
@@ -69,12 +69,13 @@ GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 			<div class="board_title">
 				<strong>댓글 수정</strong>
 			</div>
-			<form method="post" action="updateConmentAction.jsp?gCommentID=<%=gCommentID %>&&gPostingID=<%=gPostingID %> ">
-				
+			<form method="post" action="${webapproot}/gboardcommentupdateproc.do?gCommentID=${gCommentID}&gPostingID=${gPostingID}">
+				<%-- <input type="hidden" name="gCommentID" value="${gCommentID}" />
+				<input type="hidden" name="gPostingID" value="${gPostingID}" /> --%>
 				<div class="board_write_wrap">
 						<div class="board_write">
 							<div class="cont">
-								<textarea name="content" rows="2" cols="80"></textarea>
+								<textarea name="content" rows="2" cols="80">${content}</textarea>
 							</div>
 						</div>
 					

@@ -8,11 +8,20 @@
   padding: 0px;
   color: #000;
 }
+body{
+	background-color: #f1f2f3;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+#contentImage > img{
+	max-width: 100%;
+	margin-top: 10px;
 }
 
 .form-group-sm .form-control {

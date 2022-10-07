@@ -20,14 +20,15 @@ public class GbaordUpdateFormHandler implements CommandHandler {
 		if(request.getParameter("gPostingID") != null){
 			gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
 		}
+		
 		BoardService boardService = new BoardViewDAOImpl();
 		GboardDTO gboardDTO = new GboardDTO();
 		gboardDTO.setgPostingID(gPostingID);
-		System.out.println("여기---->"+gboardDTO.getgPostingID());
 		gboardDTO = boardService.viewBoard(gPostingID);
-		System.out.println("여기---->"+gboardDTO.getgPostingID());
+		
 		request.setAttribute("gPostingID", gboardDTO.getgPostingID());
 		request.setAttribute("gboardDTO", gboardDTO);
+		
 		return "/jsp/GboardUpdate.jsp";
 	}
 

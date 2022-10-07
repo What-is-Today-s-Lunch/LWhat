@@ -73,7 +73,7 @@
 					
 						<div class="bt_wrap">
 							<input type="submit" value="글수정하기" />
-							<a href="totalBoardView.jsp" >취소</a>
+							<a href="${webapproot}/gboardview.do?gPostingID=${gboardDTO.gPostingID}">취소</a>
 						</div>
 					</div>
 			</form>

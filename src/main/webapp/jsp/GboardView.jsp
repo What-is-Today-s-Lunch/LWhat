@@ -23,27 +23,6 @@
 <title>글쓰기</title>
 </head>
 <body>
-	<%-- <%
-	request.setCharacterEncoding("UTF-8");
-	String memberID = (String) session.getAttribute("memberID");
-	
-	int gPostingID = 0;
-	 if(request.getParameter("gPostingID") != null){
-		gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
-	} 
-	
-	
-	int pageNumber = 1;
-	if (request.getParameter("pageNumber") != null){
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-	}
-	
-	BoardService boardService = new BoardViewDAOImpl();
-	GboardDTO gboardDTO = new GboardDTO();
-		
-	gboardDTO = boardService.viewBoard(gPostingID);
-	%> --%>
-
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
@@ -63,7 +42,7 @@
 		</div>
 	</div>
 
-	<div class="main_text0" style="height: 830px">
+	<div class="main_text0">
 		<!-- <h2 align="center">종합 게시판</h2>
       
       <div class="contents2">-->
@@ -100,9 +79,11 @@
 							File viewFile = new File(real+"\\"+gPostingID+"file.jpg");
 							if(viewFile.exists()){
 							%> --%>
+							<div id="contentImage">
 							<c:if test="${pn1 eq 'a' }">
 							<img src="/LWhat/jsp/upload/${gboardDTO.gPostingID}file.jpg">
 							</c:if>
+							</div>
 					</div>
 					
 					<div>
@@ -116,10 +97,10 @@
 								<div class="date">${generalcommentDTO.mDate}</div>
 									<!-- 댓글 수정, 삭제 표시 -->
 									<c:if test="${generalcommentDTO.memberID_FK eq memberID}">
-										<a href="${webapproot}/gboardcommentupdate.do?gCommentID=
-											${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">수정</a>
+										<a href="${webapproot}/gboardcommentupdateform.do?gCommentID=
+											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}&content=${generalcommentDTO.content}">수정</a>
 										<a href="${webapproot}/gboardcommentdelete.do?gCommentID=
-											${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">삭제</a>
+											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}">삭제</a>
 									</c:if>
 							</c:forEach>
 						</div>
@@ -136,9 +117,10 @@
 						
 						<div>
 							<form method="post" action="${webapproot}/gboardcommentwrite.do?gPostingID=${gboardDTO.gPostingID}">
+								<!-- <input type="hidden" name="gCommentID" value="${generalcommentDTO.gCommentID}" /> -->
 								<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 									<tr>
-										<td style="border-bottom:none;" valign="middle"><br><br><${memberID}</td>
+										<td style="border-bottom:none;" valign="middle"><br><br>${memberID}</td>
 										<td><input type="text" style="height:50px;" class="form-control" placeholder="상대방을 존중하는 댓글을 남깁시다." name = "content"></td>
 										<td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
 									</tr>
