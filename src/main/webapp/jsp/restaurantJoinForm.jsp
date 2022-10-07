@@ -84,7 +84,7 @@
 								</dl>
 								<dl>
 									<dt>메뉴판 사진</dt>
-									<dd><input type = "file" name= "file2"placeholder = "메뉴판"/></dd>
+									<dd><input type = "file" name= "file2" placeholder = "메뉴판"/></dd>
 								</dl>
 							</div>
 							<div class= "info">

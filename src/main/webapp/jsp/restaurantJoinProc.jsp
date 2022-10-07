@@ -19,12 +19,15 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String realFolder = "";
-	String saveFolder = "jsp\\restaurantupload";
+	String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/restaurantupload";
 	String encType = "UTF-8";
 	int maxSize = 5*1024*1024;
-	ServletContext context = this.getServletContext();
-	realFolder = context.getRealPath(saveFolder);
-	MultipartRequest multipartRequest = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+	
+	//저장경로 지정해줌 
+	
+	
+	//애초에 생성하면 저장되버림 
+	MultipartRequest multipartRequest = new MultipartRequest(request, saveFolder, maxSize, encType, new DefaultFileRenamePolicy());
 	
 	//레스토랑파라미터 받음
 	String resID = multipartRequest.getParameter("restaurantID");//식당명
@@ -84,22 +87,21 @@
 	//RestaurantService restaurantServiceFile= new RestaurantFileUploadDAOImpl();
 	//restaurantServiceFile.fileUploadRestaurant(restaurantDTO.getRestaurantID(), foodimageDTO);
 	
-	//받아온 파일 이름 바꿔서 저장하려고함.
+	//받아온 파일 이름 바꿔서 저장하려고함. 여기서 이미지 파일이 경로에 저장됨 
 	if(filename1!=null){
 		File oldFile1 = new File(saveFolder+"\\"+filename1);
-		File newFile1 = new File(saveFolder+"\\"+resID+".jpg");
+		File newFile1 = new File(saveFolder+"\\"+resID+"1.jpg");
 		oldFile1.renameTo(newFile1);
 	}
 	
 	if(filename2!=null){
 		File oldFile2 = new File(saveFolder+"\\"+filename2);
-		File newFile2 = new File(saveFolder+"\\"+resID+".jpg");
+		File newFile2 = new File(saveFolder+"\\"+resID+"2.jpg");
 		oldFile2.renameTo(newFile2);
 	}
 	
-	System.out.print("여긴오니?");
 	
-	//DTO 를 리스트에 설정 + 파일 업로드 
+	//DTO 를 리스트에 설정 + 파일명을 db에 저장 
 	List<FoodimageDTO> foodImageList = new ArrayList<FoodimageDTO>();
 	foodImageList.add(foodimageDTO);
 	foodImageList.add(foodimageDTO2);
@@ -111,7 +113,6 @@
 	}
 	
 	
-System.out.print("애초에 이까지 안오는구나?");
 	response.sendRedirect("mainForm.jsp");
 %>
 
