@@ -10,24 +10,11 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style_category.css">
-<link rel="stylesheet" href="../css/css.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/style_category.css">
+<link rel="stylesheet" href="/LWhat/css/css.css">
 <title>글쓰기</title>
 </head>
 <body>
-<% 
-
-	String memberID = (String) session.getAttribute("memberID"); 
-	
-	if(memberID == null){
-		PrintWriter script = response.getWriter();
-		script.println("<script>");
-		script.println("alert('로그인이 되어있지 않습니다!')");
-		script.println("location.href = 'loginForm.jsp'");
-		script.println("</script>");
-	}
-	%>
-
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
@@ -56,7 +43,7 @@
 			<div class="board_title">
 				<strong>글쓰기</strong>
 			</div>
-			<form method="post" action="writeAction.jsp" enctype="multipart/form-data" accept-charset="UTF-8">
+			<form method="post" action="${webapproot}/gboardwriteproc.do" enctype="multipart/form-data" accept-charset="UTF-8">
 			<div class="board_write_wrap">
 						<div class="board_write">
 							<div class="title">
@@ -83,7 +70,7 @@
 					
 						<div class="bt_wrap">
 							<input type="submit" class="on" value="등록" />
-							<a href="totalBoardForm.jsp" >취소</a>
+							<a href="${webapproot}/gboardlist.do">취소</a>
 						</div>
 					</div>
 		

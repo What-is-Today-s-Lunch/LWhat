@@ -18,12 +18,12 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style_category.css">
-<link rel="stylesheet" href="../css/css.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/style_category.css">
+<link rel="stylesheet" href="/LWhat/css/css.css">
 <title>글쓰기</title>
 </head>
 <body>
-	<%
+	<%-- <%
 	request.setCharacterEncoding("UTF-8");
 	String memberID = (String) session.getAttribute("memberID");
 	
@@ -42,7 +42,7 @@
 	GboardDTO gboardDTO = new GboardDTO();
 		
 	gboardDTO = boardService.viewBoard(gPostingID);
-	%>
+	%> --%>
 
 	<div class="wrap">
 		<div class="intro_bg">
@@ -75,74 +75,66 @@
 			
 			<div class="board_view_wrap">
 				<div class="board_view">
-					<div class="title">제목 :   <%=gboardDTO.getTitle()%></div>
+					<div class="title">제목 :   ${gboardDTO.title}</div>
 					<div class="info">
 						<dl>
 							<dt>번호</dt>
-							<dd><%=gboardDTO.getgPostingID()%></dd>
+							<dd>${gboardDTO.gPostingID}</dd>
 						</dl>
 						<dl>
 							<dt>글쓴이</dt>
-							<dd><%=gboardDTO.getMemberID_FK() %></dd>
+							<dd>${gboardDTO.memberID_FK}</dd>
 						</dl>
 						<dl>
 							<dt>작성일</dt>
-							<dd><%=gboardDTO.getmDate()%></dd>
+							<dd>${gboardDTO.mDate}</dd>
 						</dl>
 						<dl>
 							<dt>조회</dt>
-							<dd><%=gboardDTO.getClickCount() %></dd>
+							<dd>${gboardDTO.clickCount}</dd>
 						</dl>
 					</div>
-					<div class="cont"><%=gboardDTO.getContent()%>
-							<%
+					<div class="cont">${gboardDTO.content}
+							<%-- <%
 							String real = "C:\\eclipse_workspace\\LWhat\\src\\main\\webapp\\upload";
 							File viewFile = new File(real+"\\"+gPostingID+"file.jpg");
 							if(viewFile.exists()){
-							%>
-							<img src="../upload/<%=gPostingID%>file.jpg">
-							<%} %>
+							%> --%>
+							<c:if test="${pn1 eq 'a' }">
+							<img src="/LWhat/jsp/upload/${gboardDTO.gPostingID}file.jpg">
+							</c:if>
 					</div>
 					
 					<div>
+					<!-- Comment -->
 						<div>
-							<%
-							BoardService boardListService = new BoardConmentListDAOImpl();
-							GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
-							ArrayList<GeneralcommentDTO> list = boardListService.conmentListBoard(pageNumber);
-							for(int i =0; i < list.size(); i++){
-								if(gPostingID == list.get(i).getPostingID_FK()){
-							%>
-							<div class="category"><%=list.get(i).getMemberID_FK() %></div>
-							<div class="content"><%=list.get(i).getContent() %></div>
-							<div class="date"><%=list.get(i).getmDate() %></div>
-							<%if(memberID.equals(list.get(i).getMemberID_FK())){ %>
-								<a href="GboardUpdateConment.jsp?gCommentID=<%=list.get(i).getgCommentID() %>&&gPostingID=<%=gPostingID%>">수정</a>
-								<a href="deleteConmentAction.jsp?gCommentID=<%=list.get(i).getgCommentID() %>&&gPostingID=<%=gPostingID%>">삭제</a>
-							<%		} %>
-							<%	} %>
-							<%} %>
+							<c:set var="listSize" value="${list.size()}"></c:set>
+							<c:forEach var="generalcommentDTO" items="${list}" varStatus="stat">
+									<div class="category">${generalcommentDTO.memberID_FK}</div>
+									<div class="content">${generalcommentDTO.content}</div>
+									<div class="date">${generalcommentDTO.mDate}</div>
+										<c:if test="${pn2 eq 'b' }">
+											<a href="${webapproot}/gboardcommentupdate.do?gCommentID=${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">수정</a>
+											<a href="${webapproot}/gboardcommentdelete.do?gCommentID=${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">삭제</a>
+										</c:if>
+							</c:forEach>
 						</div>
+						
 						<div class="board_page">
-						<%
-						BoardConmentListDAOImpl boardCommentServiceNextPage = new BoardConmentListDAOImpl();
-							if(pageNumber != 1){
-						%>
-							<a href="GboardView.jsp?pageNumber=<%=pageNumber-1 %>&&gPostingID=<%=gboardDTO.getgPostingID() %>" class="bt prev"><</a>
-						<% 
-							} if(boardCommentServiceNextPage.nextPage(pageNumber + 1)){		
-						%>
-							<a href="GboardView.jsp?pageNumber=<%=pageNumber+1 %>&&gPostingID=<%=gboardDTO.getgPostingID() %>" class="bt next">></a>
-						<%
-							}
-						%>
+						<c:if test="${pn3 eq 'c' }">
+							<a href="${webapproot}/gboardview.do?pageNumber=${pageNumber-1}&&gPostingID=${gboardDTO.gPostingID}" class="bt prev"><</a>
+						</c:if>
+						<c:if test="${pn4 eq 'd'}">
+							<a href="${webapproot}/gboardview.do?pageNumber=${pageNumber+1}&&gPostingID=${gboardDTO.gPostingID}" class="bt next">></a>
+						</c:if>
 						
 						</div>
+						
 						<div>
-							<form method="post" action="commentWriteAction.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">
+							<form method="post" action="${webapproot}/gboardcommentwrite.do?gPostingID=${gboardDTO.gPostingID}">
 								<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 									<tr>
-										<td style="border-bottom:none;" valign="middle"><br><br><%=memberID%></td>
+										<td style="border-bottom:none;" valign="middle"><br><br><${memberID}</td>
 										<td><input type="text" style="height:50px;" class="form-control" placeholder="상대방을 존중하는 댓글을 남깁시다." name = "content"></td>
 										<td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
 									</tr>
@@ -153,12 +145,11 @@
 				</div>
 				
 				<div class="bt_wrap">
-					<a href="totalBoardForm.jsp" class="on">목록</a> 
-					<%
-					if(memberID.equals(gboardDTO.getMemberID_FK())){ %>
-					<a href="GboardUpdate.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">수정하기</a>
-					<a href="deleteAction.jsp?gPostingID=<%=gboardDTO.getgPostingID()%>">삭제하기</a>
-					<%} %>
+					<a href="${webapproot}/gboardlist.do" class="on">목록</a> 
+					<c:if test="${pn5 eq 'f'}">
+					<a href="${webapproot}/gboardupdate.do?gPostingID=${gboardDTO.gPostingID}">수정하기</a>
+					<a href="${webapproot}/gboarddelete.do?gPostingID=${gboardDTO.gPostingID}">삭제하기</a>
+					</c:if>
 				</div>
 			</div>
 		</div>

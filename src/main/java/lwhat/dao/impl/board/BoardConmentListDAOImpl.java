@@ -11,7 +11,7 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
 	private ResultSet rs;
 	@Override
 	public ArrayList<GeneralcommentDTO> conmentListBoard(int pageNumber) throws Exception{
-		String SQL = " SELECT * FROM generalcomment WHERE gCommentID < ? order by gCommentID DESC LIMIT 5 ";
+		String SQL = " SELECT * FROM generalcomment WHERE gCommentID < ?  order by gCommentID DESC LIMIT 5 ";
 		ArrayList<GeneralcommentDTO> list = new ArrayList<GeneralcommentDTO>();
 		try {
 			PreparedStatement pstmt = getConnection().prepareStatement(SQL);

@@ -6,6 +6,8 @@
 <%@page import="java.util.HashMap" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 	
 	
@@ -16,48 +18,11 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style_category.css">
-<link rel="stylesheet" href="../css/css.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/style_category.css">
+<link rel="stylesheet" href="/LWhat/css/css.css">
 <title>종합 게시판</title>
 </head>
 <body>
-<%
-	int pageNumber = 1;
-	if (request.getParameter("pageNumber") != null){
-		pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-	}
-	
-	String bdomainParam = request.getParameter("memberID_FK") == null? "" : request.getParameter("memberID_FK");
-    String searchDomainParam = request.getParameter("searchDomain") == null? "" : request.getParameter("searchDomain");
-    String searchTextParam = request.getParameter("title") == null? "" : request.getParameter("title");
-   
-    // 검색을 버튼을 눌렀을 때, 어떤 기준으로 찾을 것인지 (제목, 작성자, 제목 + 작성자)의 값과 검색 내용을 map으로 묶어서 넘겨준다. 
-    Map<String,String> map = new HashMap<>();
-   // (제목, 작성자, 제목 + 작성자)
-   map.put("searchDomain", searchDomainParam);
-   // 검색 내용
-   map.put("title", searchTextParam);
-   
-   // domain이 전체일 경우
-    if(bdomainParam == null || bdomainParam.equals("")){
-       // 검색 내용 X
-       if(searchTextParam == null || searchTextParam.equals("")){
-          pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(pageNumber));   
-       }
-       else{   // 검색 내용 O
-          pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(bdomainParam, map));   
-       }
-   }else{   // domain이 특정 값일 경우
-      // 검색 내용 X
-      if(searchTextParam == null || searchTextParam.equals("")){
-         pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(pageNumber));
-      }
-      else{   // 검색 내용 O
-         pageContext.setAttribute("list", new BoardListDAOImpl().listBoard(bdomainParam, map));
-      }
-   }
-	
-%>
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
@@ -77,7 +42,7 @@
 		</div>
 	</div>
 
-	<div class="main_text0" style="height: 830px">
+	<div class="main_text0">
 		<!-- <h2 align="center">종합 게시판</h2>
 		
 		<div class="contents2">-->
@@ -98,40 +63,31 @@
 								<div class="count">조회</div>
 							</div>
 							<div>
-							<%
-								BoardService boardService = new BoardListDAOImpl();
-								GboardDTO gboardDTO = new GboardDTO();
-								ArrayList<GboardDTO> list = boardService.listBoard(pageNumber);
-								for(int i = 0; i < list.size(); i++){
-							%>
-							<c:forEach var="i" begin="0" end=list.size() >
-								<div class="num">${list.get(i).getgPostingID()}</div>
-								<div class="num"><%= list.get(i).getgPostingID() %></div>
-								<div class="category"><%= list.get(i).getBoardCategory() %></div>
-								<div class="title"><a href="GboardView.jsp?gPostingID=<%= list.get(i).getgPostingID() %>"><%= list.get(i).getTitle() %></a></div>
-								<div class="write"><%= list.get(i).getMemberID_FK() %></div>
-								<div class="date"><%= list.get(i).getmDate()%></div>
-								<div class="count"><%= list.get(i).getClickCount() %></div>
+							<c:set var="listSize" value="${list.size()}"></c:set>
+							<c:forEach var="gboardDTO" items="${list}" varStatus="stat">
+							
+								<div class="num">${gboardDTO.gPostingID}</div>
+								<div class="category">${gboardDTO.boardCategory}</div>
+								<div class="title"><a href="${webapproot}/gboardview.do?gPostingID=${gboardDTO.gPostingID}">${gboardDTO.title}</a></div>
+								<div class="write">${gboardDTO.memberID_FK}</div>
+								<div class="date">${gboardDTO.mDate}</div>
+								<div class="count">${gboardDTO.clickCount}</div>
+
 							</c:forEach>
 							</div>
 						</div>
 						
 						<div class="board_page">
-						<%
-							BoardListDAOImpl boardServiceNextPage = new BoardListDAOImpl();
-							if(pageNumber != 1){
-						%>
-							<a href="totalBoardForm.jsp?pageNumber=<%=pageNumber-1 %>" class="bt prev"><</a>
-						<% 
-							} if(boardServiceNextPage.nextPage(pageNumber + 1)){		
-						%>
-							<a href="totalBoardForm.jsp?pageNumber=<%=pageNumber+1 %>" class="bt next">></a>
-						<%
-							}
-						%>
+	 					
+						<c:if test="${pn1 eq 'a'}">
+							<a href="${webapproot}/gboardlist.do?pageNumber=${pageNumber-1}" class="bt prev"><</a>
+						</c:if>
+						<c:if test="${pn2 eq 'b' }">
+							<a href="${webapproot}/gboardlist.do?pageNumber=${pageNumber+1}" class="bt next">></a>
+						</c:if>
 						</div>
 						<div class="bt_wrap">
-							<a href="GboardWrite.jsp" class="on">등록</a>
+							<a href="${webapproot}/gboardwriteform.do" class="on">등록</a>
 							<!--<a href="#" >수정</a>-->
 						</div>
 					</div>
