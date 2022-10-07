@@ -31,4 +31,3 @@ if(result > 0){
 	out.println("</script> ");
 }
 %>
-

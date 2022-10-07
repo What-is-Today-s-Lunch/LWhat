@@ -18,18 +18,6 @@
 <title>글쓰기</title>
 </head>
 <body>
-<%
-String memberID = (String) session.getAttribute("memberID"); 
-int gPostingID = 0;
-if(request.getParameter("gPostingID") != null){
-	gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
-}
-BoardService boardService = new BoardViewDAOImpl();
-GboardDTO gboardDTO = new GboardDTO();
-
-gboardDTO = boardService.viewBoard(gPostingID);
-	
-%>
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
@@ -58,14 +46,15 @@ gboardDTO = boardService.viewBoard(gPostingID);
 			<div class="board_title">
 				<strong>글쓰기 수정</strong>
 			</div>
-			<form method="post" action="updateAction.jsp?gPostingID=<%=gboardDTO.getgPostingID() %>">
-				
+			<form method="post" action="${webapproot}/gboardupdateproc.do">
+				<input type="hidden" name="gPostingID" value="${gPostingID}" />
 				<div class="board_write_wrap">
 						<div class="board_write">
 							<div class="title">
 								<dl>
 									<dt>제목</dt>
-									<dd><textarea name="title" rows="1" cols="80"><%=gboardDTO.getTitle() %></textarea></dd>
+									<dd><textarea name="title" rows="1" cols="80">${gboardDTO.title}</textarea></dd>
+									<dd> 아이디 : "${gbaordDTO.gPostingID}" </dd>
 								</dl>
 								
 							</div>
@@ -78,7 +67,7 @@ gboardDTO = boardService.viewBoard(gPostingID);
 										</select><br /> <br /> 
 							</div>
 							<div class="cont">
-								<textarea name="content" rows="10" cols="80"><%=gboardDTO.getContent() %></textarea>
+								<textarea name="content" rows="10" cols="80">${gboardDTO.content}</textarea>
 							</div>
 						</div>
 					
