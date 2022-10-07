@@ -23,6 +23,7 @@ public class GboardViewHandler implements CommandHandler {
 		// session
 		HttpSession session = request.getSession();
 		String memberID = (String) session.getAttribute("memberID");// object
+		request.setAttribute("memberID", memberID);
 
 		int gPostingID = 0;
 		if (request.getParameter("gPostingID") != null) {
@@ -51,20 +52,16 @@ public class GboardViewHandler implements CommandHandler {
 		// comment
 		BoardService boardListService = new BoardConmentListDAOImpl();
 		GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
-		ArrayList<GeneralcommentDTO> list1 = boardListService.conmentListBoard(pageNumber);
-		ArrayList<GeneralcommentDTO> list = new ArrayList<>();
-		//System.out.println("---------------------" + gPostingID);
-		//System.out.println("---------------------" + request.getParameter("gPostingID_FK"));
-		for(int i = 0 ; i < list1.size(); i++) {    
-			if (gPostingID == list1.get(i).getPostingID_FK()) {
-				System.out.println("-------------" + gPostingID);
-				System.out.println("-------------" + list1.get(i).getPostingID_FK());
-				list.add(list1.get(1));
-				request.setAttribute("list", list);
-				if (memberID.equals(list1.get(i).getMemberID_FK())) {
-					String pn2 = "b";
-					request.setAttribute("pn2", pn2);
-				} // if
+		ArrayList<GeneralcommentDTO> list = boardListService.conmentListBoard(pageNumber);
+		ArrayList<GeneralcommentDTO> list1 = new ArrayList<>();
+		for(int i = 0 ; i < list.size(); i++) {    
+			// 전체 리스트를 받아 게시물 댓글번호와 게시물번호가 같은것만 list1에 추가
+			if (gPostingID == list.get(i).getPostingID_FK()) {
+				list1.add(list.get(i));
+				//특정게시물에 표시될 댓글 (list1)
+				System.out.println("---------------------"+list.get(i));
+				request.setAttribute("list1", list1);
+				// 세션의 memberID와 list1의 memberID_FK가 같을때만 수정삭제 버튼 표시
 			}// if
 		}
 
@@ -82,9 +79,8 @@ public class GboardViewHandler implements CommandHandler {
 
 		// gboard update delete check
 		if (memberID.equals(gboardDTO.getMemberID_FK())) {
-			String pn5 = "f";
-			request.setAttribute("pn5", pn5);
-		}
+            request.setAttribute("isSameWriter", "true");
+         }
 
 		return "/jsp/GboardView.jsp";
 	}

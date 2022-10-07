@@ -35,7 +35,7 @@
              id="button" value="회원정보수정하기"><br>
              <input type="button" class="in" onclick="location.href='${webapproot}/memberlogoutproc.do'" 
              id="button" value="로그아웃"><br>
-             <input type="button" class="in" onclick="location.href='${webapproot}/mainform.do'" 
+             <input type="button" class="in" onclick="history.back();" 
              id="button" value="뒤로가기"><br>
              <input type="button" class="in" onclick="location.href='${webapproot}/memberdeleteform.do'" 
              id="button" value="회원탈퇴하기"><br>

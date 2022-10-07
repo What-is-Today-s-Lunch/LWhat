@@ -108,15 +108,19 @@
 					<div>
 					<!-- Comment -->
 						<div>
-							<c:set var="listSize" value="${list.size()}"></c:set>
-							<c:forEach var="generalcommentDTO" items="${list}" varStatus="stat">
-									<div class="category">${generalcommentDTO.memberID_FK}</div>
-									<div class="content">${generalcommentDTO.content}</div>
-									<div class="date">${generalcommentDTO.mDate}</div>
-										<c:if test="${pn2 eq 'b' }">
-											<a href="${webapproot}/gboardcommentupdate.do?gCommentID=${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">수정</a>
-											<a href="${webapproot}/gboardcommentdelete.do?gCommentID=${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">삭제</a>
-										</c:if>
+							<!-- 댓글 표시  -->
+							<c:set var="listSize" value="${list1.size()}"></c:set>
+							<c:forEach var="generalcommentDTO" items="${list1}" varStatus="stat">
+								<div class="category">${generalcommentDTO.memberID_FK}</div>
+								<div class="content">${generalcommentDTO.content}</div>
+								<div class="date">${generalcommentDTO.mDate}</div>
+									<!-- 댓글 수정, 삭제 표시 -->
+									<c:if test="${generalcommentDTO.memberID_FK eq memberID}">
+										<a href="${webapproot}/gboardcommentupdate.do?gCommentID=
+											${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">수정</a>
+										<a href="${webapproot}/gboardcommentdelete.do?gCommentID=
+											${generalcommentDTO.gCommentID}&gPostingID=${gPostingID}">삭제</a>
+									</c:if>
 							</c:forEach>
 						</div>
 						
@@ -145,12 +149,12 @@
 				</div>
 				
 				<div class="bt_wrap">
-					<a href="${webapproot}/gboardlist.do" class="on">목록</a> 
-					<c:if test="${pn5 eq 'f'}">
-					<a href="${webapproot}/gboardupdate.do?gPostingID=${gboardDTO.gPostingID}">수정하기</a>
-					<a href="${webapproot}/gboarddelete.do?gPostingID=${gboardDTO.gPostingID}">삭제하기</a>
-					</c:if>
-				</div>
+               <a href="${webapproot}/gboardlist.do" class="on">목록</a> 
+               <c:if test="${isSameWriter}">
+                  <a href="${webapproot}/gboardupdateform.do?gPostingID=${gboardDTO.gPostingID}">수정하기</a>
+                  <a href="${webapproot}/gboarddelete.do?gPostingID=${gboardDTO.gPostingID}">삭제하기</a>
+               </c:if>
+            </div>
 			</div>
 		</div>
 	</div>

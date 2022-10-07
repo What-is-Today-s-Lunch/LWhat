@@ -39,7 +39,7 @@ public class MemberLoginProcHandler implements CommandHandler{
       // 로그인 페이지에서 가져온 값 member.~, -> MemberDAO의 result에서 실행 후 result 반환
       int result = 0;
       result = memberLoginDAOImpl.loginMember(memberDTO.getMemberID(), memberDTO.getMemberPW());
-
+      request.setAttribute("result", result);
       if (result == 1) { // 로그인 성공
          // 세션 생성
          session.setAttribute("memberID", memberDTO.getMemberID());
@@ -48,7 +48,6 @@ public class MemberLoginProcHandler implements CommandHandler{
 //         script.println("</script>");
          return "/jsp/mainForm.jsp";
       }
-
       if (result == 0) { // 비밀번호 불일치
 //         script.println("<script>");
 //        script.println("alert('비밀번호가 틀립니다.')");
