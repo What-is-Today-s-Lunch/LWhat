@@ -26,12 +26,12 @@ public class RestaurantFormHandler implements CommandHandler{
 		List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant(restaurantTableCode);//카테고리에따른 
 		//restaurant테이블정보를 리스트로 저장, restaurantDTO에 값 들어가있는상태
 		
-		request.setAttribute("cdlist", code);
+		request.setAttribute("codename", code.getCodeName());
 		request.setAttribute("rslist", restaurantDTO);
 		//후기 개수 구하기 임플객체를 담아줘서 메소드 바로 실행하게함 
 		RestaurantReviewListDTOImpl rLDAO = new RestaurantReviewListDTOImpl();
 		request.setAttribute("rLDAO", rLDAO);
 		
-		return null;
+		return "/jsp/foodList.jsp";
 	}
 }

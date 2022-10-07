@@ -14,10 +14,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <meta charset="UTF-8" />
-<%
-request.setCharacterEncoding("utf-8");
-response.setCharacterEncoding("utf-8");
 
+<%-- <% 
 String seMemID = (String)session.getAttribute("memberID");
 int revID = Integer.parseInt(request.getParameter("revID"));
 
@@ -34,15 +32,10 @@ ReviewDTO reviewDTO = restaurantService.viewRestaurantReview(revID);
 
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-/*
-if(seMemID!=reviewDTO.getMemberID_FK()){
 
-	out.print("남의 후기는 수정하지 마라탕~");
-}else{
-*/
 pageContext.setAttribute("review", restaurantService.viewRestaurantReview(revID));
 
-%>
+ %> --%>
 
 <title>Review 수정</title>
 		<table>
@@ -63,12 +56,12 @@ pageContext.setAttribute("review", restaurantService.viewRestaurantReview(revID)
             			</tr>
             		</thead>
            </table> 		
-            			<form method="post" action="restaurantReviewUpdateProc.jsp">
-            		  		<input type="hidden" name="revID" value="<%=revID%>" />
+            			<form method="post" action="${webapproot}/restaurantreviewupdateproc.do">
+            		  		<input type="hidden" name="revID" value="${review.revID}" />
             		  		<input type="hidden" name="restaurantID" value="${RID}" />
             		  		<input name="content" value='${review.content}'>
             		  		<a>${review.memberID_FK}</a>
-            		  		<a><%=sdf.format(reviewDTO.getmDate())%></a>
+            		  		<a>${mDate}</a>
             		  		<input name="score" value='${review.score}' />
 							<button type="submit">[수정]</button> 
  						</form>

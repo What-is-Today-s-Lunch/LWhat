@@ -12,25 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.Map"%>
-<%
-String gPostingIDParam = request.getParameter("restaurantID")==null?"":request.getParameter("restaurantID");
-RestaurantService restaurantService = new RestaurantListDAOImpl();
-//restaurantService.listCountRestaurantReview(restaurandID);
 
-String restaurantTableCode = request.getParameter("category"); //넘어온 category(codevalue)를 변수에 저장
-CodeService findcodename = new CodeDAOImpl();	
-CodeTableDTO code = findcodename.codeView(restaurantTableCode); //code에 codetable정보 담음,CodeTableDTO에 값들어간상태 
-
-List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant(restaurantTableCode);//카테고리에따른 
-//restaurant테이블정보를 리스트로 저장, restaurantDTO에 값 들어가있는상태
-
-pageContext.setAttribute("cdlist", code);
-pageContext.setAttribute("rslist", restaurantDTO);
-//후기 개수 구하기 임플객체를 담아줘서 메소드 바로 실행하게함 
-RestaurantReviewListDTOImpl rLDAO = new RestaurantReviewListDTOImpl();
-pageContext.setAttribute("rLDAO", rLDAO);
-
-%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -39,8 +21,9 @@ pageContext.setAttribute("rLDAO", rLDAO);
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/foodListStyle.css">
-<title><%=request.getParameter("category") %></title>
+<link rel="stylesheet" type="text/css" href="/LWhat/css/foodListStyle.css">
+<title>${codename}</title>
+
 </head>
 <body>
 	<div class="wrap">
@@ -63,21 +46,20 @@ pageContext.setAttribute("rLDAO", rLDAO);
 	</div>
 
 	<div class="main_text0">
-		<h1><%=request.getParameter("category") %></h1>
+		<h1>${codename}</h1>
 		<div class="contents1">
 			<ul class="icons">
 			
-					<c:set var="listSize" value="${rslist.size()}" />
+				<!--	<c:set var="listSize" value="${rslist.size()}" /> -->
 					<c:forEach var="restaurantlist"  items="${rslist}" varStatus="c" >
-					<c:set var="bno" value="${rslistSize-stat.count+1}" />
+				<!--	<c:set var="bno" value="${rslistSize-stat.count+1}" />-->
 				<li>
 					<div class="icon_img">
-						<img src="../image/koreafood.png">
+						<img src="/LWhat/image/koreafood.png">
 					</div>
-					
-					
+
 					<div class="contents1_bold">
-					<a href="#" onclick="location.href='restaurantFormTest.jsp?restaurantID=${restaurantlist.restaurantID}';" >
+					<a href="#" onclick="location.href='${webapproot}/restaurantformtest.do?restaurantID=${restaurantlist.restaurantID}'">
 					${restaurantlist.restaurantID}</a>
 					</div>
 					<div class="contents2">★${restaurantlist.scoreAvg}</div>

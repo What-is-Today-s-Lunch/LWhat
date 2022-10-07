@@ -7,7 +7,7 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
    rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="LWhat/css/style_banner_slide.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/style_banner_slide.css">
 <script type="text/javascript" src="../js/slide.js"></script>
 <script type="text/javascript" src="../js/upBtn.js"></script>
 <title>오늘 뭐 먹지?</title>
@@ -21,9 +21,9 @@
             </form>
          </div>
          <ul class="nav">
-            <li><a href="../jsp/mainForm.jsp">오늘뭐먹지</a></li>
+            <li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
             <li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
-            <li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
+            <li><a href="${webapproot}/gboardlist.do">돌려돌려 돌림판</a></li>
             <li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
             <li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
          </ul>
@@ -86,7 +86,7 @@
             </div>
             <div class="contents1_bold">한식</div>
             <div class="contents2">contents</div>
-            <div class="more"><a href="#" onclick="location.href='${webapproot}/memberjoinform.do?category=A1AA'">MORE</a></div>
+            <div class="more"><a href="#" onclick="location.href='${webapproot}/restaurantform.do?category=A1AA'">MORE</a></div>
          </li>
 
          <li>
@@ -95,7 +95,7 @@
             </div>
             <div class="contents1_bold">양식</div>
             <div class="contents2">contents</div>
-            <div class="more"><a href="#" onclick="location.href='${webapproot}/memberjoinform.do?category=A1AC'">MORE</a></div>         
+            <div class="more"><a href="#" onclick="location.href='${webapproot}/restaurantform.do?category=A1AC'">MORE</a></div>         
          </li>
 
          <li>
@@ -104,7 +104,7 @@
             </div>
             <div class="contents1_bold">중식</div>
             <div class="contents2">contents</div>
-            <div class="more"><a href="#" onclick="location.href='${webapproot}/memberjoinform.do?category=A1AB'">MORE</a></div>         
+            <div class="more"><a href="#" onclick="location.href='${webapproot}/restaurantform.do?category=A1AB'">MORE</a></div>         
             </li>
 
          <li>
@@ -113,7 +113,7 @@
             </div>
             <div class="contents1_bold">일식</div>
             <div class="contents2">contents</div>
-            <div class="more"><a href="#" onclick="location.href='${webapproot}/memberjoinform.do?category=A1AE'">MORE</a></div>
+            <div class="more"><a href="#" onclick="location.href='${webapproot}/restaurantform.do?category=A1AE'">MORE</a></div>
          </li>
       
          <li>
@@ -122,7 +122,7 @@
             </div>
             <div class="contents1_bold">카페</div>
             <div class="contents2">contents</div>
-            <div class="more"><a href="#" onclick="location.href='${webapproot}/memberjoinform.do?category=A1AD'">MORE</a></div>
+            <div class="more"><a href="#" onclick="location.href='${webapproot}/restaurantform.do?category=A1AD'">MORE</a></div>
          </li>
 
          <li>
@@ -131,7 +131,7 @@
             </div>
             <div class="contents1_bold">기타</div>
             <div class="contents2">contents</div>
-            <div class="more"><a href="#" onclick="location.href='${webapproot}/memberjoinform.do?category=A1AZ'">MORE</a></div>
+            <div class="more"><a href="#" onclick="location.href='${webapproot}/restaurantform.do?category=A1AZ'">MORE</a></div>
          </li>
 
       </ul>

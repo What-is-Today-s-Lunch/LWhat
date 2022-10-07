@@ -38,11 +38,11 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 
 	//리뷰의 개수를 구하는 메소드 추가
 	@Override
-	public int listCountRestaurantReview(String restaurandID) throws Exception{
+	public int listCountRestaurantReview(String restaurantID) throws Exception{
 		Connection conn = getConnection();
 		String sql = " select count(revID) from review where restaurantID_FK= ? ";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, restaurandID);
+		pstmt.setString(1, restaurantID);
 		
 		ResultSet rs = pstmt.executeQuery();
 		int revCount = 0;		

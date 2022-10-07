@@ -14,13 +14,14 @@ public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 	Connection conn = getConnection();
 	Timestamp t = new Timestamp(System.currentTimeMillis());
 	
-	String sql = " select memberID_FK, score, content, mDate from review where revID=? ";
+	String sql = " select revID, memberID_FK, score, content, mDate from review where revID=? ";
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	 pstmt.setInt(1, revID);
 	 ResultSet rs = pstmt.executeQuery();
 	 ReviewDTO reviewDTO = new ReviewDTO();
 	 if(rs!=null && rs.next()) {
-		 reviewDTO.setMemberID_FK(rs.getString("memberID_FK"));
+		reviewDTO.setRevID(rs.getInt("revID")); 
+		reviewDTO.setMemberID_FK(rs.getString("memberID_FK"));
 		reviewDTO.setContent(rs.getString("content"));
 		reviewDTO.setScore(rs.getInt("score"));
 		reviewDTO.setmDate(t);

@@ -10,23 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%--레스토랑ID와 매칭되는 리스트 가져오기 --%>
-<%
-String restaurantIDParam = request.getParameter("restaurantID") == null ? "" : request.getParameter("restaurantID");
-out.print(restaurantIDParam);
 
-RestaurantService restaurantViewService = new RestaurantViewDAOImpl();
-
-RestaurantDTO restautantIDDTO = restaurantViewService.viewRestaurant(restaurantIDParam);
-out.print(restautantIDDTO);
-pageContext.setAttribute("rsIDlist", restautantIDDTO);
-
-session.setAttribute("restaurantID", restaurantIDParam);
-
-RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-List<ReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
-pageContext.setAttribute("revlist", revlistDTO);
-
-%>
 
 
 <!DOCTYPE html>
@@ -37,14 +21,14 @@ pageContext.setAttribute("revlist", revlistDTO);
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=21afcb7bc526fdabb51cbdd812b8c6ec"></script>
-<script type="text/javascript" src="../js/locationService.js"></script>
+<script type="text/javascript" src="/LWhat/js/locationService.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/foodListStyle.css">
-<link rel="stylesheet" href="../css/style2.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/foodListStyle.css">
+<link rel="stylesheet" href="/LWhat/css/style2.css">
 
-<title>종합 게시판</title>
+<title>${rsIDDTO.restaurantID}</title>
 </head>
 <body>
 	<div class="wrap">
@@ -74,29 +58,34 @@ pageContext.setAttribute("revlist", revlistDTO);
 		<!-- 지도 그려주기 -->
 		<div class="contents2">
 			<div id="map">
-				<input type="hidden" id="longtitude" value="${rsIDlist.longitude}" />
-				<input type="hidden" id="latitude" value="${rsIDlist.latitude}" /> <input
-					type="hidden" id="resID" value="${rsIDlist.restaurantID}" />
+				<input type="hidden" id="longtitude" value="${rsIDDTO.longitude}" />
+				<input type="hidden" id="latitude" value="${rsIDDTO.latitude}" /> <input
+					type="hidden" id="resID" value="${rsIDDTO.restaurantID}" />
 			</div>
 
 			<div id="roadview"></div>
 			<div class="restinfo">
-				<h1>${rsIDlist.restaurantID}</h1>
-				주소 : ${rsIDlist.addressDetail} <br /> 연락처 : ${rsIDlist.rTelNum}<br /> 위도
-				: ${rsIDlist.longitude}<br /> 경도 : ${rsIDlist.latitude}
+				<h1>${rsIDDTO.restaurantID}</h1>
+				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.rTelNum}<br /> 위도
+				: ${rsIDDTO.longitude}<br /> 경도 : ${rsIDDTO.latitude}
 			</div>
-			<div id="resimage">이미지</div>
+			<div id="resimage">
+				<c:if test="${pn1 eq 'a' }">
+            		<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}1.jpg">
+            		<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}2.jpg">
+     		 	</c:if>
+			</div>
 		</div>
 		<div class="contents4">
 			<div class="text">
 				<p>후기쓰기</p>
 			</div>
-			<form action="restaurantReviewWriteProc.jsp" name="review" method="get">
-				<input type="hidden" name="restaurantID" value="${rsIDlist.restaurantID}"/>
+			<form action="${webapproot}/restaurantreviewwriteproc.do" name="review" method="post">
+				<input type="hidden" name="restaurantID" value="${rsIDDTO.restaurantID}"/>
 				<div class="bt_wrap">
 					<div id="score" align="right">
 						<select id="select_value" name="score" onchange="ChangeValue()">
-							<option value="">--별점선택--</option>
+							<option value="0">--별점선택--</option>
 							<option value="1">★</option>
 							<option value="2">★★</option>
 							<option value="3">★★★</option>
@@ -120,17 +109,17 @@ pageContext.setAttribute("revlist", revlistDTO);
 					<div class="dd">수정</div>
 				</div>
 				<div>
-					<c:set var="listSize" value="${revlist.size()}" />
-					<c:forEach var="reviewlist" items="${revlist}" varStatus="i">
-						<c:set var="bno" value="${revlistSize-stat.count+1}" />
+					<c:set var="listSize" value="${revDTO.size()}" />
+					<c:forEach var="reviewDTO" items="${revDTO}" varStatus="i">
+						<c:set var="bno" value="${revDTOSize-stat.count+1}" />
 						<div class="num">${i.count}</div>
-						<div class="writer">${reviewlist.memberID_FK}</div>
-						<div class="review">${reviewlist.content}</div>
-						<div class="date">${reviewlist.wDate}</div>
-						<div class="score">${reviewlist.score}</div>
+						<div class="writer">${reviewDTO.memberID_FK}</div>
+						<div class="review">${reviewDTO.content}</div>
+						<div class="date">${reviewDTO.wDate}</div>
+						<div class="score">${reviewDTO.score}</div>
 						<div class="dd">
-							<button onclick="location.href='restaurantReviewUpdateForm.jsp?revID=${reviewlist.revID}';">[수정]</button>
-							<button onclick="location.href='restaurantReviewDeleteProc.jsp?revID=${reviewlist.revID}&&restaurantID=${rsIDlist.restaurantID}';">[삭제]</button>
+							<button onclick="location.href='restaurantreviewupdateform.do?revID=${reviewDTO.revID}'">[수정]</button>
+							<button onclick="location.href='restaurantreviewdeleteproc.do?revID=${reviewDTO.revID}&&restaurantID=${rsIDDTO.restaurantID}';">[삭제]</button>
 						</div>
 					</c:forEach>
 				</div>
