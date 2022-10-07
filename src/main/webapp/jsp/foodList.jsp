@@ -17,11 +17,13 @@ String gPostingIDParam = request.getParameter("restaurantID")==null?"":request.g
 RestaurantService restaurantService = new RestaurantListDAOImpl();
 //restaurantService.listCountRestaurantReview(restaurandID);
 
-String restaurantTableCode = request.getParameter("category");
-CodeService findcodename = new CodeDAOImpl();
-CodeTableDTO code = findcodename.codeView(restaurantTableCode);
+String restaurantTableCode = request.getParameter("category"); //넘어온 category(codevalue)를 변수에 저장
+CodeService findcodename = new CodeDAOImpl();	
+CodeTableDTO code = findcodename.codeView(restaurantTableCode); //code에 codetable정보 담음,CodeTableDTO에 값들어간상태 
 
-List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant(restaurantTableCode);
+List<RestaurantDTO> restaurantDTO = restaurantService.listRestaurant(restaurantTableCode);//카테고리에따른 
+//restaurant테이블정보를 리스트로 저장, restaurantDTO에 값 들어가있는상태
+
 pageContext.setAttribute("cdlist", code);
 pageContext.setAttribute("rslist", restaurantDTO);
 //후기 개수 구하기 임플객체를 담아줘서 메소드 바로 실행하게함 
