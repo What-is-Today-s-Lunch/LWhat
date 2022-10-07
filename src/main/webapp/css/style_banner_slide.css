@@ -84,10 +84,12 @@ h1 {
 
 
 .header{
-  width:1280px;
-  margin:auto;
-  display:flex;
+  width:auto;
   height: 86px;
+  margin:auto;
+  background-color: #1f1f1f;
+  display:flex;
+  justify-content: center;  
 }
 .searchArea{
   width:300px;
