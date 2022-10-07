@@ -40,5 +40,4 @@ public interface BoardDAO extends BoardService{
 		return 0;
 		
 	}
-
 }

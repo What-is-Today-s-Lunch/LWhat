@@ -15,6 +15,7 @@ public abstract int deleteBoard(int gPostingID) throws Exception;
 public abstract int updateBoard(GboardDTO gboardDTO, String memberID) throws Exception;
 public abstract ArrayList<GboardDTO> listBoard(int pageNumber) throws Exception;
 public abstract ArrayList<GboardDTO> listBoard(String bdomain, Map<String, String> search) throws Exception;
+public ArrayList<GboardDTO> listBoard(String searchText, String title) throws Exception;
 public abstract GboardDTO viewBoard(int gPostingID) throws Exception;
 public abstract int fileUploadBoard(String cImage, String sImage, int gPostingID) throws Exception;
 public abstract int fileUploadBoardDB(String cImage, String sImage,FileInputStream content ,int gPostingID) throws Exception;

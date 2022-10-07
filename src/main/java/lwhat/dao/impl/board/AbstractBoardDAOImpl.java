@@ -36,6 +36,10 @@ public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implem
 	public ArrayList<GboardDTO> listBoard(String bdomain, Map<String, String> search) throws Exception{
 		return null;
 	}
+	@Override
+	public ArrayList<GboardDTO> listBoard(String searchText, String title) throws Exception{
+		return null;
+	}
 
 	@Override
 	public GboardDTO viewBoard(int gPostingID) throws Exception {

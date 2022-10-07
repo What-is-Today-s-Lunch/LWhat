@@ -92,14 +92,14 @@
 						</div>
 					</div>
 				<!-- </div> -->
-		<!-- 들어가야할 내용  -->
+		<!-- 검색기능 -->
 		</div>
 		<div class="contents1">
-		<form name="searchDomain" action="../jsp/totalBoardForm.jsp">
+		<form name="searchDomain" method="post" action="${webapproot}/gboardlist.do">
 			<select name="searchDomain">
-				<option value="">전체</option>
-				<option value="">제목</option>
-				<option value="">작성자</option>
+				<!-- <option value="">전체</option> -->
+				<option value="title">제목</option>
+				<option value="memberID_FK">작성자</option>
 			</select>&nbsp; 
 			<input type="text" name="searchText" placeholder="검색">&nbsp; 
 			<input type="button" value="검색" onclick="this.form.submit()"><br /> <br />
