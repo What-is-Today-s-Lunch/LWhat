@@ -17,6 +17,9 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.MultipartResponse;
+
 import lwhat.constants.LwhatConstants;
 
 public class RestaurantImageUploadServlet extends HttpServlet {
@@ -34,9 +37,9 @@ public class RestaurantImageUploadServlet extends HttpServlet {
 	
 	}//doPost
 
-	public void process(HttpServletRequest req, HttpServletResponse resp, String dispatchURI) {
+	public void process(HttpServletRequest req, HttpServletResponse resp , String dispatchURI) {
 		String sqlFileUpload = " update foodimage set  cImage=?, sImage=?, content=? where restaurantID_FK=? ";
-		String sqlFileUploadDir = "C:/eclipse_workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/LWhat/jsp/restaurantupload";
+		String sqlFileUploadDir = "C:/eclipse_workspace/LWhat/src/main/webapp/restaurantupload";
 		try {
 	         Collection<Part> parts = req.getParts();
 	         List<String> sImageList = new ArrayList<String>();
@@ -45,12 +48,11 @@ public class RestaurantImageUploadServlet extends HttpServlet {
 	         for (Part part : parts) {//날짜별 폴더에 저장하겠다는거. 
 	            if (part.getHeader("Content-Disposition").contains("filename=") && part.getSize()>0)  {
 	               File uploadDir = new File(
-	                     LwhatConstants.querys.getProperty(sqlFileUploadDir)
-	                     + new SimpleDateFormat("yyyyMMdd")
-	                        .format(new Date(System.currentTimeMillis()))
+	                 sqlFileUploadDir+"/"
+	                     + new SimpleDateFormat("yyyyMMdd").format(new Date(System.currentTimeMillis()))+".jpg"
 	               );
 	               if (!uploadDir.exists()) uploadDir.mkdir();//폴더 없으면 하나 생성해줌 
-	               
+	               System.out.println("여기는 오니?");
 	               //파일 이름 
 	               String uploadFileName = "";
 	               uploadFileName = uploadDir.getPath() + "/" + RandomStringUtils.random(100, true, true);

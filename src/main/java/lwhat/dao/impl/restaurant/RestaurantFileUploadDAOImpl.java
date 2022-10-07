@@ -3,7 +3,6 @@ package lwhat.dao.impl.restaurant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import lwhat.dto.FoodimageDTO;
@@ -42,7 +41,7 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 			   pstmt.setString(1, foodimageDTO.getRestaurantID_FK());
 			   pstmt.setString(2,foodimageDTO.getImageCategory() );
 			   pstmt.setString(3,foodimageDTO.getCImage() );
-			   pstmt.setString(4,foodimageDTO.getSImage() );
+			   pstmt.setString(4,"바꿔~"+foodimageDTO.getSImage() );
 			   result = pstmt.executeUpdate();
 			   result = result*result;
 		   }//for

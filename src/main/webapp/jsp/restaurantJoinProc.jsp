@@ -1,3 +1,4 @@
+<%@page import="java.util.Collection"%>
 <%@page import="lwhat.dao.impl.restaurant.RestaurantFileListDAOImpl"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -18,7 +19,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String realFolder = "";
-	String saveFolder = "jsp\\upload";
+	String saveFolder = "jsp\\restaurantupload";
 	String encType = "UTF-8";
 	int maxSize = 5*1024*1024;
 	ServletContext context = this.getServletContext();
@@ -42,6 +43,9 @@
 	String filename2 = multipartRequest.getFilesystemName("file2");
 	
 	String foodname = multipartRequest.getParameter("foodname");
+	
+	//이름변경
+	
 	
 	
 	//restaurantDTO 설정 
@@ -80,6 +84,21 @@
 	//RestaurantService restaurantServiceFile= new RestaurantFileUploadDAOImpl();
 	//restaurantServiceFile.fileUploadRestaurant(restaurantDTO.getRestaurantID(), foodimageDTO);
 	
+	//받아온 파일 이름 바꿔서 저장하려고함.
+	if(filename1!=null){
+		File oldFile1 = new File(saveFolder+"\\"+filename1);
+		File newFile1 = new File(saveFolder+"\\"+resID+".jpg");
+		oldFile1.renameTo(newFile1);
+	}
+	
+	if(filename2!=null){
+		File oldFile2 = new File(saveFolder+"\\"+filename2);
+		File newFile2 = new File(saveFolder+"\\"+resID+".jpg");
+		oldFile2.renameTo(newFile2);
+	}
+	
+	System.out.print("여긴오니?");
+	
 	//DTO 를 리스트에 설정 + 파일 업로드 
 	List<FoodimageDTO> foodImageList = new ArrayList<FoodimageDTO>();
 	foodImageList.add(foodimageDTO);
@@ -91,14 +110,8 @@
 		e.printStackTrace();
 	}
 	
-	//받아온 파일 이름 바꿔서 저장하려고함.
-	if(filename1!=null){
-		File oldFile = new File(saveFolder+"\\"+filename1);
-		File newFile = new File(saveFolder+"\\"+resID+".jpg");
-		oldFile.renameTo(newFile);
-	}
 	
-
+System.out.print("애초에 이까지 안오는구나?");
 	response.sendRedirect("mainForm.jsp");
 %>
 
