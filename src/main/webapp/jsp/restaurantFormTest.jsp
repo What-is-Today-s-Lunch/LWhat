@@ -40,11 +40,11 @@
 					</form>
 				</div>
 				<ul class="nav">
-					<li><a href="../jsp/mainForm.jsp">오늘뭐먹지</a></li>
-					<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
-					<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
-					<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
-					<li><a href="../jsp/loginForm.jsp">LOGIN</a></li>
+					<li><a href="/LWhat/jsp/mainForm.jsp">오늘뭐먹지</a></li>
+					<li><a href="/LWhat/jsp/totalBoardForm.jsp">종합게시판</a></li>
+					<li><a href="/LWhat/jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
+					<li><a href="/LWhat/jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
+					<li><a href="/LWhat/jsp/loginForm.jsp">LOGIN</a></li>
 				</ul>
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 				: ${rsIDDTO.longitude}<br /> 경도 : ${rsIDDTO.latitude}
 			</div>
 			<div id="resimage">
-				<c:if test="${pn1 eq 'a' }">
+				<c:if test="${'imagefiles' eq 'imagefiles'}">
             		<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}1.jpg">
             		<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}2.jpg">
      		 	</c:if>
@@ -118,8 +118,10 @@
 						<div class="date">${reviewDTO.wDate}</div>
 						<div class="score">${reviewDTO.score}</div>
 						<div class="dd">
+						<c:if test="${sessionScope.memberID eq reviewDTO.memberID_FK}">
 							<button onclick="location.href='restaurantreviewupdateform.do?revID=${reviewDTO.revID}'">[수정]</button>
 							<button onclick="location.href='restaurantreviewdeleteproc.do?revID=${reviewDTO.revID}&&restaurantID=${rsIDDTO.restaurantID}';">[삭제]</button>
+						</c:if>
 						</div>
 					</c:forEach>
 				</div>
