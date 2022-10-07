@@ -15,7 +15,6 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
    rel="stylesheet">
-
 <title>마이페이지</title>
 </head>
 <body>

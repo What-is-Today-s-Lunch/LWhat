@@ -104,14 +104,15 @@
 								ArrayList<GboardDTO> list = boardService.listBoard(pageNumber);
 								for(int i = 0; i < list.size(); i++){
 							%>
+							<c:forEach var="i" begin="0" end=list.size() >
+								<div class="num">${list.get(i).getgPostingID()}</div>
 								<div class="num"><%= list.get(i).getgPostingID() %></div>
 								<div class="category"><%= list.get(i).getBoardCategory() %></div>
 								<div class="title"><a href="GboardView.jsp?gPostingID=<%= list.get(i).getgPostingID() %>"><%= list.get(i).getTitle() %></a></div>
 								<div class="write"><%= list.get(i).getMemberID_FK() %></div>
 								<div class="date"><%= list.get(i).getmDate()%></div>
 								<div class="count"><%= list.get(i).getClickCount() %></div>
-							<% } %>
-							
+							</c:forEach>
 							</div>
 						</div>
 						

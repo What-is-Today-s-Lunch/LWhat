@@ -155,7 +155,6 @@ $(function(){
                 <input type="button" class="in" onclick="location.href='${webapproot}/memberloginform.do';" 
              id="button" value="로그인으로"><br>
    </form>
-          
     </div>
 </body>
 </html>

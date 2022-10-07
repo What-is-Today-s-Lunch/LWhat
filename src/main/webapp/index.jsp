@@ -3,5 +3,5 @@
 <c:set var="webapproot" value="/LWhat" scope="application" />
 
 <script>
-location.href="${webapproot}/memberloginform.do"; // ?????????
+location.href="${webapproot}/memberloginform.do";
 </script>
