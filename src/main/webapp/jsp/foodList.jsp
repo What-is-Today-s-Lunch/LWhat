@@ -22,6 +22,10 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/LWhat/css/foodListStyle.css">
+<link rel="stylesheet" type="text/css"
+	href="/LWhat/css/style_banner_slide.css">
+<script type="text/javascript" src="../js/slide.js"></script>
+<script type="text/javascript" src="../js/upBtn.js"></script>
 <title>${codename}</title>
 
 </head>
@@ -30,9 +34,11 @@
 		<div class="intro_bg">
 			<div class="header">
 				<div class="searchArea">
-					<form>
-						<input type="search" placeholder="search"> <span>검색</span>
-					</form>
+					<form action="${webapproot}/restaurantform.do" method="get">
+					<input type="hidden" name="code" value="A1"> <input
+						type="search" name="restaurantID" placeholder="search">
+					<button type="submit">전송</button>
+				</form>
 				</div>
 				<ul class="nav">
 					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
