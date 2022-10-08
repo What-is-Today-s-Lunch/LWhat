@@ -27,16 +27,18 @@ public class RestaurantFormTestHandler implements CommandHandler {
 		request.setAttribute("rsIDDTO", restautantIDDTO);
 
 		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-		List<ReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
-		request.setAttribute("revDTO", revlistDTO);
+		List<ReviewDTO> revlist = restaurantreviewService.listRestaurantReview(restaurantIDParam);
+		request.setAttribute("revDTO", revlist);
 
 		// restaurantReview update delete check
-		if (session.getAttribute("memberID").equals(revlistDTO.get(0).getMemberID_FK())) {
+		if(!revlist.isEmpty()) {
+			if (session.getAttribute("memberID").equals(revlist.get(0).getMemberID_FK())) {
 			System.out.println("와안뜨노 로그인 아이디"+session.getAttribute("memberID"));
-			System.out.println("왜안뜨노 리뷰 아이디"+revlistDTO.get(0).getMemberID_FK());
+			System.out.println("왜안뜨노 리뷰 아이디"+revlist.get(0).getMemberID_FK());
 			request.setAttribute("isSameWriter", "true");
+			}
 		}
 
 		return "/jsp/restaurantFormTest.jsp";
-	}
-}
+	}//process
+}//class
