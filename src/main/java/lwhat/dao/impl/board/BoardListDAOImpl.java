@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 import lwhat.dto.board.GboardDTO;
 
-public class BoardListDAOImpl extends AbstractBoardDAOImpl{
+public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
 
 	@Override
-	public ArrayList<GboardDTO> listBoard(int pageNumber) throws Exception{
-		
+	public ArrayList<GboardDTO> listBoard(int pageNumber) throws Exception {
+
 		String SQL = " SELECT * FROM generalposting WHERE gPostingID < ? order by gPostingID DESC LIMIT 5 ";
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
 		try {
@@ -38,6 +38,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl{
 		}
 		return list;
 	}
+
 	// 검색기능
 //	@Override
 //	   public ArrayList<GboardDTO> listBoard(String searchText, Map<String, String> searchMap) throws Exception{
@@ -67,15 +68,15 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl{
 //	      }
 //	     // select * from generalposting where memberID_FK= 'searchText'  and 내용 + like % 타이틀 % order by gPostingID desc
 //	
-	public boolean nextPage (int pageNumber) {
+	public boolean nextPage(int pageNumber) {
 		String SQL = " SELECT * FROM generalposting WHERE gPostingID < ? ";
 
 		try {
 			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				return true;
 			}
 		} catch (Exception e) {
@@ -83,23 +84,29 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl{
 		}
 		return false;
 	}
-		@Override
-		public ArrayList<GboardDTO> listBoard(String title, String searchText) throws Exception{
-			 String sql = "select * from generalposting";
-			 String boardTitle = null;
-			 System.out.println("-----------------"+title);
-			 if (title.equals("title")) {
-				boardTitle = " where title ";
-			 }
-			 else if (title.equals("memberID_FK")) {
-				 boardTitle = "where memberID_FK ";
-			 }
-			 sql+=(boardTitle+"like '%"+searchText+"%' ");
-			 System.out.println("-----------쿼리문이요------------"+sql);
-			 
-			 
-			 return null;
-		 }
+
+	@Override
+	public ArrayList<GboardDTO> listBoard(String title, String searchText) throws Exception {
+		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
+		String SQL = "select * from generalposting";
+		String boardTitle = null;
+		//System.out.println("-----------------" + title);
+		
+		if (title.equals("title")) {
+			boardTitle = " where title ";
+		} else if (title.equals("memberID_FK")) {
+			boardTitle = "where memberID_FK ";
+		}
+		SQL += (boardTitle + "like '%" + searchText + "%' ");
+		
+		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+		}catch (Exception e) {
+			
+		}
+
+		return null;
+	}
 
 	public int getNext() {
 		String sql = " SELECT gPostingID FROM generalposting ORDER BY gPostingID DESC ";

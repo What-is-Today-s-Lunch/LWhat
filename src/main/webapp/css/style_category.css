@@ -219,6 +219,32 @@ h1 {
   margin:25px auto;
 }
 
+.board_list .writer{
+	width: 10%;
+}
+.board_list .content{
+	width: 50%;
+}
+.board_list .writetime{
+	width: 20%;
+}
+.board_list .md{
+	width: 20%;
+}
+
+.commentInput{
+}
+
+.commentTable{
+}
+.form-control{
+	background-color: yellow;
+}
+
+.commentTable > tr > td{
+	width: calc(100%/3);
+}
+
 /* main_text1*/
 .main_text1{
   width: 100%;

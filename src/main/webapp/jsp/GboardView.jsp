@@ -86,23 +86,31 @@
 							</div>
 					</div>
 					
-					<div>
+					<div class="board_list">
 					<!-- Comment -->
-						<div>
+						<div class="top">
 							<!-- 댓글 표시  -->
-							<c:set var="listSize" value="${list1.size()}"></c:set>
-							<c:forEach var="generalcommentDTO" items="${list1}" varStatus="stat">
-								<div class="category">${generalcommentDTO.memberID_FK}</div>
+								<div class="writer">작성자</div>
+								<div class="content">내용</div>
+								<div class="writetime">작성일시</div>
+								<div class="md">수정/삭제</div>
+							</div>	
+							<div>
+								<c:set var="listSize" value="${list1.size()}"></c:set>
+								<c:forEach var="generalcommentDTO" items="${list1}" varStatus="stat">
+								<div class="writer">${generalcommentDTO.memberID_FK}</div>
 								<div class="content">${generalcommentDTO.content}</div>
-								<div class="date">${generalcommentDTO.mDate}</div>
+								<div class="writetime">${generalcommentDTO.mDate}</div>
 									<!-- 댓글 수정, 삭제 표시 -->
+									<div class="md">
 									<c:if test="${generalcommentDTO.memberID_FK eq memberID}">
 										<a href="${webapproot}/gboardcommentupdateform.do?gCommentID=
-											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}&content=${generalcommentDTO.content}">수정</a>
+											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}&content=${generalcommentDTO.content}">수정</a>	
 										<a href="${webapproot}/gboardcommentdelete.do?gCommentID=
 											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}">삭제</a>
-									</c:if>
+									</c:if></div>
 							</c:forEach>
+									</div>
 						</div>
 						
 						<div class="board_page">
@@ -116,12 +124,12 @@
 						</div>
 						
 						<div>
-							<form method="post" action="${webapproot}/gboardcommentwrite.do?gPostingID=${gboardDTO.gPostingID}">
+							<form class="commentInput" method="post" action="${webapproot}/gboardcommentwrite.do?gPostingID=${gboardDTO.gPostingID}">
 								<!-- <input type="hidden" name="gCommentID" value="${generalcommentDTO.gCommentID}" /> -->
-								<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+								<table class="commentTable" style="text-align: center; border: 1px solid #dddddd">
 									<tr>
 										<td style="border-bottom:none;" valign="middle"><br><br>${memberID}</td>
-										<td><input type="text" style="height:50px;" class="form-control" placeholder="상대방을 존중하는 댓글을 남깁시다." name = "content"></td>
+										<td><input type="text" class="form-control" placeholder="상대방을 존중하는 댓글을 남깁시다." name = "content"></td>
 										<td><br><br><input type="submit" class="btn-primary pull" value="댓글 작성"></td>
 									</tr>
 								</table>
