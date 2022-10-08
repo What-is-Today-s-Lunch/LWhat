@@ -50,13 +50,14 @@
 		</div>
 	</div>
 
-	<div class="main_text0" style="height: 1250px">
+	<div class="main_text0">
 		<div class="contents1">.</div>
 		<!-- 들어가야할 내용 div 시작점  -->
 		<!-- 들어가야할 내용  -->
 
 		<!-- 지도 그려주기 -->
 		<div class="contents2">
+		
 			<div id="map">
 				<input type="hidden" id="longtitude" value="${rsIDDTO.longitude}" />
 				<input type="hidden" id="latitude" value="${rsIDDTO.latitude}" /> <input
@@ -68,8 +69,7 @@
 				<h1>${rsIDDTO.restaurantID}</h1>
 				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.rTelNum}<br /> 위도
 				: ${rsIDDTO.longitude}<br /> 경도 : ${rsIDDTO.latitude}
-			</div>
-				<c:if test="${'imagefiles' eq 'imagefiles'}">
+			<c:if test="${'imagefiles' eq 'imagefiles'}">
 					<div class="resimage">
 				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}1.jpg">
 					</div>
@@ -77,6 +77,7 @@
 				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}2.jpg">
 					</div>
      		 	</c:if>
+			</div>
 		</div>
 		<div class="contents4">
 			<div class="text">
