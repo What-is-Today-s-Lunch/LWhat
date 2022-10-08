@@ -3,7 +3,7 @@
 <%@page import="lwhat.service.restaurant.RestaurantService"%>
 <%@page import="lwhat.dto.ReviewDTO"%>
 <%@page import="lwhat.dto.RestaurantDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%

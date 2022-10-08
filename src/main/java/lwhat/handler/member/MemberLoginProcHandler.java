@@ -46,6 +46,14 @@ public class MemberLoginProcHandler implements CommandHandler{
 //         script.println("<script>");
 //         script.println("alert('로그인 성공!')");
 //         script.println("</script>");
+       
+         //관리자 아이디 일 경우 true 값을 받아서 식당등록 페이지에 들어 갈 수 있게 함 
+         if(memberID.equals("megaZ")||memberID.equals("megaZ1")||memberID.equals("megaZ2")) {
+        	 request.setAttribute("user", true);
+ 		}else {
+ 			request.setAttribute("user", false);
+ 		};
+         
          return "/jsp/mainForm.jsp";
       }
       if (result == 0) { // 비밀번호 불일치
