@@ -7,9 +7,9 @@ public class QuestioncommentDTO implements Serializable{
 	public static final long serialVersionUID = 321118118941113583L;
 	private int qCommentID;
 	private String content;
-	private int qPostingID_FK; // questionposting의 qPostingID 와 연결(외래키)
+	private int qPostingID; // questionposting의 qPostingID 와 연결(외래키)
 	private String memberID_FK;// questionposting의 memberID_FK 와 연결(외래키)
-	private Timestamp wDate;
+	private String wDate;
 	
 	public QuestioncommentDTO() {
 		
@@ -31,12 +31,12 @@ public class QuestioncommentDTO implements Serializable{
 		this.content = content;
 	}
 
-	public int getqPostingID_FK() {
-		return qPostingID_FK;
+	public int getqPostingID() {
+		return qPostingID;
 	}
 
-	public void setqPostingID_FK(int qPostingID_FK) {
-		this.qPostingID_FK = qPostingID_FK;
+	public void setqPostingID_FK(int qPostingID) {
+		this.qPostingID = qPostingID;
 	}
 
 	public String getMemberID_FK() {
@@ -47,18 +47,18 @@ public class QuestioncommentDTO implements Serializable{
 		this.memberID_FK = memberID_FK;
 	}
 
-	public Timestamp getwDate() {
+	public String getwDate() {
 		return wDate;
 	}
 
-	public void setwDate(Timestamp wDate) {
+	public void setwDate(String wDate) {
 		this.wDate = wDate;
 	}
 
 	@Override
 	public String toString() {
 		return "QuestioncommentDTO [qCommentID=" + qCommentID + ", content=" + content + ", qPostingID_FK="
-				+ qPostingID_FK + ", memberID_FK=" + memberID_FK + ", wDate=" + wDate + "]";
+				+ qPostingID + ", memberID_FK=" + memberID_FK + ", wDate=" + wDate + "]";
 	}
 
 	

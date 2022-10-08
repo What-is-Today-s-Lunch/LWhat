@@ -12,9 +12,17 @@ public class QboardDTO implements Serializable{
 	private String imageCategory;
 	private String title;
 	private String content;
-	private Timestamp wDate;
-	private Timestamp mDate;
+	private int clickCount;
+	private String wDate;
+	private String mDate;
 	
+	public int getClickCount() {
+		return clickCount;
+	}
+	
+	public void setClickCount(int clickCount) {
+		this.clickCount = clickCount;
+	}
 	public QboardDTO() {
 		
 	}
@@ -51,19 +59,19 @@ public class QboardDTO implements Serializable{
 		this.content = content;
 	}
 
-	public Timestamp getwDate() {
+	public String getwDate() {
 		return wDate;
 	}
 
-	public void setwDate(Timestamp wDate) {
+	public void setwDate(String wDate) {
 		this.wDate = wDate;
 	}
 
-	public Timestamp getmDate() {
+	public String getmDate() {
 		return mDate;
 	}
 
-	public void setmDate(Timestamp mDate) {
+	public void setmDate(String mDate) {
 		this.mDate = mDate;
 	}
 

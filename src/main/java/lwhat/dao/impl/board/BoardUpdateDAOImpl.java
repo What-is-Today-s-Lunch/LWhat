@@ -2,8 +2,8 @@ package lwhat.dao.impl.board;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
+import lwhat.dto.QboardDTO;
 import lwhat.dto.board.GboardDTO;
 import lwhat.util.ConnectionManager;
 
@@ -29,18 +29,22 @@ public class BoardUpdateDAOImpl extends AbstractBoardDAOImpl {
 		return result;
 	}
 	
-	public String getDate() {
-		String sql = " SELECT NOW() ";
-		 try {
-			PreparedStatement pstmt = getConnection().prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if( rs.next()) {
-				return rs.getString(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return "";
+	@Override
+	public int updateQboard(QboardDTO qboardDTO, String memberID) throws Exception {
+		String SQL = " UPDATE questionposting SET boardCategory=?, title=?, content=?, mDate= now() WHERE qPostingID=? AND memberID_FK=?";
+		PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+		
+		pstmt.setString(1, qboardDTO.getboardCategory());
+		pstmt.setString(2, qboardDTO.getTitle());
+		pstmt.setString(3, qboardDTO.getContent());
+		pstmt.setInt(4, qboardDTO.getqPostingID());
+		pstmt.setString(5, memberID);
+		
+		int result = pstmt.executeUpdate();
+		ConnectionManager.closeConnection(pstmt,getConnection());
+		
+		return result;
 	}
+	
 
 }

@@ -40,27 +40,27 @@ public class GboardTotalBoardFormHandler implements CommandHandler {
 		}
 		request.setAttribute("pageNumber", pageNumber);
 
-		/*
-		 * // 검색기능 try { request.setCharacterEncoding("utf-8"); } catch
-		 * (UnsupportedEncodingException uee) { uee.printStackTrace(); }
-		 * 
-		 * String searchDomain = request.getParameter("searchDomain") == null ? "" :
-		 * request.getParameter("searchDomain"); String searchText =
-		 * request.getParameter("searchText") == null ? "" :
-		 * request.getParameter("searchText");
-		 * 
-		 * System.out.println("================"+searchDomain);
-		 * System.out.println("================"+searchText);
-		 * 
-		 * Map<String, String> searchMap = new HashMap<String, String>();
-		 * searchMap.put("searchDomain", searchDomain); searchMap.put("searchText",
-		 * searchText);
-		 * 
-		 * List<GboardDTO> GboardDTOList = null; try { GboardDTOList = new
-		 * BoardListDAOImpl().listBoard(searchDomain, searchText); } catch (Exception
-		 * ex) { ex.printStackTrace(); } request.setAttribute("GboardDTOList",
-		 * GboardDTOList);
-		 */
+		// 검색기능	
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException uee) {
+			uee.printStackTrace();
+		}
+
+		String searchDomain = request.getParameter("searchDomain") == null ? "" : request.getParameter("searchDomain");
+		String searchText = request.getParameter("searchText") == null ? "" : request.getParameter("searchText");
+	
+		Map<String, String> searchMap = new HashMap<String, String>();
+		searchMap.put("searchDomain", searchDomain);
+		searchMap.put("searchText", searchText);
+
+		List<GboardDTO> GboardDTOList = null;
+		try {
+			GboardDTOList = new BoardListDAOImpl().listBoard(searchDomain, searchText);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		request.setAttribute("GboardDTOList", GboardDTOList);
 	
 
 		return "/jsp/totalBoardForm.jsp";

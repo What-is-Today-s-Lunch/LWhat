@@ -13,8 +13,19 @@ public class BoardConmentDeleteDAOImpl extends AbstractBoardDAOImpl {
 		
 		int result = pstmt.executeUpdate();
 		ConnectionManager.closeConnection(pstmt, getConnection());
-		
-		
+
+		return result;
+	}
+	
+	@Override
+	public int conmentDeleteQboard(int qCommentID) throws Exception{
+		String SQL = " DELETE FROM questioncomment where qCommentID=? ";
+		PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+		pstmt.setInt(1, qCommentID);
+		System.out.println("+++++++++++++++++++++++");
+		int result = pstmt.executeUpdate();
+		ConnectionManager.closeConnection(pstmt, getConnection());
+
 		return result;
 	}
 }

@@ -19,5 +19,18 @@ public class BoardDeleteDAOImpl extends AbstractBoardDAOImpl {
 		
 		return result;
 	}
+	
+	@Override
+	public int deleteQboard(int qPostingID) throws Exception {
+		PreparedStatement pstmt 
+		= getConnection().prepareStatement(" delete from questionposting where qPostingID=? ");
+		
+		pstmt.setInt(1, qPostingID);
+		
+		int result = pstmt.executeUpdate();
+		ConnectionManager.closeConnection(pstmt, getConnection());
+		
+		return result;
+	}
 
 }
