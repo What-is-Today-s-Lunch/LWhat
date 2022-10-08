@@ -16,8 +16,10 @@
    <div class="wrap">
       <div class="header">
          <div class="searchArea">
-            <form>
-               <input type="search" placeholder="search"> <span>검색</span>
+             <form action="../jsp/restaurantSearchProc.jsp" method="get">
+            	<input type = "hidden" name ="code" value="A1">      
+ 				<input type="search" name="restaurantID" placeholder="search">
+ 				<button type="submit">전송</button>
             </form>
          </div>
          <ul class="nav">

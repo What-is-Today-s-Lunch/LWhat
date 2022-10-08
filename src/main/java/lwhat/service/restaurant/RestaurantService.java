@@ -12,6 +12,8 @@ import lwhat.service.LWhatService;
 
 public interface RestaurantService extends LWhatService {
 
+	public List<RestaurantDTO>searchRestaurant(String searchText) throws Exception;
+	
 	public int writeRestaurant( RestaurantDTO restarauntDTO) throws Exception;
 
 	public int deleteRestaurant(String restaurantID) throws Exception;
