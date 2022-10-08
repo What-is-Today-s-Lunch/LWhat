@@ -26,7 +26,7 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/LWhat/css/foodListStyle.css">
-<link rel="stylesheet" href="/LWhat/css/style2.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/style2.css">
 
 <title>${rsIDDTO.restaurantID}</title>
 </head>
@@ -69,12 +69,14 @@
 				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.rTelNum}<br /> 위도
 				: ${rsIDDTO.longitude}<br /> 경도 : ${rsIDDTO.latitude}
 			</div>
-			<div id="resimage">
 				<c:if test="${'imagefiles' eq 'imagefiles'}">
-            		<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}1.jpg">
-            		<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}2.jpg">
+					<div class="resimage">
+				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}1.jpg">
+					</div>
+					<div class="resimage">
+				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}2.jpg">
+					</div>
      		 	</c:if>
-			</div>
 		</div>
 		<div class="contents4">
 			<div class="text">

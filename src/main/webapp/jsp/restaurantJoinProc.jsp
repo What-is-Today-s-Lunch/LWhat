@@ -39,17 +39,11 @@
 	String longti = multipartRequest.getParameter("long");//경도등록
 	
 	//레스토랑 이미지 파라미터 받음
-	String file1 = multipartRequest.getOriginalFileName("file1");//대표사진
-	//String filename1 = multipartRequest.getFilesystemName("file1");
-	
-	String file2 = multipartRequest.getOriginalFileName("file2");//대표사진
-	//String filename2 = multipartRequest.getFilesystemName("file2");
+
 	
 	String foodname = multipartRequest.getParameter("foodname");
 	
 	//이름변경
-	
-	
 	
 	//restaurantDTO 설정 
 	RestaurantDTO restaurantDTO = new RestaurantDTO();
@@ -64,32 +58,7 @@
 	//식당 업로드 Impl
 	RestaurantService restaurantService = new RestaurantWriteDAOImpl();
 	restaurantService.writeRestaurant(restaurantDTO);
-	/*
-	//foodImageDTO 설정
-	FoodimageDTO foodimageDTO1 = new FoodimageDTO();
-	foodimageDTO1.setRestaurantID_FK(resID);
-	foodimageDTO1.setImageCategory(restaurantCat);//사진의 카테고리?? 
-	foodimageDTO1.setContent(foodname);//사진의 음식이름 	
-	foodimageDTO1.setCImage(file1);	
-	//foodimageDTO.setSImage(filename1);	
 	
-	
-	//foodImageDTO2 설정
-	FoodimageDTO foodimageDTO2 = new FoodimageDTO();
-	foodimageDTO2.setRestaurantID_FK(resID);
-	foodimageDTO2.setImageCategory(restaurantCat);//사진의 카테고리?? 
-	foodimageDTO2.setContent(foodname);//사진의 음식이름 	
-	foodimageDTO2.setCImage(file2);	
-	//sfoodimageDTO2.setSImage(filename2);
-	// 식당에 따라 사진 등록되는건 바로 보여줄 필요가 없어서 재귀등록 필요 X 
-	
-	
-	//파일 업로드 Impl
-	//RestaurantService restaurantServiceFile= new RestaurantFileUploadDAOImpl();
-	//restaurantServiceFile.fileUploadRestaurant(restaurantDTO.getRestaurantID(), foodimageDTO);
-	
-	//받아온 파일 이름 바꿔서 저장하려고함. 여기서 이미지 파일이 경로에 저장됨 
-	*/
 	List<FoodimageDTO> foodImageList = new ArrayList<FoodimageDTO>();
 	
 	for(int i=1;i<=2;i++){
@@ -100,6 +69,7 @@
 		String file = multipartRequest.getOriginalFileName(fileStringname);//대표사진
 		String filename = multipartRequest.getFilesystemName(fileStringname);
 		
+		//foodImageDTO 설정
 		FoodimageDTO foodimageDTO = new FoodimageDTO();
 		foodimageDTO.setRestaurantID_FK(resID);
 		foodimageDTO.setImageCategory(restaurantCat);//사진의 카테고리?? 
@@ -111,41 +81,16 @@
 			File newFile = new File(saveFolder+"\\"+resID.concat(number.concat(".jpg")));
 			oldFile.renameTo(newFile);
 			foodimageDTO.setSImage(filename);
-			foodImageList.add(foodimageDTO);
+			foodImageList.add(foodimageDTO); //DTO 를 리스트에 설정 + 파일명을 db에 저장 
 			}
 	}
 	try{
-		RestaurantService restaurantService2 = new RestaurantFileUploadDAOImpl();
+		RestaurantService restaurantService2 = new RestaurantFileUploadDAOImpl(); //파일 업로드 Impl
 		restaurantService2.filesUploadRestaurant(resID, foodImageList);
 	}catch(Exception e){
 		e.printStackTrace();
 	}
 
-	/*
-	if(filename1!=null){
-		File oldFile1 = new File(saveFolder+"\\"+filename1);
-		File newFile1 = new File(saveFolder+"\\"+resID+"1.jpg");
-		oldFile1.renameTo(newFile1);
-	}
-	if(filename2!=null){
-		File oldFile2 = new File(saveFolder+"\\"+filename2);
-		File newFile2 = new File(saveFolder+"\\"+resID+"2.jpg");
-		oldFile2.renameTo(newFile2);
-	}
-	
-	
-	//DTO 를 리스트에 설정 + 파일명을 db에 저장 
-	
-	foodImageList.add(foodimageDTO);
-	foodImageList.add(foodimageDTO2);
-	
-	try{
-		RestaurantService restaurantService2 = new RestaurantFileUploadDAOImpl();
-		restaurantService2.filesUploadRestaurant(resID, foodImageList);
-	}catch(Exception e){
-		e.printStackTrace();
-	}
-	*/
 	
 	response.sendRedirect("mainForm.jsp");
 %>
