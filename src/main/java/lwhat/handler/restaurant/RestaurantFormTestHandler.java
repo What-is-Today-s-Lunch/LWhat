@@ -30,11 +30,9 @@ public class RestaurantFormTestHandler implements CommandHandler {
 		List<ReviewDTO> revlist = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlist);
 
-		// restaurantReview update delete check
+		// restaurantReview update delete check 리뷰가 있을 때만 설정
 		if(!revlist.isEmpty()) {
 			if (session.getAttribute("memberID").equals(revlist.get(0).getMemberID_FK())) {
-			System.out.println("와안뜨노 로그인 아이디"+session.getAttribute("memberID"));
-			System.out.println("왜안뜨노 리뷰 아이디"+revlist.get(0).getMemberID_FK());
 			request.setAttribute("isSameWriter", "true");
 			}
 		}

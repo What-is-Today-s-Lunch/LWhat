@@ -51,7 +51,7 @@
 	</div>
 
 	<div class="main_text0">
-		<div class="contents1">.</div>
+		<div class="contents1"></div>
 		<!-- 들어가야할 내용 div 시작점  -->
 		<!-- 들어가야할 내용  -->
 
