@@ -19,7 +19,7 @@
 	<div class="wrap">
 		<div class="header">
 			<div class="searchArea">
-				<form action="../jsp/restaurantSearchProc.jsp" method="get">
+				<form action="${webapproot}/restaurantform.do" method="get">
 					<input type="hidden" name="code" value="A1"> <input
 						type="search" name="restaurantID" placeholder="search">
 					<button type="submit">전송</button>
