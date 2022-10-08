@@ -75,7 +75,24 @@ h1 {
    width: 50px;
    color: #fff;
 }
-
+.search-box {
+  position: absolute;
+ 
+   background-color: #949BA0;
+  height: 40px;
+  padding: 10px;
+}
+.search-btn {
+  color: #EDEDED;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #949BA0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .nav {
    display: flex;
    justify-content: flex-end;
