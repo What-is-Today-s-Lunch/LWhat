@@ -27,6 +27,8 @@
             <input type="submit" id="button" value="로그인"><br>
             <input type="button" id="button" class="in"
             onclick="location.href='${webapproot}/memberjoinform.do'" value="회원가입하기"><br>
+            <input type="button" id="button" class="in"
+            onclick="location.href='${webapproot}/membersearchform.do'" value="회원정보찾기"><br>
             <!-- <input type="button" id="button" onclick="location.href='../jsp/pwFind.jsp'" value="비밀번호 찾기"><br> -->
         </form>
     </div>

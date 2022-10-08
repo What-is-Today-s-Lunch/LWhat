@@ -13,5 +13,7 @@ public interface MemberService extends LWhatService {
 
 	public MemberDTO viewMembers(String memberID) throws Exception;
 	
+	public MemberDTO viewMember(String Name, String email) throws Exception;
+	
 	public int loginMember(String memberID, String memberPW) throws Exception;
 }

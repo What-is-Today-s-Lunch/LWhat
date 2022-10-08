@@ -50,11 +50,11 @@ GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 					</form>
 				</div>
 				<ul class="nav">
-					<li><a href="../jsp/mainForm.jsp">오늘뭐먹지</a></li>
-					<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
-					<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
+					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
+					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
+					<li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
 					<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
-					<li><a href="../jsp/loginForm.jsp">LOGIN</a></li>
+					<li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
 				</ul>
 			</div>
 		</div>

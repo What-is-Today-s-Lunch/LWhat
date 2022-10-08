@@ -100,7 +100,7 @@
 				<!-- <option value="">전체</option> -->
 				<option value="title">제목</option>
 				<option value="memberID_FK">작성자</option>
-			</select>&nbsp; 
+			</select>&nbsp;
 			<input type="text" name="searchText" placeholder="검색">&nbsp; 
 			<input type="button" value="검색" onclick="this.form.submit()"><br /> <br />
 			</form>

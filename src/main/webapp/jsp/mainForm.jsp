@@ -23,7 +23,7 @@
          <ul class="nav">
             <li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
             <li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
-            <li><a href="${webapproot}/gboardlist.do">돌려돌려 돌림판</a></li>
+            <li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
             <li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
             
             <li><a href="${webapproot}/restaurantjoinform.do">식당등록</a></li>

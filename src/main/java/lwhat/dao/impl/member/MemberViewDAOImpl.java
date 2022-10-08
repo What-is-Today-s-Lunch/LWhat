@@ -33,4 +33,29 @@ public class MemberViewDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 		System.out.println("---------------"+memberDTO+"---------------");
 		return memberDTO;
 	}
+	
+	@Override
+	public MemberDTO viewMember(String Name, String email) throws Exception {
+		MemberDTO memberDTO =null;
+		Connection conn = getConnection();
+		String sql = "select * from memberinfo where name=? AND email=?";
+		PreparedStatement pstmt 
+		= conn.prepareStatement(sql);
+		pstmt.setString(1, Name);
+		pstmt.setString(2, email);
+		
+		ResultSet rs=pstmt.executeQuery();
+		
+		if(rs.next()) {
+			memberDTO = new MemberDTO();
+			memberDTO.setMemberID(rs.getString("memberID"));
+			memberDTO.setMemberPW(rs.getString("memberPW"));
+			memberDTO.setNickName(rs.getString("nickName"));
+			memberDTO.setEmail(rs.getString("email"));
+			memberDTO.setName(rs.getString("Name"));
+			memberDTO.setjoinDate(rs.getTimestamp("joinDate"));
+		}
+		System.out.println("---------------"+memberDTO+"---------------");
+		return memberDTO;
+	}
 }

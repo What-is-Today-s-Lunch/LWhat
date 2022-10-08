@@ -7,14 +7,14 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/game.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/game.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;500&display=swap"
 	rel="stylesheet">
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="../js/game.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/LWhat/js/game.js" charset="utf-8"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>돌려돌려 돌림판</title>
 <style>
@@ -37,11 +37,11 @@ html, body {
 					</form>
 				</div>
 				<ul class="nav">
-					<li><a href="../jsp/mainForm.jsp">오늘뭐먹지</a></li>
-					<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
-					<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
+					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
+					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
+					<li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
 					<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
-					<li><a href="../jsp/mypageForm.jsp">마이페이지</a></li>
+					<li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
 				</ul>
 			</div>
 		</div>

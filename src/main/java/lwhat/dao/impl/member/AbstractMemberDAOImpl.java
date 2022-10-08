@@ -29,6 +29,10 @@ public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl imple
 		// TODO Auto-generated method stub
 		
 	}
+	public MemberDTO viewMember(String Name, String email) throws Exception{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public int loginMember(String memberID, String memberPW) throws Exception {
