@@ -18,7 +18,7 @@ public class QboardWriteBoardFormHandler implements CommandHandler {
 			return "/index.jsp";
 		} 
 		
-		return "/jsp/QboardWrite.jsp";
+		return "/jsp/board/qboard/QboardWrite.jsp";
 	}
 
 }

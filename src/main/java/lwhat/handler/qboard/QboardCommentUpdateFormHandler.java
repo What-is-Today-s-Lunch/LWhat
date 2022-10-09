@@ -35,7 +35,7 @@ public class QboardCommentUpdateFormHandler implements CommandHandler {
 		request.setAttribute("qCommentID", qCommentID);
 		request.setAttribute("content", content);
 
-		return "/jsp/QboardUpdateComment.jsp";
+		return "/jsp/board/qboard/QboardUpdateComment.jsp";
 	}
 
 }

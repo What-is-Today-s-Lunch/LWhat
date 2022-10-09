@@ -44,6 +44,6 @@ public class GboardSearchListFormHandler implements CommandHandler {
 		request.setAttribute("GboardSearchDTOList", GboardSearchDTOList);
 		
 		// TODO Auto-generated method stub
-		return "/jsp/GboardSearchListForm.jsp";
+		return "/jsp/board/gboard/GboardSearchListForm.jsp";
 	}
 }

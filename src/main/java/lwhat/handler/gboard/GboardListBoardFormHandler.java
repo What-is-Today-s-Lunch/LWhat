@@ -36,6 +36,6 @@ public class GboardListBoardFormHandler implements CommandHandler {
 		}
 		request.setAttribute("pageNumber", pageNumber);
 
-		return "/jsp/GboardListForm.jsp";
+		return "/jsp/board/gboard/GboardListForm.jsp";
 	}
 }

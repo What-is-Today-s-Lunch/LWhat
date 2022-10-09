@@ -37,7 +37,7 @@ public class GboardCommentUpdateFormcHandler implements CommandHandler {
 		request.setAttribute("content", content);
 		 
 		
-		return "/jsp/GboardUpdateComment.jsp";
+		return "/jsp/board/gboard/GboardUpdateComment.jsp";
 	}
 
 }

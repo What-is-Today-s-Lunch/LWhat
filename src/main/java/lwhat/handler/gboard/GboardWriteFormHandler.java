@@ -23,6 +23,6 @@ public class GboardWriteFormHandler implements CommandHandler {
 //			script.println("</script>");
 			return "/index.jsp";
 		} 
-		return "/jsp/GboardWrite.jsp";
+		return "/jsp/board/gboard/GboardWrite.jsp";
 	}
 }
