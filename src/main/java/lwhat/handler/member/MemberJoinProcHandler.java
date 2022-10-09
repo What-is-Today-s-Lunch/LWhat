@@ -27,11 +27,13 @@ public class MemberJoinProcHandler implements CommandHandler{
       MemberService memberService = new MemberJoinDAOImpl();
       result = memberService.joinMember(memberDTO);
       request.setAttribute("result", result);
-      
+      // 아이디 중복
       if(result == -1) {
     	  return "/jsp/member/memberJoinForm.jsp";
       }
-
+      // 회원가입 성공
+      String rst ="sucess";
+      request.setAttribute("rst", rst);
       return "/jsp/member/memberLoginForm.jsp";
    }
 }

@@ -16,7 +16,7 @@
 <body>
 <c:if test="${result eq '1'}">
 <script>
-alert("로그인 성공!")
+	alert("로그인 성공!")
 </script>
 </c:if>
    <div class="wrap">
