@@ -18,7 +18,7 @@ public class RestaurantConstants {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-	} // static 초기화 블록
+	} // static
  
 } // class
 

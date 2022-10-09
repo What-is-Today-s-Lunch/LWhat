@@ -90,6 +90,17 @@ public class RestaurantJoinProcHandler implements CommandHandler{
 		e.printStackTrace();
 	}
 	
+	//메인 페이지 갈 때 매니저일 경우 식당등록을 할 수 있게.
+	request.getParameter("memberID");
+	
+	if(request.getSession().getAttribute("memberID").equals("megaZ")||request.getSession().getAttribute("memberID").equals("megaZ1")
+   		 ||request.getSession().getAttribute("memberID").equals("megaZ2")) {
+   	 request.setAttribute("manager", true);
+   	 return "/jsp/mainForm.jsp";
+	}else {
+		request.setAttribute("manager", false);
+	}
+	
 	return "/jsp/mainForm.jsp";
 	}//process 
 	

@@ -34,7 +34,7 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 	   @Override
 	   public int filesUploadRestaurant(String restaurantID, List<RestaurantFoodimageDTO> list) throws Exception {
 	   Connection conn = getConnection();
-	   String SQL = " INSERT INTO foodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
+	   String SQL = " INSERT INTO restaurantfoodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
 	   PreparedStatement pstmt = conn.prepareStatement(SQL);
 	   int result = 0;
 	   if(list!=null) {
