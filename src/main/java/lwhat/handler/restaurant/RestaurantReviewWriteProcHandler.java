@@ -2,17 +2,15 @@ package lwhat.handler.restaurant;
 
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import lwhat.dao.impl.restaurant.RestaurantListDAOImpl;
 import lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl;
 import lwhat.dao.impl.restaurant.RestaurantReviewWriteDAOImpl;
 import lwhat.dao.impl.restaurant.RestaurantViewDAOImpl;
-import lwhat.dto.RestaurantDTO;
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.restaurant.RestaurantService;
 
@@ -40,7 +38,7 @@ public class RestaurantReviewWriteProcHandler implements CommandHandler{
 		int revScore = Integer.parseInt(request.getParameter("score"));
 		request.setAttribute("restaurantID", revResID);
 		
-		ReviewDTO reviewDTO = new ReviewDTO();
+		RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO();
 		reviewDTO.setMemberID_FK(revMemID);
 		reviewDTO.setRestaurantID_FK(revResID);
 		reviewDTO.setScore(revScore);
@@ -50,7 +48,7 @@ public class RestaurantReviewWriteProcHandler implements CommandHandler{
 		
 		
 		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-		List<ReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
+		List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlistDTO);
 		return "/jsp/restaurantFormTest.jsp";
 	}

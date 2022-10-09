@@ -4,27 +4,6 @@
 <html lang="ko">
 <meta charset="UTF-8" />
 
-<%-- <% 
-String seMemID = (String)session.getAttribute("memberID");
-int revID = Integer.parseInt(request.getParameter("revID"));
-
-out.print(session.getAttribute("restaurantID"));
-String rID = (String)session.getAttribute("restaurantID");
-
-out.print("///////변환"+rID);
-pageContext.setAttribute("RID", session.getAttribute("restaurantID"));
-
-
-
-RestaurantService restaurantService = new RestaurantReviewViewDAOImpl();
-ReviewDTO reviewDTO = restaurantService.viewRestaurantReview(revID);
-
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-
-
-pageContext.setAttribute("review", restaurantService.viewRestaurantReview(revID));
-
- %> --%>
 
 <title>Review 수정</title>
 		<table>

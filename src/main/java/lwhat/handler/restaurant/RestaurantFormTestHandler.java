@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl;
 import lwhat.dao.impl.restaurant.RestaurantViewDAOImpl;
-import lwhat.dto.RestaurantDTO;
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.restaurant.RestaurantService;
 
@@ -27,7 +27,7 @@ public class RestaurantFormTestHandler implements CommandHandler {
 		request.setAttribute("rsIDDTO", restautantIDDTO);
 
 		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-		List<ReviewDTO> revlist = restaurantreviewService.listRestaurantReview(restaurantIDParam);
+		List<RestaurantReviewDTO> revlist = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlist);
 
 		// restaurantReview update delete check 리뷰가 있을 때만 설정

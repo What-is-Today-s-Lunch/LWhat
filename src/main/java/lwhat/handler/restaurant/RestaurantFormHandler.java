@@ -10,7 +10,7 @@ import lwhat.dao.impl.restaurant.RestaurantListDAOImpl;
 import lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl;
 import lwhat.dao.impl.restaurant.RestaurantSearchDAOImpl;
 import lwhat.dto.CodeTableDTO;
-import lwhat.dto.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.code.CodeService;
 import lwhat.service.restaurant.RestaurantService;

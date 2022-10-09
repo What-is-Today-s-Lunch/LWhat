@@ -10,8 +10,8 @@ import lwhat.dao.impl.restaurant.RestaurantReviewDeleteDAOImpl;
 import lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl;
 import lwhat.dao.impl.restaurant.RestaurantReviewViewDAOImpl;
 import lwhat.dao.impl.restaurant.RestaurantViewDAOImpl;
-import lwhat.dto.RestaurantDTO;
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.restaurant.RestaurantService;
 
@@ -38,7 +38,7 @@ public class RestaurantReviewDeleteProcHandler implements CommandHandler{
 		restaurantreviewviewService.viewRestaurantReview(revID);
 		
 		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-		List<ReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
+		List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlistDTO);
 		
 		return "/jsp/restaurantFormTest.jsp";

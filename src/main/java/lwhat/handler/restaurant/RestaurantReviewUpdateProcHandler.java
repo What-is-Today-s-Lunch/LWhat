@@ -2,7 +2,6 @@ package lwhat.handler.restaurant;
 
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpSession;
 import lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl;
 import lwhat.dao.impl.restaurant.RestaurantReviewUpdateDAOImpl;
 import lwhat.dao.impl.restaurant.RestaurantViewDAOImpl;
-import lwhat.dto.RestaurantDTO;
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.restaurant.RestaurantService;
 
@@ -41,7 +40,7 @@ response.setCharacterEncoding("utf-8");
 String content = request.getParameter("content");
 int score = Integer.parseInt(request.getParameter("score"));
 
-ReviewDTO reviewDTO = new ReviewDTO();
+RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO();
 reviewDTO.setContent(content);
 reviewDTO.setScore(score);
 System.out.println("-------------"+content+score); 
@@ -55,7 +54,7 @@ restaurantService.updateRestaurantReview(revID, reviewDTO);
 
 
 RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-List<ReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
+List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 request.setAttribute("revDTO", revlistDTO);
 
 
