@@ -75,7 +75,7 @@
 
 							</c:forEach>
 							</div>
-						</div>
+						</div> 
 						
 						<div class="board_page">
 	 					

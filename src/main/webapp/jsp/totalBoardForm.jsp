@@ -2,7 +2,7 @@
 <%@page import="lwhat.dao.impl.board.BoardListDAOImpl" %>
 <%@page import="lwhat.service.board.BoardService" %>
 <%@page import="java.util.ArrayList" %>
-<%@page import="java.util.Map" %>
+<%@page import="java.util.Map" %> 
 <%@page import="java.util.HashMap" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

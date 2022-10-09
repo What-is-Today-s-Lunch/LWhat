@@ -2,7 +2,7 @@ package lwhat.handler.gboard;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest; 
 import javax.servlet.http.HttpServletResponse;
 
 import lwhat.dao.impl.board.BoardListDAOImpl;

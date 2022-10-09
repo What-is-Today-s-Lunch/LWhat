@@ -134,7 +134,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			gboardDTO.setClickCount(rs.getInt("clickCount"));
 			gboardDTO.setmDate(rs.getString("mDate"));
 			list.add(gboardDTO);
-		}
+		} 
 		return list; 
 	}
 

@@ -20,7 +20,7 @@ public class GboardSearchListFormHandler implements CommandHandler {
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
-		
+		 
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException uee) {
