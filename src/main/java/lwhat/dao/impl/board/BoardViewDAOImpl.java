@@ -3,6 +3,7 @@ package lwhat.dao.impl.board;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import lwhat.constants.BoardConstants;
 import lwhat.dto.board.GboardDTO;
 import lwhat.dto.board.QboardDTO;
 
@@ -13,9 +14,9 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 	@Override
 	public GboardDTO viewBoard(int gPostingID) throws Exception {
 
-		String SQL = " SELECT * FROM generalposting WHERE gPostingID = ? ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("GBOARD_VIEW_SQL"));
 			pstmt.setInt(1, gPostingID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -43,9 +44,9 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 	@Override
 	public QboardDTO viewQboard(int qPostingID) throws Exception {
 
-		String SQL = " SELECT * FROM questionposting WHERE qPostingID = ? ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("QBOARD_VIEW_SQL"));
 			pstmt.setInt(1, qPostingID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -71,9 +72,9 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 
 	public int updateReadCount(int gPostingID) {
 
-		String SQL = " UPDATE generalposting SET clickCount = clickCount + 1 WHERE gPostingID = ? ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("GBOARD_UPDATE_READ_COUNT"));
 			pstmt.setInt(1, gPostingID);
 			int result = pstmt.executeUpdate();
 			return result;
@@ -86,9 +87,9 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 
 	public int updateReadCountQboard(int qPostingID) {
 
-		String SQL = " UPDATE questionposting SET clickCount = clickCount + 1 WHERE qPostingID = ? ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("QBOARD_UPDATE_READ_COUNT"));
 			pstmt.setInt(1, qPostingID);
 			int result = pstmt.executeUpdate();
 			return result;

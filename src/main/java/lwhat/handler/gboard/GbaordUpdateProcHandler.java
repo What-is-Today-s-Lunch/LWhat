@@ -16,8 +16,10 @@ public class GbaordUpdateProcHandler implements CommandHandler {
 		request.setCharacterEncoding("UTF-8");
 		//session
 		HttpSession session = request.getSession();
+		
 		String memberID = (String) session.getAttribute("memberID");
 		String gPostingID = request.getParameter("gPostingID") == null ? "" : (String)request.getParameter("gPostingID");
+		
 		GboardDTO gboardDTO = new GboardDTO();
 	    gboardDTO.setTitle(request.getParameter("title") == null ? "" : request.getParameter("title"));
 	    gboardDTO.setContent(request.getParameter("content") == null ? "" : request.getParameter("content"));

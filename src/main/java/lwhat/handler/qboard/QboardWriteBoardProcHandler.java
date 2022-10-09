@@ -70,10 +70,10 @@ request.setCharacterEncoding("UTF-8");
 	    int qPostingNum = boardService.writeQboard(qboardDTO, memberID); 
 
 	    //int gPostindID = gboardDTO.getgPostingID();
-	    BoardService boardService2 = new BoardFileUploadDAOImpl();
-	    boardService2.fileUploadBoard(file, fileName, qPostingNum);
-	    boardService2.fileUploadBoard(files, fileNames, qPostingNum);
-	    request.setAttribute("boardService2", boardService2);
+	    BoardService boardFileService = new BoardFileUploadDAOImpl();
+	    boardFileService.fileUploadQBoard(file, fileName, qPostingNum);
+	    boardFileService.fileUploadQBoard(files, fileNames, qPostingNum);
+	    request.setAttribute("boardFileService", boardFileService);
 	    
 	    if (fileName != null){
 	    	File oldFile = new File(saveFolder + "\\" + fileName);

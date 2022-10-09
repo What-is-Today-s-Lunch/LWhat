@@ -5,19 +5,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import lwhat.constants.BoardConstants;
 import lwhat.dto.board.GboardDTO;
 import lwhat.dto.board.QboardDTO;
 
 public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
-
+	//Gboard
 	@Override
 	public ArrayList<GboardDTO> listBoard(int pageNumber) throws Exception {
 
-		String SQL = " SELECT * FROM generalposting WHERE gPostingID < ? order by gPostingID DESC LIMIT 5 ";
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("GBOARD_LIST_SQL"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
@@ -40,14 +40,13 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		return list;
 	}
 
-	// 문의게시판 impl
+	// Qboard
 	@Override
 	public ArrayList<QboardDTO> listQboard(int pageNumber) throws Exception {
 
-		String SQL = " SELECT * FROM questionposting WHERE qPostingID < ? order by qPostingID DESC LIMIT 5 ";
 		ArrayList<QboardDTO> list = new ArrayList<QboardDTO>();
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("QBOARD_LIST_SQL"));
 			pstmt.setInt(1, qboardGetNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
@@ -71,10 +70,9 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	}
 
 	public boolean nextPage(int pageNumber) {
-		String SQL = " SELECT * FROM generalposting WHERE gPostingID < ? ";
 
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("GBOARD_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
@@ -88,10 +86,9 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	}
 
 	public boolean qboardNextPage(int pageNumber) {
-		String SQL = " SELECT * FROM questionposting WHERE qPostingID < ? ";
 
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("QBOARD_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
@@ -103,13 +100,13 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		}
 		return false;
 	}
-
+	
+	//검색 
 	@Override
 	public ArrayList<GboardDTO> listSearchBoard(String searchDomain, String searchText) throws Exception {
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
 		String SQL = "select * from generalposting";
 		String boardTitle = null;
-		// System.out.println("-----------------" + title);
 
 		if (searchDomain.equals("title")) {
 			boardTitle = " where title ";
@@ -117,7 +114,6 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			boardTitle = " where memberID_FK ";
 		}
 		SQL += (boardTitle + "like '%" + searchText + "%' ");
-//		System.out.println("SQL 문구입니다 = " + SQL);
 		
 		PreparedStatement pstmt = getConnection().prepareStatement(SQL);
 		rs = pstmt.executeQuery();
@@ -139,9 +135,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	}
 
 	public int getNext() {
-		String sql = " SELECT gPostingID FROM generalposting ORDER BY gPostingID DESC ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("GBOARD_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return rs.getInt(1) + 1;
@@ -153,9 +148,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	}
 
 	public int qboardGetNext() {
-		String sql = " SELECT qPostingID FROM questionposting ORDER BY qPostingID DESC ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("QBOARD_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return rs.getInt(1) + 1;

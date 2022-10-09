@@ -5,21 +5,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import lwhat.constants.BoardConstants;
 import lwhat.dto.board.GeneralcommentDTO;
 import lwhat.dto.board.QuestioncommentDTO;
 
-public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
+public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
-	//Gboard
+
+	// Gboard
 	@Override
-	public ArrayList<GeneralcommentDTO> conmentListBoard(int pageNumber) throws Exception{
-		String SQL = " SELECT * FROM generalcomment WHERE gCommentID < ?  order by gCommentID DESC LIMIT 5 ";
+	public ArrayList<GeneralcommentDTO> conmentListBoard(int pageNumber) throws Exception {
 		ArrayList<GeneralcommentDTO> list = new ArrayList<GeneralcommentDTO>();
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
-			pstmt.setInt(1, getNext() - (pageNumber-1) * 5);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("GBOARD_COMMENT_LIST_SQL"));
+			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
 				GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 				generalcommentDTO.setgCommentID(rs.getInt(1));
@@ -29,47 +31,46 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
 				generalcommentDTO.setContent(rs.getString(5));
 				generalcommentDTO.setmDate(rs.getString("mDate"));
 				list.add(generalcommentDTO);
-				//System.out.println("test " + list);
-				
+				// System.out.println("test " + list);
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-	
-	//Qboard
-		@Override
-		public ArrayList<QuestioncommentDTO> conmentListQboard(int pageNumber) throws Exception{
-			String SQL = " SELECT * FROM questioncomment WHERE qCommentID < ?  order by qCommentID DESC LIMIT 5 ";
-			ArrayList<QuestioncommentDTO> list = new ArrayList<QuestioncommentDTO>();
-			try {
-				PreparedStatement pstmt = getConnection().prepareStatement(SQL);
-				pstmt.setInt(1, getNextq() - (pageNumber-1) * 5);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					QuestioncommentDTO questioncommentDTO = new QuestioncommentDTO();
-					questioncommentDTO.setqCommentID(rs.getInt(1));
-					questioncommentDTO.setMemberID_FK(rs.getString(2));
-					questioncommentDTO.setqPostingID_FK(rs.getInt(3));
-					questioncommentDTO.setContent(rs.getString(4));
-					questioncommentDTO.setwDate(rs.getString("wDate"));
-					list.add(questioncommentDTO);
-					//System.out.println("test " + list);
-					
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+
+	// Qboard
+	@Override
+	public ArrayList<QuestioncommentDTO> conmentListQboard(int pageNumber) throws Exception {
+		ArrayList<QuestioncommentDTO> list = new ArrayList<QuestioncommentDTO>();
+		try {
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_LIST_SQL"));
+			pstmt.setInt(1, getNextq() - (pageNumber - 1) * 5);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				QuestioncommentDTO questioncommentDTO = new QuestioncommentDTO();
+				questioncommentDTO.setqCommentID(rs.getInt(1));
+				questioncommentDTO.setMemberID_FK(rs.getString(2));
+				questioncommentDTO.setqPostingID_FK(rs.getInt(3));
+				questioncommentDTO.setContent(rs.getString(4));
+				questioncommentDTO.setwDate(rs.getString("wDate"));
+				list.add(questioncommentDTO);
+				// System.out.println("test " + list);
+
 			}
-			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-	
-	
+		return list;
+	}
+
 	public int getNext() {
-		String sql = " SELECT gCommentID FROM generalcomment ORDER BY gCommentID DESC ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("GBOARD_COMMENT_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return rs.getInt(1) + 1;
@@ -79,11 +80,11 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
 		}
 		return -1;
 	}
-	
+
 	public int getNextq() {
-		String sql = " SELECT qCommentID FROM questioncomment ORDER BY qCommentID DESC ";
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return rs.getInt(1) + 1;
@@ -93,17 +94,16 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
 		}
 		return -1;
 	}
-	
-	
-	public boolean nextPage (int pageNumber) {
-		String SQL = " SELECT * FROM generalcomment WHERE gCommentID < ? ";
+
+	public boolean nextPage(int pageNumber) {
 
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("GBOARD_COMMENT_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				return true;
 			}
 		} catch (Exception e) {
@@ -112,16 +112,16 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
 
 		return false;
 	}
-	
-	public boolean nextPageq (int pageNumber) {
-		String SQL = " SELECT * FROM questioncomment WHERE qCommentID < ? ";
+
+	public boolean nextPageq(int pageNumber) {
 
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			PreparedStatement pstmt = getConnection()
+					.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				return true;
 			}
 		} catch (Exception e) {
@@ -130,5 +130,5 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
 
 		return false;
 	}
-	
+
 }
