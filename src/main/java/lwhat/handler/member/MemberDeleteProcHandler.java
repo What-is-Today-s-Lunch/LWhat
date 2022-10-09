@@ -21,6 +21,7 @@ public class MemberDeleteProcHandler implements CommandHandler{
       
       // MemberDeleteDAOImpl 의 deleteMember 실행
       MemberService memberService = new MemberDeleteDAOImpl();
+      // 멤버 삭제
       memberService.deleteMember(memberID);
       // 멤버 삭제 후 세션 초기화
       session.invalidate();

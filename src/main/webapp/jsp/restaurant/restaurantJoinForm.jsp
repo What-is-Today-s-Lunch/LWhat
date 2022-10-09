@@ -46,7 +46,7 @@
 						<strong>식당 등록</strong>
 						<p>등록은 항상 정확하게!!</p>
 					</div>
-					<form method="post" action="restaurantJoinProc.jsp" enctype="multipart/form-data" accept-charset="UTF-8">
+					<form method="post" action="restaurantJoinProc.do" enctype="multipart/form-data" accept-charset="UTF-8">
 					<div class="board_write_wrap">
 						<div class="board_write">
 							<div class="title">

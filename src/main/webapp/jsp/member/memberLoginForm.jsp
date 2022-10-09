@@ -25,6 +25,11 @@ alert("비밀번호가 틀렸습니다!")
 alert("존재하지 않는 아이디입니다!")
 </script>
 </c:if>
+<c:if test="${rst eq 'sucess'}">
+<script>
+alert("회원가입이 성공했습니다!")
+</script>
+</c:if>
    <div id="top">
    <br>
    <h1>오 늘 뭐 먹 지 ?</h1>
