@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import lwhat.constants.LwhatConstants;
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 
 public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl{
 	@Override
-	public int writeRestaurantReview(ReviewDTO reviewDTO) throws Exception {
+	public int writeRestaurantReview(RestaurantReviewDTO reviewDTO) throws Exception {
 		
 		Connection conn = getConnection();
 		String sql = LwhatConstants.querys.getProperty("REVIEW_WRITE_SQL");

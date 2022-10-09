@@ -2,15 +2,14 @@ package lwhat.dao.impl.restaurant;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.Timestamp;
 
 import lwhat.constants.LwhatConstants;
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 
 public class RestaurantReviewUpdateDAOImpl extends AbstractRestaurantDAOImpl{
 
 	@Override 
-	public int updateRestaurantReview(int revID,ReviewDTO reviewDTO) throws Exception {
+	public int updateRestaurantReview(int revID,RestaurantReviewDTO reviewDTO) throws Exception {
 		Connection conn = getConnection();
 		
 		String sqlU = LwhatConstants.querys.getProperty("REVIEW_UPDATE_SQL");

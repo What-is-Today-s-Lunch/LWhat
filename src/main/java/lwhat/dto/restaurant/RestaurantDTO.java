@@ -1,4 +1,4 @@
-package lwhat.dto;
+package lwhat.dto.restaurant;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ public class RestaurantDTO implements Serializable{
 	public static final long serialVersionUID = 328478938942843983L;
 	private String restaurantID;
 	private String foodCategory;
-	private String rTelNum;
+	private String telNum;
 	private String addressDetail;
 	private String addressAPI;
 	private String latitude;
@@ -43,11 +43,11 @@ public class RestaurantDTO implements Serializable{
 	public void setAddressDetail(String addressDetail) {
 		this.addressDetail = addressDetail;
 	}
-	public String getrTelNum() {
-		return rTelNum;
+	public String getTelNum() {
+		return telNum;
 	}
-	public void setrTelNum(String rTelNum) {
-		this.rTelNum = rTelNum;
+	public void setTelNum(String telNum) {
+		this.telNum = telNum;
 	}
 	public String getFoodCategory() {
 		return foodCategory;
@@ -76,11 +76,11 @@ public class RestaurantDTO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "RestaurantDTO [restaurantID=" + restaurantID + ", foodCategory=" + foodCategory + ", rTelNum=" + rTelNum
+		return "RestaurantDTO [restaurantID=" + restaurantID + ", foodCategory=" + foodCategory + ", telNum=" + telNum
 				+ ", addressDetail=" + addressDetail + ", addressAPI=" + addressAPI + ", latitude=" + latitude + ", longitude="
 				+ longitude + ", scoreAvg=" + scoreAvg + ", content=" + content + "]";
 	}
-
+	
 	
 	
 }

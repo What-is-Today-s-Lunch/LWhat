@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
-import lwhat.dto.FoodimageDTO;
+import lwhat.dto.restaurant.RestaurantFoodimageDTO;
 
 public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 // =Write
 	private ResultSet rs;
 	   @Override
-	   public int fileUploadRestaurant(String restaurantID, FoodimageDTO foodimageDTO) throws Exception {
+	   public int fileUploadRestaurant(String restaurantID, RestaurantFoodimageDTO foodimageDTO) throws Exception {
 	      String SQL = " INSERT INTO foodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
 	      
 	      try {
@@ -31,13 +31,13 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 	   }
 	   
 	   @Override
-	   public int filesUploadRestaurant(String restaurantID, List<FoodimageDTO> list) throws Exception {
+	   public int filesUploadRestaurant(String restaurantID, List<RestaurantFoodimageDTO> list) throws Exception {
 	   Connection conn = getConnection();
 	   String SQL = " INSERT INTO foodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
 	   PreparedStatement pstmt = conn.prepareStatement(SQL);
 	   int result = 0;
 	   if(list!=null) {
-		   for(FoodimageDTO foodimageDTO : list) {
+		   for(RestaurantFoodimageDTO foodimageDTO : list) {
 			   pstmt.setString(1, foodimageDTO.getRestaurantID_FK());
 			   pstmt.setString(2,foodimageDTO.getImageCategory() );
 			   pstmt.setString(3,foodimageDTO.getCImage() );

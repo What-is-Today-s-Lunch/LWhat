@@ -17,7 +17,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 	String realFolder = "";
 	String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/restaurantupload";
 	String encType = "UTF-8";
@@ -59,7 +59,7 @@
 	RestaurantService restaurantService = new RestaurantWriteDAOImpl();
 	restaurantService.writeRestaurant(restaurantDTO);
 	
-	List<FoodimageDTO> foodImageList = new ArrayList<FoodimageDTO>();
+	List<RestaurantFoodimageDTO> foodImageList = new ArrayList<RestaurantFoodimageDTO>();
 	
 	for(int i=1;i<=2;i++){
 		String number = String.valueOf(i);//숫자를 문자로 바꿈
@@ -70,19 +70,19 @@
 		String filename = multipartRequest.getFilesystemName(fileStringname);
 		
 		//foodImageDTO 설정
-		FoodimageDTO foodimageDTO = new FoodimageDTO();
+		RestaurantFoodimageDTO foodimageDTO = new RestaurantFoodimageDTO();
 		foodimageDTO.setRestaurantID_FK(resID);
 		foodimageDTO.setImageCategory(restaurantCat);//사진의 카테고리?? 
 		foodimageDTO.setContent(foodname);//사진의 음식이름 	
 		foodimageDTO.setCImage(file);	
 		
 		if(filename!=null){
-			File oldFile = new File(saveFolder+"\\"+filename);
-			File newFile = new File(saveFolder+"\\"+resID.concat(number.concat(".jpg")));
-			oldFile.renameTo(newFile);
-			foodimageDTO.setSImage(filename);
-			foodImageList.add(foodimageDTO); //DTO 를 리스트에 설정 + 파일명을 db에 저장 
-			}
+	File oldFile = new File(saveFolder+"\\"+filename);
+	File newFile = new File(saveFolder+"\\"+resID.concat(number.concat(".jpg")));
+	oldFile.renameTo(newFile);
+	foodimageDTO.setSImage(filename);
+	foodImageList.add(foodimageDTO); //DTO 를 리스트에 설정 + 파일명을 db에 저장 
+	}
 	}
 	try{
 		RestaurantService restaurantService2 = new RestaurantFileUploadDAOImpl(); //파일 업로드 Impl

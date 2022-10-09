@@ -3,24 +3,21 @@ package lwhat.dao.impl.restaurant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import lwhat.dto.FoodimageDTO;
+import lwhat.dto.restaurant.RestaurantFoodimageDTO;
 
 public class RestaurantFileViewDAOImpl extends AbstractRestaurantDAOImpl {
 	
 	@Override
-	public FoodimageDTO fileViewRestaurant(int fImageID) throws Exception{
+	public RestaurantFoodimageDTO fileViewRestaurant(int fImageID) throws Exception{
 		Connection conn = getConnection();
 		String sql = " select * from foodimage where fImageID=? ";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, fImageID);
 		ResultSet rs = pstmt.executeQuery();
-		FoodimageDTO foodimageDTO = null;
+		RestaurantFoodimageDTO foodimageDTO = null;
 		if(rs!=null&& rs.next()) {
-				foodimageDTO = new FoodimageDTO();
+				foodimageDTO = new RestaurantFoodimageDTO();
 				foodimageDTO.setfImageID(rs.getInt("fImageID"));
 				foodimageDTO.setRestaurantID_FK(rs.getString("restaurantID_FK"));
 				foodimageDTO.setImageCategory(null);

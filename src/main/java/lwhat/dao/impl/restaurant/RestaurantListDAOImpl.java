@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lwhat.constants.LwhatConstants;
-import lwhat.dto.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
 
 public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 
@@ -27,7 +27,7 @@ public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 			pstmt2.setString(1, rs.getString("restaurantID"));
 			ResultSet rs2 = pstmt2.executeQuery();
 			restaurantDTO.setFoodCategory(rs.getString("foodCategory"));
-			restaurantDTO.setrTelNum(rs.getString("rTelNum"));
+			restaurantDTO.setTelNum(rs.getString("rTelNum"));
 			restaurantDTO.setAddressDetail(rs.getString("addressDetail"));
 			restaurantDTO.setAddressAPI(rs.getString("addressAPI"));
 			restaurantDTO.setLatitude(rs.getString("latitude"));

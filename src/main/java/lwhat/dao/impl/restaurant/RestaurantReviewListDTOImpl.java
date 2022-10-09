@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lwhat.constants.LwhatConstants;
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 
 public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 	@Override
-	public List<ReviewDTO> listRestaurantReview(String restaurantID) throws Exception {
+	public List<RestaurantReviewDTO> listRestaurantReview(String restaurantID) throws Exception {
 		System.out.println("리뷰의 레스토랑 아이디 : "+restaurantID);
 		Connection conn = getConnection();
 		String sql = LwhatConstants.querys.getProperty("REVIEW_LIST_SEARCH_SQL_PREPEND");
@@ -19,9 +19,9 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 		
 		pstmt.setString(1, restaurantID);
 		ResultSet rs = pstmt.executeQuery();
-		List<ReviewDTO>list = new ArrayList<ReviewDTO>();
+		List<RestaurantReviewDTO>list = new ArrayList<RestaurantReviewDTO>();
 		while(rs.next()) {
-			ReviewDTO reviewDTO = new ReviewDTO();
+			RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO();
 			reviewDTO.setRevID(rs.getInt("revID"));
 			reviewDTO.setMemberID_FK(rs.getString("memberID_FK"));
 			reviewDTO.setRestaurantID_FK(rs.getString("restaurantID_FK"));

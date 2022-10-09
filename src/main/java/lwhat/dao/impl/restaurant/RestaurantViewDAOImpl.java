@@ -4,8 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import lwhat.constants.LwhatConstants;
-import lwhat.dto.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
 
 public class RestaurantViewDAOImpl extends AbstractRestaurantDAOImpl {
 
@@ -21,7 +20,7 @@ public class RestaurantViewDAOImpl extends AbstractRestaurantDAOImpl {
 		if (rs != null && rs.next()) {
 			restaurantDTO.setRestaurantID(rs.getString("restaurantID"));
 			restaurantDTO.setFoodCategory(rs.getString("foodCategory"));
-			restaurantDTO.setrTelNum(rs.getString("rTelNum"));
+			restaurantDTO.setTelNum(rs.getString("rTelNum"));
 			restaurantDTO.setAddressDetail(rs.getString("addressDetail"));
 			restaurantDTO.setAddressAPI(rs.getString("addressAPI"));
 			restaurantDTO.setLatitude(rs.getString("latitude"));

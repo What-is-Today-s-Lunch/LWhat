@@ -1,8 +1,8 @@
-package lwhat.dto;
+package lwhat.dto.restaurant;
 
 import java.io.Serializable;
 
-public class FoodimageDTO implements Serializable{
+public class RestaurantFoodimageDTO implements Serializable{
 	public static final long serialVersionUID = 321478938942843983L;
 	private int fImageID;
 	private String restaurantID_FK; // restaurant의 restaurantID와 연결(외래키)	
@@ -11,7 +11,7 @@ public class FoodimageDTO implements Serializable{
 	private String cImage;
 	private String sImage;
 	
-	public FoodimageDTO() {}
+	public RestaurantFoodimageDTO() {}
 	
 	public int getfImageID() {
 		return fImageID;

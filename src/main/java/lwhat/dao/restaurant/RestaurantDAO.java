@@ -2,7 +2,7 @@ package lwhat.dao.restaurant;
 
 import java.util.List;
 
-import lwhat.dto.RestaurantDTO;
+import lwhat.dto.restaurant.RestaurantDTO;
 import lwhat.service.restaurant.RestaurantService;
 
 public interface RestaurantDAO extends RestaurantService{

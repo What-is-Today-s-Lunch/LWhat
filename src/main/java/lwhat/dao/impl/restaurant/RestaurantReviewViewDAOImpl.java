@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 
-import lwhat.dto.ReviewDTO;
+import lwhat.dto.restaurant.RestaurantReviewDTO;
 
 public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 
-	public ReviewDTO viewRestaurantReview(int revID) throws Exception {
+	public RestaurantReviewDTO viewRestaurantReview(int revID) throws Exception {
 		
 	Connection conn = getConnection();
 	Timestamp t = new Timestamp(System.currentTimeMillis());
@@ -18,7 +18,8 @@ public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 	PreparedStatement pstmt = conn.prepareStatement(sql);
 	 pstmt.setInt(1, revID);
 	 ResultSet rs = pstmt.executeQuery();
-	 ReviewDTO reviewDTO = new ReviewDTO();
+	 RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO
+			 ();
 	 if(rs!=null && rs.next()) {
 		reviewDTO.setRevID(rs.getInt("revID")); 
 		reviewDTO.setMemberID_FK(rs.getString("memberID_FK"));
