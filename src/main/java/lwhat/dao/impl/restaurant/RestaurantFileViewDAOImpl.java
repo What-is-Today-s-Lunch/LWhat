@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantFoodimageDTO;
 
 public class RestaurantFileViewDAOImpl extends AbstractRestaurantDAOImpl {
@@ -11,8 +12,7 @@ public class RestaurantFileViewDAOImpl extends AbstractRestaurantDAOImpl {
 	@Override
 	public RestaurantFoodimageDTO fileViewRestaurant(int fImageID) throws Exception{
 		Connection conn = getConnection();
-		String sql = " select * from foodimage where fImageID=? ";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
+		PreparedStatement pstmt = conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_FILE_VIEW_SQL"));
 		pstmt.setInt(1, fImageID);
 		ResultSet rs = pstmt.executeQuery();
 		RestaurantFoodimageDTO foodimageDTO = null;

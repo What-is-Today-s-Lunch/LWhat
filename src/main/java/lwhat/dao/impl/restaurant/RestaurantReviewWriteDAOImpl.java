@@ -3,7 +3,7 @@ package lwhat.dao.impl.restaurant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import lwhat.constants.LwhatConstants;
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantReviewDTO;
 
 public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl{
@@ -11,7 +11,7 @@ public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl{
 	public int writeRestaurantReview(RestaurantReviewDTO reviewDTO) throws Exception {
 		
 		Connection conn = getConnection();
-		String sql = LwhatConstants.querys.getProperty("REVIEW_WRITE_SQL");
+		String sql = RestaurantConstants.restaurant.getProperty("REVIEW_WRITE_SQL");
 				
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import lwhat.constants.LwhatConstants;
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantDTO;
 
 public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
@@ -14,10 +14,8 @@ public class RestaurantListDAOImpl extends AbstractRestaurantDAOImpl {
 	@Override
 	public List<RestaurantDTO> listRestaurant(String code) throws Exception {
 		Connection conn = getConnection();
-		String sql = LwhatConstants.querys.getProperty("RESTAURANT_LIST_SEARCH_SQL_PREPEND");
-		String sql2 = " select round(avg(score),1) from review r  inner join restaurant r2  on r.restaurantID_FK = r2.restaurantID where restaurantID_FK = ? ";
-		PreparedStatement pstmt =  conn.prepareStatement(sql);
-		PreparedStatement pstmt2 =  conn.prepareStatement(sql2);
+		PreparedStatement pstmt =  conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_LIST_SEARCH_SQL"));
+		PreparedStatement pstmt2 =  conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_REVIEW_SCORE_SQL"));
 		pstmt.setString(1, code);
 		ResultSet rs = pstmt.executeQuery();
 		List<RestaurantDTO>list = new ArrayList<RestaurantDTO>();

@@ -6,13 +6,14 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantFoodimageDTO;
 
 public class RestaurantFileListDAOImpl extends AbstractRestaurantDAOImpl {
 	
 	public List<RestaurantFoodimageDTO>fileListRestaurant(String restaurantID) throws Exception{
 		Connection conn = getConnection();
-		String sql = " select * from foodimage where restaurantID=? order by bfid desc ";
+		String sql = RestaurantConstants.restaurant.getProperty("FOOD_IMAGE_LIST_SEARCH_SQL");
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, restaurantID);
 		ResultSet rs = pstmt.executeQuery();

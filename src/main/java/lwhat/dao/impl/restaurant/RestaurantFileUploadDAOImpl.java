@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantFoodimageDTO;
 
 public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
@@ -12,7 +13,7 @@ public class RestaurantFileUploadDAOImpl extends AbstractRestaurantDAOImpl {
 	private ResultSet rs;
 	   @Override
 	   public int fileUploadRestaurant(String restaurantID, RestaurantFoodimageDTO foodimageDTO) throws Exception {
-	      String SQL = " INSERT INTO foodimage (restaurantID_FK, imageCategory,cImage, sImage) VALUES (?, ? ,? ,?) ";
+	      String SQL = RestaurantConstants.restaurant.getProperty("FOOD_IMAGE_UPLOAD_SQL");
 	      
 	      try {
 	         PreparedStatement pstmt = getConnection().prepareStatement(SQL);

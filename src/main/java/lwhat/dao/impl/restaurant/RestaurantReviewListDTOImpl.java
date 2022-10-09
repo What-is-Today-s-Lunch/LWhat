@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import lwhat.constants.LwhatConstants;
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantReviewDTO;
 
 public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
@@ -14,8 +14,7 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 	public List<RestaurantReviewDTO> listRestaurantReview(String restaurantID) throws Exception {
 		System.out.println("리뷰의 레스토랑 아이디 : "+restaurantID);
 		Connection conn = getConnection();
-		String sql = LwhatConstants.querys.getProperty("REVIEW_LIST_SEARCH_SQL_PREPEND");
-		System.out.println(sql);PreparedStatement pstmt =  conn.prepareStatement(sql);
+		PreparedStatement pstmt =  conn.prepareStatement(RestaurantConstants.restaurant.getProperty("REVIEW_LIST_SEARCH_SQL_PREPEND"));
 		
 		pstmt.setString(1, restaurantID);
 		ResultSet rs = pstmt.executeQuery();
