@@ -16,10 +16,12 @@
    <div class="wrap">
       <div class="header">
          <div class="searchArea">
-            <form>
-               <input type="search" placeholder="search"> <span>검색</span>
-            </form>
-         </div>
+			<form action="${webapproot}/restaurantform.do" method="get">
+				<input type="hidden" name="code" value="A1"> <input
+					type="search" name="restaurantID" placeholder="search">
+				<button type="submit" class="searchBtn">전송</button>
+			</form>
+		</div>
          <ul class="nav">
             <li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
             <li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
