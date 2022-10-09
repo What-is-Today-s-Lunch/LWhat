@@ -27,12 +27,12 @@ public class GboardTotalBoardFormHandler implements CommandHandler {
 
 		BoardListDAOImpl boardServiceNextPage = new BoardListDAOImpl();
 		if (pageNumber != 1) {
-			String pn1 = "a";
-			request.setAttribute("pn1", pn1);
+			String pageBefore = "pageBefore";
+			request.setAttribute("pageBefore", pageBefore);
 		}
 		if (boardServiceNextPage.nextPage(pageNumber + 1)) {
-			String pn2 = "b";
-			request.setAttribute("pn2", pn2);
+			String pageAfter = "pageAfter";
+			request.setAttribute("pageAfter", pageAfter);
 		}
 		request.setAttribute("pageNumber", pageNumber);
 

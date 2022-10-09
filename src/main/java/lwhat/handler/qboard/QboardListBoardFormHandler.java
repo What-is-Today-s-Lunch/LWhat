@@ -8,10 +8,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.board.BoardListDAOImpl;
 import lwhat.dto.QboardDTO;
-import lwhat.dto.board.GboardDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.board.BoardService;
 
@@ -19,11 +19,14 @@ public class QboardListBoardFormHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// session
+		HttpSession session = request.getSession();
 		
 		int pageNumber = 1;
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
+		String memberPass = (String) session.getAttribute("memberPW");
 
 		BoardService boardService = new BoardListDAOImpl();
 		QboardDTO qboardDTO = new QboardDTO();

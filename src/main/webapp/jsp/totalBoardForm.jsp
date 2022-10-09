@@ -79,10 +79,10 @@
 						
 						<div class="board_page">
 	 					
-						<c:if test="${pn1 eq 'a'}">
+						<c:if test="${pageBefore eq 'pageBefore'}">
 							<a href="${webapproot}/gboardlist.do?pageNumber=${pageNumber-1}" class="bt prev"><</a>
 						</c:if>
-						<c:if test="${pn2 eq 'b' }">
+						<c:if test="${pageAfter eq 'pageAfter' }">
 							<a href="${webapproot}/gboardlist.do?pageNumber=${pageNumber+1}" class="bt next">></a>
 						</c:if>
 						</div>

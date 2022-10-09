@@ -80,7 +80,7 @@
 							if(viewFile.exists()){
 							%> --%>
 							<div id="contentImage">
-							<c:if test="${pn1 eq 'a' }">
+							<c:if test="${imgExists eq 'imgExists' }">
 							<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}file.jpg">
 							<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}files.jpg">
 							</c:if>
@@ -115,10 +115,10 @@
 						</div>
 						
 						<div class="board_page">
-						<c:if test="${pn3 eq 'c' }">
+						<c:if test="${pageBefore eq 'pageBefore' }">
 							<a href="${webapproot}/qboardview.do?pageNumber=${pageNumber-1}&&qPostingID=${qboardDTO.qPostingID}" class="bt prev"><</a>
 						</c:if>
-						<c:if test="${pn4 eq 'd'}">
+						<c:if test="${pageAfter eq 'pageAfter'}">
 							<a href="${webapproot}/qboardview.do?pageNumber=${pageNumber+1}&&qPostingID=${qboardDTO.qPostingID}" class="bt next">></a>
 						</c:if>
 						

@@ -35,7 +35,7 @@ public class QboardViewHandler implements CommandHandler {
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
-
+		
 		// boardview
 		BoardService boardService = new BoardViewDAOImpl();
 		QboardDTO qboardDTO = new QboardDTO();
@@ -46,8 +46,8 @@ public class QboardViewHandler implements CommandHandler {
 		String real = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/qupload";
 		File viewFile = new File(real + "/" + qPostingID + "file.jpg");
 		if (viewFile.exists()) {
-			String pn1 = "a";
-			request.setAttribute("pn1", pn1);
+			String imgExists = "imgExists";
+			request.setAttribute("imgExists", imgExists);
 		}
 		
 		// comment
@@ -65,16 +65,16 @@ public class QboardViewHandler implements CommandHandler {
 				// 세션의 memberID와 list1의 memberID_FK가 같을때만 수정삭제 버튼 표시
 			}// if
 		}
-
+		
 		// comment page
 		BoardConmentListDAOImpl boardCommentServiceNextPage = new BoardConmentListDAOImpl();
 		if (pageNumber != 1) {
-			String pn3 = "c";
-			request.setAttribute("pn3", pn3);
+			String pageBefore = "pageBefore";
+			request.setAttribute("pageBefore", pageBefore);
 		}
 		if (boardCommentServiceNextPage.nextPageq(pageNumber + 1)) {
-			String pn4 = "d";
-			request.setAttribute("pn4", pn4);
+			String pageAfter = "pageAfter";
+			request.setAttribute("pageAfter", pageAfter);
 		}
 		request.setAttribute("pageNumber", pageNumber);
 

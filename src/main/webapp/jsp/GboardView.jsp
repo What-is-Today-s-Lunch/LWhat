@@ -80,7 +80,7 @@
 							if(viewFile.exists()){
 							%> --%>
 							<div id="contentImage">
-							<c:if test="${pn1 eq 'a' }">
+							<c:if test="${imgExists eq 'imgExists' }">
 							<img src="/LWhat/jsp/upload/${gboardDTO.gPostingID}file.jpg">
 							</c:if>
 							</div>
@@ -114,10 +114,10 @@
 						</div>
 						
 						<div class="board_page">
-						<c:if test="${pn3 eq 'c' }">
+						<c:if test="${pageBefore eq 'pageBefore' }">
 							<a href="${webapproot}/gboardview.do?pageNumber=${pageNumber-1}&&gPostingID=${gboardDTO.gPostingID}" class="bt prev"><</a>
 						</c:if>
-						<c:if test="${pn4 eq 'd'}">
+						<c:if test="${pageAfter eq 'pageAfter'}">
 							<a href="${webapproot}/gboardview.do?pageNumber=${pageNumber+1}&&gPostingID=${gboardDTO.gPostingID}" class="bt next">></a>
 						</c:if>
 						
