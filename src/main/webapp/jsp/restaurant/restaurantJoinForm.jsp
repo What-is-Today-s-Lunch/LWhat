@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8" />
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type ="text/javascript" src="../js/kakaoAdressAPI.js"></script>
+<script type ="text/javascript" src="/LWhat/js/kakaoAdressAPI.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style_category.css">
-<link rel="stylesheet" href="../css/css.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/style_category.css">
+<link rel="stylesheet" href="/LWhat/css/css.css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>종합 게시판</title>
@@ -28,7 +28,7 @@
 					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
 					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
 					<li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
-					<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
+					<li><a href="${webapproot}/qboardlist.do">1:1 문의</a></li>
 					<li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
 				</ul>
 			</div>

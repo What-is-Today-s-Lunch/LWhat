@@ -43,6 +43,6 @@ public class RestaurantReviewUpdateFormHandler implements CommandHandler{
 		request.setAttribute("review", reviewDTO);
 
 		
-		return "/jsp/restaurantReviewUpdateForm.jsp";
+		return "/jsp/restaurant/restaurantReviewUpdateForm.jsp";
 	}
 }

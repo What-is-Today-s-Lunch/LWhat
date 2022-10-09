@@ -58,6 +58,6 @@ List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantRev
 request.setAttribute("revDTO", revlistDTO);
 
 
-return "/jsp/restaurantFormTest.jsp";
+return "/jsp/restaurant/restaurantFormTest.jsp";
 	}
 }

@@ -9,6 +9,6 @@ public class RestaurantJoinFormHandler implements CommandHandler{
 		@Override
 		public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-			return "/jsp/restaurantJoinForm.jsp";
+			return "/jsp/restaurant/restaurantJoinForm.jsp";
 		}
 }

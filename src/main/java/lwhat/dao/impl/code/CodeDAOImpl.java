@@ -3,10 +3,8 @@ package lwhat.dao.impl.code;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 
-
-import lwhat.constants.LwhatConstants;
+import lwhat.constants.RestaurantConstants;
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
 import lwhat.dto.CodeTableDTO;
 import lwhat.service.code.CodeService;
@@ -15,7 +13,7 @@ public class CodeDAOImpl extends LWhatConnectionDAOImpl implements CodeService{
 	@Override
 	public CodeTableDTO codeView(String codevalue) throws Exception {
 		Connection con = getConnection();
-		String sql = LwhatConstants.querys.getProperty("CODE_VIEW_SQL");
+		String sql = RestaurantConstants.restaurant.getProperty("CODE_VIEW_SQL");
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, codevalue);
 		ResultSet rs = pstmt.executeQuery();

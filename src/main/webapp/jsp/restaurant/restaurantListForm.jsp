@@ -13,8 +13,8 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/LWhat/css/foodListStyle.css">
-<script type="text/javascript" src="../js/slide.js"></script>
-<script type="text/javascript" src="../js/upBtn.js"></script>
+<script type="text/javascript" src="/LWhat/js/slide.js"></script>
+<script type="text/javascript" src="/LWhat/js/upBtn.js"></script>
 <title>${codename}</title>
 
 </head>
@@ -35,7 +35,7 @@
 					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
 					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
 					<li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
-					<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
+					<li><a href="${webapproot}/qboardlist.do">1:1 문의</a></li>
 					<li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
 				</ul>
 			</div>

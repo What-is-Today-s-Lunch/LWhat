@@ -37,6 +37,6 @@ public class RestaurantFormTestHandler implements CommandHandler {
 			}
 		}
 
-		return "/jsp/restaurantFormTest.jsp";
+		return "/jsp/restaurant/restaurantFormTest.jsp";
 	}//process
 }//class
