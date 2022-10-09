@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -136,6 +137,11 @@ $(function(){
 </script>
 </head>
 <body>
+<c:if test="${result eq '-1'}">
+<script>
+alert("이미 등록된 아이디 입니다!")
+</script>
+</c:if>
    <div id="top">
    <br>
    <h1>오 늘 뭐 먹 지 ?</h1>
@@ -144,7 +150,7 @@ $(function(){
    <br>
     <div id="bottom">
         <form method="post" name = "frm" action="${webapproot}/memberjoinproc.do">
-            * 아이디 <input type="text" name="uid" placeholder="4~12글자 " />
+      * 아이디 <input type="text" name="uid" placeholder="4~12글자 " />
             <label for="uid" class="validation_error"></label><br />
       * 비밀번호 <input type="password" name="upass" placeholder="8~15글자 (문자, 숫자, 특수문자 포함)"/><label for="upass" class="validation_error"></label><br />
       * 비밀번호확인 <input type="password" name="upassre" placeholder="8~15글자 (문자, 숫자, 특수문자 포함)"/><label for="upassre" class="validation_error"></label><br />

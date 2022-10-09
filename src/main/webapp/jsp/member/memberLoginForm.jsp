@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <%@page import="lwhat.dto.member.MemberDTO"%> --%>
 <%-- <%@page import="lwhat.dao.impl.member.MemberLoginDAOImpl"%> --%>
 <%-- <%@page import="lwhat.dao.impl.member.MemberViewDAOImpl"%> --%>
@@ -12,9 +13,18 @@
    rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/LWhat/css/member.css">
 <title>로그인 페이지</title>
-
 </head>
 <body>
+<c:if test="${result eq '0'}">
+<script>
+alert("비밀번호가 틀렸습니다!")
+</script>
+</c:if>
+<c:if test="${result eq '-1'}">
+<script>
+alert("존재하지 않는 아이디입니다!")
+</script>
+</c:if>
    <div id="top">
    <br>
    <h1>오 늘 뭐 먹 지 ?</h1>

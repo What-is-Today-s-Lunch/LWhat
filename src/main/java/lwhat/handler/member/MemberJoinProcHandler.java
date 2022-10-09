@@ -15,15 +15,22 @@ public class MemberJoinProcHandler implements CommandHandler{
 	  //MemberDTO 생성
 	  MemberDTO memberDTO = new MemberDTO();
       
-	  // memberDTO에 join 각 데이터값 
+	  // memberDTO에 memberjoinform에서 썻던 각 데이터값 지정
       memberDTO.setMemberID(request.getParameter("uid") == null ? "" : request.getParameter("uid"));
       memberDTO.setMemberPW(request.getParameter("upass") == null ? "" : request.getParameter("upass"));
       memberDTO.setNickName(request.getParameter("unick") == null ? "" : request.getParameter("unick"));
       memberDTO.setEmail(request.getParameter("uemail") == null ? "" : request.getParameter("uemail"));
       memberDTO.setName(request.getParameter("uname") == null ? "" : request.getParameter("uname"));
-
+      
+      // MemberJoinDAOImpl 에서 데이터 처리
+      int result = 0;
       MemberService memberService = new MemberJoinDAOImpl();
-      memberService.joinMember(memberDTO);
+      result = memberService.joinMember(memberDTO);
+      request.setAttribute("result", result);
+      
+      if(result == -1) {
+    	  return "/jsp/member/memberJoinForm.jsp";
+      }
 
       return "/jsp/member/memberLoginForm.jsp";
    }

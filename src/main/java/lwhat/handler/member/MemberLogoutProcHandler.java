@@ -10,6 +10,7 @@ public class MemberLogoutProcHandler implements CommandHandler{
    @Override
    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	  HttpSession session = request.getSession();
+	  
       session.invalidate();
       return "/index.jsp";
    }

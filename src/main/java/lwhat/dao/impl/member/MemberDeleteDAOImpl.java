@@ -12,6 +12,7 @@ public class MemberDeleteDAOImpl extends AbstractMemberDAOImpl implements Member
 	   public void deleteMember(String memberID) throws Exception {
 			/* String sql = "delete from memberinfo where memberID=?"; */
 		   Connection conn = getConnection();
+		   // 멤버삭제 쿼리 실행
 	         PreparedStatement pstmt 
 	         = conn.prepareStatement(MemberConstants.props.getProperty("DELETE_SQL"));
 	         pstmt.setString(1, memberID);
