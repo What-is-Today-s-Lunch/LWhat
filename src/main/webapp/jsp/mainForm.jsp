@@ -25,7 +25,7 @@
 			<form action="${webapproot}/restaurantform.do" method="get">
 				<input type="hidden" name="code" value="A1"> <input
 					type="search" name="restaurantID" placeholder="search">
-				<button type="submit" class="searchBtn">전송</button>
+				<button type="submit" class="searchBtn">검색</button>
 			</form>
 		</div>
          <ul class="nav">

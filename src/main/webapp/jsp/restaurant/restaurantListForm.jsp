@@ -23,14 +23,12 @@
 		<div class="intro_bg">
 			<div class="header">
 				<div class="searchArea">
-					<div class="search-box">
-						<form action="${webapproot}/restaurantform.do" method="get">
-						<input type="hidden" name="code" value="A1"> 
-						<input class = "search-txt"type="search" name="restaurantID" placeholder="search">
-						<button type="submit" class="search-btn">찾기</button>
-						</form>
-					</div>
-				</div>
+			<form action="${webapproot}/restaurantform.do" method="get">
+				<input type="hidden" name="code" value="A1"> <input
+					type="search" name="restaurantID" placeholder="search">
+				<button type="submit" class="searchBtn">검색</button>
+			</form>
+		</div>
 				<ul class="nav">
 					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
 					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
