@@ -15,7 +15,7 @@ public class RestaurantSearchDAOImpl extends AbstractRestaurantDAOImpl {
 			Connection conn = getConnection();
 			String sql = " select * from restaurant where restaurantID ";
 			sql += ("like '%" + searchText + "%' ");
-			String sql2 = " select round(avg(score),1) from review r  inner join restaurant r2  on r.restaurantID_FK = r2.restaurantID where restaurantID_FK = ? ";
+			String sql2 = " select round(avg(score),1) from restaurantreview r  inner join restaurant r2  on r.restaurantID_FK = r2.restaurantID where restaurantID_FK = ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			PreparedStatement pstmt2 =  conn.prepareStatement(sql2);
 			//pstmt.setString(1, searchText);
