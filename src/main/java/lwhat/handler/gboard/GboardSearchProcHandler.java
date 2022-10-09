@@ -61,6 +61,6 @@ public class GboardSearchProcHandler implements CommandHandler{
 		request.setAttribute("GboardDTOList", GboardDTOList);
 
 		
-		return "/jsp/totalBoardForm.jsp";
+		return "/jsp/board/gboard/GboardListForm.jsp";
 	}
 }

@@ -84,7 +84,7 @@ public class QboardViewHandler implements CommandHandler {
          }
 		
 		
-		return "/jsp/QboardView.jsp";
+		return "/jsp/board/qboard/QboardView.jsp";
 	}
 
 }

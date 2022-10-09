@@ -67,7 +67,7 @@ public class QboardListBoardFormHandler implements CommandHandler {
 		//request.setAttribute("GboardDTOList", GboardDTOList);
 		
 		
-		return "/jsp/QboardListForm.jsp";
+		return "/jsp/board/qboard/QboardListForm.jsp";
 	}
 
 }

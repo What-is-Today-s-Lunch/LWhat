@@ -28,7 +28,7 @@ public class QboardUpdateBoardFormHandler implements CommandHandler {
 				
 				request.setAttribute("qPostingID", qboardDTO.getqPostingID());
 				request.setAttribute("qboardDTO", qboardDTO);
-		return "/jsp/QboardUpdate.jsp";
+		return "/jsp/board/qboard/QboardUpdate.jsp";
 	}
 
 }

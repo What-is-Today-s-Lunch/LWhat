@@ -83,6 +83,6 @@ public class GboardViewHandler implements CommandHandler {
             request.setAttribute("isSameWriter", "true");
          }
 
-		return "/jsp/GboardView.jsp";
+		return "/jsp/board/gboard/GboardView.jsp";
 	}
 }

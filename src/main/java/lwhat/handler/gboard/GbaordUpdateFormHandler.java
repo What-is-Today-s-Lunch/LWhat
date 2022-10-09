@@ -29,7 +29,7 @@ public class GbaordUpdateFormHandler implements CommandHandler {
 		request.setAttribute("gPostingID", gboardDTO.getgPostingID());
 		request.setAttribute("gboardDTO", gboardDTO);
 		
-		return "/jsp/GboardUpdate.jsp";
+		return "/jsp/board/gboard/GboardUpdate.jsp";
 	}
 
 }
