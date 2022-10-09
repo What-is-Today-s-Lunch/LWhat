@@ -53,7 +53,7 @@ public class MemberLoginProcHandler implements CommandHandler{
  		}else {
  			request.setAttribute("user", false);
  		};
-         return "/jsp/member/mainForm.jsp";
+         return "/jsp/mainForm.jsp";
       }
       
       if (result == 0) { // 비밀번호 불일치
