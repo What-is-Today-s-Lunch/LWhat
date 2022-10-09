@@ -52,7 +52,7 @@
 				<!--	<c:set var="bno" value="${rslistSize-stat.count+1}" />-->
 				<li>
 					<div class="icon_img">
-						<img src="/LWhat/image/koreafood.png">
+						<img src="/LWhat/jsp/restaurantupload/${restaurantlist.restaurantID}/${restaurantlist.restaurantID}1.jpg">
 					</div>
 
 					<div class="contents1_bold">

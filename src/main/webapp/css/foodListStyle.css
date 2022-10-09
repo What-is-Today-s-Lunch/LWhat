@@ -207,7 +207,6 @@ h1 {
 
 .restinfo {
 	width: 1280px;
-   	margin-left: 50px;
    	text-align: center;
 }
 .restcontent{
@@ -312,7 +311,10 @@ button{
    margin-top: 45px;
 }
 
-
+.main_text0 > .contents1 > ul > li> .icon_img > img{
+	width: 150px;
+	height: 150px;
+}
 
 .icons .contents2 {
    width: 280px;
