@@ -33,6 +33,9 @@ alert("로그인 성공!")
             <li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
             <li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
             <li><a href="${webapproot}/qboardlist.do">1:1 문의</a></li>
+			<c:if test="${manager}">
+            <li><a href="${webapproot}/restaurantjoinform.do">식당 등록</a></li>
+			</c:if>
             <li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
          </ul>
       </div>

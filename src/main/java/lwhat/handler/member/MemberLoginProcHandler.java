@@ -50,10 +50,10 @@ public class MemberLoginProcHandler implements CommandHandler{
          //관리자 아이디 일 경우 true 값을 받아서 식당등록 페이지에 들어 갈 수 있게 함 
          if(memberDTO.getMemberID().equals("megaZ")||memberDTO.getMemberID().equals("megaZ1")
         		 ||memberDTO.getMemberID().equals("megaZ2")) {
-        	 request.setAttribute("user", true);
+        	 request.setAttribute("manager", true);
         	 return "/jsp/mainForm.jsp";
  		}else {
- 			request.setAttribute("user", false);
+ 			request.setAttribute("manager", false);
  		}
          return "/jsp/mainForm.jsp";
       }
