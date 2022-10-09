@@ -1,14 +1,3 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewViewDAOImpl"%>
-<%@page import="org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation"%>
-<%@page import="java.sql.Timestamp"%>
-<%@page import="lwhat.dto.RestaurantDTO"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantViewDAOImpl"%>
-<%@page import="java.util.List"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
-<%@page import="lwhat.dto.ReviewDTO"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewUpdateDAOImpl"%>
-<%@page import="lwhat.service.restaurant.RestaurantService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

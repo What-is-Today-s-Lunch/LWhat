@@ -1,15 +1,7 @@
-<%@page import="lwhat.dto.ReviewDTO"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantViewDAOImpl"%>
-<%@page import="lwhat.dto.RestaurantDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantListDAOImpl"%>
-<%@page import="lwhat.service.restaurant.RestaurantService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%--레스토랑ID와 매칭되는 리스트 가져오기 --%>
 
 
 

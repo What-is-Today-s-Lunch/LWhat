@@ -1,17 +1,8 @@
-<%@page import="lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl"%>
-<%@page import="lwhat.dto.CodeTableDTO"%>
-<%@page import="lwhat.dao.impl.code.CodeDAOImpl"%>
-<%@page import="lwhat.service.code.CodeService"%>
-<%@page import="java.util.List"%>
-<%@page import="lwhat.dto.RestaurantDTO"%>
-<%@page import="lwhat.dao.impl.restaurant.RestaurantListDAOImpl"%>
-<%@page import="lwhat.service.restaurant.RestaurantService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page import="java.util.Map"%>
 
 
 <!DOCTYPE html>

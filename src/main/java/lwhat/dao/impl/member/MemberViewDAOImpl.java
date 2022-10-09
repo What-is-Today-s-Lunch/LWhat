@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import lwhat.constants.MemberConstants;
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.service.member.MemberService;
 
 public class MemberViewDAOImpl extends AbstractMemberDAOImpl implements MemberService {
