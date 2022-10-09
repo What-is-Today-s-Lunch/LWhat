@@ -33,8 +33,6 @@ public class RestaurantReviewUpdateFormHandler implements CommandHandler{
 		RestaurantService restaurantService = new RestaurantReviewViewDAOImpl();
 		RestaurantReviewDTO reviewDTO = restaurantService.viewRestaurantReview(revID);
 
-		//SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
-		//Date date=new Date();
 		
 		SimpleDateFormat mDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		

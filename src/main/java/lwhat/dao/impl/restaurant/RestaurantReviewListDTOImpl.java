@@ -14,8 +14,7 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 	public List<RestaurantReviewDTO> listRestaurantReview(String restaurantID) throws Exception {
 		System.out.println("리뷰의 레스토랑 아이디 : "+restaurantID);
 		Connection conn = getConnection();
-		PreparedStatement pstmt =  conn.prepareStatement(RestaurantConstants.restaurant.getProperty("REVIEW_LIST_SEARCH_SQL_PREPEND"));
-		
+		PreparedStatement pstmt =  conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_REVIEW_LIST_SEARCH_SQL_PREPEND"));
 		pstmt.setString(1, restaurantID);
 		ResultSet rs = pstmt.executeQuery();
 		List<RestaurantReviewDTO>list = new ArrayList<RestaurantReviewDTO>();
@@ -30,7 +29,7 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 			reviewDTO.setmDate(rs.getTimestamp("mDate"));
 			list.add(reviewDTO);
 		}
-		
+		System.out.println("리뷰 DTO를 list에 담아서 반환");
 		closeConnection(rs, pstmt, conn);
 		return list;
 	}//list
@@ -39,16 +38,14 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 	@Override
 	public int listCountRestaurantReview(String restaurantID) throws Exception{
 		Connection conn = getConnection();
-		String sql = " select count(revID) from restaurantreview where restaurantID_FK= ? ";
-		PreparedStatement pstmt = conn.prepareStatement(sql);
+		PreparedStatement pstmt = conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_REVIEW_COUNT_SQL"));
 		pstmt.setString(1, restaurantID);
-		
 		ResultSet rs = pstmt.executeQuery();
 		int revCount = 0;		
 		while(rs.next()) {
 			revCount=rs.getInt(1);
 		}
-				
+		System.out.println("리뷰 개수 카운트 완료");
 		return revCount;
 	}//revCount
 	

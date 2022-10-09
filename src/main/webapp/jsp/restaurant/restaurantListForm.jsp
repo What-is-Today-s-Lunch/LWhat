@@ -56,7 +56,7 @@
 					</div>
 
 					<div class="contents1_bold">
-					<a href="#" onclick="location.href='${webapproot}/restaurantformtest.do?restaurantID=${restaurantlist.restaurantID}'">
+					<a href="#" onclick="location.href='${webapproot}/restaurantreviewform.do?restaurantID=${restaurantlist.restaurantID}'">
 					${restaurantlist.restaurantID}</a>
 					</div>
 					<div class="contents2">★${restaurantlist.scoreAvg}</div>

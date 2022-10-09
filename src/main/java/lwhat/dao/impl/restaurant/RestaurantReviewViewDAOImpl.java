@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantReviewDTO;
 
 public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
@@ -14,8 +15,7 @@ public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 	Connection conn = getConnection();
 	Timestamp t = new Timestamp(System.currentTimeMillis());
 	
-	String sql = " select revID, memberID_FK, score, content, mDate from review where revID=? ";
-	PreparedStatement pstmt = conn.prepareStatement(sql);
+	PreparedStatement pstmt = conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_REVIEW_VIEW_SQL"));
 	 pstmt.setInt(1, revID);
 	 ResultSet rs = pstmt.executeQuery();
 	 RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO

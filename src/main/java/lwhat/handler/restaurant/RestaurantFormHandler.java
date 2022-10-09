@@ -54,6 +54,6 @@ public class RestaurantFormHandler implements CommandHandler{
 		}
 		
 		
-		return "/jsp/restaurant/foodList.jsp";
+		return "/jsp/restaurant/restaurantListForm.jsp";
 	}
 }

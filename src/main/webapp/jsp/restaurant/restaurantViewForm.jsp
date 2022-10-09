@@ -59,7 +59,7 @@
 			<div id="roadview"></div>
 			<div class="restinfo">
 				<h1>${rsIDDTO.restaurantID}</h1>
-				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.rTelNum}<br /> 위도
+				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.telNum}<br /> 위도
 				: ${rsIDDTO.longitude}<br /> 경도 : ${rsIDDTO.latitude}
 			<c:if test="${'imagefiles' eq 'imagefiles'}">
 					<div class="resimage">

@@ -41,6 +41,6 @@ public class RestaurantReviewDeleteProcHandler implements CommandHandler{
 		List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlistDTO);
 		
-		return "/jsp/restaurant/restaurantFormTest.jsp";
+		return "/jsp/restaurant/restaurantViewForm.jsp";
 	}
 }
