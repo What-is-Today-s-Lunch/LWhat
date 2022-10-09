@@ -35,7 +35,7 @@
 		</div>
 	</div>
 
-	<div class="main_text0" style="height: 830px">
+	<div class="main_text0">
 		<!-- <h2 align="center">종합 게시판</h2>
 		
 		<div class="contents2">-->
