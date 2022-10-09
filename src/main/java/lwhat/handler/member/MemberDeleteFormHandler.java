@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.member.MemberViewDAOImpl;
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.member.MemberService;
 
@@ -20,6 +20,6 @@ public class MemberDeleteFormHandler implements CommandHandler{
        MemberDTO memberDTO = new MemberDTO();
        memberDTO = memberService.viewMembers(memberID);
        request.setAttribute("memberDTO", memberDTO);
-       return "/jsp/memberDeleteForm.jsp";
+       return "/jsp/member/memberDeleteForm.jsp";
    }
 }

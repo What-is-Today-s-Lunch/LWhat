@@ -1,6 +1,6 @@
 package lwhat.service.member;
 
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.service.LWhatService;
 
 public interface MemberService extends LWhatService {

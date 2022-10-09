@@ -3,9 +3,8 @@ package lwhat.handler.member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import lwhat.dao.impl.member.MemberUpdateDAOImpl;
 import lwhat.dao.impl.member.MemberViewDAOImpl;
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.member.MemberService;
 
@@ -22,6 +21,6 @@ public class MemberInfSearchFormHandler implements CommandHandler{
 	         memberDTO = memberService.viewMember(name, email);
 	 		request.setAttribute("memberDTO", memberDTO);			
 			
-	       return "/jsp/memberInfSearchForm.jsp";
+	       return "/jsp/member/memberInfSearchForm.jsp";
 	}
 }

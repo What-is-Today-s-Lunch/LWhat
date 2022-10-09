@@ -9,6 +9,6 @@ public class MemberSearchFormHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
-		return "/jsp/memberSearchForm.jsp";
+		return "/jsp/member/memberSearchForm.jsp";
 	}
 }

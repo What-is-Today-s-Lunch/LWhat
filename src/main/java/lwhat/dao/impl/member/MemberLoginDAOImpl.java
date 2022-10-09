@@ -14,6 +14,7 @@ public class MemberLoginDAOImpl extends AbstractMemberDAOImpl implements MemberS
 		Connection conn = getConnection();
 		// 정해진 SQL 문장을 데이터 베이스에 삽입
 		PreparedStatement pstmt = conn.prepareStatement(MemberConstants.props.getProperty("LOGIN_SQL"));
+		// 
 		// 쿼리문에 ?에 들어갈 변수 = 쿼리문은 멤버id에 있는 멤버pw를 셀렉트하는것
 		pstmt.setString(1, memberID);
 		// 실행한 결과를 담아주기

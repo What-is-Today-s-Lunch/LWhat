@@ -1,7 +1,7 @@
 package lwhat.dao.impl.member;
 
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.service.member.MemberService;
 
 public abstract class AbstractMemberDAOImpl extends LWhatConnectionDAOImpl implements MemberService {

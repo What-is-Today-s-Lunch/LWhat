@@ -22,6 +22,6 @@ public class MemberDeleteProcHandler implements CommandHandler{
       memberService.deleteMember(memberID);
       session.invalidate();
       
-      return "/jsp/loginForm.jsp";
+      return "/jsp/member/memberLoginForm.jsp";
    }
 }

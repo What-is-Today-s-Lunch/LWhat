@@ -5,8 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.member.MemberUpdateDAOImpl;
-import lwhat.dao.impl.member.MemberViewDAOImpl;
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.member.MemberService;
 
@@ -30,6 +29,6 @@ public class MemberUpdateProcHandler implements CommandHandler{
          request.setAttribute("memberDTO", memberDTO);
          //MemberUpdateDAOImpl memberUpdateDAOImpl = new MemberUpdateDAOImpl();
          //memberUpdateDAOImpl.updateMember(memberDTO);
-         return "/jsp/mypageForm.jsp";
+         return "/jsp/member/mypageForm.jsp";
    }
 }

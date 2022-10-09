@@ -9,7 +9,6 @@ public class MemberJoinFormHandler implements CommandHandler{
 
    @Override
    public String process(HttpServletRequest request, HttpServletResponse response) {
-      return "/jsp/joinForm.jsp";
+      return "/jsp/member/memberJoinForm.jsp";
    }
-      
 }

@@ -1,9 +1,9 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="lwhat.service.member.MemberService"%>
-<%@page import="lwhat.util.ConnectionManager"%>
-<%@page import="lwhat.dao.member.MemberDAO"%>
-<%@page import="lwhat.dto.MemberDTO"%>
-<%@page import="lwhat.dao.impl.member.MemberViewDAOImpl"%>
+<%-- <%@page import="java.util.ArrayList"%> --%>
+<%-- <%@page import="lwhat.service.member.MemberService"%> --%>
+<%-- <%@page import="lwhat.util.ConnectionManager"%> --%>
+<%-- <%@page import="lwhat.dao.member.MemberDAO"%> --%>
+<%-- <%@page import="lwhat.dto.member.MemberDTO"%> --%>
+<%-- <%@page import="lwhat.dao.impl.member.MemberViewDAOImpl"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

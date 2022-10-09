@@ -1,8 +1,8 @@
-<%@page import="lwhat.dto.MemberDTO"%>
-<%@page import="lwhat.dao.impl.member.MemberLoginDAOImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="lwhat.dao.impl.member.MemberViewDAOImpl"%>
+<%-- <%@page import="lwhat.dto.member.MemberDTO"%> --%>
+<%-- <%@page import="lwhat.dao.impl.member.MemberLoginDAOImpl"%> --%>
+<%-- <%@page import="lwhat.dao.impl.member.MemberViewDAOImpl"%> --%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,7 +21,7 @@
    <h3>우리만의 점심 커뮤니티</h3>
    </div>
     <div>
-        <form method="post" action="${webapproot}/memberloginproc.do"> <!-- ??????? -->
+        <form method="post" action="${webapproot}/memberloginproc.do">
             <input type="text" placeholder="아이디" class="in" name="memberID">
             <input type="password" placeholder="비밀번호" class="in" name="memberPW">
             <input type="submit" id="button" value="로그인"><br>

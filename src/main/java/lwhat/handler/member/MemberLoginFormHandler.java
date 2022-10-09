@@ -9,6 +9,6 @@ public class MemberLoginFormHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		
-		return "/jsp/loginForm.jsp";
+		return "/jsp/member/memberLoginForm.jsp";
 	}
 }
