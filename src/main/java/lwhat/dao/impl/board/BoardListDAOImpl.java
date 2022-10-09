@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import lwhat.dto.QboardDTO;
 import lwhat.dto.board.GboardDTO;
+import lwhat.dto.board.QboardDTO;
 
 public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;

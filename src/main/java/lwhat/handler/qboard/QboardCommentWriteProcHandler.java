@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.board.BoardConmentWrtieDAOImpl;
-import lwhat.dto.QuestioncommentDTO;
+import lwhat.dto.board.QuestioncommentDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.board.BoardService;
 

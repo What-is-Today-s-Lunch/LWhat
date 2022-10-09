@@ -4,11 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import lwhat.dao.impl.board.BoardViewDAOImpl;
-import lwhat.dto.GeneralcommentDTO;
-import lwhat.dto.board.GboardDTO;
 import lwhat.handler.CommandHandler;
-import lwhat.service.board.BoardService;
 
 public class GboardCommentUpdateFormcHandler implements CommandHandler {
 

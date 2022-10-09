@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.board.BoardUpdateDAOImpl;
-import lwhat.dto.QboardDTO;
+import lwhat.dto.board.QboardDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.board.BoardService;
 

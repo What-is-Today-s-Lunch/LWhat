@@ -11,7 +11,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import lwhat.dao.impl.board.BoardFileUploadDAOImpl;
 import lwhat.dao.impl.board.BoardWriteDAOImpl;
-import lwhat.dto.QboardDTO;
+import lwhat.dto.board.QboardDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.board.BoardService;
 

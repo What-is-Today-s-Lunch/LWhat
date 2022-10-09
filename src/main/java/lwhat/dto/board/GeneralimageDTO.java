@@ -1,4 +1,4 @@
-package lwhat.dto;
+package lwhat.dto.board;
 
 import java.io.Serializable;
 

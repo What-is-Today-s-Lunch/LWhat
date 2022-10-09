@@ -25,7 +25,7 @@
          <ul class="nav">
             <li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
             <li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
-            <li><a href="${webapproot}/gboardlist.do">돌려돌려 돌림판</a></li>
+            <li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
             <li><a href="${webapproot}/qboardlist.do">1:1 문의</a></li>
             <li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
          </ul>

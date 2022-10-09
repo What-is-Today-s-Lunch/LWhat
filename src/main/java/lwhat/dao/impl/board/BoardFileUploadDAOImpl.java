@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.websocket.Encoder.BinaryStream;
-
-import lwhat.dto.board.GboardDTO;
 import lwhat.util.ConnectionManager;
 
 public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {

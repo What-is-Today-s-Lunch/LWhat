@@ -2,7 +2,6 @@ package lwhat.dao.impl.board;
 
 import java.sql.PreparedStatement;
 
-import lwhat.dao.impl.LWhatConnectionDAOImpl;
 import lwhat.util.ConnectionManager;
 
 public class BoardDeleteDAOImpl extends AbstractBoardDAOImpl {

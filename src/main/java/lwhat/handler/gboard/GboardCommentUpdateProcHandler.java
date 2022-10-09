@@ -1,12 +1,11 @@
 package lwhat.handler.gboard;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.board.BoardConmentUpdateDAOImpl;
-import lwhat.dto.GeneralcommentDTO;
+import lwhat.dto.board.GeneralcommentDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.board.BoardService;
 

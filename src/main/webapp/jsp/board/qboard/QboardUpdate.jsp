@@ -1,11 +1,8 @@
-<%@page import="lwhat.service.board.BoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="lwhat.dto.board.GboardDTO"%>
-<%@ page import="lwhat.dao.impl.board.BoardUpdateDAOImpl"%>
-<%@ page import="lwhat.dao.impl.board.BoardViewDAOImpl"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,11 +24,11 @@
 					</form>
 				</div>
 				<ul class="nav">
-					<li><a href="../jsp/mainForm.jsp">오늘뭐먹지</a></li>
-					<li><a href="../jsp/totalBoardForm.jsp">종합게시판</a></li>
-					<li><a href="../jsp/gameForm.jsp">돌려돌려 돌림판</a></li>
-					<li><a href="../jsp/inquiryBoardForm.jsp">1:1 문의</a></li>
-					<li><a href="../jsp/loginForm.jsp">LOGIN</a></li>
+					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
+					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
+					<li><a href="${webapproot}/game.do">돌려돌려 돌림판</a></li>
+					<li><a href="${webapproot}/qboardlist.do">1:1 문의</a></li>
+					<li><a href="${webapproot}/membermypageform.do">마이페이지</a></li>
 				</ul>
 			</div>
 		</div>

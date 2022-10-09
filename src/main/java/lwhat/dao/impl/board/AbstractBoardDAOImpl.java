@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
-import lwhat.dto.GeneralcommentDTO;
-import lwhat.dto.QboardDTO;
-import lwhat.dto.QuestioncommentDTO;
 import lwhat.dto.board.GboardDTO;
+import lwhat.dto.board.GeneralcommentDTO;
+import lwhat.dto.board.QboardDTO;
+import lwhat.dto.board.QuestioncommentDTO;
 import lwhat.service.board.BoardService;
 
 public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implements BoardService {

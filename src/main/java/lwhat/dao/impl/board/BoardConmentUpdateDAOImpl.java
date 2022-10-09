@@ -2,8 +2,8 @@ package lwhat.dao.impl.board;
 
 import java.sql.PreparedStatement;
 
-import lwhat.dto.GeneralcommentDTO;
-import lwhat.dto.QuestioncommentDTO;
+import lwhat.dto.board.GeneralcommentDTO;
+import lwhat.dto.board.QuestioncommentDTO;
 import lwhat.util.ConnectionManager;
 
 public class BoardConmentUpdateDAOImpl extends AbstractBoardDAOImpl{

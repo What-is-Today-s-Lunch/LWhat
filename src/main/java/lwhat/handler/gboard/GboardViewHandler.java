@@ -9,8 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.board.BoardConmentListDAOImpl;
 import lwhat.dao.impl.board.BoardViewDAOImpl;
-import lwhat.dto.GeneralcommentDTO;
 import lwhat.dto.board.GboardDTO;
+import lwhat.dto.board.GeneralcommentDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.board.BoardService;
 

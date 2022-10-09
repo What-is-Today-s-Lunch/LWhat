@@ -5,8 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import lwhat.dto.GeneralcommentDTO;
-import lwhat.dto.QuestioncommentDTO;
+import lwhat.dto.board.GeneralcommentDTO;
+import lwhat.dto.board.QuestioncommentDTO;
 
 public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl{
 	private ResultSet rs;

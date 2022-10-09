@@ -3,8 +3,8 @@ package lwhat.dao.impl.board;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import lwhat.dto.QboardDTO;
 import lwhat.dto.board.GboardDTO;
+import lwhat.dto.board.QboardDTO;
 import lwhat.util.ConnectionManager;
 
 public class BoardUpdateDAOImpl extends AbstractBoardDAOImpl {
