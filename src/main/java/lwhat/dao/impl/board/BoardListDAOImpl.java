@@ -101,7 +101,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		return false;
 	}
 	
-	//검색 
+	//검색 Gboard
 	@Override
 	public ArrayList<GboardDTO> listSearchBoard(String searchDomain, String searchText) throws Exception {
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
@@ -133,6 +133,39 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		} 
 		return list; 
 	}
+	
+	//검색 Qboard
+		@Override
+		public ArrayList<QboardDTO> listSearchQBoard(String searchDomain, String searchText) throws Exception {
+			ArrayList<QboardDTO> list = new ArrayList<QboardDTO>();
+			String SQL = "select * from questionposting";
+			String boardTitle = null;
+
+			if (searchDomain.equals("title")) {
+				boardTitle = " where title ";
+			} else if (searchDomain.equals("memberID_FK")) {
+				boardTitle = " where memberID_FK ";
+			}
+			SQL += (boardTitle + "like '%" + searchText + "%' ");
+			
+			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			
+			QboardDTO qboardDTO = null;
+			while (rs.next()) {
+				qboardDTO = new QboardDTO();
+				qboardDTO.setqPostingID(rs.getInt(1));
+				qboardDTO.setMemberID_FK(rs.getString(2));
+				qboardDTO.setboardCategory(rs.getString(3));
+				qboardDTO.setimageCategory(rs.getString(4));
+				qboardDTO.setTitle(rs.getString(5));
+				qboardDTO.setContent(rs.getString(6));
+				qboardDTO.setClickCount(rs.getInt("clickCount"));
+				qboardDTO.setmDate(rs.getString("mDate"));
+				list.add(qboardDTO);
+			} 
+			return list; 
+		}
 
 	public int getNext() {
 		try {

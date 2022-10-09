@@ -28,6 +28,8 @@ public interface BoardService {
 	public abstract ArrayList<GboardDTO> listBoard(String bdomain, Map<String, String> search) throws Exception;
 
 	public abstract ArrayList<GboardDTO> listSearchBoard(String searchDomain, String searchText) throws Exception;
+	
+	public abstract ArrayList<QboardDTO> listSearchQBoard(String searchDomain, String searchText) throws Exception;
 
 	public abstract GboardDTO viewBoard(int gPostingID) throws Exception;
 

@@ -1,6 +1,5 @@
 package lwhat.dao.impl.board;
 
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -61,6 +60,10 @@ public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implem
 
 	@Override
 	public ArrayList<GboardDTO> listSearchBoard(String searchDomain, String searchText) throws Exception {
+		return null;
+	}
+	@Override
+	public ArrayList<QboardDTO> listSearchQBoard(String searchDomain, String searchText) throws Exception{
 		return null;
 	}
 

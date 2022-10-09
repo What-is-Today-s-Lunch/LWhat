@@ -88,7 +88,7 @@
 		<!-- 검색기능 -->
 		</div>
 		<div class="contents1">
-		<form name="searchDomain" method="post" action="${webapproot}/qboardlist.do">
+		<form name="searchDomain" method="post" action="${webapproot}/qboardsearchlistform.do">
 			<select name="searchDomain">
 				<!-- <option value="">전체</option> -->
 				<option value="title">제목</option>
