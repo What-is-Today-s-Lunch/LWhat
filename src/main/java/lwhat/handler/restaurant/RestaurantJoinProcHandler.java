@@ -25,7 +25,6 @@ public class RestaurantJoinProcHandler implements CommandHandler{
 
 		
 		//저장경로 지정해줌 
-	String realFolder = "";
 	String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/restaurantupload";
 	String encType = "UTF-8";
 	int maxSize = 5*1024*1024;
@@ -58,7 +57,7 @@ public class RestaurantJoinProcHandler implements CommandHandler{
 	RestaurantService restaurantService = new RestaurantWriteDAOImpl();
 	restaurantService.writeRestaurant(restaurantDTO);
 	
-	List<RestaurantFoodimageDTO> foodImageList = new ArrayList<RestaurantFoodimageDTO>();
+	List<RestaurantFoodimageDTO> restaurantFoodImageList = new ArrayList<RestaurantFoodimageDTO>();
 	
 	for(int i=1;i<=2;i++){
 		String number = String.valueOf(i);//숫자를 문자로 바꿈
@@ -69,32 +68,34 @@ public class RestaurantJoinProcHandler implements CommandHandler{
 		String filename = multipartRequest.getFilesystemName(fileStringname);
 		
 		//foodImageDTO 설정
-		RestaurantFoodimageDTO foodimageDTO = new RestaurantFoodimageDTO();
-		foodimageDTO.setRestaurantID_FK(resID);
-		foodimageDTO.setImageCategory(restaurantCat);//사진의 카테고리?? 
-		foodimageDTO.setContent(foodname);//사진의 음식이름 	
-		foodimageDTO.setCImage(file);	
+		RestaurantFoodimageDTO restaurantFoodImageDTO = new RestaurantFoodimageDTO();
+		restaurantFoodImageDTO.setRestaurantID_FK(resID);
+		restaurantFoodImageDTO.setImageCategory(restaurantCat);//사진의 카테고리?? 
+		restaurantFoodImageDTO.setContent(foodname);//사진의 음식이름 	
+		restaurantFoodImageDTO.setCImage(file);	
+		//폴더를 만들고 그안에 저장시켜주게끔 mkdir() 써주기 
 		
 		if(filename!=null){
-	File oldFile = new File(saveFolder+"\\"+filename);
-	File newFile = new File(saveFolder+"\\"+resID.concat(number.concat(".jpg")));
+	File oldFile = new File(saveFolder+"/"+filename);
+	File newFile = new File(saveFolder+"/"+resID+"/"+resID.concat(number.concat(".jpg")));
 	oldFile.renameTo(newFile);
-	foodimageDTO.setSImage(filename);
-	foodImageList.add(foodimageDTO); //DTO 를 리스트에 설정 + 파일명을 db에 저장 
+	newFile.mkdirs();
+	restaurantFoodImageDTO.setSImage(filename);
+	restaurantFoodImageList.add(restaurantFoodImageDTO); //DTO 를 리스트에 설정 + 파일명을 db에 저장 
 	}
 	}
+	
+	
 	try{
-		RestaurantService restaurantService2 = new RestaurantFileUploadDAOImpl(); //파일 업로드 Impl
-		restaurantService2.filesUploadRestaurant(resID, foodImageList);
+		RestaurantService restaurantService2 = new RestaurantFileUploadDAOImpl(); //파일이름을 DB에 업로드 Impl
+		restaurantService2.filesUploadRestaurant(restaurantFoodImageList);
 	}catch(Exception e){
 		e.printStackTrace();
 	}
 	
 	//메인 페이지 갈 때 매니저일 경우 식당등록을 할 수 있게.
-	request.getParameter("memberID");
-	
-	if(request.getSession().getAttribute("memberID").equals("megaZ")||request.getSession().getAttribute("memberID").equals("megaZ1")
-   		 ||request.getSession().getAttribute("memberID").equals("megaZ2")) {
+	String user = (String)request.getSession().getAttribute("memberID");
+	if(user.equals("megaZ")||user.equals("megaZ1")||user.equals("megaZ2")) {
    	 request.setAttribute("manager", true);
    	 return "/jsp/mainForm.jsp";
 	}else {

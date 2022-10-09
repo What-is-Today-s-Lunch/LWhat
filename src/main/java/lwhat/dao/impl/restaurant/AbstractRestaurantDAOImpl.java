@@ -98,7 +98,7 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 	}
 
 	@Override
-	public int filesUploadRestaurant(String restaurantID, List<RestaurantFoodimageDTO> list) throws Exception {
+	public int filesUploadRestaurant(List<RestaurantFoodimageDTO> list) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
