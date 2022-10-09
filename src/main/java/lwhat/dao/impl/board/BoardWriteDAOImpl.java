@@ -28,16 +28,16 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 		pstmt.setString(4, gboardDTO.getTitle());
 		pstmt.setString(5, gboardDTO.getContent());
 		
-		//recent id select sql
 		pstmt.executeUpdate();
 		
-		String SQL2 = " SELECT gPostingID FROM generalposting ORDER BY gPostingID DESC LIMIT 1 ";
-		PreparedStatement pstmt2 = getConnection().prepareStatement(SQL2);
+		String SQLIMG = " SELECT gPostingID FROM generalposting ORDER BY gPostingID DESC LIMIT 1 ";
+		PreparedStatement pstmt2 = getConnection().prepareStatement(SQLIMG);
 		rs = pstmt2.executeQuery();
 		int resultId = 0;
 		if (rs!=null && rs.next()) {
 			resultId = rs.getInt("gPostingID");
 		}
+		
 		ConnectionManager.closeConnection(pstmt, getConnection());
 		
 		return resultId;
@@ -49,8 +49,8 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			Connection conn = getConnection();
 			//System.out.println(qboardDTO);
 
-			String SQL = " insert into questionposting ( memberID_FK, boardCategory, imageCategory, title, content, wdate, mdate) values ( ?, ?, ?, ?, ?, now(), now()) ";
-			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			String SQLIMG = " insert into questionposting ( memberID_FK, boardCategory, imageCategory, title, content, wdate, mdate) values ( ?, ?, ?, ?, ?, now(), now()) ";
+			PreparedStatement pstmt = conn.prepareStatement(SQLIMG);
 //			pstmt.setInt(1, getNext());
 			pstmt.setString(1, getMemberFK(memberID));
 			pstmt.setString(2, qboardDTO.getboardCategory());

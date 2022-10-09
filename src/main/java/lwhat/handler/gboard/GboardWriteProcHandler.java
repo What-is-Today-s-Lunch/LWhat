@@ -22,63 +22,55 @@ public class GboardWriteProcHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		// session
 		HttpSession session = request.getSession();
 		String memberID = (String) session.getAttribute("memberID");
-		
+
 		GboardDTO gboardDTO = new GboardDTO();
-	    gboardDTO.setTitle(request.getParameter("title") == null ? "" : request.getParameter("title"));
-	    gboardDTO.setContent(request.getParameter("content") == null ? "" : request.getParameter("content"));
-	    gboardDTO.setBoardCategory(request.getParameter("boardCategory") == null ? "" : request.getParameter("boardCategory"));
-	    
-	    String realFolder = "";
-	    String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/upload";
-	    String encType = "UTF-8";
-	    int maxSize = 5*1024*1024;
+		gboardDTO.setTitle(request.getParameter("title") == null ? "" : request.getParameter("title"));
+		gboardDTO.setContent(request.getParameter("content") == null ? "" : request.getParameter("content"));
+		gboardDTO.setBoardCategory(
+				request.getParameter("boardCategory") == null ? "" : request.getParameter("boardCategory"));
 
-	    MultipartRequest multipartRequest = new MultipartRequest(request, saveFolder, maxSize, encType, new DefaultFileRenamePolicy());
+		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/upload";
+		String encType = "UTF-8";
+		int maxSize = 5 * 1024 * 1024;
 
-	    String file = multipartRequest.getOriginalFileName("filename");
-	    String fileName = multipartRequest.getFilesystemName("filename");
-	    
-	    //write 변수
-	    String title = multipartRequest.getParameter("title");
-	    String content = multipartRequest.getParameter("content");
-	    String boardCategory = multipartRequest.getParameter("boardCategory");
-	    String imageCategory = multipartRequest.getParameter("imageCategory"); 
-	    
-	    BoardService boardService = new BoardWriteDAOImpl();
-	    //GboardDTO gboardDTO = new GboardDTO();
-	    gboardDTO.setMemberID_FK(memberID);
-	    gboardDTO.setBoardCategory(boardCategory);
-	    gboardDTO.setImageCategory(imageCategory);
-	    gboardDTO.setTitle(title);
-	    gboardDTO.setContent(content);
-	    
-	    request.setAttribute("boardService", boardService);
-	    if(title == null || content == null){
-			/*
-			 * PrintWriter script = response.getWriter(); script.println("<script>");
-			 * script.println("alert('입력이 안 된 사항이 있습니다.')");
-			 * script.println("history.back()"); script.println("</script>");
-			 */
-	    }
+		MultipartRequest multipartRequest = new MultipartRequest(request, saveFolder, maxSize, encType,
+				new DefaultFileRenamePolicy());
 
-	    int gPostingNum = boardService.writeBoard(gboardDTO, memberID); 
+		// write 변수
+		String title = multipartRequest.getParameter("title");
+		String content = multipartRequest.getParameter("content");
+		String boardCategory = multipartRequest.getParameter("boardCategory");
+		String imageCategory = multipartRequest.getParameter("imageCategory");
 
-	    //int gPostindID = gboardDTO.getgPostingID();
-	    BoardService boardService2 = new BoardFileUploadDAOImpl();
-	    boardService2.fileUploadBoard(file, fileName, gPostingNum);
-	    request.setAttribute("boardService2", boardService2);
-	    
-	    if (fileName != null){
-	    	File oldFile = new File(saveFolder + "\\" + fileName);
-	    	File newFile = new File(saveFolder+ "\\" + (gPostingNum) + "file.jpg");
-	    	oldFile.renameTo(newFile);
-	    } 
-	  
+		// Write Set
+		BoardService boardService = new BoardWriteDAOImpl();
+		gboardDTO.setMemberID_FK(memberID);
+		gboardDTO.setBoardCategory(boardCategory);
+		gboardDTO.setImageCategory(imageCategory);
+		gboardDTO.setTitle(title);
+		gboardDTO.setContent(content);
 
+		request.setAttribute("boardService", boardService);
+
+		int gPostingNum = boardService.writeBoard(gboardDTO, memberID);
+
+		String file = multipartRequest.getOriginalFileName("filename");
+		String fileName = multipartRequest.getFilesystemName("filename");
+
+		BoardService boardServiceFile = new BoardFileUploadDAOImpl();
+		boardServiceFile.fileUploadBoard(file, fileName, gPostingNum);
+		request.setAttribute("boardServiceFile", boardServiceFile);
+
+		if (fileName != null) {
+			File oldFile = new File(saveFolder + "\\" + fileName);
+			File newFile = new File(saveFolder + "\\" + (gPostingNum) + "file.jpg");
+			oldFile.renameTo(newFile);
+
+		}
 
 		return "/gboardlist.do";
 	}
