@@ -1,6 +1,6 @@
 package lwhat.dao.member;
 
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.service.member.MemberService;
 
 public interface MemberDAO extends MemberService{

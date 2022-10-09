@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import lwhat.constants.MemberConstants;
-import lwhat.dto.MemberDTO;
+import lwhat.dto.member.MemberDTO;
 import lwhat.service.member.MemberService;
 
 public class MemberUpdateDAOImpl extends AbstractMemberDAOImpl implements MemberService {
