@@ -56,7 +56,7 @@ public abstract class AbstractBoardDAOImpl extends LWhatConnectionDAOImpl implem
 		return null;
 	}
 	@Override
-	public ArrayList<GboardDTO> listBoard(String searchText, String title) throws Exception{
+	public ArrayList<GboardDTO> listSearchBoard(String searchDomain, String searchText) throws Exception{
 		return null;
 	}
 

@@ -19,7 +19,7 @@ public abstract int updateQboard(QboardDTO qboardDTO, String memberID) throws Ex
 public abstract ArrayList<GboardDTO> listBoard(int pageNumber) throws Exception;
 public abstract ArrayList<QboardDTO> listQboard(int pageNumber) throws Exception; //	qboard 
 public abstract ArrayList<GboardDTO> listBoard(String bdomain, Map<String, String> search) throws Exception;
-public ArrayList<GboardDTO> listBoard(String searchText, String title) throws Exception;
+public abstract ArrayList<GboardDTO> listSearchBoard(String searchDomain, String searchText) throws Exception;
 public abstract GboardDTO viewBoard(int gPostingID) throws Exception;
 public abstract QboardDTO viewQboard(int qPosingID) throws Exception;
 public abstract int fileUploadBoard(String cImage, String sImage, int gPostingID) throws Exception;

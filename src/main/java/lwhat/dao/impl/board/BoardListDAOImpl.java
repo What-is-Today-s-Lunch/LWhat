@@ -39,7 +39,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		}
 		return list;
 	}
-	//문의게시판 impl
+
+	// 문의게시판 impl
 	@Override
 	public ArrayList<QboardDTO> listQboard(int pageNumber) throws Exception {
 
@@ -85,7 +86,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		}
 		return false;
 	}
-	
+
 	public boolean qboardNextPage(int pageNumber) {
 		String SQL = " SELECT * FROM questionposting WHERE qPostingID < ? ";
 
@@ -102,30 +103,39 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		}
 		return false;
 	}
-	
-	
 
 	@Override
-	public ArrayList<GboardDTO> listBoard(String title, String searchText) throws Exception {
+	public ArrayList<GboardDTO> listSearchBoard(String searchDomain, String searchText) throws Exception {
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
 		String SQL = "select * from generalposting";
 		String boardTitle = null;
-		//System.out.println("-----------------" + title);
-		
-		if (title.equals("title")) {
+		// System.out.println("-----------------" + title);
+
+		if (searchDomain.equals("title")) {
 			boardTitle = " where title ";
-		} else if (title.equals("memberID_FK")) {
-			boardTitle = "where memberID_FK ";
+		} else if (searchDomain.equals("memberID_FK")) {
+			boardTitle = " where memberID_FK ";
 		}
 		SQL += (boardTitle + "like '%" + searchText + "%' ");
+//		System.out.println("SQL 문구입니다 = " + SQL);
 		
-		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(SQL);
-		}catch (Exception e) {
-			
+		PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+		rs = pstmt.executeQuery();
+		
+		GboardDTO gboardDTO = null;
+		while (rs.next()) {
+			gboardDTO = new GboardDTO();
+			gboardDTO.setgPostingID(rs.getInt(1));
+			gboardDTO.setMemberID_FK(rs.getString(2));
+			gboardDTO.setBoardCategory(rs.getString(3));
+			gboardDTO.setImageCategory(rs.getString(4));
+			gboardDTO.setTitle(rs.getString(5));
+			gboardDTO.setContent(rs.getString(6));
+			gboardDTO.setClickCount(rs.getInt("clickCount"));
+			gboardDTO.setmDate(rs.getString("mDate"));
+			list.add(gboardDTO);
 		}
-
-		return null;
+		return list; 
 	}
 
 	public int getNext() {
@@ -141,7 +151,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		}
 		return -1;
 	}
-	
+
 	public int qboardGetNext() {
 		String sql = " SELECT qPostingID FROM questionposting ORDER BY qPostingID DESC ";
 		try {
