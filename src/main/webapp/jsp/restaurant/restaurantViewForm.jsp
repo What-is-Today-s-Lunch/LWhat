@@ -49,26 +49,29 @@
 
 		<!-- 지도 그려주기 -->
 		<div class="contents2">
-		
+		<div class="restinfo">
+		<h1>${rsIDDTO.restaurantID}</h1>
+				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.telNum}
+		</div>
+		<div class="restcontent">
+		<div class="restwrap">
 			<div id="map">
 				<input type="hidden" id="longtitude" value="${rsIDDTO.longitude}" />
-				<input type="hidden" id="latitude" value="${rsIDDTO.latitude}" /> <input
-					type="hidden" id="resID" value="${rsIDDTO.restaurantID}" />
+				<input type="hidden" id="latitude" value="${rsIDDTO.latitude}" /> 
+				<input type="hidden" id="resID" value="${rsIDDTO.restaurantID}" />
 			</div>
-
 			<div id="roadview"></div>
-			<div class="restinfo">
-				<h1>${rsIDDTO.restaurantID}</h1>
-				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.telNum}<br /> 위도
-				: ${rsIDDTO.longitude}<br /> 경도 : ${rsIDDTO.latitude}
-			<c:if test="${'imagefiles' eq 'imagefiles'}">
+		</div>
+		<div class="restwrap2">
+		<c:if test="${'imagefiles' eq 'imagefiles'}">
 					<div class="resimage">
-				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}1.jpg">
+				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}1.jpg">
 					</div>
 					<div class="resimage">
-				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}2.jpg">
+				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}2.jpg">
 					</div>
      		 	</c:if>
+     		 	</div>
 			</div>
 		</div>
 		<div class="contents4">
