@@ -39,7 +39,7 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 	@Override
 	public int listCountRestaurantReview(String restaurantID) throws Exception{
 		Connection conn = getConnection();
-		String sql = " select count(revID) from review where restaurantID_FK= ? ";
+		String sql = " select count(revID) from restaurantreview where restaurantID_FK= ? ";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, restaurantID);
 		
