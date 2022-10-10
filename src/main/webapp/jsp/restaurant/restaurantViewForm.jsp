@@ -56,8 +56,7 @@
 		<div class="restcontent">
 		<div class="restwrap">
 			<div id="map">
-				<input type="hidden" id="longtitude" value="${rsIDDTO.longitude}" />
-				<input type="hidden" id="latitude" value="${rsIDDTO.latitude}" /> 
+				<input type="hidden" id="resAdress" value="${rsIDDTO.addressAPI}" />
 				<input type="hidden" id="resID" value="${rsIDDTO.restaurantID}" />
 			</div>
 			<div id="roadview"></div>
