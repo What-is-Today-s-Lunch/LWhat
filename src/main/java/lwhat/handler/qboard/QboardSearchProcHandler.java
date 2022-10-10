@@ -23,7 +23,6 @@ public class QboardSearchProcHandler implements CommandHandler{
 		}
 
 		BoardService boardService = new BoardListDAOImpl();
-		QboardDTO qboardDTO = new QboardDTO();
 		ArrayList<QboardDTO> list = boardService.listQboard(pageNumber);
 		request.setAttribute("list", list);
 
@@ -38,7 +37,7 @@ public class QboardSearchProcHandler implements CommandHandler{
 		}
 		request.setAttribute("pageNumber", pageNumber);
 		
-		// 검색기능	
+		/*------------------------------------검색기능---------------------------------------*/	
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException uee) {
@@ -47,9 +46,6 @@ public class QboardSearchProcHandler implements CommandHandler{
 
 		String searchDomain = request.getParameter("searchDomain") == null ? "" : request.getParameter("searchDomain");
 		String searchText = request.getParameter("searchText") == null ? "" : request.getParameter("searchText");
-		
-		System.out.println("================"+searchDomain);
-		System.out.println("================"+searchText);
 		
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("searchDomain", searchDomain);

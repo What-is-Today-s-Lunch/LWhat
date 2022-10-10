@@ -12,7 +12,7 @@ public class QboardWriteBoardFormHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
-        String memberID = (String) session.getAttribute("memberID");//object
+        String memberID = (String) session.getAttribute("memberID");
 				
 		if(memberID == null){
 			return "/index.jsp";

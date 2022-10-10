@@ -14,27 +14,6 @@
 <title>글쓰기</title>
 </head>
 <body>
-<%-- <%
-String memberID = (String) session.getAttribute("memberID"); 
-//int gCommentID = (int)(session.getAttribute("gCommentID"));
-int gCommentID = 0;
-if(request.getParameter("gCommentID") != null){
-	 gCommentID =Integer.parseInt(request.getParameter("gCommentID"));
-}
-//int gCommentID = 3;
-int gPostingID = 0;
-if(request.getParameter("gPostingID") != null){
-	gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
-}
-
-BoardService boardService = new BoardViewDAOImpl();
-GboardDTO gboardDTO = new GboardDTO();
-
-gboardDTO = boardService.viewBoard(gPostingID);
-
-GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
-	
-%> --%>
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
@@ -64,8 +43,6 @@ GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 				<strong>댓글 수정</strong>
 			</div>
 			<form method="post" action="${webapproot}/gboardcommentupdateproc.do?gCommentID=${gCommentID}&gPostingID=${gPostingID}">
-				<%-- <input type="hidden" name="gCommentID" value="${gCommentID}" />
-				<input type="hidden" name="gPostingID" value="${gPostingID}" /> --%>
 				<div class="board_write_wrap">
 						<div class="board_write">
 							<div class="cont">

@@ -23,6 +23,7 @@ public class QboardCommentWriteProcHandler implements CommandHandler {
 		if (request.getParameter("qPostingID") != null) {
 			qPostingID = Integer.parseInt(request.getParameter("qPostingID"));
 		}
+		/* ------------------------------- comment write ----------------------------------------------*/
 		BoardService boardService = new BoardConmentWrtieDAOImpl();
 		QuestioncommentDTO questioncommentDTO = new QuestioncommentDTO();
 		questioncommentDTO.setContent(content);

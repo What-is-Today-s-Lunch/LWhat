@@ -47,7 +47,7 @@ public class QboardListBoardFormHandler implements CommandHandler {
 		/*----------------------------------------------------------------------------------------*/
 		
 
-		// pageNext
+		/*-------------------------------------- pageNext --------------------------------------*/
 		BoardListDAOImpl boardServiceNextPage = new BoardListDAOImpl();
 		if (pageNumber != 1) {
 			String pageBefore = "pageBefore";
@@ -58,8 +58,9 @@ public class QboardListBoardFormHandler implements CommandHandler {
 			request.setAttribute("pageAfter", pageAfter);
 		}
 		request.setAttribute("pageNumber", pageNumber);
-
-		// 검색기능
+		/*----------------------------------------------------------------------------------------*/
+		
+		/* ---------------------------------------검색기능-----------------------------------------*/
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException uee) {
@@ -72,14 +73,7 @@ public class QboardListBoardFormHandler implements CommandHandler {
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("searchDomain", searchDomain);
 		searchMap.put("searchText", searchText);
-
-		List<QboardDTO> QboardDTOList = null;
-		try {
-			// QboardDTOList = new BoardListDAOImpl().listQboard(searchDomain, searchText);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		// request.setAttribute("GboardDTOList", GboardDTOList);
+		/*----------------------------------------------------------------------------------------*/
 
 		return "/jsp/board/qboard/QboardListForm.jsp";
 	}

@@ -66,18 +66,13 @@
 						</dl>
 					</div>
 					<div class="cont">${qboardDTO.content}
-							<%-- <%
-							String real = "C:\\eclipse_workspace\\LWhat\\src\\main\\webapp\\upload";
-							File viewFile = new File(real+"\\"+gPostingID+"file.jpg");
-							if(viewFile.exists()){
-							%> --%>
 							<div id="contentImage">
-							<c:if test="${imgExists eq 'imgExists' }">
-							<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}file.jpg">
-								<c:if test="${img2 eq 'img2' }">
-								<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}files.jpg">
-								</c:if>
+							<c:if test="${imgExistsFile eq 'imgExistsFile' }">
+								<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}file.jpg">
 							</c:if>
+							<c:if test="${imgExistsFiles eq 'imgExistsFiles' }">
+								<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}files.jpg">
+							</c:if> 
 							</div>
 					</div>
 					
@@ -115,7 +110,9 @@
 						<c:if test="${pageAfter eq 'pageAfter'}">
 							<a href="${webapproot}/qboardview.do?pageNumber=${pageNumber+1}&&qPostingID=${qboardDTO.qPostingID}" class="bt next">></a>
 						</c:if>
+						
 						</div>
+						
 						<div>
 							<form class="commentInput" method="post" action="${webapproot}/qboardcommentwrite.do?qPostingID=${qboardDTO.qPostingID}">
 								<!-- <input type="hidden" name="gCommentID" value="${generalcommentDTO.gCommentID}" /> -->

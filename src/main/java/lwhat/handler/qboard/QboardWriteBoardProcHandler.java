@@ -19,74 +19,66 @@ public class QboardWriteBoardProcHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-request.setCharacterEncoding("UTF-8");
-		
+
+		request.setCharacterEncoding("UTF-8");
+
 		// session
 		HttpSession session = request.getSession();
 		String memberID = (String) session.getAttribute("memberID");
-		
+
 		QboardDTO qboardDTO = new QboardDTO();
 		qboardDTO.setTitle(request.getParameter("title") == null ? "" : request.getParameter("title"));
 		qboardDTO.setContent(request.getParameter("content") == null ? "" : request.getParameter("content"));
-		qboardDTO.setboardCategory(request.getParameter("boardCategory") == null ? "" : request.getParameter("boardCategory"));
-	    
-	    String realFolder = "";
-	    String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/qupload";
-	    String encType = "UTF-8";
-	    int maxSize = 5*1024*1024;
+		qboardDTO.setboardCategory(
+				request.getParameter("boardCategory") == null ? "" : request.getParameter("boardCategory"));
 
-	    MultipartRequest multipartRequest = new MultipartRequest(request, saveFolder, maxSize, encType, new DefaultFileRenamePolicy());
+		// file 변수
+		String realFolder = "";
+		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/qupload";
+		String encType = "UTF-8";
+		int maxSize = 5 * 1024 * 1024;
 
-	    String file = multipartRequest.getOriginalFileName("filename");
-	    String fileName = multipartRequest.getFilesystemName("filename");
-	    
-	    String files = multipartRequest.getOriginalFileName("filenames");
-	    String fileNames = multipartRequest.getFilesystemName("filenames");
-	    
-	    //write 변수
-	    String title = multipartRequest.getParameter("title");
-	    String content = multipartRequest.getParameter("content");
-	    String boardCategory = multipartRequest.getParameter("boardCategory");
-	    
-	    BoardService boardService = new BoardWriteDAOImpl();
-	    //GboardDTO gboardDTO = new GboardDTO();
-	    qboardDTO.setMemberID_FK(memberID);
-	    qboardDTO.setboardCategory(boardCategory);
-	    qboardDTO.setTitle(title);
-	    qboardDTO.setContent(content);
-	    
-	    request.setAttribute("boardService", boardService);
-	    if(title == null || content == null){
-			/*
-			 * PrintWriter script = response.getWriter(); script.println("<script>");
-			 * script.println("alert('입력이 안 된 사항이 있습니다.')");
-			 * script.println("history.back()"); script.println("</script>");
-			 */
-	    }
+		MultipartRequest multipartRequest = new MultipartRequest(request, saveFolder, maxSize, encType,
+				new DefaultFileRenamePolicy());
 
-	    int qPostingNum = boardService.writeQboard(qboardDTO, memberID); 
+		String file = multipartRequest.getOriginalFileName("filename");
+		String fileName = multipartRequest.getFilesystemName("filename");
 
-	    //int gPostindID = gboardDTO.getgPostingID();
-	    BoardService boardFileService = new BoardFileUploadDAOImpl();
-	    boardFileService.fileUploadQBoard(file, fileName, qPostingNum);
-	    boardFileService.fileUploadQBoard(files, fileNames, qPostingNum);
-	    request.setAttribute("boardFileService", boardFileService);
-	    
-	    if (fileName != null){
-	    	File oldFile = new File(saveFolder + "\\" + fileName);
-	    	File newFile = new File(saveFolder+ "\\" + (qPostingNum) + "file.jpg");
-	    	oldFile.renameTo(newFile);
-	    } 
-	    else if (fileNames != null){
-	    	File oldFiles = new File(saveFolder + "\\" + fileNames);
-	    	File newFiles = new File(saveFolder+ "\\" + (qPostingNum) + "files.jpg");
-	    	oldFiles.renameTo(newFiles);
-	    	String img2 = "img2";
-	    	request.setAttribute("img2", img2);   	
-	    } 
-		
-		
+		String files = multipartRequest.getOriginalFileName("filenames");
+		String fileNames = multipartRequest.getFilesystemName("filenames");
+
+		// write 변수
+		String title = multipartRequest.getParameter("title");
+		String content = multipartRequest.getParameter("content");
+		String boardCategory = multipartRequest.getParameter("boardCategory");
+
+		BoardService boardService = new BoardWriteDAOImpl();
+		qboardDTO.setMemberID_FK(memberID);
+		qboardDTO.setboardCategory(boardCategory);
+		qboardDTO.setTitle(title);
+		qboardDTO.setContent(content);
+
+		request.setAttribute("boardService", boardService);
+
+		int qPostingNum = boardService.writeQboard(qboardDTO, memberID);
+
+		BoardService boardFileService = new BoardFileUploadDAOImpl();
+		boardFileService.fileUploadQBoard(file, fileName, qPostingNum);
+		boardFileService.fileUploadQBoard(files, fileNames, qPostingNum);
+		request.setAttribute("boardFileService", boardFileService);
+
+		// file 저장 이름 변경
+		if (fileName != null) {
+			File oldFile = new File(saveFolder + "\\" + fileName);
+			File newFile = new File(saveFolder + "\\" + (qPostingNum) + "file.jpg");
+			oldFile.renameTo(newFile);
+		}
+
+		if (fileNames != null) {
+			File oldFiles = new File(saveFolder + "\\" + fileNames);
+			File newFiles = new File(saveFolder + "\\" + (qPostingNum) + "files.jpg");
+			oldFiles.renameTo(newFiles);
+		}
 		return "/qboardlist.do";
 	}
 

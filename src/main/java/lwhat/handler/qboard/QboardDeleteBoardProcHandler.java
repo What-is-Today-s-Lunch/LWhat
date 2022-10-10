@@ -12,6 +12,8 @@ public class QboardDeleteBoardProcHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String qPostingID = request.getParameter("qPostingID") == null ? "" : request.getParameter("qPostingID");
+		
+		/*--------------------------delete----------------------------*/ 
 		BoardService boardService = new BoardDeleteDAOImpl();
 		boardService.deleteQboard(Integer.parseInt(qPostingID));
 		request.setAttribute("boardService", boardService);

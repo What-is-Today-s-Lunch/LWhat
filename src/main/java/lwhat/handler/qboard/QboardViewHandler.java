@@ -45,14 +45,19 @@ public class QboardViewHandler implements CommandHandler {
 		// 이미지
 		String real = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/qupload";
 		File viewFile = new File(real + "/" + qPostingID + "file.jpg");
+		File viewFiles = new File(real + "/" + qPostingID + "files.jpg");
 		if (viewFile.exists()) {
-			String imgExists = "imgExists";
-			request.setAttribute("imgExists", imgExists);
+			String imgExistsFile = "imgExistsFile";
+			request.setAttribute("imgExistsFile", imgExistsFile);
 		}
+		if (viewFiles.exists()) {
+			String imgExistsFiles = "imgExistsFiles";
+			request.setAttribute("imgExistsFiles", imgExistsFiles);
+		}
+		
 		
 		// comment
 		BoardService boardListService = new BoardConmentListDAOImpl();
-		QuestioncommentDTO questioncommentDTO = new QuestioncommentDTO();
 		ArrayList<QuestioncommentDTO> list = boardListService.conmentListQboard(pageNumber);
 		ArrayList<QuestioncommentDTO> list1 = new ArrayList<>();
 		for(int i = 0 ; i < list.size(); i++) {    

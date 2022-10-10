@@ -68,11 +68,6 @@
 						</dl>
 					</div>
 					<div class="cont">${gboardDTO.content}
-						<%-- <%
-							String real = "C:\\eclipse_workspace\\LWhat\\src\\main\\webapp\\upload";
-							File viewFile = new File(real+"\\"+gPostingID+"file.jpg");
-							if(viewFile.exists()){
-							%> --%>
 						<div id="contentImage">
 							<c:if test="${imgExists eq 'imgExists' }">
 								<img src="/LWhat/jsp/upload/${gboardDTO.gPostingID}file.jpg">

@@ -16,7 +16,6 @@ public class QboardUpdateBoardProcHandler implements CommandHandler {
 		request.setCharacterEncoding("UTF-8");
 		//session
 		HttpSession session = request.getSession();
-		
 		String memberID = (String) session.getAttribute("memberID");
 		String qPostingID = request.getParameter("qPostingID") == null ? "" : (String)request.getParameter("qPostingID");
 		
@@ -25,6 +24,7 @@ public class QboardUpdateBoardProcHandler implements CommandHandler {
 		qboardDTO.setContent(request.getParameter("content") == null ? "" : request.getParameter("content"));
 		qboardDTO.setboardCategory(request.getParameter("boardCategory") == null ? "" : request.getParameter("boardCategory"));
 		
+		// update 
 	    BoardService boardService = new BoardUpdateDAOImpl();
 	    qboardDTO.setqPostingID(Integer.parseInt(qPostingID));
 	    boardService.updateQboard(qboardDTO, memberID);

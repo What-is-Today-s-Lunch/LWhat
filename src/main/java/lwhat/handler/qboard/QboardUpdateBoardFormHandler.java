@@ -13,21 +13,23 @@ public class QboardUpdateBoardFormHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//session
-				HttpSession session = request.getSession();
-				String memberID = (String) session.getAttribute("memberID");
-				int qPostingID = 0;
-				if(request.getParameter("qPostingID") != null){
-					qPostingID =Integer.parseInt(request.getParameter("qPostingID"));
-				}
-				
-				BoardService boardService = new BoardViewDAOImpl();
-				QboardDTO qboardDTO = new QboardDTO();
-				qboardDTO.setqPostingID(qPostingID);
-				qboardDTO = boardService.viewQboard(qPostingID);
-				
-				request.setAttribute("qPostingID", qboardDTO.getqPostingID());
-				request.setAttribute("qboardDTO", qboardDTO);
+		// session
+		HttpSession session = request.getSession();
+		String memberID = (String) session.getAttribute("memberID");
+		int qPostingID = 0;
+		if (request.getParameter("qPostingID") != null) {
+			qPostingID = Integer.parseInt(request.getParameter("qPostingID"));
+		}
+		
+		//update를 하기위한 view 정보 
+		BoardService boardService = new BoardViewDAOImpl();
+		QboardDTO qboardDTO = new QboardDTO();
+		qboardDTO.setqPostingID(qPostingID);
+		qboardDTO = boardService.viewQboard(qPostingID);
+		
+		request.setAttribute("qPostingID", qboardDTO.getqPostingID());
+		request.setAttribute("qboardDTO", qboardDTO);
+		
 		return "/jsp/board/qboard/QboardUpdate.jsp";
 	}
 

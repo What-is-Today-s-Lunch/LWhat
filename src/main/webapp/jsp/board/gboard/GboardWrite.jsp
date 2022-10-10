@@ -73,10 +73,6 @@
 		
 				<br /> <br />
 			</form>
-			<!-- <form action="GboardUploadAction.jsp" method="post" enctype="multipart/form-data">
-				파일 : <input type="file" name="file"><br>
-				<input type="submit" value="업로드"><br> 
-			</form> -->
 			
 		</div>
 		</div>

@@ -9,8 +9,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../css/style_category.css">
-<link rel="stylesheet" href="../css/css.css">
+<link rel="stylesheet" type="text/css" href="/LWhat/css/style_category.css">
+<link rel="stylesheet" href="/LWhat/css/css.css">
 <title>글쓰기</title>
 </head>
 <body>
@@ -43,8 +43,6 @@
 				<strong>댓글 수정</strong>
 			</div>
 			<form method="post" action="${webapproot}/qboardcommentupdateproc.do?qCommentID=${qCommentID}&qPostingID=${qPostingID}">
-				<%-- <input type="hidden" name="gCommentID" value="${gCommentID}" />
-				<input type="hidden" name="gPostingID" value="${gPostingID}" /> --%>
 				<div class="board_write_wrap">
 						<div class="board_write">
 							<div class="cont">
