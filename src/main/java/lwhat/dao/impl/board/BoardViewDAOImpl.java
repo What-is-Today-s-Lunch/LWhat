@@ -24,11 +24,10 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 				gboardDTO.setgPostingID(rs.getInt(1));
 				gboardDTO.setMemberID_FK(rs.getString(2));
 				gboardDTO.setBoardCategory(rs.getString(3));
-				gboardDTO.setImageCategory(rs.getString(4));
-				gboardDTO.setTitle(rs.getString(5));
-				gboardDTO.setContent(rs.getString(6));
+				gboardDTO.setTitle(rs.getString(4));
+				gboardDTO.setContent(rs.getString(5));
 				gboardDTO.setmDate(rs.getString("mDate"));
-				gboardDTO.setClickCount(rs.getInt(7));
+				gboardDTO.setClickCount(rs.getInt(6));
 				updateReadCount(gPostingID);
 
 				return gboardDTO;
@@ -54,11 +53,10 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 				qboardDTO.setqPostingID(rs.getInt(1));
 				qboardDTO.setMemberID_FK(rs.getString(2));
 				qboardDTO.setboardCategory(rs.getString(3));
-				qboardDTO.setimageCategory(rs.getString(4));
-				qboardDTO.setTitle(rs.getString(5));
-				qboardDTO.setContent(rs.getString(6));
+				qboardDTO.setTitle(rs.getString(4));
+				qboardDTO.setContent(rs.getString(5));
 				qboardDTO.setmDate(rs.getString("mDate"));
-				qboardDTO.setClickCount(rs.getInt(9));
+				qboardDTO.setClickCount(rs.getInt(8));
 				updateReadCountQboard(qPostingID);
 
 				return qboardDTO;

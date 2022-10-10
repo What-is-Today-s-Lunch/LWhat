@@ -48,13 +48,11 @@ request.setCharacterEncoding("UTF-8");
 	    String title = multipartRequest.getParameter("title");
 	    String content = multipartRequest.getParameter("content");
 	    String boardCategory = multipartRequest.getParameter("boardCategory");
-	    String imageCategory = multipartRequest.getParameter("imageCategory"); 
 	    
 	    BoardService boardService = new BoardWriteDAOImpl();
 	    //GboardDTO gboardDTO = new GboardDTO();
 	    qboardDTO.setMemberID_FK(memberID);
 	    qboardDTO.setboardCategory(boardCategory);
-	    qboardDTO.setimageCategory(imageCategory);
 	    qboardDTO.setTitle(title);
 	    qboardDTO.setContent(content);
 	    

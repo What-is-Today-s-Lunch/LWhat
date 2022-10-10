@@ -24,9 +24,8 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			conn.setAutoCommit(false);
 			pstmt.setString(1, getMemberFK(memberID));
 			pstmt.setString(2, gboardDTO.getBoardCategory());
-			pstmt.setString(3, gboardDTO.getImageCategory());
-			pstmt.setString(4, gboardDTO.getTitle());
-			pstmt.setString(5, gboardDTO.getContent());
+			pstmt.setString(3, gboardDTO.getTitle());
+			pstmt.setString(4, gboardDTO.getContent());
 
 			pstmt.executeUpdate();
 
@@ -59,9 +58,8 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			conn.setAutoCommit(false);
 			pstmt.setString(1, getMemberFK(memberID));
 			pstmt.setString(2, qboardDTO.getboardCategory());
-			pstmt.setString(3, qboardDTO.getimageCategory());
-			pstmt.setString(4, qboardDTO.getTitle());
-			pstmt.setString(5, qboardDTO.getContent());
+			pstmt.setString(3, qboardDTO.getTitle());
+			pstmt.setString(4, qboardDTO.getContent());
 
 			pstmt.executeUpdate();
 

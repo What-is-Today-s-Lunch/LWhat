@@ -44,13 +44,11 @@ public class GboardWriteProcHandler implements CommandHandler {
 		String title = multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content");
 		String boardCategory = multipartRequest.getParameter("boardCategory");
-		String imageCategory = multipartRequest.getParameter("imageCategory");
 
 		// Write Set
 		BoardService boardService = new BoardWriteDAOImpl();
 		gboardDTO.setMemberID_FK(memberID);
 		gboardDTO.setBoardCategory(boardCategory);
-		gboardDTO.setImageCategory(imageCategory);
 		gboardDTO.setTitle(title);
 		gboardDTO.setContent(content);
 

@@ -21,7 +21,6 @@ public class BoardUpdateDAOImpl extends AbstractBoardDAOImpl {
 		pstmt.setString(1, gboardDTO.getBoardCategory());
 		pstmt.setString(2, gboardDTO.getTitle());
 		pstmt.setString(3, gboardDTO.getContent());
-		// pstmt.setString(4, getDate());
 		pstmt.setInt(4, gboardDTO.getgPostingID());
 		pstmt.setString(5, memberID);
 

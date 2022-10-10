@@ -26,9 +26,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 				gboardDTO.setgPostingID(rs.getInt(1));
 				gboardDTO.setMemberID_FK(rs.getString(2));
 				gboardDTO.setBoardCategory(rs.getString(3));
-				gboardDTO.setImageCategory(rs.getString(4));
-				gboardDTO.setTitle(rs.getString(5));
-				gboardDTO.setContent(rs.getString(6));
+				gboardDTO.setTitle(rs.getString(4));
+				gboardDTO.setContent(rs.getString(5));
 				gboardDTO.setClickCount(rs.getInt("clickCount"));
 				gboardDTO.setmDate(rs.getString("mDate"));
 				list.add(gboardDTO);
@@ -55,9 +54,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 				qboardDTO.setqPostingID(rs.getInt(1));
 				qboardDTO.setMemberID_FK(rs.getString(2));
 				qboardDTO.setboardCategory(rs.getString(3));
-				qboardDTO.setimageCategory(rs.getString(4));
-				qboardDTO.setTitle(rs.getString(5));
-				qboardDTO.setContent(rs.getString(6));
+				qboardDTO.setTitle(rs.getString(4));
+				qboardDTO.setContent(rs.getString(5));
 				qboardDTO.setClickCount(rs.getInt("clickCount"));
 				qboardDTO.setmDate(rs.getString("mDate"));
 				list.add(qboardDTO);
@@ -124,9 +122,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			gboardDTO.setgPostingID(rs.getInt(1));
 			gboardDTO.setMemberID_FK(rs.getString(2));
 			gboardDTO.setBoardCategory(rs.getString(3));
-			gboardDTO.setImageCategory(rs.getString(4));
-			gboardDTO.setTitle(rs.getString(5));
-			gboardDTO.setContent(rs.getString(6));
+			gboardDTO.setTitle(rs.getString(4));
+			gboardDTO.setContent(rs.getString(5));
 			gboardDTO.setClickCount(rs.getInt("clickCount"));
 			gboardDTO.setmDate(rs.getString("mDate"));
 			list.add(gboardDTO);
@@ -157,9 +154,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 				qboardDTO.setqPostingID(rs.getInt(1));
 				qboardDTO.setMemberID_FK(rs.getString(2));
 				qboardDTO.setboardCategory(rs.getString(3));
-				qboardDTO.setimageCategory(rs.getString(4));
-				qboardDTO.setTitle(rs.getString(5));
-				qboardDTO.setContent(rs.getString(6));
+				qboardDTO.setTitle(rs.getString(4));
+				qboardDTO.setContent(rs.getString(5));
 				qboardDTO.setClickCount(rs.getInt("clickCount"));
 				qboardDTO.setmDate(rs.getString("mDate"));
 				list.add(qboardDTO);
