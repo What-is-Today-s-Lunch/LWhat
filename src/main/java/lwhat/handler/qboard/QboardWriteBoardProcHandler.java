@@ -78,15 +78,13 @@ request.setCharacterEncoding("UTF-8");
 	    	File newFile = new File(saveFolder+ "\\" + (qPostingNum) + "file.jpg");
 	    	oldFile.renameTo(newFile);
 	    } 
-	    
-	    if (fileNames != null){
+	    else if (fileNames != null){
 	    	File oldFiles = new File(saveFolder + "\\" + fileNames);
 	    	File newFiles = new File(saveFolder+ "\\" + (qPostingNum) + "files.jpg");
 	    	oldFiles.renameTo(newFiles);
+	    	String img2 = "img2";
+	    	request.setAttribute("img2", img2);   	
 	    } 
-		
-		
-		
 		return "/qboardlist.do";
 	}
 

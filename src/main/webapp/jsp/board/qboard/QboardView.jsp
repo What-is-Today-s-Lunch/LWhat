@@ -74,7 +74,9 @@
 							<div id="contentImage">
 							<c:if test="${imgExists eq 'imgExists' }">
 							<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}file.jpg">
-							<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}files.jpg">
+								<c:if test="${img2 eq 'img2' }">
+								<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}files.jpg">
+								</c:if>
 							</c:if>
 							</div>
 					</div>
