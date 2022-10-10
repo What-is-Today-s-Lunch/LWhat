@@ -9,12 +9,12 @@ public class GboardDTO implements Serializable{
 	private int gPostingID;
 	private String memberID_FK;
 	private String boardCategory;
-	private String imageCategory;
 	private String title;
 	private String content;
 	private int clickCount;
 	private String wDate;
 	private String mDate;
+	private int rownum;
 	
 	public GboardDTO() {}
 
@@ -24,6 +24,14 @@ public class GboardDTO implements Serializable{
 
 	public void setgPostingID(int gPostingID) {
 		this.gPostingID = gPostingID;
+	}
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 
 	public String getMemberID_FK() {
@@ -40,14 +48,6 @@ public class GboardDTO implements Serializable{
 
 	public void setBoardCategory(String boardCategory) {
 		this.boardCategory = boardCategory;
-	}
-
-	public String getImageCategory() {
-		return imageCategory;
-	}
-
-	public void setImageCategory(String imageCategory) {
-		this.imageCategory = imageCategory;
 	}
 
 	public String getTitle() {
@@ -93,7 +93,7 @@ public class GboardDTO implements Serializable{
 	@Override
 	public String toString() {
 		return "GboardDTO [gPostingID=" + gPostingID + ", memberID_FK=" + memberID_FK + ", boardCategory="
-				+ boardCategory + ", imageCategory=" + imageCategory + ", title=" + title + ", content=" + content
+				+ boardCategory + ", rownum=" + rownum + ", title=" + title + ", content=" + content
 				+ ", clickCount=" + clickCount + ", wDate=" + wDate + ", mDate=" + mDate + "]";
 	}
 	

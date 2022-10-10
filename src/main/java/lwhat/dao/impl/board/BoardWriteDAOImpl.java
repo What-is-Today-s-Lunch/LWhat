@@ -80,7 +80,7 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 
 		return resultId;
 	}
-
+	
 	public String getMemberFK(String memberID) {
 		Connection conn = getConnection();
 		try {
