@@ -51,7 +51,7 @@
 		<div class="contents2">
 		<div class="restinfo">
 		<h1>${rsIDDTO.restaurantID}</h1>
-				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.telNum} <br> 현 위치와의 거리 :${DM}미터
+				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.telNum} <br> 교육센터와의 거리 :${DM}미터
 		</div>
 		<div class="restcontent">
 		<div class="restwrap">
