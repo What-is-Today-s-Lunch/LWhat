@@ -77,18 +77,23 @@
 		<div class="contents4">
 			<div class="text">
 				<p>후기쓰기</p>
+				<select>
+					<option value="6">클릭됨?</option>
+					<option value="6">제발</option>
+					</select>
 			</div>
 			<form action="${webapproot}/restaurantreviewwriteproc.do" name="review" method="post">
 				<input type="hidden" name="restaurantID" value="${rsIDDTO.restaurantID}"/>
 				<div class="bt_wrap">
 					<div id="score" align="right">
-						<select id="select_value" name="score" onchange="ChangeValue()">
-							<option value="0">--별점선택--</option>
+						<select id="select_value" name="score">
+							<option value="0">--별점 선택--</option>
 							<option value="1">★</option>
 							<option value="2">★★</option>
 							<option value="3">★★★</option>
 							<option value="4">★★★★</option>
 							<option value="5">★★★★★</option>
+							<option disabled>1~5점까지</option>
 						</select><br />
 					</div>
 					<textarea name="content" placeholder="정성스런 후기를 작성해주세요~~!"></textarea>

@@ -213,11 +213,11 @@ h1 {
 .restwrap2{
 	position: relative;
 	width: 600px;
-	height: 950px;
-	top: 56%;
+	height: 800px;
+	top: 30%;
 	left: 25%;
-	transform: translate(-50%, -50%); /* 중앙정렬 */
-	margin-top: 9px;
+	transform: translate(-50%, -32%); /* 정렬 */
+	margin-top: 11px;
 }
 .restwrap> div{
 	width:650px;
