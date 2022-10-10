@@ -202,12 +202,38 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 					.prepareStatement(BoardConstants.board.getProperty("NICKNAME_GET"));
 			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				return rs.getString(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
+	}// getNickName
+
+	public int getPostsCount(String board) {
+		String sqlColumn = "";
+		int result = 0;
+		if (board.equals("generalposting")) {
+			sqlColumn = "gPostingID";
+		} else {
+			sqlColumn = "qPostingID";
+		}
+
+		String sql = "select count(" + sqlColumn + ") from " + board;
+		System.out.println("count Query loaded ................." + sql);
+		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return 0;
 	}
-}
+
+}// class

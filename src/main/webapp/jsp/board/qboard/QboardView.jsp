@@ -50,7 +50,7 @@
 					<div class="info">
 						<dl>
 							<dt>번호</dt>
-							<dd>${qboardDTO.qPostingID}</dd>
+							<dd>${param.postnum}</dd>
 						</dl>
 						<dl>
 							<dt>글쓴이</dt>

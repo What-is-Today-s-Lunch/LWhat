@@ -35,13 +35,13 @@ public class GboardListBoardFormHandler implements CommandHandler {
 		/*-------------------------codetable 값변환 닉네임 가져오기----------------------------------------------- */
 		CodeTableDTO code = null;
 		CodeService findcodename = new CodeDAOImpl();
-		BoardListDAOImpl getNickName = new BoardListDAOImpl();
+		BoardListDAOImpl getter = new BoardListDAOImpl();
 
 		for (int i = 0; i < list.size(); i++) {
 			code = findcodename.codeView(list.get(i).getBoardCategory());
 			String boardCategory = code.getCodeName();
 			list.get(i).setBoardCategory(boardCategory);
-			list.get(i).setMemberID_FK(getNickName.getNickName(list.get(i).getMemberID_FK()));
+			list.get(i).setMemberID_FK(getter.getNickName(list.get(i).getMemberID_FK()));
 		}
 		/*----------------------------------------------------------------------------------------*/
 
@@ -51,16 +51,17 @@ public class GboardListBoardFormHandler implements CommandHandler {
 			request.setAttribute("nemBer", numBer);
 		}
 
-		BoardListDAOImpl boardServiceNextPage = new BoardListDAOImpl();
 		if (pageNumber != 1) {
 			String pageBefore = "pageBefore";
 			request.setAttribute("pageBefore", pageBefore);
 		}
-		if (boardServiceNextPage.nextPage(pageNumber + 1)) {
+		if (getter.nextPage(pageNumber + 1)) {
 			String pageAfter = "pageAfter";
 			request.setAttribute("pageAfter", pageAfter);
 		}
 		request.setAttribute("pageNumber", pageNumber);
+
+		request.setAttribute("postsCount", getter.getPostsCount("generalposting"));
 
 		return "/jsp/board/gboard/GboardListForm.jsp";
 	}

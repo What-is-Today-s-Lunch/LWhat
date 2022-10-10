@@ -1,3 +1,7 @@
+<%@page import="lwhat.dto.board.GboardDTO"%>
+<%@page import="lwhat.dao.impl.code.CodeDAOImpl"%>
+<%@page import="lwhat.service.code.CodeService"%>
+<%@page import="lwhat.dto.CodeTableDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -58,12 +62,13 @@
 					<div>
 						<c:set var="listSize" value="${list.size()}"></c:set>
 						<c:forEach var="gboardDTO" items="${list}" varStatus="stat">
-
-							<div class="num">${gboardDTO.gPostingID}</div>
+							<div class="num">${postsCount - ((pageNumber*5)+stat.count-5)+3}</div>
+<%-- 							<div class="num">${gboardDTO.gPostingID}</div> --%>
 							<div class="category">${gboardDTO.boardCategory}</div>
 							<div class="title">
 								<a
-									href="${webapproot}/gboardview.do?gPostingID=${gboardDTO.gPostingID}">${gboardDTO.title}</a>
+									href="${webapproot}/gboardview.do?gPostingID=${gboardDTO.gPostingID}
+										&postnum=${postsCount - ((pageNumber*5)+stat.count-5)+3}">${gboardDTO.title}</a>
 							</div>
 							<div class="write">${gboardDTO.memberID_FK}</div>
 							<div class="date">${gboardDTO.mDate}</div>
