@@ -14,50 +14,45 @@ import lwhat.dto.restaurant.RestaurantReviewDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.restaurant.RestaurantService;
 
-public class RestaurantReviewUpdateProcHandler implements CommandHandler{
+public class RestaurantReviewUpdateProcHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		//session.getAttribute("memberID");
-		String restaurantIDParam = request.getParameter("restaurantID") == null ? "" : request.getParameter("restaurantID");
+		// session.getAttribute("memberID");
+		String restaurantIDParam = request.getParameter("restaurantID") == null ? ""
+				: request.getParameter("restaurantID");
 		session.setAttribute("restaurantID", restaurantIDParam);
-		
+
 		RestaurantService restaurantViewService = new RestaurantViewDAOImpl();
-		
+
 		RestaurantDTO restautantIDDTO = restaurantViewService.viewRestaurant(restaurantIDParam);
 		request.setAttribute("rsIDDTO", restautantIDDTO);
-		
-		
 
-request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 
-response.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 
 //String url= "restaurantFormTest.jsp?restaurantID="+request.getParameter("restaurantID");
 //request.setAttribute("restaurantID", request.getParameter("restaurantID"));
 
+		String content = request.getParameter("content");
+		int score = Integer.parseInt(request.getParameter("score"));
 
-String content = request.getParameter("content");
-int score = Integer.parseInt(request.getParameter("score"));
+		RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO();
+		reviewDTO.setContent(content);
+		reviewDTO.setScore(score);
+		System.out.println("-------------" + content + score);
 
-RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO();
-reviewDTO.setContent(content);
-reviewDTO.setScore(score);
-System.out.println("-------------"+content+score); 
+		int revID = Integer.parseInt(request.getParameter("revID"));
 
-int revID = Integer.parseInt(request.getParameter("revID"));
+		RestaurantService restaurantService = new RestaurantReviewUpdateDAOImpl();
+		restaurantService.updateRestaurantReview(revID, reviewDTO);
 
+		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
+		List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
+		request.setAttribute("revDTO", revlistDTO);
 
-RestaurantService restaurantService = new RestaurantReviewUpdateDAOImpl();
-restaurantService.updateRestaurantReview(revID, reviewDTO);
-
-
-
-RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
-List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
-request.setAttribute("revDTO", revlistDTO);
-
-
-return "/jsp/restaurant/restaurantViewForm.jsp";
+//		return "/jsp/restaurant/restaurantViewForm.jsp";
+		return "/restaurantreviewform.do";
 	}
 }

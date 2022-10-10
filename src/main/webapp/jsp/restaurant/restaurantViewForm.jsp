@@ -77,10 +77,6 @@
 		<div class="contents4">
 			<div class="text">
 				<p>후기쓰기</p>
-				<select>
-					<option value="6">클릭됨?</option>
-					<option value="6">제발</option>
-					</select>
 			</div>
 			<form action="${webapproot}/restaurantreviewwriteproc.do" name="review" method="post">
 				<input type="hidden" name="restaurantID" value="${rsIDDTO.restaurantID}"/>
