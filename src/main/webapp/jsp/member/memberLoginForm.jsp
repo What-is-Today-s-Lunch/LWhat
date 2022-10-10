@@ -30,6 +30,11 @@ alert("존재하지 않는 아이디입니다!")
 alert("회원가입이 성공했습니다!")
 </script>
 </c:if>
+<c:if test="${rst1 eq 'logout'}">
+<script>
+alert("로그아웃 되었습니다!")
+</script>
+</c:if>
    <div id="top">
    <br>
    <h1>오 늘 뭐 먹 지 ?</h1>

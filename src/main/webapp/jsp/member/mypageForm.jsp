@@ -36,7 +36,7 @@
              <input type="button" class="in" onclick="location.href='${webapproot}/memberlogoutproc.do'" 
              id="button" value="로그아웃"><br>
              <input type="button" class="in" onclick="location.href='${webapproot}/mainform.do'" 
-             id="button" value="뒤로가기"><br>
+             id="button" value="메인으로"><br>
              <input type="button" class="in" onclick="location.href='${webapproot}/memberdeleteform.do'" 
              id="button" value="회원탈퇴하기"><br>
         </form>

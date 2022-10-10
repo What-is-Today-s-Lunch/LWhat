@@ -12,6 +12,8 @@ public class MemberLogoutProcHandler implements CommandHandler{
 	  HttpSession session = request.getSession();
 	  
       session.invalidate();
-      return "/index.jsp";
+      String rst1 = "logout";
+      request.setAttribute("rst1", rst1);
+      return "/jsp/member/memberLoginForm.jsp";
    }
 }

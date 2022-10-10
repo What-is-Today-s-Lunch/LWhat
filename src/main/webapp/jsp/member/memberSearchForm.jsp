@@ -17,6 +17,11 @@
 alert("입력되지 않은 문항이 있습니다!")
 </script>
 </c:if>
+<c:if test="${rst eq 'null'}">
+<script>
+alert("회원 정보가 틀렸습니다!")
+</script>
+</c:if>
    <div id="top">
    <br>
    <h1>오 늘 뭐 먹 지 ?</h1>

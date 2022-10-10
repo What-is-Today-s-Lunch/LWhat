@@ -23,7 +23,13 @@ public class MemberInfSearchFormHandler implements CommandHandler{
 			MemberService memberService = new MemberViewDAOImpl();
 			 MemberDTO memberDTO = new MemberDTO();
 	         memberDTO = memberService.viewMember(name, email);
-	 		request.setAttribute("memberDTO", memberDTO);			
+	 		request.setAttribute("memberDTO", memberDTO);
+	 		
+	 		if(memberDTO == null) {
+	 			String rst = "null";
+	 			request.setAttribute("rst", rst);
+	 			return "/jsp/member/memberSearchForm.jsp";
+	 		}
 			
 	       return "/jsp/member/memberInfSearchForm.jsp";
 	}

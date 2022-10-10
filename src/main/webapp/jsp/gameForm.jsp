@@ -8,8 +8,9 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/LWhat/css/game.css">
+<!-- <link rel="stylesheet" type="text/css" href="/LWhat/css/style_banner_slide.css"> -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;500&display=swap"
 	rel="stylesheet">
@@ -50,7 +51,7 @@ html, body {
 		<div class='left-box'>
 			<div class="contents1"></div>
 			<div id="app">
-				<!-- 지금 만드는 app이라는 id영역은 후에 Vue JS에서 제어할 영역임 -->
+				<!-- 지금 만드는 app이라는 id영역은 후에 JQuery로 동작시키는 영역  -->
 				<h1>돌려돌려 돌림판!</h1>
 				<div class="roulette-outer">
 					<!-- 룰렛의 가장 바깥쪽 영역을 생성합니다, 이 안에는 룰렛판과 룰렛핀이 위치합니다.-->
