@@ -18,7 +18,7 @@ public class QboardViewHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+
 		request.setCharacterEncoding("UTF-8");
 
 		// session
@@ -35,7 +35,7 @@ public class QboardViewHandler implements CommandHandler {
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
-		
+
 		// boardview
 		BoardService boardService = new BoardViewDAOImpl();
 		QboardDTO qboardDTO = new QboardDTO();
@@ -54,24 +54,23 @@ public class QboardViewHandler implements CommandHandler {
 			String imgExistsFiles = "imgExistsFiles";
 			request.setAttribute("imgExistsFiles", imgExistsFiles);
 		}
-		
-		
-		// comment
+
+		/*---------------------------- comment ------------------------------------------*/
 		BoardService boardListService = new BoardConmentListDAOImpl();
 		ArrayList<QuestioncommentDTO> list = boardListService.conmentListQboard(pageNumber);
 		ArrayList<QuestioncommentDTO> list1 = new ArrayList<>();
-		for(int i = 0 ; i < list.size(); i++) {    
+		for (int i = 0; i < list.size(); i++) {
 			// 전체 리스트를 받아 게시물 댓글번호와 게시물번호가 같은것만 list1에 추가
 			if (qPostingID == list.get(i).getqPostingID()) {
 				list1.add(list.get(i));
-				//특정게시물에 표시될 댓글 (list1)
-				System.out.println("---------------------"+list.get(i));
+				// 특정게시물에 표시될 댓글 (list1)
+				System.out.println("---------------------" + list.get(i));
 				request.setAttribute("list1", list1);
 				// 세션의 memberID와 list1의 memberID_FK가 같을때만 수정삭제 버튼 표시
-			}// if
+			} // if
 		}
-		
-		// comment page
+		/*----------------------------------------------------------------------------------*/
+		/*---------------------------- comment page ---------------------------------------*/
 		BoardConmentListDAOImpl boardCommentServiceNextPage = new BoardConmentListDAOImpl();
 		if (pageNumber != 1) {
 			String pageBefore = "pageBefore";
@@ -82,13 +81,12 @@ public class QboardViewHandler implements CommandHandler {
 			request.setAttribute("pageAfter", pageAfter);
 		}
 		request.setAttribute("pageNumber", pageNumber);
-
+		/*-----------------------------------------------------------------------------------*/
 		// qboard update delete check
 		if (memberID.equals(qboardDTO.getMemberID_FK())) {
-            request.setAttribute("isSameWriter", "true");
-         }
-		
-		
+			request.setAttribute("isSameWriter", "true");
+		}
+
 		return "/jsp/board/qboard/QboardView.jsp";
 	}
 

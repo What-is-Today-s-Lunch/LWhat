@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.board.BoardConmentListDAOImpl;
+import lwhat.dao.impl.board.BoardListDAOImpl;
 import lwhat.dao.impl.board.BoardViewDAOImpl;
 import lwhat.dto.board.GboardDTO;
 import lwhat.dto.board.GeneralcommentDTO;
@@ -37,8 +38,10 @@ public class GboardViewHandler implements CommandHandler {
 
 		// boardview
 		BoardService boardService = new BoardViewDAOImpl();
+		BoardListDAOImpl boardlist = new BoardListDAOImpl();
 		GboardDTO gboardDTO = new GboardDTO();
 		gboardDTO = boardService.viewBoard(gPostingID);
+		gboardDTO.setMemberID_FK(boardlist.getNickName(gboardDTO.getMemberID_FK()));
 		request.setAttribute("gboardDTO", gboardDTO);
 
 		// 이미지
@@ -49,7 +52,7 @@ public class GboardViewHandler implements CommandHandler {
 			request.setAttribute("imgExists", imgExists);
 		}
 
-		// comment
+		/*---------------------------- comment ------------------------------------------*/
 		BoardService boardListService = new BoardConmentListDAOImpl();
 		ArrayList<GeneralcommentDTO> list = boardListService.conmentListBoard(pageNumber);
 		ArrayList<GeneralcommentDTO> list1 = new ArrayList<>();
@@ -63,8 +66,9 @@ public class GboardViewHandler implements CommandHandler {
 				// 세션의 memberID와 list1의 memberID_FK가 같을때만 수정삭제 버튼 표시
 			}// if
 		}
-
-		// comment page
+		/*----------------------------------------------------------------------------------*/
+		
+		/*---------------------------- comment page ---------------------------------------*/
 		BoardConmentListDAOImpl boardCommentServiceNextPage = new BoardConmentListDAOImpl();
 		if (pageNumber != 1) {
 			String pageBefore = "pageBefore";
@@ -75,6 +79,7 @@ public class GboardViewHandler implements CommandHandler {
 			request.setAttribute("pageAfter", pageAfter);
 		}
 		
+		/*-----------------------------------------------------------------------------------*/
 		request.setAttribute("pageNumber", pageNumber);
 
 		// gboard update delete check
