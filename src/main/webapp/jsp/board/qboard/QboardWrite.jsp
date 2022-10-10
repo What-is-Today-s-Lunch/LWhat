@@ -53,10 +53,10 @@
 							</div>
 							<div class="info">
 							분류 : <select name="boardCategory">
-										<option value="신고">신고</option>
-										<option value="문의">문의</option>
-										<option value="건의">건의</option>
-										<option value="추천">추천</option>
+										<option value="A0AA11">신고</option>
+										<option value="A0AA12">문의</option>
+										<option value="A0AA13">건의</option>
+										<option value="A0AA14">추천</option>
 									</select><br /> <br /> 
 							</div>
 							<div class="cont">

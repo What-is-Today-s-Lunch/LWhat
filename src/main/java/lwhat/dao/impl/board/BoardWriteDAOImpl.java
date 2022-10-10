@@ -69,7 +69,7 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_IMG_WRITE_GET_POSTINGID"));
 			rs = pstmt2.executeQuery();
 
-			conn.rollback();
+			conn.commit();
 		} catch (Exception sqle) {
 			sqle.printStackTrace();
 			conn.rollback();
