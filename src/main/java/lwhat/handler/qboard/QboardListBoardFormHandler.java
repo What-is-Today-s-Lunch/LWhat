@@ -35,14 +35,16 @@ public class QboardListBoardFormHandler implements CommandHandler {
 		ArrayList<QboardDTO> list = boardService.listQboard(pageNumber);
 		request.setAttribute("list", list);
 
-		/* -------------------------codetable 값 변환-----------------------------------------------*/
+		/* -------------------------codetable 값변환 닉네임 가져오기-----------------------------------------------*/
 		CodeTableDTO code = null;
 		CodeService findcodename = new CodeDAOImpl();
+		BoardListDAOImpl getNickName = new BoardListDAOImpl();
 		
 		for (int i = 0; i < list.size(); i++) {
 			code = findcodename.codeView(list.get(i).getboardCategory());
 			String boardCategory = code.getCodeName();//코드값에 해당하는 코드이름을 보여줌 
 			list.get(i).setboardCategory(boardCategory);
+			list.get(i).setMemberID_FK(getNickName.getNickName(list.get(i).getMemberID_FK()));
 		}
 		/*----------------------------------------------------------------------------------------*/
 		

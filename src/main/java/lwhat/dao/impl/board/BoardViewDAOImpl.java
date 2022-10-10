@@ -97,5 +97,6 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 
 		return -1;
 	}
+	
 
 }

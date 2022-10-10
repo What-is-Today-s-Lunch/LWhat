@@ -51,7 +51,6 @@ public class GboardViewHandler implements CommandHandler {
 
 		// comment
 		BoardService boardListService = new BoardConmentListDAOImpl();
-		GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 		ArrayList<GeneralcommentDTO> list = boardListService.conmentListBoard(pageNumber);
 		ArrayList<GeneralcommentDTO> list1 = new ArrayList<>();
 		for(int i = 0 ; i < list.size(); i++) {    
