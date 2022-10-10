@@ -115,9 +115,7 @@
 						<c:if test="${pageAfter eq 'pageAfter'}">
 							<a href="${webapproot}/qboardview.do?pageNumber=${pageNumber+1}&&qPostingID=${qboardDTO.qPostingID}" class="bt next">></a>
 						</c:if>
-						
 						</div>
-						
 						<div>
 							<form class="commentInput" method="post" action="${webapproot}/qboardcommentwrite.do?qPostingID=${qboardDTO.qPostingID}">
 								<!-- <input type="hidden" name="gCommentID" value="${generalcommentDTO.gCommentID}" /> -->

@@ -85,6 +85,8 @@ request.setCharacterEncoding("UTF-8");
 	    	String img2 = "img2";
 	    	request.setAttribute("img2", img2);   	
 	    } 
+		
+		
 		return "/qboardlist.do";
 	}
 
