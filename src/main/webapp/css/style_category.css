@@ -233,12 +233,20 @@ h1 {
 }
 
 .commentInput{
+	width:1000px;
 }
 
 .commentTable{
+	margin: auto;
+	border: 1px solid #dddddd;
+	box-sizing: border-box;
 }
-.form-control{
-	background-color: yellow;
+
+.commentTable> textarea{
+	width: 100%;
+	height: 6.25em;
+	border: none;
+	resize: none;
 }
 
 .commentTable > tr > td{

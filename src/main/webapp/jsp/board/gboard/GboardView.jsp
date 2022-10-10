@@ -124,21 +124,17 @@
 						</c:if>
 
 					</div>
-
+						<br />
 					<div>
-						<form class="commentInput" method="post"
+						<form class="commentInput" onsubmit="return false;" method="post"
 							action="${webapproot}/gboardcommentwrite.do?gPostingID=${gboardDTO.gPostingID}">
 							<!-- <input type="hidden" name="gCommentID" value="${generalcommentDTO.gCommentID}" /> -->
-							<table class="commentTable"
-								style="text-align: center; border: 1px solid #dddddd">
+							<input type="text" style="display:none;" /> <!-- 새로나 백신 -->
+							<table class="commentTable">
 								<tr>
-									<td style="border-bottom: none;" valign="middle"><br>
-									<br>${memberID}</td>
-									<td><input type="text" class="form-control"
-										placeholder="상대방을 존중하는 댓글을 남깁시다." name="content"></td>
-									<td><br>
-									<br>
-									<input type="submit" class="btn-primary pull" value="댓글 작성"></td>
+									<td>${memberID}</td>
+									<td><textarea rows="3" cols="100" placeholder="상대방을 존중하는 댓글을 남깁시다!" name="content"></textarea></td>
+									<td><input type="button" value="댓글 작성" onclick="this.form.submit()"></td>
 								</tr>
 							</table>
 						</form>
@@ -156,7 +152,6 @@
 				</c:if>
 			</div>
 		</div>
-	</div>
 	</div>
 
 
