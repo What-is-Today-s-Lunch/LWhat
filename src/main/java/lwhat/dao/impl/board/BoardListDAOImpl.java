@@ -43,7 +43,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	// Qboard
 	@Override
 	public ArrayList<QboardDTO> listQboard(int pageNumber) throws Exception {
-
+		
 		ArrayList<QboardDTO> list = new ArrayList<QboardDTO>();
 		try {
 			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("QBOARD_LIST_SQL"));

@@ -21,30 +21,31 @@ public class QboardListBoardFormHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// session
 		HttpSession session = request.getSession();
-		
+		String memberID = (String) session.getAttribute("memberID");
 		int pageNumber = 1;
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
-		String memberPass = (String) session.getAttribute("memberPW");
 
 		BoardService boardService = new BoardListDAOImpl();
 		QboardDTO qboardDTO = new QboardDTO();
 		ArrayList<QboardDTO> list = boardService.listQboard(pageNumber);
 		request.setAttribute("list", list);
 
+
+		// pageNext
 		BoardListDAOImpl boardServiceNextPage = new BoardListDAOImpl();
 		if (pageNumber != 1) {
-			String pn1 = "a";
-			request.setAttribute("pn1", pn1);
+			String pageBefore = "pageBefore";
+			request.setAttribute("pageBefore", pageBefore);
 		}
 		if (boardServiceNextPage.qboardNextPage(pageNumber + 1)) {
-			String pn2 = "b";
-			request.setAttribute("pn2", pn2);
+			String pageAfter = "pageAfter";
+			request.setAttribute("pageAfter", pageAfter);
 		}
 		request.setAttribute("pageNumber", pageNumber);
 
-		// 검색기능	
+		// 검색기능
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException uee) {
@@ -53,20 +54,19 @@ public class QboardListBoardFormHandler implements CommandHandler {
 
 		String searchDomain = request.getParameter("searchDomain") == null ? "" : request.getParameter("searchDomain");
 		String searchText = request.getParameter("searchText") == null ? "" : request.getParameter("searchText");
-	
+
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("searchDomain", searchDomain);
 		searchMap.put("searchText", searchText);
 
 		List<QboardDTO> QboardDTOList = null;
 		try {
-			//QboardDTOList = new BoardListDAOImpl().listQboard(searchDomain, searchText);
+			// QboardDTOList = new BoardListDAOImpl().listQboard(searchDomain, searchText);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		//request.setAttribute("GboardDTOList", GboardDTOList);
-		
-		
+		// request.setAttribute("GboardDTOList", GboardDTOList);
+
 		return "/jsp/board/qboard/QboardListForm.jsp";
 	}
 

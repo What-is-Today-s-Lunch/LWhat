@@ -24,7 +24,13 @@ public class GboardListBoardFormHandler implements CommandHandler {
 		GboardDTO gboardDTO = new GboardDTO();
 		ArrayList<GboardDTO> list = boardService.listBoard(pageNumber);
 		request.setAttribute("list", list);
-
+		
+		int numBer = 1;
+		for (int i = 0; i < list.size(); i++) {
+			numBer++;
+			request.setAttribute("nemBer", numBer);
+		}
+		
 		BoardListDAOImpl boardServiceNextPage = new BoardListDAOImpl();
 		if (pageNumber != 1) {
 			String pageBefore = "pageBefore";
