@@ -29,9 +29,11 @@ window.onload = function() {
 
 		// 정상적으로 검색이 완료됐으면 
 		if (status === kakao.maps.services.Status.OK) {
-
+		
 			coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
+			document.getElementById('long').innerHTML=result[0].y;
+			document.getElementById('lat').innerHTML=result[0].x;
+			console.log(result[0].y);
 			// 결과값으로 받은 위치를 마커로 표시합니다
 			var marker = new kakao.maps.Marker({
 				map: map,
