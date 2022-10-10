@@ -37,8 +37,7 @@ public class RestaurantJoinProcHandler implements CommandHandler {
 		String TelNum = multipartRequest.getParameter("telNum");// 식당전화번호
 		String adreAPI = multipartRequest.getParameter("address");// 식당주소API
 		String adre = multipartRequest.getParameter("address_detail");// 상세식당주소
-		String latitu = multipartRequest.getParameter("lat");// 위도등록
-		String longti = multipartRequest.getParameter("long");// 경도등록
+		
 
 		// 레스토랑 이미지 파라미터 받음
 		String foodname = multipartRequest.getParameter("foodname");
@@ -50,8 +49,7 @@ public class RestaurantJoinProcHandler implements CommandHandler {
 		restaurantDTO.setTelNum(TelNum);
 		restaurantDTO.setAddressAPI(adreAPI);
 		restaurantDTO.setAddressDetail(adre);
-		restaurantDTO.setLatitude(latitu);
-		restaurantDTO.setLongitude(longti);
+		
 
 		// 식당 업로드 Impl
 		RestaurantService restaurantService = new RestaurantWriteDAOImpl();

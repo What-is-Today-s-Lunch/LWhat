@@ -38,11 +38,7 @@ public class RestaurantReviewFormHandler implements CommandHandler {
 		}
 		// 미터(Meter) 단위
 		// 식당 거리 계산하는 코드
-		int DM = 0;
-		double distanceMeter = distance(Double.parseDouble(restautantIDDTO.getLatitude())
-				, Double.parseDouble(restautantIDDTO.getLongitude()), "meter");
-		DM = (int)distanceMeter;
-		request.setAttribute("DM", DM);
+	
 		
 		return "/jsp/restaurant/restaurantViewForm.jsp";
 	}//process

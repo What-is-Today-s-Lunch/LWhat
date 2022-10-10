@@ -197,16 +197,7 @@ $(function(){
 									<label for="address_detail" class="validation_error"></label><br /></dd>
 								</dl>
 							</div>
-							<div class= "info">
-								<dl>
-									<dd>위도(정확하게 쓰지않으면 다른곳을 표시합니다.)</dd>
-									<dd><input type = "text" name ="lat" placeholder = "위도 입력"/></dd>
-								</dl>
-								<dl>
-									<dd>경도(정확하게 쓰지않으면 다른곳을 표시합니다.)</dd>
-									<dd><input type = "text" name ="long" placeholder = "경도 입력"/></dd>
-								</dl>
-							</div>
+							
 							<div class= "info">
 								<div class="cont">
 									<dl>
