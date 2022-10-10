@@ -11,7 +11,7 @@ public class RestaurantWriteDAOImpl extends AbstractRestaurantDAOImpl {
 	public int writeRestaurant(RestaurantDTO restaurantDTO) throws Exception {
 		
 		Connection conn = getConnection();
-		String sql =" insert into restaurant (restaurantID, foodCategory, telNum, addressDetail, addressAPI, latitude, longitude, content) values (?, ?, ?, ?, ?, ?, ?,?)";
+		String sql =" insert into restaurant (restaurantID, foodCategory, telNum, addressDetail, addressAPI, content) values (?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
@@ -20,9 +20,7 @@ public class RestaurantWriteDAOImpl extends AbstractRestaurantDAOImpl {
 		pstmt.setString(3, restaurantDTO.getTelNum());
 		pstmt.setString(4, restaurantDTO.getAddressDetail());
 		pstmt.setString(5, restaurantDTO.getAddressAPI());
-		pstmt.setString(6, restaurantDTO.getLatitude());
-		pstmt.setString(7, restaurantDTO.getLongitude());
-		pstmt.setString(8, restaurantDTO.getContent());
+		pstmt.setString(6, restaurantDTO.getContent());
 			
 		int result = pstmt.executeUpdate();
 		closeConnection(pstmt,conn);

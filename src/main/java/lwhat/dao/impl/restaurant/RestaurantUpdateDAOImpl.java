@@ -20,11 +20,9 @@ public class RestaurantUpdateDAOImpl extends AbstractRestaurantDAOImpl {
 		pstmtU.setString(1,restaurantDTO.getFoodCategory());
 		pstmtU.setString(2,restaurantDTO.getTelNum() );
 		pstmtU.setString(3,restaurantDTO.getAddressDetail() );
-		pstmtU.setString(4,restaurantDTO.getLatitude() );
-		pstmtU.setString(5,restaurantDTO.getLongitude() );
-		pstmtU.setString(6,restaurantDTO.getAddressAPI() );
-		pstmtU.setString(7,restaurantDTO.getContent());
-		pstmtU.setString(8,restaurantDTO.getRestaurantID() );
+		pstmtU.setString(4,restaurantDTO.getAddressAPI() );
+		pstmtU.setString(5,restaurantDTO.getContent());
+		pstmtU.setString(6,restaurantDTO.getRestaurantID() );
 		
 		int result = pstmtU.executeUpdate(); 
 		closeConnection(pstmtU, conn);

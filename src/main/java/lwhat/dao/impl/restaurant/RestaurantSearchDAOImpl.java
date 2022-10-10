@@ -30,8 +30,6 @@ public class RestaurantSearchDAOImpl extends AbstractRestaurantDAOImpl {
 				restaurantDTO.setTelNum(rs.getString("telNum"));
 				restaurantDTO.setAddressDetail(rs.getString("addressDetail"));
 				restaurantDTO.setAddressAPI(rs.getString("addressAPI"));
-				restaurantDTO.setLatitude(rs.getString("latitude"));
-				restaurantDTO.setLongitude(rs.getString("longitude"));
 				restaurantDTO.setContent(rs.getString("content"));
 				while(rs2.next()) {
 				restaurantDTO.setScoreAvg(rs2.getDouble(1));
