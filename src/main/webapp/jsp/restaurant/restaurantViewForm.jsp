@@ -11,6 +11,7 @@
 <meta charset="UTF-8" />
 <!-- 지도를 그리는  JS API -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=21afcb7bc526fdabb51cbdd812b8c6ec&libraries=services"></script>
 <script type="text/javascript" src="/LWhat/js/locationService.js"></script>
@@ -51,9 +52,11 @@
 		<div class="contents2">
 		<div class="restinfo">
 		<h1>${rsIDDTO.restaurantID}</h1>
-				주소 : ${rsIDDTO.addressDetail} <br /> 연락처 : ${rsIDDTO.telNum} <br> 교육센터와의 거리 :${DM}미터<br>
+				주소 : ${rsIDDTO.addressAPI} <br /> 연락처 : ${rsIDDTO.telNum} <br> 교육센터와의 거리 :${DM}미터<br>
 				위도 : <span  id= "lat" ></span>
 				경도 : <span  id = "long" ></span>
+				현재 위도 : <span id="latitude1"></span>
+				현재 경도 : <span id="longitude1"></span>
 		</div>
 		<div class="restcontent">
 		<div class="restwrap">

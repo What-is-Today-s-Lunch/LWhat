@@ -2,6 +2,16 @@ var map;
 var mapContainer;
 var coords;
 window.onload = function() {
+	
+	 if (navigator.geolocation) {
+            //위치 정보를 얻기
+            navigator.geolocation.getCurrentPosition (function(pos) {
+                $('#latitude1').html(pos.coords.latitude);     // 위도
+                $('#longitude1').html(pos.coords.longitude); // 경도
+            });
+        } else {
+            alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
+        }
 
 	var adress = document.getElementById('resAdress').value;
 	var maprestaurantID = document.getElementById('resID').value;
@@ -31,8 +41,8 @@ window.onload = function() {
 		if (status === kakao.maps.services.Status.OK) {
 		
 			coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-			document.getElementById('long').innerHTML=result[0].y;
-			document.getElementById('lat').innerHTML=result[0].x;
+			document.getElementById('long').innerHTML=result[0].x;
+			document.getElementById('lat').innerHTML=result[0].y;
 			console.log(result[0].y);
 			// 결과값으로 받은 위치를 마커로 표시합니다
 			var marker = new kakao.maps.Marker({
