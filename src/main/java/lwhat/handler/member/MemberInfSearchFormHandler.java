@@ -25,6 +25,7 @@ public class MemberInfSearchFormHandler implements CommandHandler{
 	         memberDTO = memberService.viewMember(name, email);
 	 		request.setAttribute("memberDTO", memberDTO);
 	 		
+	 		// memberDTO에 정보가 없을때 MemberSearchForm에 회원정보가 틀렸습니다! alert 표시
 	 		if(memberDTO == null) {
 	 			String rst = "null";
 	 			request.setAttribute("rst", rst);

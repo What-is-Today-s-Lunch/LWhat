@@ -1,21 +1,21 @@
 package lwhat.test;
 
-public class LocationDistance {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-	public static void main(String[] args) {
+import lwhat.dto.restaurant.RestaurantDTO;
+import lwhat.handler.CommandHandler;
 
-		
+public class LocationDistance implements CommandHandler{
+		@Override
+	   public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    
 		// 미터(Meter) 단위
-		double distanceMeter = 
-			distance(129.1263133043384, 35.175068016526794, "meter");
-		
-		
-		System.out.println((int)distanceMeter) ;
-		
-		
+		double distanceMeter = distance(129.1263133043384, 35.175068016526794, "meter");
+		System.out.println("--------------------------------"+distanceMeter);
+		request.setAttribute("distanceMeter", distanceMeter);
+		return "/jsp/restaurant/restaurantViewForm.jsp";
 	}
-	
-	
 	
 	/**
 	 * 두 지점간의 거리 계산
@@ -34,12 +34,9 @@ public class LocationDistance {
 		dist = rad2deg(dist);
 		dist = dist * 60 * 1.1515;
 		dist = dist * 1609.344;
-		
-
 		return (dist);
 	}
 	
-
 	// This function converts decimal degrees to radians
 	private static double deg2rad(double deg) {
 		return (deg * Math.PI / 180.0);
@@ -49,5 +46,4 @@ public class LocationDistance {
 	private static double rad2deg(double rad) {
 		return (rad * 180 / Math.PI);
 	}
-
 }
