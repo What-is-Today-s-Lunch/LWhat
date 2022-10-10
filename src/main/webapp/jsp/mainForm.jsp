@@ -144,9 +144,7 @@
             <div class="contents2">contents</div>
             <div class="more"><a href="#" onclick="location.href='${webapproot}/restaurantform.do?category=A1AZ'">MORE</a></div>
          </li>
-
       </ul>
-
    </div>
    <div class="up-btn" onclick="scrollToTop();">↑</div>
    <div class="footer">

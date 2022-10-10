@@ -26,12 +26,8 @@ public class RestaurantReviewWriteProcHandler implements CommandHandler{
 
 			RestaurantDTO restautantIDDTO = restaurantViewService.viewRestaurant(restaurantIDParam);
 			request.setAttribute("rsIDDTO", restautantIDDTO);
-
-
 		 
-		 
-		 
-		 String revMemID = (String)session.getAttribute("memberID");
+		String revMemID = (String)session.getAttribute("memberID");
 		String revResID = request.getParameter("restaurantID");
 
 		String revContent = request.getParameter("content");
@@ -46,10 +42,10 @@ public class RestaurantReviewWriteProcHandler implements CommandHandler{
 		RestaurantService restaurantService = new RestaurantReviewWriteDAOImpl();
 		restaurantService.writeRestaurantReview(reviewDTO);//db저장
 		
-		
 		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
 		List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlistDTO);
-		return "/jsp/restaurant/restaurantViewForm.jsp";
+//		return "/jsp/restaurant/restaurantViewForm.jsp";
+		return "/restaurantreviewform.do";
 	}
 }
