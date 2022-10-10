@@ -20,7 +20,7 @@ public class BoardConmentWrtieDAOImpl extends AbstractBoardDAOImpl {
 			pstmt.setInt(2, gPostingID);
 			pstmt.setString(3, boardCategory);
 			pstmt.setString(4, generalcommentDTO.getContent());
-
+			System.out.println(BoardConstants.board.getProperty("GBOARD_COMMENT_WRITE_SQL")+" 아니이거 이그노어 아님??");
 			int result = pstmt.executeUpdate();
 			ConnectionManager.closeConnection(pstmt, getConnection());
 			return result;
