@@ -12,7 +12,7 @@
 <!-- 지도를 그리는  JS API -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=21afcb7bc526fdabb51cbdd812b8c6ec"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=21afcb7bc526fdabb51cbdd812b8c6ec&libraries=services"></script>
 <script type="text/javascript" src="/LWhat/js/locationService.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
