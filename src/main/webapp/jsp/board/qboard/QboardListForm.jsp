@@ -64,7 +64,6 @@ System.out.println(session.getAttribute("memberID"));
 						<c:set var="listSize" value="${list.size()}"></c:set>
 						<c:forEach var="qboardDTO" items="${list}" varStatus="stat">
 							<div class="num">${postsCount - ((pageNumber*5)+stat.count-5)+2}</div>
-<%-- 							<div class="num">${qboardDTO.qPostingID}</div> --%>
 							<div class="category">${qboardDTO.boardCategory}</div>
 							<div class="title">
 								<c:if test="${qboardDTO.memberID_FK eq memberID}">
