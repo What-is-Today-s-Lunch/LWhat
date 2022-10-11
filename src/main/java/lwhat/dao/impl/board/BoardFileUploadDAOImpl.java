@@ -14,16 +14,18 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 	//Gboard
 	@Override
 	public int fileUploadBoard(String cImage, String sImage, int gPostingID) throws Exception {
-		
+		Connection conn = getConnection();
+		int result=0;
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("GBOARD_FILE_SQL"));
+			
+			PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_FILE_SQL"));
 			pstmt.setInt(1, getgPostingID(gPostingID));
 			pstmt.setString(2, "Gboard");
 			pstmt.setString(3, cImage);
 			pstmt.setString(4, sImage);
-	
-			int result = pstmt.executeUpdate();
-			ConnectionManager.closeConnection(pstmt, getConnection());
+			result = pstmt.executeUpdate();
+			
+			ConnectionManager.closeConnection(pstmt, conn);
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,9 +63,11 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 			 PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_GET_POSTINGID"));
 			 pstmt.setInt(1,gPostingID );
 			 rs = pstmt.executeQuery();
+			 int result = 0;
 			 if(rs.next()) {
+				 result = rs.getInt(1);
 				 ConnectionManager.closeConnection(rs, pstmt, conn);
-				 return rs.getInt(1);
+				 return result;
 			 }
 		 } catch (SQLException e) {
 			e.printStackTrace();

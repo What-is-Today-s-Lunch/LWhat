@@ -20,6 +20,7 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 	public int writeBoard(GboardDTO gboardDTO, String memberID) throws Exception {
 		Connection conn = getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_WRITE_SQL"));
+		Connection conn2 = getConnection();
 		try {
 			conn.setAutoCommit(false);
 			pstmt.setString(1, getMemberFK(memberID));
@@ -28,25 +29,28 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			pstmt.setString(4, gboardDTO.getContent());
 
 			pstmt.executeUpdate();
-
-			PreparedStatement pstmt2 = conn
+			
+			PreparedStatement pstmt2 = conn2
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_IMG_WRITE_GET_POSTINGID"));
 			rs = pstmt2.executeQuery();
 
+			int resultId = 0;
+			if (rs != null && rs.next()) {
+				resultId = rs.getInt("gPostingID");
+				closeConnection(pstmt, conn);
+				closeConnection(rs, pstmt2, conn2);
+				return resultId;
+			}
+			
 			conn.commit();
 		} catch (Exception sqle) {
 			sqle.printStackTrace();
 			conn.rollback();
 		}
 
-		int resultId = 0;
-		if (rs != null && rs.next()) {
-			resultId = rs.getInt("gPostingID");
-		}
 
-		ConnectionManager.closeConnection(pstmt, getConnection());
-
-		return resultId;
+		ConnectionManager.closeConnection(rs,pstmt, conn);
+		return 0;
 	}
 
 	// Qboard
@@ -83,13 +87,16 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 	
 	public String getMemberFK(String memberID) {
 		Connection conn = getConnection();
+		String member = "";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("MEMBER_GET"));
 			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
+				member = rs.getString(1);
 				ConnectionManager.closeConnection(rs, pstmt, conn);
-				return rs.getString(1);
+				return member;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
