@@ -63,19 +63,22 @@ System.out.println(session.getAttribute("memberID"));
 					<div>
 						<c:set var="listSize" value="${list.size()}"></c:set>
 						<c:forEach var="qboardDTO" items="${list}" varStatus="stat">
-							<div class="num">${postsCount-(((pageNumber-1)*5)+stat.count)+1}</div>
-							<div class="category">${qboardDTO.boardCategory}</div>
-							<div class="title">
-								<c:if test="${qboardDTO.memberID_FK eq memberID}">
-										<a href="${webapproot}/qboardview.do?qPostingID=${qboardDTO.qPostingID}
+							<c:if
+								test="${(postsCount - (((pageNumber)*5)+stat.count-5)+1)>0}">
+								<div class="num">${postsCount-(((pageNumber-1)*5)+stat.count)+1}</div>
+								<div class="category">${qboardDTO.boardCategory}</div>
+								<div class="title">
+									<c:if test="${qboardDTO.memberID_FK eq memberID}">
+										<a
+											href="${webapproot}/qboardview.do?qPostingID=${qboardDTO.qPostingID}
 										&postnum=${postsCount - (((pageNumber-1)*5)+stat.count)+1}">${qboardDTO.title}</a>
-								</c:if>
-								<c:if test="${qboardDTO.memberID_FK ne memberID }">타인이 작성한 글입니다</c:if>
-							</div>
-							<div class="write">${qboardDTO.memberID_FK}</div>
-							<div class="date">${qboardDTO.mDate}</div>
-							<div class="count">${qboardDTO.clickCount}</div>
-
+									</c:if>
+									<c:if test="${qboardDTO.memberID_FK ne memberID }">타인이 작성한 글입니다</c:if>
+								</div>
+								<div class="write">${qboardDTO.memberID_FK}</div>
+								<div class="date">${qboardDTO.mDate}</div>
+								<div class="count">${qboardDTO.clickCount}</div>
+							</c:if>
 						</c:forEach>
 					</div>
 				</div>

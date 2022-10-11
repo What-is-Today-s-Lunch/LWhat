@@ -60,7 +60,7 @@
 				식당 경도 : <span id = "long" ></span><br>
 				현재 위도 : <span id="nowlat"></span>
 				현재 경도 : <span id="nowlng"></span>
-			</div>
+			</div> 
 			<div class="restcontent">
 				<div class="restwrap">
 					<div id="map">
