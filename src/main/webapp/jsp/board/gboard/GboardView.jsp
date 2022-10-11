@@ -96,10 +96,10 @@
 									<c:if test="${generalcommentDTO.memberID_FK eq memberID}">
 										<a
 											href="${webapproot}/gboardcommentupdateform.do?gCommentID=
-											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}&content=${generalcommentDTO.content}">수정</a>
+											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}&content=${generalcommentDTO.content}&postnum=${param.postnum}">수정</a>
 										<a
 											href="${webapproot}/gboardcommentdelete.do?gCommentID=
-											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}">삭제</a>
+											${generalcommentDTO.gCommentID}&gPostingID=${gboardDTO.gPostingID}&postnum=${param.postnum}">삭제</a>
 									</c:if>
 								</div>
 							</c:forEach>
@@ -122,8 +122,7 @@
 						<br />
 					<div>
 						<form class="commentInput" onsubmit="return false;" method="post"
-							action="${webapproot}/gboardcommentwrite.do?gPostingID=${gboardDTO.gPostingID}">
-							<!-- <input type="hidden" name="gCommentID" value="${generalcommentDTO.gCommentID}" /> -->
+							action="${webapproot}/gboardcommentwrite.do?gPostingID=${gboardDTO.gPostingID}&postnum=${param.postnum}">
 							<input type="text" style="display:none;" /> <!-- 새로나 백신 -->
 							<table class="commentTable">
 								<tr>

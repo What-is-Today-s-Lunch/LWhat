@@ -95,9 +95,9 @@
 									<div class="md">
 									<c:if test="${questioncommentDTO.memberID_FK eq memberID}">
 										<a href="${webapproot}/qboardcommentupdateform.do?qCommentID=
-											${questioncommentDTO.qCommentID}&qPostingID=${qboardDTO.qPostingID}&content=${questioncommentDTO.content}">수정</a>	
+											${questioncommentDTO.qCommentID}&qPostingID=${qboardDTO.qPostingID}&content=${questioncommentDTO.content}&postnum=${param.postnum}">수정</a>	
 										<a href="${webapproot}/qboardcommentdelete.do?qCommentID=
-											${questioncommentDTO.qCommentID}&qPostingID=${qboardDTO.qPostingID}">삭제</a>
+											${questioncommentDTO.qCommentID}&qPostingID=${qboardDTO.qPostingID}&postnum=${param.postnum}">삭제</a>
 									</c:if></div>
 							</c:forEach>
 									</div>
@@ -114,8 +114,7 @@
 						</div>
 						
 						<div>
-							<form class="commentInput" method="post" action="${webapproot}/qboardcommentwrite.do?qPostingID=${qboardDTO.qPostingID}">
-								<!-- <input type="hidden" name="gCommentID" value="${generalcommentDTO.gCommentID}" /> -->
+							<form class="commentInput" method="post" action="${webapproot}/qboardcommentwrite.do?qPostingID=${qboardDTO.qPostingID}&postnum=${param.postnum}">
 								<table class="commentTable" style="text-align: center; border: 1px solid #dddddd">
 									<tr>
 										<td style="border-bottom:none;" valign="middle"><br><br>${memberID}</td>
