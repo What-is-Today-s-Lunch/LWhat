@@ -21,6 +21,7 @@ public class GbaordUpdateFormHandler implements CommandHandler {
 			gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
 		}
 		
+		/*updateform 데이터 보여주기 view*/
 		BoardService boardService = new BoardViewDAOImpl();
 		GboardDTO gboardDTO = new GboardDTO();
 		gboardDTO.setgPostingID(gPostingID);

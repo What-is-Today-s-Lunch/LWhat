@@ -27,13 +27,14 @@ public class GboardCommentUpdateProcHandler implements CommandHandler {
 			gPostingID =Integer.parseInt(request.getParameter("gPostingID"));
 		}
 		
+		/*-------------------------comment update impl------------------------------------*/
 		BoardService boardService = new BoardConmentUpdateDAOImpl();
 		GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 		generalcommentDTO.setContent(content);
 		generalcommentDTO.setgCommentID((Integer.parseInt(gCommentID)));
-
-
+		
 		boardService.conmentUpdateBoard(generalcommentDTO, memberID);
+		
 		request.setAttribute("boardService", boardService);
 		
 		request.setAttribute("gPostingID", gPostingID);

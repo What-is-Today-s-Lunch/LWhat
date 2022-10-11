@@ -37,12 +37,12 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			int resultId = 0;
 			if (rs != null && rs.next()) {
 				resultId = rs.getInt("gPostingID");
+				conn.commit();
 				closeConnection(pstmt, conn);
 				closeConnection(rs, pstmt2, conn2);
 				return resultId;
 			}
 			
-			conn.commit();
 		} catch (Exception sqle) {
 			sqle.printStackTrace();
 			conn.rollback();

@@ -25,6 +25,7 @@ public class GbaordUpdateProcHandler implements CommandHandler {
 	    gboardDTO.setContent(request.getParameter("content") == null ? "" : request.getParameter("content"));
 	    gboardDTO.setBoardCategory(request.getParameter("boardCategory") == null ? "" : request.getParameter("boardCategory"));
 		
+	    /*---------------------------update imp------------------------l*/
 	    BoardService boardService = new BoardUpdateDAOImpl();
 	    gboardDTO.setgPostingID(Integer.parseInt(gPostingID));
 	    boardService.updateBoard(gboardDTO, memberID);

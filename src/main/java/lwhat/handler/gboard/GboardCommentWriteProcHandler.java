@@ -25,11 +25,13 @@ public class GboardCommentWriteProcHandler implements CommandHandler {
 		if (request.getParameter("gPostingID") != null) {
 			gPostingID = Integer.parseInt(request.getParameter("gPostingID"));
 		}
+		/*------------------------comment write impl----------------------------------*/
 		BoardService boardService = new BoardConmentWrtieDAOImpl();
 		GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 		generalcommentDTO.setContent(content);
 
 		boardService.conmentWriteBoard(generalcommentDTO, memberID, boardCategory, gPostingID);
+		
 		request.setAttribute("boardService", boardService);
 		request.setAttribute("gPostingID", gPostingID);
 		

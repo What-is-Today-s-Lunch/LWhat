@@ -12,8 +12,11 @@ public class GboardDeleteProcHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String gPostingID = request.getParameter("gPostingID") == null ? "" : request.getParameter("gPostingID");
+		
+		/*----------------------gbaord delete impl----------------------*/
 		BoardService boardService = new BoardDeleteDAOImpl();
 		boardService.deleteBoard(Integer.parseInt(gPostingID));
+		
 		request.setAttribute("boardService", boardService);
 		
 		return "/gboardlist.do";

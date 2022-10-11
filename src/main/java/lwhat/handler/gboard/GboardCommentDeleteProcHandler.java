@@ -17,7 +17,7 @@ public class GboardCommentDeleteProcHandler implements CommandHandler {
 		String gCommentID = request.getParameter("gCommentID") == null ? "" : request.getParameter("gCommentID");
 		String gPostingID = request.getParameter("gPostingID") == null ? "" : request.getParameter("gPostingID");
 	
-		
+		/*-----------------------comment delete impl----------------------------*/
 		BoardService boardService = new BoardConmentDeleteDAOImpl();
 		boardService.conmentDeleteBoard(Integer.parseInt(gCommentID));
 		
