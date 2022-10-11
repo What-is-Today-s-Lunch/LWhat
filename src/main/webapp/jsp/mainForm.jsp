@@ -58,33 +58,6 @@
       <button class="버튼3" onclick="slideThree();">3</button>
    </div>
    <!-- intro end-->
-   <ul class="amount">
-      <li>
-         <div>
-            <div class="contents1">contents</div>
-
-         </div>
-      </li>
-      <li>
-         <div>
-            <div class="contents1">contents</div>
-
-         </div>
-      </li>
-      <li>
-         <div>
-            <div class="contents1">contents</div>
-
-         </div>
-      </li>
-      <li>
-         <div>
-            <div class="contents1">contents</div>
-
-         </div>
-      </li>
-   </ul>
-   <!-- amount end -->
 
    <div class="main_text0">
       <h1>Category</h1>
