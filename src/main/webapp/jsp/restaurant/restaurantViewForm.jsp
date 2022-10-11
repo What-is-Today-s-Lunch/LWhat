@@ -31,7 +31,7 @@
 				<div class="searchArea">
 					<form action="${webapproot}/restaurantform.do" method="get">
 						<input type="hidden" name="code" value="A1"> <input
-							type="search" name="restaurantID" placeholder="search">
+							type="search" name="restaurantID" placeholder="음식점 검색">
 						<button type="submit" class="searchBtn">검색</button>
 					</form>
 				</div>
@@ -55,7 +55,7 @@
 		<div class="contents2">
 			<div class="restinfo">
 				<h1>${rsIDDTO.restaurantID}</h1>
-				주소 : ${rsIDDTO.addressAPI} <br /> 연락처 : ${rsIDDTO.telNum} <br> 현재위치에서 거리 : 약 <span id="mrst"></span>미터<br>
+				주소 : ${rsIDDTO.addressAPI} ${rsIDDTO.addressDetail}<br /> 연락처 : ${rsIDDTO.telNum} <br> 현재위치에서 거리 : 약 <span id="mrst"></span>미터<br>
 				식당 위도 : <span id= "lat" ></span>
 				식당 경도 : <span id = "long" ></span><br>
 				현재 위도 : <span id="nowlat"></span>

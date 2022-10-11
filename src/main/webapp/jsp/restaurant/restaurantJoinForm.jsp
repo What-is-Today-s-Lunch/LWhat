@@ -113,11 +113,7 @@ $(function(){
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
-				<div class="searchArea">
-					<form>
-						<input type="search" placeholder="search"> <span>검색</span>
-					</form>
-				</div>
+				
 				<ul class="nav">
 					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
 					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
@@ -130,11 +126,6 @@ $(function(){
 	</div>
 
 	<div class="main_text0">
-		<!-- <h2 align="center">종합 게시판</h2>
-		
-		<div class="contents2">-->
-		<!-- 들어가야할 내용  -->
-		
 				<div class="board_wrap">
 					<div class="board_title">
 						<strong>식당 등록</strong>

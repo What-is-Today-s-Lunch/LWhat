@@ -25,7 +25,7 @@
 				<div class="searchArea">
 			<form action="${webapproot}/restaurantform.do" method="get">
 				<input type="hidden" name="code" value="A1"> <input
-					type="search" name="restaurantID" placeholder="search">
+					type="search" name="restaurantID" placeholder="음식점 검색">
 				<button type="submit" class="searchBtn">검색</button>
 			</form>
 		</div>
@@ -44,15 +44,11 @@
 		<h1>${codename}</h1>
 		<div class="contents1">
 			<ul class="icons">
-			
-				<!--	<c:set var="listSize" value="${rslist.size()}" /> -->
-					<c:forEach var="restaurantlist"  items="${rslist}" varStatus="c" >
-				<!--	<c:set var="bno" value="${rslistSize-stat.count+1}" />-->
+			<c:forEach var="restaurantlist"  items="${rslist}" varStatus="c" >
 				<li>
 					<div class="icon_img">
 						<img src="/LWhat/jsp/restaurantupload/${restaurantlist.restaurantID}/${restaurantlist.restaurantID}1.jpg">
 					</div>
-
 					<div class="contents1_bold">
 					<a href="#" onclick="location.href='${webapproot}/restaurantreviewform.do?restaurantID=${restaurantlist.restaurantID}'">
 					${restaurantlist.restaurantID}</a>
@@ -60,13 +56,9 @@
 					<div class="contents2">★${restaurantlist.scoreAvg}</div>
 					<div class="contents3">(${rLDAO.listCountRestaurantReview(restaurantlist.restaurantID)})</div>
 				</li>
-					</c:forEach>
-				
-
+				</c:forEach>
 			</ul>
 		</div>
-
-		<!-- 들어가야할 내용ㅁㄴㅇㅁㄴㅇ  -->
 	</div>
 
 
