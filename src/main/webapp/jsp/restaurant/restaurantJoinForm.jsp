@@ -126,11 +126,6 @@ $(function(){
 	</div>
 
 	<div class="main_text0">
-		<!-- <h2 align="center">종합 게시판</h2>
-		
-		<div class="contents2">-->
-		<!-- 들어가야할 내용  -->
-		
 				<div class="board_wrap">
 					<div class="board_title">
 						<strong>식당 등록</strong>
