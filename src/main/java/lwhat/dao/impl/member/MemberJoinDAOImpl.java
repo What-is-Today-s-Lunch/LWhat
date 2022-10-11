@@ -12,6 +12,7 @@ public class MemberJoinDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 
 	@Override
 	public int joinMember(MemberDTO memberDTO) throws Exception {
+		int result;
 		try {
 		Connection conn = getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(MemberConstants.props.getProperty("JOIN_SQL"));
@@ -20,8 +21,9 @@ public class MemberJoinDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 		pstmt.setString(3, memberDTO.getNickName());
 		pstmt.setString(4, memberDTO.getEmail());
 		pstmt.setString(5, memberDTO.getName());
-		ConnectionManager.closeConnection(pstmt, conn);
-		return pstmt.executeUpdate(); // 결과값 return =1 이라면 정상적으로 전송
+		result = pstmt.executeUpdate(); // 결과값 return =1 이라면 정상적으로 전송
+		closeConnection(pstmt, conn);
+		return result;
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

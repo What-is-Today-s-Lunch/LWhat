@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+*{ /*브라우저마다 스타일 설정이 조금씩 다르기 때문에 디자인을 위한 기본 스타일을 정의함*/
+font-family:'Noto Sans KR', sans-serif; box-sizing :border-box;
+} /*html과 body 태그의 기본 설정 여백을 제거함*/
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
 * {
             font-family: 'Noto Sans KR', sans-serif;
         }
