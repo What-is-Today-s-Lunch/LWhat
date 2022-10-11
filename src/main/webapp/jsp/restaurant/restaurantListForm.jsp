@@ -44,10 +44,7 @@
 		<h1>${codename}</h1>
 		<div class="contents1">
 			<ul class="icons">
-			
-				<!--	<c:set var="listSize" value="${rslist.size()}" /> -->
-					<c:forEach var="restaurantlist"  items="${rslist}" varStatus="c" >
-				<!--	<c:set var="bno" value="${rslistSize-stat.count+1}" />-->
+			<c:forEach var="restaurantlist"  items="${rslist}" varStatus="c" >
 				<li>
 					<div class="icon_img">
 						<img src="/LWhat/jsp/restaurantupload/${restaurantlist.restaurantID}/${restaurantlist.restaurantID}1.jpg">
@@ -65,8 +62,6 @@
 
 			</ul>
 		</div>
-
-		<!-- 들어가야할 내용ㅁㄴㅇㅁㄴㅇ  -->
 	</div>
 
 
