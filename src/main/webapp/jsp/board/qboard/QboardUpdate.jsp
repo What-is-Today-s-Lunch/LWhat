@@ -18,11 +18,6 @@
 	<div class="wrap">
 		<div class="intro_bg">
 			<div class="header">
-				<div class="searchArea">
-					<form>
-						<input type="search" placeholder="search"> <span>검색</span>
-					</form>
-				</div>
 				<ul class="nav">
 					<li><a href="${webapproot}/mainform.do">오늘뭐먹지</a></li>
 					<li><a href="${webapproot}/gboardlist.do">종합게시판</a></li>
