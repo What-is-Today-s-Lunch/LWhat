@@ -13,15 +13,9 @@ public class MemberMypageFormHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
-		//1. 한글설정 & 변수생성
-		String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
-		//1-1.id값확인 없으면 로그인페이지로 이동
+		String memberID = (String) session.getAttribute("memberID");
+		//1. id값확인하고 없으면 로그인페이지로 이동
 		if(memberID == null){
-//			PrintWriter script = response.getWriter();
-//			script.println("<script>");
-//			script.println("alert('로그인이 되어있지 않습니다!')");
-//			script.println("location.href = 'loginForm.jsp'");
-//			script.println("</script>");
 			return "/jsp/member/loginForm.jsp";
 		}
 		//2. 회원정보 가져오는 메서드생성

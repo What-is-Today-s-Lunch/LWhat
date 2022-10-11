@@ -17,23 +17,14 @@ public class RestaurantReviewUpdateFormHandler implements CommandHandler{
 		HttpSession session = request.getSession();
 		String seMemID = (String)session.getAttribute("memberID");
 		
-		int revID = Integer.parseInt(request.getParameter("revID"));
-
-		System.out.println("---------------" + revID);
-
-		
-		
-		
+		int revID = Integer.parseInt(request.getParameter("revID"));	
 		String rID = (String)session.getAttribute("restaurantID");
 
-		request.setAttribute("RID", session.getAttribute("restaurantID"));
-
-
+		request.setAttribute("RID", rID);
 
 		RestaurantService restaurantService = new RestaurantReviewViewDAOImpl();
 		RestaurantReviewDTO reviewDTO = restaurantService.viewRestaurantReview(revID);
 
-		
 		SimpleDateFormat mDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		
 		request.setAttribute("mDate", mDate.format(reviewDTO.getmDate()));

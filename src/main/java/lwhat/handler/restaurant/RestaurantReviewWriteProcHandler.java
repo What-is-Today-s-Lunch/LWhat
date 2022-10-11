@@ -17,23 +17,25 @@ import lwhat.service.restaurant.RestaurantService;
 public class RestaurantReviewWriteProcHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("utf-8");
-		 HttpSession session = request.getSession();
-			String restaurantIDParam = request.getParameter("restaurantID") == null ? "" : request.getParameter("restaurantID");
-			session.setAttribute("restaurantID", restaurantIDParam);
-
+			request.setCharacterEncoding("utf-8");
+			HttpSession session = request.getSession();
+			
+			String restaurantIDParam = (String)session.getAttribute("restaurantID");
+			
+			//식당DTO
 			RestaurantService restaurantViewService = new RestaurantViewDAOImpl();
-
 			RestaurantDTO restautantIDDTO = restaurantViewService.viewRestaurant(restaurantIDParam);
-			request.setAttribute("rsIDDTO", restautantIDDTO);
-		 
-		String revMemID = (String)session.getAttribute("memberID");
-		String revResID = request.getParameter("restaurantID");
+			request.setAttribute("rsIDDTO", restautantIDDTO); 
+			
+			
+			String revMemID = (String)session.getAttribute("memberID");
+			String revResID = (String)session.getAttribute("restaurantID");
 
-		String revContent = request.getParameter("content");
-		int revScore = Integer.parseInt(request.getParameter("score"));
-		request.setAttribute("restaurantID", revResID);
 		
+		String revContent = request.getParameter("content");//후기 내용
+		int revScore = Integer.parseInt(request.getParameter("score"));//후기 별점
+		request.setAttribute("restaurantID", revResID);
+
 		RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO();
 		reviewDTO.setMemberID_FK(revMemID);
 		reviewDTO.setRestaurantID_FK(revResID);
@@ -45,7 +47,6 @@ public class RestaurantReviewWriteProcHandler implements CommandHandler{
 		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
 		List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlistDTO);
-//		return "/jsp/restaurant/restaurantViewForm.jsp";
-		return "/restaurantreviewform.do";
+		return "/jsp/restaurant/restaurantViewForm.jsp";
 	}
 }

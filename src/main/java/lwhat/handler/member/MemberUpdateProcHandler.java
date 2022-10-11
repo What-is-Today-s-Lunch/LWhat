@@ -12,23 +12,23 @@ import lwhat.service.member.MemberService;
 public class MemberUpdateProcHandler implements CommandHandler{
    @Override
    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       HttpSession session = request.getSession();
-       String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
-       
+       //세션으로 회원아이디 가져옴
+	   HttpSession session = request.getSession();
+       String memberID = (String) session.getAttribute("memberID");
+       //수정된회원정보를 DTO에 넣는다
        MemberDTO memberDTO = new MemberDTO();
-          memberDTO.setMemberID(memberID);
+         memberDTO.setMemberID(memberID);
          memberDTO.setMemberPW(request.getParameter("upass") == null ? "" : request.getParameter("upass"));
          memberDTO.setNickName(request.getParameter("unick") == null ? "" : request.getParameter("unick"));
          memberDTO.setName(request.getParameter("uname") == null ? "" : request.getParameter("uname"));
          memberDTO.setEmail(request.getParameter("uemail") == null ? "" : request.getParameter("uemail"));
-         
+       //수정된 정보 DB에 저장
          MemberService memberService = new MemberUpdateDAOImpl();
          memberService.updateMember(memberDTO);
-         
+       //회원정보를 view사용
          memberService.viewMembers(memberID);
          request.setAttribute("memberDTO", memberDTO);
-         //MemberUpdateDAOImpl memberUpdateDAOImpl = new MemberUpdateDAOImpl();
-         //memberUpdateDAOImpl.updateMember(memberDTO);
+
          return "/jsp/member/mypageForm.jsp";
    }
 }

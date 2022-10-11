@@ -14,10 +14,9 @@ public class MemberUpdateFormHandler implements CommandHandler{
    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
       
        HttpSession session = request.getSession();
+       String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
 
-          String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
-
-          //2. 회원정보 가져오는 메서드생성
+          // 회원정보 가져오는 메서드생성
           MemberService memberService = new MemberViewDAOImpl();
           MemberDTO memberDTO = new MemberDTO();
           memberDTO = memberService.viewMembers(memberID);

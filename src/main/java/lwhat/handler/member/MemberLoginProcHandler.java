@@ -11,43 +11,29 @@ import lwhat.handler.CommandHandler;
 public class MemberLoginProcHandler implements CommandHandler{
    @Override
    public String process(HttpServletRequest request, HttpServletResponse response) throws Exception{
-	  // session 가져오기
+
       HttpSession session = request.getSession();
       MemberDTO memberDTO = new MemberDTO();
-      // memberDTO에 입력한 ID, PW 셋팅
       memberDTO.setMemberID(request.getParameter("memberID") == null ? "" : request.getParameter("memberID"));
       memberDTO.setMemberPW(request.getParameter("memberPW") == null ? "" : request.getParameter("memberPW"));
       response.setContentType("text/html; charset=utf-8");
       
+      
       String memberID = null;
-      // 세션을 확인해서 세션이 존재 할때 String memberID에게 세션값 부여
       if (session.getAttribute("memberID") != null) {
          memberID = (String) session.getAttribute("memberID");
       }
 
-//       memberID 에 세션값이 부여 되어 있다면 (중복 로그인 방지)
-//      if (memberID != null) {
-//         script.println("<script>");
-//         script.println("alert('이미 로그인이 되어 있습니다!')");
-//         script.println("</script>");
-//         return "/jsp/mainForm.jsp"; 
-//      }
-
-      // MemberDAOImpl 인스턴스 생성
       MemberLoginDAOImpl memberLoginDAOImpl = new MemberLoginDAOImpl();
-      // 로그인시도 함수실행
-      // memberLoginDAOImpl의 loginMember에서 실행 후 각 상황에 따라서 result로 반환
       int result = 0;
       result = memberLoginDAOImpl.loginMember(memberDTO.getMemberID(), memberDTO.getMemberPW());
       request.setAttribute("result", result);
       
-      if (result == 1) { // 로그인 성공
-         // 세션 생성
+      // result 1일경우 로그인 성공
+      if (result == 1) {
     	  	session.setAttribute("memberID", memberDTO.getMemberID());
-//     		script.println("<script>");
-//     		script.println("alert('로그인 성공!')");
-//     		script.println("</script>");
-         //관리자 아이디 일 경우 true 값을 받아서 식당등록 페이지에 들어 갈 수 있게 함 
+         
+      //관리자 아이디 일 경우 true 값을 받아서 식당등록 페이지에 들어 갈 수 있게 함 
          if(memberDTO.getMemberID().equals("megaZ")||memberDTO.getMemberID().equals("megaZ1")
         		 ||memberDTO.getMemberID().equals("megaZ2")) {
         	 request.setAttribute("manager", true);
@@ -58,16 +44,6 @@ public class MemberLoginProcHandler implements CommandHandler{
          return "/jsp/mainForm.jsp";
       }
       
-//    if (result == 0) { // 비밀번호 불일치
-//         script.println("<script>");
-//        	script.println("alert('비밀번호가 틀립니다.')");
-//         script.println("</script>");
-//      }
-
-      	// ID가 없음 (result = -1)
-//        	script.println("<script>");
-//    		script.println("alert('존재하지 않는 ID입니다.')");
-//         script.println("</script>");
          return "/jsp/member/memberLoginForm.jsp";
    }
 }
