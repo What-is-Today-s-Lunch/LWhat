@@ -25,7 +25,7 @@
 				<div class="searchArea">
 			<form action="${webapproot}/restaurantform.do" method="get">
 				<input type="hidden" name="code" value="A1"> <input
-					type="search" name="restaurantID" placeholder="search">
+					type="search" name="restaurantID" placeholder="음식점 검색">
 				<button type="submit" class="searchBtn">검색</button>
 			</form>
 		</div>
