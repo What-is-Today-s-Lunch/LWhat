@@ -2,16 +2,6 @@ var map;
 var mapContainer;
 var coords;
 window.onload = function() {
-	
-	 if (navigator.geolocation) {
-            //위치 정보를 얻기
-            navigator.geolocation.getCurrentPosition (function(pos) {
-                $('#latitude1').html(pos.coords.latitude);     // 위도
-                $('#longitude1').html(pos.coords.longitude); // 경도
-            });
-        } else {
-            alert("이 브라우저에서는 Geolocation이 지원되지 않습니다.")
-        }
 
 	var adress = document.getElementById('resAdress').value;
 	var maprestaurantID = document.getElementById('resID').value;
@@ -99,12 +89,43 @@ window.onload = function() {
 		rvResetValue.zoom = viewpoint.zoom;
 	});
 		
-		
-		
+	//Geolocation api 사용 위치 정보를 얻기
+	navigator.geolocation.getCurrentPosition(function(pos) {
+
+   	var nowlat = pos.coords.latitude;
+   	var nowlng = pos.coords.longitude;
+    var restlat =	result[0].y;
+    var restlng = result[0].x;
+    
+     document.getElementById('nowlat').innerHTML=nowlat;
+     document.getElementById('nowlng').innerHTML=nowlng;
+    console.log("restlat = "+restlat);
+    console.log("restlng = "+restlng);
+    console.log("nowlat = "+nowlat);
+    console.log("nowlng = "+nowlng);
+	var mrst;
+    var radLat1 = Math.PI * nowlat / 180;
+    var radLat2 = Math.PI * restlat / 180;
+    var theta = nowlng - restlng;
+    var radTheta = Math.PI * theta / 180;
+    var dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radTheta);
+    if (dist > 1)
+        dist = 1;
+
+    dist = Math.acos(dist);
+    dist = dist * 180 / Math.PI;
+    dist = dist * 60 * 1.1515 * 1.609344 * 1000;
+    if (dist < 100) {
+	dist = Math.round(dist / 10) * 10
+	mrst = dist;
+	}
+    else {
+	dist = Math.round(dist / 100) * 100
+	mrst = dist;
+	}
+    
+    console.log("mrst = "+mrst);
+    document.getElementById('mrst').innerHTML=mrst;
+		});
 	});
-
-	
-	
-
-	
 }

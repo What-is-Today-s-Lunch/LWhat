@@ -55,10 +55,11 @@
 		<div class="contents2">
 			<div class="restinfo">
 				<h1>${rsIDDTO.restaurantID}</h1>
-				주소 : ${rsIDDTO.addressAPI} <br /> 연락처 : ${rsIDDTO.telNum} <br>
-				교육센터와의 거리 :${DM}미터<br> 위도 : <span id="lat"></span> 경도 : <span
-					id="long"></span> 현재 위도 : <span id="latitude1"></span> 현재 경도 : <span
-					id="longitude1"></span>
+				주소 : ${rsIDDTO.addressAPI} <br /> 연락처 : ${rsIDDTO.telNum} <br> 현재위치에서 거리 : 약 <span id="mrst"></span>미터<br>
+				식당 위도 : <span id= "lat" ></span>
+				식당 경도 : <span id = "long" ></span><br>
+				현재 위도 : <span id="nowlat"></span>
+				현재 경도 : <span id="nowlng"></span>
 			</div>
 			<div class="restcontent">
 				<div class="restwrap">
