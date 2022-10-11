@@ -13,9 +13,9 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;500&display=swap"
 	rel="stylesheet">
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="/LWhat/js/game.js" charset="utf-8"></script>
 	<script type="text/javascript" src="/LWhat/js/gameJquery.js" charset="utf-8"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>돌려돌려 돌림판</title>
 </head>
 <body>
