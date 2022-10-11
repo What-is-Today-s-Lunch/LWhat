@@ -37,15 +37,15 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 	//Qboard
 		@Override
 		public int fileUploadQBoard(String cImage, String sImage, int qPostingID) throws Exception {
-			
+			int result = 0;
 			try {
 				PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("QBOARD_FILE_SQL"));
 				pstmt.setInt(1, getqPostingID(qPostingID));
-				pstmt.setString(2, "Qboard");
+				pstmt.setString(2, getQboardCategory(qPostingID));
 				pstmt.setString(3, cImage);
 				pstmt.setString(4, sImage);
-		
-				int result = pstmt.executeUpdate();
+				result = pstmt.executeUpdate();
+				
 				ConnectionManager.closeConnection(pstmt, getConnection());
 				return result;
 			} catch (Exception e) {
@@ -81,9 +81,11 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 			 PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("QBOARD_GET_POSTINGID"));
 			 pstmt.setInt(1,qPostingID );
 			 rs = pstmt.executeQuery();
+			 int result = 0;
 			 if(rs.next()) {
+				 result = rs.getInt(1);
 				 ConnectionManager.closeConnection(rs, pstmt, conn);
-				 return rs.getInt(1);
+				 return result;
 			 }
 		 } catch (SQLException e) {
 			e.printStackTrace();
@@ -92,10 +94,23 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 	 }
 	
 	public String getBoardCategory(int gPostingID) throws Exception {
-		String sql = " select boardCategory from generalposting where gPostingID = ? ";
 		Connection conn = getConnection();
-		PreparedStatement pstmt = conn.prepareStatement(sql);
+		PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_IMG_WRITE_GET_BOARDCATEGORY"));
 		pstmt.setInt(1, gPostingID);
+		rs = pstmt.executeQuery();
+		String result = "";
+		if(rs.next()) {
+			result = rs.getString(1);
+			ConnectionManager.closeConnection(rs, pstmt, conn);
+			return result;
+		}
+		return "";
+	}
+	
+	public String getQboardCategory(int qPostingID) throws Exception {
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("QBOARD_IMG_WRITE_GET_BOARDCATEGORY"));
+		pstmt.setInt(1, qPostingID);
 		rs = pstmt.executeQuery();
 		String result = "";
 		if(rs.next()) {

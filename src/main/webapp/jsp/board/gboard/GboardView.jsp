@@ -70,7 +70,7 @@
 					<div class="cont">${gboardDTO.content}
 						<div id="contentImage">
 							<c:if test="${imgExists eq 'imgExists' }">
-								<img src="/LWhat/jsp/upload/${gboardDTO.gPostingID}file.jpg">
+								<img src="/LWhat/jsp/GboardImage/${gboardDTO.gPostingID}file.jpg">
 							</c:if>
 						</div>
 					</div>

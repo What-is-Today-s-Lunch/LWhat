@@ -43,7 +43,7 @@ public class QboardViewHandler implements CommandHandler {
 		request.setAttribute("qboardDTO", qboardDTO);
 
 		// 이미지
-		String real = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/qupload";
+		String real = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/QboardImage";
 		File viewFile = new File(real + "/" + qPostingID + "file.jpg");
 		File viewFiles = new File(real + "/" + qPostingID + "files.jpg");
 		if (viewFile.exists()) {

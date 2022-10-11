@@ -33,7 +33,7 @@ public class GboardWriteProcHandler implements CommandHandler {
 		gboardDTO.setBoardCategory(
 				request.getParameter("boardCategory") == null ? "" : request.getParameter("boardCategory"));
 
-		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/upload";
+		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/GboardImage";
 		String encType = "UTF-8";
 		int maxSize = 5 * 1024 * 1024;
 
