@@ -21,7 +21,7 @@ public class QboardUpdateBoardFormHandler implements CommandHandler {
 			qPostingID = Integer.parseInt(request.getParameter("qPostingID"));
 		}
 		
-		//update를 하기위한 view 정보 
+		/*-------------update를 하기위한 view 정보--------------------*/ 
 		BoardService boardService = new BoardViewDAOImpl();
 		QboardDTO qboardDTO = new QboardDTO();
 		qboardDTO.setqPostingID(qPostingID);

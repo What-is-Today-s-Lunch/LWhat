@@ -16,11 +16,6 @@ public class GboardWriteFormHandler implements CommandHandler {
         String memberID = (String) session.getAttribute("memberID");//object
 				
 		if(memberID == null){
-//			PrintWriter script = response.getWriter();
-//			script.println("<script>");
-//			script.println("alert('로그인이 되어있지 않습니다!')");
-//			script.println("location.href = 'loginForm.jsp'");
-//			script.println("</script>");
 			return "/index.jsp";
 		} 
 		return "/jsp/board/gboard/GboardWrite.jsp";

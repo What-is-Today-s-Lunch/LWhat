@@ -36,16 +36,16 @@ public class GboardViewHandler implements CommandHandler {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
 
-		// boardview
 		BoardService boardService = new BoardViewDAOImpl();
 		BoardListDAOImpl boardlist = new BoardListDAOImpl();
 		GboardDTO gboardDTO = new GboardDTO();
-		// gboard update delete check
-
+		
+		/*----------------gboard update delete check------------------------------*/
 		gboardDTO = boardService.viewBoard(gPostingID);
 		if (memberID.equals(gboardDTO.getMemberID_FK())) {
 			request.setAttribute("isSameWriter", "true");
 		}
+		/*----------------------------------------------------------------------------*/
 		gboardDTO.setMemberID_FK(boardlist.getNickName(gboardDTO.getMemberID_FK()));
 		request.setAttribute("gboardDTO", gboardDTO);
 
@@ -62,13 +62,9 @@ public class GboardViewHandler implements CommandHandler {
 		ArrayList<GeneralcommentDTO> list = boardListService.conmentListBoard(pageNumber);
 		ArrayList<GeneralcommentDTO> list1 = new ArrayList<>();
 		for (int i = 0; i < list.size(); i++) {
-			// 전체 리스트를 받아 게시물 댓글번호와 게시물번호가 같은것만 list1에 추가
 			if (gPostingID == list.get(i).getPostingID_FK()) {
 				list1.add(list.get(i));
-				// 특정게시물에 표시될 댓글 (list1)
-				System.out.println("---------------------" + list.get(i));
 				request.setAttribute("list1", list1);
-				// 세션의 memberID와 list1의 memberID_FK가 같을때만 수정삭제 버튼 표시
 			} // if
 		}
 		/*----------------------------------------------------------------------------------*/

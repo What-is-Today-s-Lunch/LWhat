@@ -18,19 +18,12 @@ public class GboardCommentUpdateFormcHandler implements CommandHandler {
 		if (request.getParameter("gCommentID") != null) {
 			gCommentID = Integer.parseInt(request.getParameter("gCommentID"));
 		}
-		// int gCommentID = 3;
 		int gPostingID = 0;
 		if (request.getParameter("gPostingID") != null) {
 			gPostingID = Integer.parseInt(request.getParameter("gPostingID"));
 		}
-		String content = request.getParameter("content");
-
-		//BoardService boardService = new BoardViewDAOImpl();
-		//GboardDTO gboardDTO = new GboardDTO();
-		//gboardDTO = boardService.viewBoard(gPostingID);
-		//GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
 		
-		//request.setAttribute("boardService", boardService);
+		String content = request.getParameter("content");
 		
 		request.setAttribute("gPostingID", gPostingID);
 		request.setAttribute("gCommentID", gCommentID);

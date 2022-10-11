@@ -15,7 +15,8 @@ public class QboardCommentDeleteProcHandler implements CommandHandler {
 		HttpSession session = request.getSession();
 		String qCommentID = request.getParameter("qCommentID") == null ? "" : request.getParameter("qCommentID");
 		String qPostingID = request.getParameter("qPostingID") == null ? "" : request.getParameter("qPostingID");
-		System.out.println("++++++++++++++++" + qCommentID);
+		
+		/*-----------------------commentDelete-------------------------------*/
 		BoardService boardService = new BoardConmentDeleteDAOImpl();
 		boardService.conmentDeleteQboard(Integer.parseInt(qCommentID));
 		

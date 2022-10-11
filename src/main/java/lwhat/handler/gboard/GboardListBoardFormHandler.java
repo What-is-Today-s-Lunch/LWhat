@@ -23,7 +23,7 @@ public class GboardListBoardFormHandler implements CommandHandler {
 		// session
 		HttpSession session = request.getSession();
 		String memberID = (String) session.getAttribute("memberID");
-		//게시글 5개씩 나타내는 페이지 넘버링
+
 		int pageNumber = 1;
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
@@ -37,11 +37,10 @@ public class GboardListBoardFormHandler implements CommandHandler {
 		CodeTableDTO code = null;
 		CodeService findcodename = new CodeDAOImpl();
 		BoardListDAOImpl getter = new BoardListDAOImpl();
-		//총 게시글의 개수를 받아와서 게시글 번호 부여 
+		
 		int postsCount = getter.getPostsCount("generalposting");
 		request.setAttribute("postsCount", postsCount);
 		
-		//게시글 5개씩 나타낼때 좌우 버튼 구현 
 		for (int i = 0; i < list.size(); i++) {
 			code = findcodename.codeView(list.get(i).getBoardCategory());
 			String boardCategory = code.getCodeName();
@@ -50,11 +49,10 @@ public class GboardListBoardFormHandler implements CommandHandler {
 		}
 		/*----------------------------------------------------------------------------------------*/
 
-		int numBer = 1;
-		for (int i = 0; i < list.size(); i++) {
-			numBer++;
-			request.setAttribute("nemBer", numBer);
-		}
+		/*
+		 * int numBer = 1; for (int i = 0; i < list.size(); i++) { numBer++;
+		 * request.setAttribute("nemBer", numBer); }
+		 */
 
 		if (pageNumber != 1) {
 			String pageBefore = "pageBefore";
@@ -65,10 +63,8 @@ public class GboardListBoardFormHandler implements CommandHandler {
 			request.setAttribute("pageAfter", pageAfter);
 		}
 		
-		
 		request.setAttribute("pageNumber", pageNumber);
 		
-		//System.out.println("+++++++++++++++++++++" + getter.getPostsCount("generalposting"));
 		return "/jsp/board/gboard/GboardListForm.jsp";
 	}
 }

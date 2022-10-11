@@ -40,12 +40,12 @@ public class GboardWriteProcHandler implements CommandHandler {
 		MultipartRequest multipartRequest = new MultipartRequest(request, saveFolder, maxSize, encType,
 				new DefaultFileRenamePolicy());
 
-		// write 변수
+		/*----------------------------- write 변수-------------------------------*/
 		String title = multipartRequest.getParameter("title");
 		String content = multipartRequest.getParameter("content");
 		String boardCategory = multipartRequest.getParameter("boardCategory");
 
-		// Write Set
+		/*----------------------------- Write Set--------------------------------*/
 		BoardService boardService = new BoardWriteDAOImpl();
 		gboardDTO.setMemberID_FK(memberID);
 		gboardDTO.setBoardCategory(boardCategory);
@@ -58,7 +58,7 @@ public class GboardWriteProcHandler implements CommandHandler {
 
 		String file = multipartRequest.getOriginalFileName("filename");
 		String fileName = multipartRequest.getFilesystemName("filename");
-
+		
 		BoardService boardServiceFile = new BoardFileUploadDAOImpl();
 		boardServiceFile.fileUploadBoard(file, fileName, gPostingNum);
 		request.setAttribute("boardServiceFile", boardServiceFile);

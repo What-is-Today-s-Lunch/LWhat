@@ -30,6 +30,7 @@ public class QboardSearchListFormHandler implements CommandHandler {
 		String searchDomain = request.getParameter("searchDomain") == null ? "" : request.getParameter("searchDomain");
 		String searchText = request.getParameter("searchText") == null ? "" : request.getParameter("searchText");
 
+		/*------------------------------searchList----------------------------------*/
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("searchDomain", searchDomain);
 		searchMap.put("searchText", searchText);
@@ -40,7 +41,6 @@ public class QboardSearchListFormHandler implements CommandHandler {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		System.out.println(QboardSearchDTOList);
 		request.setAttribute("QboardSearchDTOList", QboardSearchDTOList);
 
 		return "/jsp/board/qboard/QboardSearchListForm.jsp";

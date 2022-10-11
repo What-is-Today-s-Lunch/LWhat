@@ -37,7 +37,7 @@ public class QboardSearchProcHandler implements CommandHandler{
 		}
 		request.setAttribute("pageNumber", pageNumber);
 		
-		/*------------------------------------검색기능---------------------------------------*/	
+		/*------------------------------------search---------------------------------------*/	
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException uee) {

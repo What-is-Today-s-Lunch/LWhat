@@ -27,6 +27,7 @@ public class QboardCommentUpdateProcHandler implements CommandHandler {
 			qPostingID =Integer.parseInt(request.getParameter("qPostingID"));
 		}
 		
+		/*-------------------------commentUpdate-------------------------------------*/
 		BoardService boardService = new BoardConmentUpdateDAOImpl();
 		QuestioncommentDTO questioncommentDTO = new QuestioncommentDTO();
 		questioncommentDTO.setContent(content);

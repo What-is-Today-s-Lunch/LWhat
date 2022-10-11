@@ -30,6 +30,7 @@ public class GboardSearchListFormHandler implements CommandHandler {
 		String searchDomain = request.getParameter("searchDomain") == null ? "" : request.getParameter("searchDomain");
 		String searchText = request.getParameter("searchText") == null ? "" : request.getParameter("searchText");
 	
+		/*------------------------------search-----------------------------------------*/
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("searchDomain", searchDomain);
 		searchMap.put("searchText", searchText);
@@ -40,10 +41,8 @@ public class GboardSearchListFormHandler implements CommandHandler {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		System.out.println(GboardSearchDTOList);
 		request.setAttribute("GboardSearchDTOList", GboardSearchDTOList);
 		
-		// TODO Auto-generated method stub
 		return "/jsp/board/gboard/GboardSearchListForm.jsp";
 	}
 }

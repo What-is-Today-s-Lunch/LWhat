@@ -17,19 +17,14 @@ public class QboardCommentUpdateFormHandler implements CommandHandler {
 		if (request.getParameter("qCommentID") != null) {
 			qCommentID = Integer.parseInt(request.getParameter("qCommentID"));
 		}
-		// int gCommentID = 3;
+		
 		int qPostingID = 0;
 		if (request.getParameter("qPostingID") != null) {
 			qPostingID = Integer.parseInt(request.getParameter("qPostingID"));
 		}
+		
 		String content = request.getParameter("content");
 
-		// BoardService boardService = new BoardViewDAOImpl();
-		// GboardDTO gboardDTO = new GboardDTO();
-		// gboardDTO = boardService.viewBoard(gPostingID);
-		// GeneralcommentDTO generalcommentDTO = new GeneralcommentDTO();
-
-		// request.setAttribute("boardService", boardService);
 
 		request.setAttribute("qPostingID", qPostingID);
 		request.setAttribute("qCommentID", qCommentID);

@@ -104,7 +104,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			e.printStackTrace();
 		}
 		return false;
-	}// qboard nextpage
+	}
 
 	// 검색 Gboard
 	@Override
@@ -232,7 +232,6 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		}
 
 		String sql = " select count(" + sqlColumn + ") from " + board;
-		System.out.println("count Query loaded ................." + sql);
 		try {
 			Connection conn = getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);

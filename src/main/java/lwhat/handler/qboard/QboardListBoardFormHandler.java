@@ -44,7 +44,6 @@ public class QboardListBoardFormHandler implements CommandHandler {
 			code = findcodename.codeView(list.get(i).getboardCategory());
 			String boardCategory = code.getCodeName();//코드값에 해당하는 코드이름을 보여줌 
 			list.get(i).setboardCategory(boardCategory);
-			//list.get(i).setMemberID_FK(getter.getNickName(list.get(i).getMemberID_FK()));
 		}
 		/*----------------------------------------------------------------------------------------*/
 		
