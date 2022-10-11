@@ -62,6 +62,7 @@
 					<div>
 						<c:set var="listSize" value="${list.size()}"></c:set>
 						<c:forEach var="gboardDTO" items="${list}" varStatus="stat">
+							<c:if test="${(postsCount - (((pageNumber)*5)+stat.count-5)+1)>0}">
 							<div class="num">${postsCount - (((pageNumber)*5)+stat.count-5)+1}</div>
 <%-- 							<div class="num">${gboardDTO.gPostingID}</div> --%>
 							<div class="category">${gboardDTO.boardCategory}</div>
@@ -73,7 +74,7 @@
 							<div class="write">${gboardDTO.memberID_FK}</div>
 							<div class="date">${gboardDTO.mDate}</div>
 							<div class="count">${gboardDTO.clickCount}</div>
-
+						</c:if>
 						</c:forEach>
 					</div>
 				</div>

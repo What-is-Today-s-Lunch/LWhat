@@ -33,7 +33,7 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			PreparedStatement pstmt2 = conn2
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_IMG_WRITE_GET_POSTINGID"));
 			rs = pstmt2.executeQuery();
-
+			
 			int resultId = 0;
 			if (rs != null && rs.next()) {
 				resultId = rs.getInt("gPostingID");

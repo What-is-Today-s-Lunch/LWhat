@@ -21,7 +21,9 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
 		Connection conn = getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_LIST_SQL"));
-		pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
+		
+					pstmt.setInt(1, getNext() - (pageNumber - 1)*5);
+		
 		rs = pstmt.executeQuery();
 
 		while (rs.next()) {

@@ -20,7 +20,7 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 			
 			PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_FILE_SQL"));
 			pstmt.setInt(1, getgPostingID(gPostingID));
-			pstmt.setString(2, "Gboard");
+			pstmt.setString(2, getBoardCategory(gPostingID));
 			pstmt.setString(3, cImage);
 			pstmt.setString(4, sImage);
 			result = pstmt.executeUpdate();
@@ -90,4 +90,20 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 		}
 		 return 0;
 	 }
+	
+	public String getBoardCategory(int gPostingID) throws Exception {
+		String sql = " select boardCategory from generalposting where gPostingID = ? ";
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, gPostingID);
+		rs = pstmt.executeQuery();
+		String result = "";
+		if(rs.next()) {
+			result = rs.getString(1);
+			ConnectionManager.closeConnection(rs, pstmt, conn);
+			return result;
+		}
+		return "";
+	}
+	
 }
