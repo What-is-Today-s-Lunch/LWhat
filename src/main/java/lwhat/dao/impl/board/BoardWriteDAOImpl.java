@@ -29,15 +29,16 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			pstmt.setString(4, gboardDTO.getContent());
 
 			pstmt.executeUpdate();
-			
+			conn.commit();
 			PreparedStatement pstmt2 = conn2
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_IMG_WRITE_GET_POSTINGID"));
+			conn2.setAutoCommit(false);
 			rs = pstmt2.executeQuery();
 			
 			int resultId = 0;
 			if (rs != null && rs.next()) {
 				resultId = rs.getInt("gPostingID");
-				conn.commit();
+				conn2.commit();
 				closeConnection(pstmt, conn);
 				closeConnection(rs, pstmt2, conn2);
 				return resultId;
@@ -68,15 +69,17 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			pstmt.setString(4, qboardDTO.getContent());
 
 			pstmt.executeUpdate();
-
-			PreparedStatement pstmt2 = conn
+			conn.commit();
+			
+			PreparedStatement pstmt2 = conn2
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_IMG_WRITE_GET_POSTINGID"));
+			conn2.setAutoCommit(false);
 			rs = pstmt2.executeQuery();
 			
 			int resultId = 0;
 			if (rs != null && rs.next()) {
 				resultId = rs.getInt("qPostingID");
-				conn.commit();
+				conn2.commit();
 				closeConnection(pstmt, conn);
 				closeConnection(rs, pstmt2, conn2);
 				return resultId;
