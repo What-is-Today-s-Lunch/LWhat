@@ -18,7 +18,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/LWhat/css/foodListStyle.css">
+<link rel="stylesheet" type="text/css"
+	href="/LWhat/css/foodListStyle.css">
 <link rel="stylesheet" type="text/css" href="/LWhat/css/style2.css">
 
 <title>${rsIDDTO.restaurantID}</title>
@@ -28,8 +29,10 @@
 		<div class="intro_bg">
 			<div class="header">
 				<div class="searchArea">
-					<form>
-						<input type="search" placeholder="search"> <span>검색</span>
+					<form action="${webapproot}/restaurantform.do" method="get">
+						<input type="hidden" name="code" value="A1"> <input
+							type="search" name="restaurantID" placeholder="search">
+						<button type="submit" class="searchBtn">검색</button>
 					</form>
 				</div>
 				<ul class="nav">
@@ -50,40 +53,43 @@
 
 		<!-- 지도 그려주기 -->
 		<div class="contents2">
-		<div class="restinfo">
-		<h1>${rsIDDTO.restaurantID}</h1>
-				주소 : ${rsIDDTO.addressAPI} <br /> 연락처 : ${rsIDDTO.telNum} <br> 교육센터와의 거리 :${DM}미터<br>
-				위도 : <span  id= "lat" ></span>
-				경도 : <span  id = "long" ></span>
-				현재 위도 : <span id="latitude1"></span>
-				현재 경도 : <span id="longitude1"></span>
-		</div>
-		<div class="restcontent">
-		<div class="restwrap">
-			<div id="map">
-				<input type="hidden" id="resAdress" value="${rsIDDTO.addressAPI}" />
-				<input type="hidden" id="resID" value="${rsIDDTO.restaurantID}" />
+			<div class="restinfo">
+				<h1>${rsIDDTO.restaurantID}</h1>
+				주소 : ${rsIDDTO.addressAPI} <br /> 연락처 : ${rsIDDTO.telNum} <br>
+				교육센터와의 거리 :${DM}미터<br> 위도 : <span id="lat"></span> 경도 : <span
+					id="long"></span> 현재 위도 : <span id="latitude1"></span> 현재 경도 : <span
+					id="longitude1"></span>
 			</div>
-			<div id="roadview"></div>
-		</div>
-		<div class="restwrap2">
-		<c:if test="${'imagefiles' eq 'imagefiles'}">
-					<div class="resimage">
-				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}1.jpg">
+			<div class="restcontent">
+				<div class="restwrap">
+					<div id="map">
+						<input type="hidden" id="resAdress" value="${rsIDDTO.addressAPI}" />
+						<input type="hidden" id="resID" value="${rsIDDTO.restaurantID}" />
 					</div>
-					<div class="resimage">
-				            	<img src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}2.jpg">
-					</div>
-     		 	</c:if>
-     		 	</div>
+					<div id="roadview"></div>
+				</div>
+				<div class="restwrap2">
+					<c:if test="${'imagefiles' eq 'imagefiles'}">
+						<div class="resimage">
+							<img
+								src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}1.jpg">
+						</div>
+						<div class="resimage">
+							<img
+								src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}2.jpg">
+						</div>
+					</c:if>
+				</div>
 			</div>
 		</div>
 		<div class="contents4">
 			<div class="text">
 				<p>후기쓰기</p>
 			</div>
-			<form action="${webapproot}/restaurantreviewwriteproc.do" name="review" method="post">
-				<input type="hidden" name="restaurantID" value="${rsIDDTO.restaurantID}"/>
+			<form action="${webapproot}/restaurantreviewwriteproc.do"
+				name="review" method="post">
+				<input type="hidden" name="restaurantID"
+					value="${rsIDDTO.restaurantID}" />
 				<div class="bt_wrap">
 					<div id="score" align="right">
 						<select id="select_value" name="score">
@@ -121,10 +127,12 @@
 						<div class="date">${reviewDTO.wDate}</div>
 						<div class="score">${reviewDTO.score}</div>
 						<div class="dd">
-						<c:if test="${sessionScope.memberID eq reviewDTO.memberID_FK}">
-							<button onclick="location.href='restaurantreviewupdateform.do?revID=${reviewDTO.revID}'">[수정]</button>
-							<button onclick="location.href='restaurantreviewdeleteproc.do?revID=${reviewDTO.revID}&&restaurantID=${rsIDDTO.restaurantID}';">[삭제]</button>
-						</c:if>
+							<c:if test="${sessionScope.memberID eq reviewDTO.memberID_FK}">
+								<button
+									onclick="location.href='restaurantreviewupdateform.do?revID=${reviewDTO.revID}'">[수정]</button>
+								<button
+									onclick="location.href='restaurantreviewdeleteproc.do?revID=${reviewDTO.revID}&&restaurantID=${rsIDDTO.restaurantID}';">[삭제]</button>
+							</c:if>
 						</div>
 					</c:forEach>
 				</div>
