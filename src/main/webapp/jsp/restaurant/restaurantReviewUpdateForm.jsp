@@ -64,45 +64,6 @@
 		</div>
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-<!-- 				<div class="board_review"> -->
-<!--        				<div class="rev1">후기내용</div> -->
-<!--        				<div class="rev2">작성자</div> -->
-<!--        				<div class="rev3">작성시간</div> -->
-<!--        				<div class="rev4">별점</div> -->
-<!--        				<div class="rev5">수정</div> -->
-<!--            		</div> -->
-<!--            		<div class="board_review2"> -->
-<%--            			<form method="post" action="${webapproot}/restaurantreviewupdateproc.do"> --%>
-<%--            		  		<input type="hidden" name="revID" value="${review.revID}" /> --%>
-<%--            		  		<input type="hidden" name="restaurantID" value="${RID}" /> --%>
-<%--             				<div><input name="content" value='${review.content}'></div> --%>
-<%--             				<div><a>${review.memberID_FK}</a></div> --%>
-<%--             				<div><a>${mDate}</a></div> --%>
-<%--             				<div><input name="score" value='${review.score}' /></div> --%>
-<!--             				<div><button type="submit">[수정]</button></div> -->
-<!--        				</form> -->
-<!--        			</div> -->
-<!-- 				</div> -->
-<!-- <!--  						board_wrap입니다 --> -->
-<!--  						</div> -->
-<!-- 						main_text0입니다 -->
- 		
- 		
- 		
- 		
  		<div class="footer">
 			<div>PROJECT</div>
 			<div>

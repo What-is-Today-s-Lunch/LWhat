@@ -73,11 +73,11 @@
 					<c:if test="${'imagefiles' eq 'imagefiles'}">
 						<div class="resimage">
 							<img
-								src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}1.jpg">
+								src="/LWhat/jsp/restaurantimage/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}1.jpg">
 						</div>
 						<div class="resimage">
 							<img
-								src="/LWhat/jsp/restaurantupload/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}2.jpg">
+								src="/LWhat/jsp/restaurantimage/${rsIDDTO.restaurantID}/${rsIDDTO.restaurantID}2.jpg">
 						</div>
 					</c:if>
 				</div>

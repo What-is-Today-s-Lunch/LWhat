@@ -24,7 +24,7 @@ public class RestaurantJoinProcHandler implements CommandHandler {
 		request.setCharacterEncoding("utf-8");
 
 		// 저장경로 지정해줌
-		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/restaurantupload";
+		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/restaurantimage";
 		String encType = "UTF-8";
 		int maxSize = 5 * 1024 * 1024;
 

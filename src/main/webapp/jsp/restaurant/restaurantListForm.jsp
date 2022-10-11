@@ -47,7 +47,7 @@
 			<c:forEach var="restaurantlist"  items="${rslist}" varStatus="c" >
 				<li>
 					<div class="icon_img">
-						<img src="/LWhat/jsp/restaurantupload/${restaurantlist.restaurantID}/${restaurantlist.restaurantID}1.jpg">
+						<img src="/LWhat/jsp/restaurantimage/${restaurantlist.restaurantID}/${restaurantlist.restaurantID}1.jpg">
 					</div>
 					<div class="contents1_bold">
 					<a href="#" onclick="location.href='${webapproot}/restaurantreviewform.do?restaurantID=${restaurantlist.restaurantID}'">
