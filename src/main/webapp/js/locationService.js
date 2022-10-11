@@ -68,7 +68,7 @@ window.onload = function() {
 			position: coords,
 			map: rv //map 대신 rv(로드뷰 객체)로 설정하면 로드뷰에 올라갑니다.
 		});
- 
+  
 		// 로드뷰에 올릴 장소명 인포윈도우를 생성합니다.
 		var rLabel = new kakao.maps.InfoWindow({
 			position: coords,
