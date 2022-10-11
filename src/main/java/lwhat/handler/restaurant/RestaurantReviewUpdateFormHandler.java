@@ -15,7 +15,6 @@ public class RestaurantReviewUpdateFormHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-		String seMemID = (String)session.getAttribute("memberID");
 		
 		int revID = Integer.parseInt(request.getParameter("revID"));	
 		String rID = (String)session.getAttribute("restaurantID");

@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import lwhat.dao.impl.restaurant.RestaurantReviewListDTOImpl;
 import lwhat.dao.impl.restaurant.RestaurantReviewUpdateDAOImpl;
@@ -19,7 +18,6 @@ public class RestaurantReviewUpdateProcHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
 		String restaurantIDParam = request.getParameter("restaurantID") == null ? ""
 				: request.getParameter("restaurantID");
 
