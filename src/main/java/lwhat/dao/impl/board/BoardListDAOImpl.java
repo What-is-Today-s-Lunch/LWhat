@@ -114,7 +114,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		if (searchDomain.equals("title")) {
 			boardTitle = " where title ";
 		} else if (searchDomain.equals("memberID_FK")) {
-			boardTitle = " where memberID_FK ";
+			boardTitle = " inner join memberinfo m on g.memberID_FK = m.memberID where memberID_FK ";
 		}
 		SQL += (boardTitle + "like '%" + searchText + "%' ");
 		Connection conn = getConnection();

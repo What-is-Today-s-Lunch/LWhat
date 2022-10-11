@@ -33,13 +33,12 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 				generalcommentDTO.setContent(rs.getString(5));
 				generalcommentDTO.setmDate(rs.getString("mDate"));
 				list.add(generalcommentDTO);
-				// System.out.println("test " + list);
-				ConnectionManager.closeConnection(rs, pstmt, getConnection());
 			}
+			ConnectionManager.closeConnection(rs, pstmt, getConnection());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
@@ -62,9 +61,8 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 				questioncommentDTO.setContent(rs.getString(4));
 				questioncommentDTO.setwDate(rs.getString("wDate"));
 				list.add(questioncommentDTO);
-				// System.out.println("test " + list);
-				ConnectionManager.closeConnection(rs, pstmt, conn);
 			}
+			ConnectionManager.closeConnection(rs, pstmt, conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,12 +72,13 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 	public int getNext() {
 		try {
 			Connection conn = getConnection();
-			PreparedStatement pstmt = conn
-					.prepareStatement(BoardConstants.board.getProperty("GBOARD_COMMENT_GETNEXT"));
+			PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_COMMENT_GETNEXT"));
 			rs = pstmt.executeQuery();
+			int result = 0;
 			if (rs.next()) {
+				result = rs.getInt(1) + 1;
 				ConnectionManager.closeConnection(rs, pstmt, conn);
-				return rs.getInt(1) + 1;
+				return result;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -90,12 +89,13 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 	public int getNextq() {
 		try {
 			Connection conn = getConnection();
-			PreparedStatement pstmt = conn
-					.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_GETNEXT"));
+			PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_GETNEXT"));
 			rs = pstmt.executeQuery();
+			int result = 0;
 			if (rs.next()) {
+				result = rs.getInt(1) + 1;
 				ConnectionManager.closeConnection(rs, pstmt, conn);
-				return rs.getInt(1) + 1;
+				return result;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

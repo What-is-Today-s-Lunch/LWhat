@@ -57,7 +57,9 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 	@Override
 	public int writeQboard(QboardDTO qboardDTO, String memberID) throws Exception {
 		Connection conn = getConnection();
+		Connection conn2 = getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("QBOARD_WRITE_SQL"));
+		
 		try {
 			conn.setAutoCommit(false);
 			pstmt.setString(1, getMemberFK(memberID));
@@ -70,19 +72,24 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			PreparedStatement pstmt2 = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_IMG_WRITE_GET_POSTINGID"));
 			rs = pstmt2.executeQuery();
-
-			conn.commit();
+			
+			int resultId = 0;
+			if (rs != null && rs.next()) {
+				resultId = rs.getInt("qPostingID");
+				conn.commit();
+				closeConnection(pstmt, conn);
+				closeConnection(rs, pstmt2, conn2);
+				return resultId;
+			}
+			
 		} catch (Exception sqle) {
 			sqle.printStackTrace();
 			conn.rollback();
 		}
-		int resultId = 0;
-		if (rs != null && rs.next()) {
-			resultId = rs.getInt("qPostingID");
-		}
+	
 		ConnectionManager.closeConnection(pstmt, getConnection());
 
-		return resultId;
+		return 0;
 	}
 	
 	public String getMemberFK(String memberID) {
