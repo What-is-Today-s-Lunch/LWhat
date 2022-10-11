@@ -1,5 +1,6 @@
 package lwhat.dao.impl.board;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,11 +57,12 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 	
 	public int getgPostingID(int gPostingID) {
 		 try {
-	
-			 PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("GBOARD_GET_POSTINGID"));
+			 Connection conn = getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("GBOARD_GET_POSTINGID"));
 			 pstmt.setInt(1,gPostingID );
 			 rs = pstmt.executeQuery();
 			 if(rs.next()) {
+				 ConnectionManager.closeConnection(rs, pstmt, conn);
 				 return rs.getInt(1);
 			 }
 		 } catch (SQLException e) {
@@ -71,11 +73,12 @@ public class BoardFileUploadDAOImpl extends AbstractBoardDAOImpl {
 
 	public int getqPostingID(int qPostingID) {
 		 try {
-	
-			 PreparedStatement pstmt = getConnection().prepareStatement(BoardConstants.board.getProperty("QBOARD_GET_POSTINGID"));
+			 Connection conn = getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(BoardConstants.board.getProperty("QBOARD_GET_POSTINGID"));
 			 pstmt.setInt(1,qPostingID );
 			 rs = pstmt.executeQuery();
 			 if(rs.next()) {
+				 ConnectionManager.closeConnection(rs, pstmt, conn);
 				 return rs.getInt(1);
 			 }
 		 } catch (SQLException e) {

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import lwhat.constants.MemberConstants;
 import lwhat.dto.member.MemberDTO;
 import lwhat.service.member.MemberService;
+import lwhat.util.ConnectionManager;
 
 public class MemberViewDAOImpl extends AbstractMemberDAOImpl implements MemberService {
 
@@ -31,6 +32,7 @@ public class MemberViewDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 			memberDTO.setjoinDate(rs.getTimestamp("joinDate"));
 		}
 		System.out.println("---------------"+memberDTO+"---------------");
+		ConnectionManager.closeConnection(rs, pstmt, conn);
 		return memberDTO;
 	}
 	

@@ -1,5 +1,6 @@
 package lwhat.dao.impl.board;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import lwhat.constants.BoardConstants;
 import lwhat.dto.board.GeneralcommentDTO;
 import lwhat.dto.board.QuestioncommentDTO;
+import lwhat.util.ConnectionManager;
 
 public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
@@ -32,11 +34,12 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 				generalcommentDTO.setmDate(rs.getString("mDate"));
 				list.add(generalcommentDTO);
 				// System.out.println("test " + list);
-
+				ConnectionManager.closeConnection(rs, pstmt, getConnection());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return list;
 	}
 
@@ -45,7 +48,8 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 	public ArrayList<QuestioncommentDTO> conmentListQboard(int pageNumber) throws Exception {
 		ArrayList<QuestioncommentDTO> list = new ArrayList<QuestioncommentDTO>();
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_LIST_SQL"));
 			pstmt.setInt(1, getNextq() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
@@ -59,7 +63,7 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 				questioncommentDTO.setwDate(rs.getString("wDate"));
 				list.add(questioncommentDTO);
 				// System.out.println("test " + list);
-
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,10 +73,12 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 
 	public int getNext() {
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_COMMENT_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return rs.getInt(1) + 1;
 			}
 		} catch (SQLException e) {
@@ -83,10 +89,12 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 
 	public int getNextq() {
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return rs.getInt(1) + 1;
 			}
 		} catch (SQLException e) {
@@ -98,12 +106,15 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 	public boolean nextPage(int pageNumber) {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_COMMENT_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return true;
 			}
 		} catch (Exception e) {
@@ -116,12 +127,14 @@ public class BoardConmentListDAOImpl extends AbstractBoardDAOImpl {
 	public boolean nextPageq(int pageNumber) {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_COMMENT_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return true;
 			}
 		} catch (Exception e) {

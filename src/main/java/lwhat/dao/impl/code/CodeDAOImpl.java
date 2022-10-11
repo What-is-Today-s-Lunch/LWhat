@@ -8,6 +8,7 @@ import lwhat.constants.RestaurantConstants;
 import lwhat.dao.impl.LWhatConnectionDAOImpl;
 import lwhat.dto.CodeTableDTO;
 import lwhat.service.code.CodeService;
+import lwhat.util.ConnectionManager;
 
 public class CodeDAOImpl extends LWhatConnectionDAOImpl implements CodeService{
 	@Override
@@ -22,6 +23,7 @@ public class CodeDAOImpl extends LWhatConnectionDAOImpl implements CodeService{
 			codeviewDTO.setCodeValue(rs.getString("codevalue"));
 			codeviewDTO.setCodeName(rs.getString("codeName"));
 		}
+		ConnectionManager.closeConnection(rs, pstmt, con);
 		return codeviewDTO;
 	}
 }

@@ -76,7 +76,7 @@ public class QboardListBoardFormHandler implements CommandHandler {
 		searchMap.put("searchText", searchText);
 		/*----------------------------------------------------------------------------------------*/
 
-		request.setAttribute("postsCount", getter.getPostsCount("generalposting"));
+		request.setAttribute("postsCount", getter.getPostsCount("questionposting"));
 
 		return "/jsp/board/qboard/QboardListForm.jsp";
 	}

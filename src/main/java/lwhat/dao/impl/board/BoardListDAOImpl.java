@@ -1,5 +1,6 @@
 package lwhat.dao.impl.board;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import lwhat.constants.BoardConstants;
 import lwhat.dto.board.GboardDTO;
 import lwhat.dto.board.QboardDTO;
+import lwhat.util.ConnectionManager;
 
 public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
@@ -18,7 +20,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt =conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_LIST_SQL"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
@@ -34,6 +37,7 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 				gboardDTO.setmDate(rs.getString("mDate"));
 				list.add(gboardDTO);
 				System.out.println(list);
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,7 +51,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 
 		ArrayList<QboardDTO> list = new ArrayList<QboardDTO>();
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_LIST_SQL"));
 			pstmt.setInt(1, qboardGetNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
@@ -63,22 +68,27 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 				qboardDTO.setmDate(rs.getString("mDate"));
 				list.add(qboardDTO);
 				System.out.println(list);
-			}
+			}//while
+			ConnectionManager.closeConnection(rs, pstmt, conn);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return list;
-	}
+	}//QboardList
 
 	public boolean nextPage(int pageNumber) {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return true;
 			}
 		} catch (Exception e) {
@@ -90,19 +100,21 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	public boolean qboardNextPage(int pageNumber) {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
-	}
+	}//qboard nextpage
 
 	// 검색 Gboard
 	@Override
@@ -117,8 +129,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			boardTitle = " where memberID_FK ";
 		}
 		SQL += (boardTitle + "like '%" + searchText + "%' ");
-
-		PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(SQL);
 		rs = pstmt.executeQuery();
 
 		GboardDTO gboardDTO = null;
@@ -133,8 +145,9 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			gboardDTO.setmDate(rs.getString("mDate"));
 			list.add(gboardDTO);
 		}
+		ConnectionManager.closeConnection(rs, pstmt, conn);
 		return list;
-	}
+	}//Gboard search
 
 	// 검색 Qboard
 	@Override
@@ -149,8 +162,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			boardTitle = " where memberID_FK ";
 		}
 		SQL += (boardTitle + "like '%" + searchText + "%' ");
-
-		PreparedStatement pstmt = getConnection().prepareStatement(SQL);
+		Connection conn = getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(SQL);
 		rs = pstmt.executeQuery();
 
 		QboardDTO qboardDTO = null;
@@ -165,15 +178,18 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			qboardDTO.setmDate(rs.getString("mDate"));
 			list.add(qboardDTO);
 		}
+		ConnectionManager.closeConnection(rs, pstmt, conn);
 		return list;
-	}
+	}//Qboard search
 
 	public int getNext() {
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return rs.getInt(1) + 1;
 			}
 		} catch (SQLException e) {
@@ -184,10 +200,12 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 
 	public int qboardGetNext() {
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_GETNEXT"));
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return rs.getInt(1) + 1;
 			}
 		} catch (SQLException e) {
@@ -198,11 +216,13 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 
 	public String getNickName(String memberID) {
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("NICKNAME_GET"));
 			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return rs.getString(1);
 			}
 		} catch (Exception e) {
@@ -220,19 +240,20 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			sqlColumn = "qPostingID";
 		}
 
-		String sql = "select count(" + sqlColumn + ") from " + board;
+		String sql = " select count(" + sqlColumn + ") from " + board;
 		System.out.println("count Query loaded ................." + sql);
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(sql);
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				result = rs.getInt(1);
 			}
+			ConnectionManager.closeConnection(rs, pstmt, conn);
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return 0;
 	}
 

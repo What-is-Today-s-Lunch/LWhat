@@ -88,6 +88,7 @@ public class BoardWriteDAOImpl extends AbstractBoardDAOImpl {
 			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return rs.getString(1);
 			}
 		} catch (SQLException e) {

@@ -46,6 +46,7 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 			revCount=rs.getInt(1);
 		}
 		System.out.println("리뷰 개수 카운트 완료");
+		closeConnection(rs, pstmt, conn);
 		return revCount;
 	}//revCount
 	

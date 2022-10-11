@@ -62,13 +62,13 @@
 					<div>
 						<c:set var="listSize" value="${list.size()}"></c:set>
 						<c:forEach var="gboardDTO" items="${list}" varStatus="stat">
-							<div class="num">${postsCount - ((pageNumber*5)+stat.count-5)+3}</div>
+							<div class="num">${postsCount - (((pageNumber)*5)+stat.count-5)+1}</div>
 <%-- 							<div class="num">${gboardDTO.gPostingID}</div> --%>
 							<div class="category">${gboardDTO.boardCategory}</div>
 							<div class="title">
 								<a
 									href="${webapproot}/gboardview.do?gPostingID=${gboardDTO.gPostingID}
-										&postnum=${postsCount - ((pageNumber*5)+stat.count-5)+3}">${gboardDTO.title}</a>
+										&postnum=${postsCount - (((pageNumber)*5)+stat.count-5)+1}">${gboardDTO.title}</a>
 							</div>
 							<div class="write">${gboardDTO.memberID_FK}</div>
 							<div class="date">${gboardDTO.mDate}</div>

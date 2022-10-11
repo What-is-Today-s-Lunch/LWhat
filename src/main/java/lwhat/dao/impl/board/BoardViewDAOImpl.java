@@ -1,11 +1,13 @@
 package lwhat.dao.impl.board;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import lwhat.constants.BoardConstants;
 import lwhat.dto.board.GboardDTO;
 import lwhat.dto.board.QboardDTO;
+import lwhat.util.ConnectionManager;
 
 public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 	private ResultSet rs;
@@ -15,7 +17,8 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 	public GboardDTO viewBoard(int gPostingID) throws Exception {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_VIEW_SQL"));
 			pstmt.setInt(1, gPostingID);
 			rs = pstmt.executeQuery();
@@ -30,6 +33,7 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 				gboardDTO.setClickCount(rs.getInt(6));
 				updateReadCount(gPostingID);
 
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 				return gboardDTO;
 			}
 		} catch (Exception e) {
@@ -44,7 +48,8 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 	public QboardDTO viewQboard(int qPostingID) throws Exception {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_VIEW_SQL"));
 			pstmt.setInt(1, qPostingID);
 			rs = pstmt.executeQuery();
@@ -58,6 +63,7 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 				qboardDTO.setmDate(rs.getString("mDate"));
 				qboardDTO.setClickCount(rs.getInt(8));
 				updateReadCountQboard(qPostingID);
+				ConnectionManager.closeConnection(rs, pstmt, conn);
 
 				return qboardDTO;
 			}
@@ -71,10 +77,13 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 	public int updateReadCount(int gPostingID) {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_UPDATE_READ_COUNT"));
 			pstmt.setInt(1, gPostingID);
 			int result = pstmt.executeUpdate();
+			ConnectionManager.closeConnection(rs, pstmt, conn);
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,10 +95,12 @@ public class BoardViewDAOImpl extends AbstractBoardDAOImpl {
 	public int updateReadCountQboard(int qPostingID) {
 
 		try {
-			PreparedStatement pstmt = getConnection()
+			Connection conn = getConnection();
+			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("QBOARD_UPDATE_READ_COUNT"));
 			pstmt.setInt(1, qPostingID);
 			int result = pstmt.executeUpdate();
+			ConnectionManager.closeConnection(rs, pstmt, conn);
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();

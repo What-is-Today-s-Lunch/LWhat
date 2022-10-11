@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import lwhat.constants.MemberConstants;
 import lwhat.dto.member.MemberDTO;
 import lwhat.service.member.MemberService;
+import lwhat.util.ConnectionManager;
 
 public class MemberJoinDAOImpl extends AbstractMemberDAOImpl implements MemberService {
 
@@ -19,6 +20,7 @@ public class MemberJoinDAOImpl extends AbstractMemberDAOImpl implements MemberSe
 		pstmt.setString(3, memberDTO.getNickName());
 		pstmt.setString(4, memberDTO.getEmail());
 		pstmt.setString(5, memberDTO.getName());
+		ConnectionManager.closeConnection(pstmt, conn);
 		return pstmt.executeUpdate(); // 결과값 return =1 이라면 정상적으로 전송
 		}catch (Exception e) {
 			e.printStackTrace();
