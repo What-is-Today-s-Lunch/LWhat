@@ -15,6 +15,7 @@ public class RestaurantReviewListDTOImpl extends AbstractRestaurantDAOImpl{
 		System.out.println("리뷰의 레스토랑 아이디 : "+restaurantID);
 		Connection conn = getConnection();
 		PreparedStatement pstmt =  conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_REVIEW_LIST_SEARCH_SQL_PREPEND"));
+		//restaurantreview테이블에서 restaurantID_FK와 전달인자가 일치하는것을 찾아주는 쿼리문
 		pstmt.setString(1, restaurantID);
 		ResultSet rs = pstmt.executeQuery();
 		List<RestaurantReviewDTO>list = new ArrayList<RestaurantReviewDTO>();

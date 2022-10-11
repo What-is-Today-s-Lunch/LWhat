@@ -12,7 +12,7 @@ public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl{
 		
 		Connection conn = getConnection();
 		String sql = RestaurantConstants.restaurant.getProperty("REVIEW_WRITE_SQL");
-				
+		//restaurantreview테이블에 중복된값을 무시한채 내용을 추가해주는 쿼리문
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		

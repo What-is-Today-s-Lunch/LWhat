@@ -13,6 +13,7 @@ public class RestaurantFileViewDAOImpl extends AbstractRestaurantDAOImpl {
 	public RestaurantFoodimageDTO fileViewRestaurant(int fImageID) throws Exception{
 		Connection conn = getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_FILE_VIEW_SQL"));
+		//restaurantfoodimage테이블에서 fImageID(파일에 저장된 사진의 아이디)와 전달인자가 일치하는것을 찾아주는 쿼리문
 		pstmt.setInt(1, fImageID);
 		ResultSet rs = pstmt.executeQuery();
 		RestaurantFoodimageDTO foodimageDTO = null;

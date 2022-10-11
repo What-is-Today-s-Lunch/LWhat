@@ -13,6 +13,7 @@ public class RestaurantUpdateDAOImpl extends AbstractRestaurantDAOImpl {
 		Connection conn = getConnection();
 		
 		String sqlU = RestaurantConstants.restaurant.getProperty("RESTAURANT_UPDATE_SQL");
+		//restaurant의 테이블에서 restaurantID와 전달인자(restaurantID)가 일치하는것의 내용을 변경하는 쿼리문
 		System.out.println("U 쿼리 로딩"+sqlU);
 		PreparedStatement pstmtU = conn.prepareStatement(sqlU);
 		

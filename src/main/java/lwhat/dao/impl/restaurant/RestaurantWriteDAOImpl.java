@@ -3,6 +3,7 @@ package lwhat.dao.impl.restaurant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantDTO;
 
 public class RestaurantWriteDAOImpl extends AbstractRestaurantDAOImpl {
@@ -11,8 +12,8 @@ public class RestaurantWriteDAOImpl extends AbstractRestaurantDAOImpl {
 	public int writeRestaurant(RestaurantDTO restaurantDTO) throws Exception {
 		
 		Connection conn = getConnection();
-		String sql =" insert into restaurant (restaurantID, foodCategory, telNum, addressDetail, addressAPI, content) values (?, ?, ?, ?, ?, ?)";
-
+		String sql = RestaurantConstants.restaurant.getProperty("RESTAURANT_WRITE_SQL");
+		//restaurant테이블에 새로운 열을 추가해줌
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, restaurantDTO.getRestaurantID());

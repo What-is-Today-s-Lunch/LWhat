@@ -13,6 +13,8 @@ public class RestaurantReviewUpdateDAOImpl extends AbstractRestaurantDAOImpl{
 		Connection conn = getConnection();
 		
 		String sqlU = RestaurantConstants.restaurant.getProperty("RESTAURANT_REVIEW_UPDATE_SQL");
+		//restaurantreview테이블에서 revID와 전달인자(revID)가 일치하는것을 찾아 각각의 컬럼의 값을 바꿔주는 쿼리문
+		
 		System.out.println("rev-U 쿼리 로딩"+sqlU);
 		PreparedStatement pstmtU = conn.prepareStatement(sqlU);
 		// TODO : 로그인한 사람의 멤버아이디를 받아오고 멤버아이디가 가진 리뷰아이디를 연결시켜줘야함. 일단은 메소드테스트

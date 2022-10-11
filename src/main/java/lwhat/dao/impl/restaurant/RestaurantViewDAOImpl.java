@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantDTO;
 
 public class RestaurantViewDAOImpl extends AbstractRestaurantDAOImpl {
@@ -11,7 +12,8 @@ public class RestaurantViewDAOImpl extends AbstractRestaurantDAOImpl {
 	@Override
 	public RestaurantDTO viewRestaurant(String restaurantID) throws Exception {
 		Connection conn = getConnection();
-		String vIEWSQL = " select * from restaurant where restaurantID=?";
+		String vIEWSQL = RestaurantConstants.restaurant.getProperty("RESTAURANT_VIEW_SQL");
+		//restaurant테이블에서 restaurantID와 전달인자가 일치하는것에 대해서 찾아주는 쿼리문
 
 		PreparedStatement pstmt = conn.prepareStatement(vIEWSQL);
 		pstmt.setString(1, restaurantID);

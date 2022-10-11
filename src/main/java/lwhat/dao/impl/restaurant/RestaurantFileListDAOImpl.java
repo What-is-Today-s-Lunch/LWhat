@@ -14,6 +14,7 @@ public class RestaurantFileListDAOImpl extends AbstractRestaurantDAOImpl {
 	public List<RestaurantFoodimageDTO>fileListRestaurant(String restaurantID) throws Exception{
 		Connection conn = getConnection();
 		String sql = RestaurantConstants.restaurant.getProperty("FOOD_IMAGE_LIST_SEARCH_SQL");
+		//restaurantfoodimage테이블에서 레스토랑 아이디와 전달인자가 일치 하는것을 찾는 쿼리문
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, restaurantID);
 		ResultSet rs = pstmt.executeQuery();

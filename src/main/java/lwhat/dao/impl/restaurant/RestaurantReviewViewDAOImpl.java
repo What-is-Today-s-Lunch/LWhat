@@ -16,6 +16,7 @@ public class RestaurantReviewViewDAOImpl extends AbstractRestaurantDAOImpl{
 	Timestamp t = new Timestamp(System.currentTimeMillis());
 	
 	PreparedStatement pstmt = conn.prepareStatement(RestaurantConstants.restaurant.getProperty("RESTAURANT_REVIEW_VIEW_SQL"));
+	//restaurantreview테이블에서 revID와 전달인자가 일치하는것을 찾는 쿼리문
 	 pstmt.setInt(1, revID);
 	 ResultSet rs = pstmt.executeQuery();
 	 RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO
