@@ -9,7 +9,6 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<!-- 지도를 그리는  JS API -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 <script type="text/javascript"
@@ -48,10 +47,6 @@
 
 	<div class="main_text0">
 		<div class="contents1"></div>
-		<!-- 들어가야할 내용 div 시작점  -->
-		<!-- 들어가야할 내용  -->
-
-		<!-- 지도 그려주기 -->
 		<div class="contents2">
 			<div class="restinfo">
 				<h1>${rsIDDTO.restaurantID}</h1>
@@ -144,10 +139,6 @@
 		</div>
 	</div>
 
-
-	<!-- 들어가야할 내용 div 끝점  -->
-
- 
 	<div class="footer">
 		<div>PROJECT</div>
 		<div>
