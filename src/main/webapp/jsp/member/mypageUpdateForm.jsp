@@ -1,9 +1,3 @@
-<%-- <%@page import="java.util.ArrayList"%> --%>
-<%-- <%@page import="lwhat.service.member.MemberService"%> --%>
-<%-- <%@page import="lwhat.util.ConnectionManager"%> --%>
-<%-- <%@page import="lwhat.dao.member.MemberDAO"%> --%>
-<%-- <%@page import="lwhat.dto.member.MemberDTO"%> --%>
-<%-- <%@page import="lwhat.dao.impl.member.MemberViewDAOImpl"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -60,9 +54,6 @@ $(function(){
 
    // 유효성검사 (form엘리먼트의 name속성 값을 사용함)
    $("form[name='frm']").validate({
-
-      // debug: true, // true인 경우 서밋을 수행하지 않음 (디버그 모드),
-
       errorPlacement: function(error, element) { // 유효성검사 실패시 에러 표시
          var errorSelector = '.validation_error[for="' + element.attr('name') + '"]';
          var $element = $(errorSelector);
@@ -122,31 +113,10 @@ $(function(){
          }
 
       }
-      
-/*       ,
-
-      submitHandler: function() { // 폼을 서밋하지 않고 AJAX로 처리할 때 사용, 실제 폼 서밋은 일어나지 않음
-         alert("유효성 검사 완료!");
-      } */
-
    });
 });
 </script>
 <title>마이페이지 회원정보수정</title>
-<%-- <%
-   //1. 한글설정 & 변수생성
-   String memberID = (String) session.getAttribute("memberID");//object이기에 형변환필수
-   //1-1.id값확인 -없으면 로그인페이지로 이동
-   if(memberID == null){
-      response.sendRedirect("loginForm.jsp");
-   }
-   //2. 회원정보 가져오는 메서드생성
-   MemberService memberService = new MemberViewDAOImpl();
-   MemberDTO memberDTO = new MemberDTO();
-   memberDTO = memberService.viewMembers(memberID);
-   //3. 데이터처리 : 테이블로 표현
-/*    if(memberDTO != null){ */
-%> --%>
 </head>
 <body>
 <div id="top">
@@ -158,12 +128,6 @@ $(function(){
     <div id="bottom">
         <form method="post" name = "frm" action="${webapproot}/memberupdateproc.do">
         회원아이디 : ${memberDTO.memberID}<br><br>
-      <%--   회원비밀번호 변경<br><input type="password" class="in" name="password" value="<%=memberDTO.getMemberPW()%>"><br>
-        회원비밀번호 변경 확인<br><input type="password" class="in" name="password" value="<%=memberDTO.getMemberPW()%>"><br>
-        회원이름 변경<br><input type="text" class="in" name="name" value="<%=memberDTO.getName()%>"><br>
-        회원이메일 변경<br><input type="text" class="in" name="email" value="<%=memberDTO.getEmail()%>"><br>
-        회원닉네임 변경<br><input type="text" class="in" name="nickName" value="<%=memberDTO.getNickName()%>"><br> --%>
-
       * 비밀번호변경 <input type="password" class="in" name="upass" value="${memberDTO.memberPW}"/><label for="upass" class="validation_error"></label><br />
       * 비밀번호변경확인 <input type="password" class="in" name="upassre" value="${memberDTO.memberPW}"/><label for="upassre" class="validation_error"></label><br />
       * 이름변경<input type="text" class="in" name="uname" value="${memberDTO.name}"/><label for="uname" class="validation_error"></label><br />
@@ -174,10 +138,6 @@ $(function(){
             <input type="button" class="in" onclick="location.href='${webapproot}/membermypageform.do'" 
              id="button" value="뒤로가기">
         </form>
-    </div>
-<%-- <% 
-} 
-%> --%>
     </div>
 </body>
 </html>

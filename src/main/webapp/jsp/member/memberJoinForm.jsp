@@ -127,13 +127,6 @@ $(function(){
          }
 
       }
-      
-/*       ,
-
-      submitHandler: function() { // 폼을 서밋하지 않고 AJAX로 처리할 때 사용, 실제 폼 서밋은 일어나지 않음
-         alert("유효성 검사 완료!");
-      } */
-
    });
 });
 </script>

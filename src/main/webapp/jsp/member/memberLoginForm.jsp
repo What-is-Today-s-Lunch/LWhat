@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@page import="lwhat.dto.member.MemberDTO"%> --%>
-<%-- <%@page import="lwhat.dao.impl.member.MemberLoginDAOImpl"%> --%>
-<%-- <%@page import="lwhat.dao.impl.member.MemberViewDAOImpl"%> --%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,7 +46,6 @@ alert("로그아웃 되었습니다!")
             onclick="location.href='${webapproot}/memberjoinform.do'" value="회원가입하기"><br>
             <input type="button" id="button" class="in"
             onclick="location.href='${webapproot}/membersearchform.do'" value="회원정보찾기"><br>
-            <!-- <input type="button" id="button" onclick="location.href='../jsp/pwFind.jsp'" value="비밀번호 찾기"><br> -->
         </form>
     </div>
 </body>

@@ -311,28 +311,29 @@ h1 {
 .left-box {
 	background: local;
 	float: left;
-	width:50%;
+	width:40%;
 	box-sizing: border-box;
 }
+/* .center-box {
+	background: local;
+	float: center;
+	width:20%;
+	box-sizing: border-box;
+} */
 /* 룰렛 입력 창 위치 */
 .right-box {
 	background: local;
-	float:left;
+	float:right;
 	margin-left:5%;
 	width : 40%;
 	box-sizing: border-box;
-}
-
-/* 룰렛, 입력창 묶은 메인 콘텐츠 */
-.main_text0{
-	
 }
 
  #app{
       text-align: center;
    }
  
-   .roulette-outer > .roulette > .item-wrapper > .item {
+.roulette-outer > .roulette > .item-wrapper > .item {
       position:absolute;
       top:0;
       left:0;

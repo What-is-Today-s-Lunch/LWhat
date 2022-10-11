@@ -7,17 +7,14 @@ import lwhat.constants.MemberConstants;
 import lwhat.service.member.MemberService;
 
 public class MemberDeleteDAOImpl extends AbstractMemberDAOImpl implements MemberService {
-
+	//멤버삭제 메소드
 	   @Override
 	   public void deleteMember(String memberID) throws Exception {
-			/* String sql = "delete from memberinfo where memberID=?"; */
 		   Connection conn = getConnection();
-		   // 멤버삭제 쿼리 실행
 	         PreparedStatement pstmt 
 	         = conn.prepareStatement(MemberConstants.props.getProperty("DELETE_SQL"));
 	         pstmt.setString(1, memberID);
 	         pstmt.executeUpdate();
 	         closeConnection(pstmt, conn);
-	         //System.out.println(result);
-	      } // deleteMember
+	      }
 }

@@ -9,13 +9,9 @@ import lwhat.service.member.MemberService;
 
 public class MemberUpdateDAOImpl extends AbstractMemberDAOImpl implements MemberService {
 
+	//회원정보 수정
 	@Override
 	public void updateMember(MemberDTO memberDTO) throws Exception {
-		/*
-		 * String sql =
-		 * "update memberinfo set memberPW=?, nickName=?, email=?, name=? where memberID=?"
-		 * ;
-		 */
 		Connection conn = getConnection();
 		PreparedStatement pstmt 
 		= conn.prepareStatement(MemberConstants.props.getProperty("MEMBER_UPDATE_SQL"));

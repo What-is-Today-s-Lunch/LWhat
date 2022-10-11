@@ -34,7 +34,6 @@ alert("회원 정보가 틀렸습니다!")
             <input type="submit" id="button" value="찾기"><br>
             <input type="button" id="button" class="in"
             onclick="location.href='${webapproot}/memberloginform.do'" value="로그인으로"><br>
-            <!-- <input type="button" id="button" onclick="location.href='../jsp/pwFind.jsp'" value="비밀번호 찾기"><br> -->
       	</form>
     </div>
 </body>
