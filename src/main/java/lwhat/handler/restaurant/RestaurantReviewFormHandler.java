@@ -31,11 +31,11 @@ public class RestaurantReviewFormHandler implements CommandHandler {
 		request.setAttribute("revDTO", revlist);
 
 		// restaurantReview update delete check 리뷰가 있을 때만 설정
-		if(!revlist.isEmpty()) {
+		if (!revlist.isEmpty()) {
 			if (session.getAttribute("memberID").equals(revlist.get(0).getMemberID_FK())) {
-			request.setAttribute("isSameWriter", "true");
+				request.setAttribute("isSameWriter", "true");
 			}
-		} 
-	      return "/jsp/restaurant/restaurantViewForm.jsp";
-	   }
-	}//class
+		}
+		return "/jsp/restaurant/restaurantViewForm.jsp";
+	}
+}// class

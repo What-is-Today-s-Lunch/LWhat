@@ -10,7 +10,7 @@ import lwhat.dto.CodeTableDTO;
 import lwhat.service.code.CodeService;
 import lwhat.util.ConnectionManager;
 
-public class CodeDAOImpl extends LWhatConnectionDAOImpl implements CodeService{
+public class CodeDAOImpl extends LWhatConnectionDAOImpl implements CodeService {
 	@Override
 	public CodeTableDTO codeView(String codevalue) throws Exception {
 		Connection con = getConnection();
@@ -19,7 +19,7 @@ public class CodeDAOImpl extends LWhatConnectionDAOImpl implements CodeService{
 		pstmt.setString(1, codevalue);
 		ResultSet rs = pstmt.executeQuery();
 		CodeTableDTO codeviewDTO = new CodeTableDTO();
-		if(rs!=null&&rs.next()) {
+		if (rs != null && rs.next()) {
 			codeviewDTO.setCodeValue(rs.getString("codevalue"));
 			codeviewDTO.setCodeName(rs.getString("codeName"));
 		}

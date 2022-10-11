@@ -14,36 +14,34 @@ import lwhat.dto.restaurant.RestaurantReviewDTO;
 import lwhat.handler.CommandHandler;
 import lwhat.service.restaurant.RestaurantService;
 
-public class RestaurantReviewWriteProcHandler implements CommandHandler{
+public class RestaurantReviewWriteProcHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			request.setCharacterEncoding("utf-8");
-			HttpSession session = request.getSession();
-			
-			String restaurantIDParam = (String)session.getAttribute("restaurantID");
-			
-			//식당DTO
-			RestaurantService restaurantViewService = new RestaurantViewDAOImpl();
-			RestaurantDTO restautantIDDTO = restaurantViewService.viewRestaurant(restaurantIDParam);
-			request.setAttribute("rsIDDTO", restautantIDDTO); 
-			
-			
-			String revMemID = (String)session.getAttribute("memberID");
-			String revResID = (String)session.getAttribute("restaurantID");
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
 
-		
-		String revContent = request.getParameter("content");//후기 내용
-		int revScore = Integer.parseInt(request.getParameter("score"));//후기 별점
+		String restaurantIDParam = (String) session.getAttribute("restaurantID");
+
+		// 식당DTO
+		RestaurantService restaurantViewService = new RestaurantViewDAOImpl();
+		RestaurantDTO restautantIDDTO = restaurantViewService.viewRestaurant(restaurantIDParam);
+		request.setAttribute("rsIDDTO", restautantIDDTO);
+
+		String revMemID = (String) session.getAttribute("memberID");
+		String revResID = (String) session.getAttribute("restaurantID");
+
+		String revContent = request.getParameter("content");// 후기 내용
+		int revScore = Integer.parseInt(request.getParameter("score"));// 후기 별점
 		request.setAttribute("restaurantID", revResID);
 
 		RestaurantReviewDTO reviewDTO = new RestaurantReviewDTO();
 		reviewDTO.setMemberID_FK(revMemID);
 		reviewDTO.setRestaurantID_FK(revResID);
 		reviewDTO.setScore(revScore);
-		reviewDTO.setContent(revContent);	
+		reviewDTO.setContent(revContent);
 		RestaurantService restaurantService = new RestaurantReviewWriteDAOImpl();
-		restaurantService.writeRestaurantReview(reviewDTO);//db저장
-		
+		restaurantService.writeRestaurantReview(reviewDTO);// db저장
+
 		RestaurantService restaurantreviewService = new RestaurantReviewListDTOImpl();
 		List<RestaurantReviewDTO> revlistDTO = restaurantreviewService.listRestaurantReview(restaurantIDParam);
 		request.setAttribute("revDTO", revlistDTO);

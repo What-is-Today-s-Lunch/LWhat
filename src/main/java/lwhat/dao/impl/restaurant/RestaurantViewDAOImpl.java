@@ -13,7 +13,7 @@ public class RestaurantViewDAOImpl extends AbstractRestaurantDAOImpl {
 	public RestaurantDTO viewRestaurant(String restaurantID) throws Exception {
 		Connection conn = getConnection();
 		String vIEWSQL = RestaurantConstants.restaurant.getProperty("RESTAURANT_VIEW_SQL");
-		//restaurant테이블에서 restaurantID와 전달인자가 일치하는것에 대해서 찾아주는 쿼리문
+		// restaurant테이블에서 restaurantID와 전달인자가 일치하는것에 대해서 찾아주는 쿼리문
 
 		PreparedStatement pstmt = conn.prepareStatement(vIEWSQL);
 		pstmt.setString(1, restaurantID);
@@ -26,10 +26,9 @@ public class RestaurantViewDAOImpl extends AbstractRestaurantDAOImpl {
 			restaurantDTO.setAddressDetail(rs.getString("addressDetail"));
 			restaurantDTO.setAddressAPI(rs.getString("addressAPI"));
 			restaurantDTO.setContent(rs.getString("content"));
-		}// if
+		} // if
 		closeConnection(rs, pstmt, conn);
-		System.out.println("closeConnection, R-DTO Loaded");
 		return restaurantDTO;
-	}//viewRestaurant
+	}// viewRestaurant
 
-}//class
+}// class

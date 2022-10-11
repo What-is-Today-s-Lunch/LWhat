@@ -37,7 +37,6 @@ public class RestaurantJoinProcHandler implements CommandHandler {
 		String TelNum = multipartRequest.getParameter("telNum");// 식당전화번호
 		String adreAPI = multipartRequest.getParameter("address");// 식당주소API
 		String adre = multipartRequest.getParameter("address_detail");// 상세식당주소
-		
 
 		// 레스토랑 이미지 파라미터 받음
 		String foodname = multipartRequest.getParameter("foodname");
@@ -49,7 +48,6 @@ public class RestaurantJoinProcHandler implements CommandHandler {
 		restaurantDTO.setTelNum(TelNum);
 		restaurantDTO.setAddressAPI(adreAPI);
 		restaurantDTO.setAddressDetail(adre);
-		
 
 		// 식당 업로드 Impl
 		RestaurantService restaurantService = new RestaurantWriteDAOImpl();
@@ -73,11 +71,11 @@ public class RestaurantJoinProcHandler implements CommandHandler {
 			// 폴더를 만들고 그안에 저장시켜주게끔 mkdir() 써주기
 
 			if (filename != null) {
-				File oldFile = new File(saveFolder + "/" + filename);//이미지 파일 타입으로 지정, cImage 이름
-				File saveArc = new File(saveFolder + "/" +resID);//사진 분류 폴더 생성
+				File oldFile = new File(saveFolder + "/" + filename);// 이미지 파일 타입으로 지정, cImage 이름
+				File saveArc = new File(saveFolder + "/" + resID);// 사진 분류 폴더 생성
 				saveArc.mkdir();
-				File newFile = new File(saveFolder + "/" +resID+"/"+ resID.concat(number.concat(".jpg")));//사진파일 저장
-				oldFile.renameTo(newFile);//sImage 로 변경 
+				File newFile = new File(saveFolder + "/" + resID + "/" + resID.concat(number.concat(".jpg")));// 사진파일 저장
+				oldFile.renameTo(newFile);// sImage 로 변경
 				restaurantFoodImageDTO.setSImage(filename);
 				restaurantFoodImageList.add(restaurantFoodImageDTO); // DTO 를 리스트에 설정 + 파일명을 db에 저장
 			}

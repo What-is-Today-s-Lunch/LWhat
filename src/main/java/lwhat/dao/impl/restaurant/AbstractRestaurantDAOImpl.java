@@ -10,52 +10,48 @@ import lwhat.service.restaurant.RestaurantService;
 
 public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl implements RestaurantService {
 
-	
 	@Override
-	public List<RestaurantDTO>searchRestaurant(String searchText) throws Exception{
-		return null;
-	}
-	@Override
-	public List<RestaurantDTO> listRestaurant(String code) throws Exception {
-		// TODO Auto-generated method stub
+	public List<RestaurantDTO> searchRestaurant(String searchText) throws Exception {
 		return null;
 	}
 
 	@Override
-	public int writeRestaurant( RestaurantDTO restarauntDTO) throws Exception {
+	public List<RestaurantDTO> listRestaurant(String code) throws Exception {
+		return null;
+	}
+
+	@Override
+	public int writeRestaurant(RestaurantDTO restarauntDTO) throws Exception {
 		return 0;
 	}
 
 	@Override
 	public int deleteRestaurant(String restaurantID) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int updateRestaurant(String restaurantID,RestaurantDTO restaurantDTO) throws Exception {
-		// TODO Auto-generated method stub
+	public int updateRestaurant(String restaurantID, RestaurantDTO restaurantDTO) throws Exception {
 		return 0;
 	}
-
 
 	@Override
 	public RestaurantDTO viewRestaurant(String restaurantID) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int fileUploadRestaurant(String restaurantID, List<RestaurantFoodimageDTO>list) throws Exception {
-		// TODO Auto-generated method stub
+	public int fileUploadRestaurant(String restaurantID, List<RestaurantFoodimageDTO> list) throws Exception {
 		return 0;
 	}
+
 	@Override
-	public int writeRestaurantReview(RestaurantReviewDTO reviewDTO) throws Exception{
+	public int writeRestaurantReview(RestaurantReviewDTO reviewDTO) throws Exception {
 		return 0;
 	}
+
 	@Override
-	public List<RestaurantReviewDTO> listRestaurantReview(String restaurantID) throws Exception{
+	public List<RestaurantReviewDTO> listRestaurantReview(String restaurantID) throws Exception {
 		return null;
 	}
 
@@ -75,35 +71,27 @@ public abstract class AbstractRestaurantDAOImpl extends LWhatConnectionDAOImpl i
 
 	@Override
 	public int fileUploadRestaurant(String restaurantID, RestaurantFoodimageDTO foodimageDTO) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public RestaurantFoodimageDTO fileViewRestaurant(int fImageID) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public List<RestaurantFoodimageDTO> fileListRestaurant(String restaurantID) throws Exception {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int listCountRestaurantReview(String restaurandID) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int filesUploadRestaurant(List<RestaurantFoodimageDTO> list) throws Exception {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
-
-
-	
 }
