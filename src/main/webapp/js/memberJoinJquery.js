@@ -9,12 +9,6 @@ $(function(){
     $.extend($.validator.messages, {
       required: "필수 입력 항목입니다!",
       email: "유효하지 않은 이메일주소 입니다!",
-      url: "유효하지 않은 URL 입니다!",
-      date: "유효하지 않은 날짜형식 입니다!",
-      dateISO: "유효하지 않은 날짜형식(ISO) 입니다!",
-      number: "숫자(기호포함)만 입력해 주세요!",
-      digits: "숫자만 입력해 주세요!",
-      creditcard: "유효하지 않은 신용카드번호 입니다!",
       equalTo: "비밀번호와 비밀번호확인이 일치하지 않습니다!",
       maxlength: jQuery.validator.format("최대 {0}자로 입력해 주세요!"),
       minlength: jQuery.validator.format("최소 {0}자를 입력해 주세요!"),
