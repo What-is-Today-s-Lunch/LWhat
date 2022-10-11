@@ -19,12 +19,11 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 	public ArrayList<GboardDTO> listBoard(int pageNumber) throws Exception {
 
 		ArrayList<GboardDTO> list = new ArrayList<GboardDTO>();
-		try {
-			Connection conn = getConnection();
-			PreparedStatement pstmt =conn
-					.prepareStatement(BoardConstants.board.getProperty("GBOARD_LIST_SQL"));
-			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
-			rs = pstmt.executeQuery();
+		Connection conn = getConnection();
+		PreparedStatement pstmt =conn
+				.prepareStatement(BoardConstants.board.getProperty("GBOARD_LIST_SQL"));
+		pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
+		rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				GboardDTO gboardDTO = new GboardDTO();
@@ -37,11 +36,8 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 				gboardDTO.setmDate(rs.getString("mDate"));
 				list.add(gboardDTO);
 				System.out.println(list);
-				ConnectionManager.closeConnection(rs, pstmt, conn);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ConnectionManager.closeConnection(rs, pstmt, conn);
 		return list;
 	}
 
@@ -78,22 +74,18 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		return list;
 	}//QboardList
 
-	public boolean nextPage(int pageNumber) {
-
-		try {
-			Connection conn = getConnection();
+	public boolean nextPage(int pageNumber) throws Exception{
+		Connection conn = getConnection();
 			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_NEXT_PAGE"));
 			pstmt.setInt(1, getNext() - (pageNumber - 1) * 5);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				ConnectionManager.closeConnection(rs, pstmt, conn);
+			pstmt.executeQuery();
+			
+			if (pstmt.executeQuery()!=null) {
+				
+				ConnectionManager.closeConnection(pstmt, conn);
 				return true;
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return false;
 	}
 
@@ -182,20 +174,21 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 		return list;
 	}//Qboard search
 
-	public int getNext() {
-		try {
+	public int getNext() throws Exception{
 			Connection conn = getConnection();
 			PreparedStatement pstmt = conn
 					.prepareStatement(BoardConstants.board.getProperty("GBOARD_GETNEXT"));
 			rs = pstmt.executeQuery();
+			int result = 0;
+			
 			if (rs.next()) {
-				ConnectionManager.closeConnection(rs, pstmt, conn);
-				return rs.getInt(1) + 1;
+			result = rs.getInt(1);
+				
+			ConnectionManager.closeConnection(rs, pstmt, conn);
+			return result+ 1;
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return -1;
+		
+			return -1;
 	}
 
 	public int qboardGetNext() {
@@ -222,8 +215,9 @@ public class BoardListDAOImpl extends AbstractBoardDAOImpl {
 			pstmt.setString(1, memberID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				String nickname = rs.getString(1);
 				ConnectionManager.closeConnection(rs, pstmt, conn);
-				return rs.getString(1);
+				return nickname;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
