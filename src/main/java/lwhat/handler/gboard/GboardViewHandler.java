@@ -50,7 +50,7 @@ public class GboardViewHandler implements CommandHandler {
 		request.setAttribute("gboardDTO", gboardDTO);
 
 		// 이미지
-		String real = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/upload";
+		String real = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/GboardImage";
 		File viewFile = new File(real + "/" + gPostingID + "file.jpg");
 		if (viewFile.exists()) {
 			String imgExists = "imgExists";

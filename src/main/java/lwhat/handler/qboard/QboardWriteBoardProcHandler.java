@@ -34,7 +34,7 @@ public class QboardWriteBoardProcHandler implements CommandHandler {
 
 		// file 변수
 		String realFolder = "";
-		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/qupload";
+		String saveFolder = "C:/eclipse_workspace/LWhat/src/main/webapp/jsp/QboardImage";
 		String encType = "UTF-8";
 		int maxSize = 5 * 1024 * 1024;
 

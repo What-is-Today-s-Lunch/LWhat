@@ -68,10 +68,10 @@
 					<div class="cont">${qboardDTO.content}
 							<div id="contentImage">
 							<c:if test="${imgExistsFile eq 'imgExistsFile' }">
-								<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}file.jpg">
+								<img src="/LWhat/jsp/QboardImage/${qboardDTO.qPostingID}file.jpg">
 							</c:if>
 							<c:if test="${imgExistsFiles eq 'imgExistsFiles' }">
-								<img src="/LWhat/jsp/qupload/${qboardDTO.qPostingID}files.jpg">
+								<img src="/LWhat/jsp/QboardImage/${qboardDTO.qPostingID}files.jpg">
 							</c:if> 
 							</div>
 					</div>
