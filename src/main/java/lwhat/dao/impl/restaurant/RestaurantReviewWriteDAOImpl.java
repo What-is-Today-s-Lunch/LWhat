@@ -6,24 +6,21 @@ import java.sql.PreparedStatement;
 import lwhat.constants.RestaurantConstants;
 import lwhat.dto.restaurant.RestaurantReviewDTO;
 
-public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl{
+public class RestaurantReviewWriteDAOImpl extends AbstractRestaurantDAOImpl {
 	@Override
 	public int writeRestaurantReview(RestaurantReviewDTO reviewDTO) throws Exception {
-		
+
 		Connection conn = getConnection();
 		String sql = RestaurantConstants.restaurant.getProperty("REVIEW_WRITE_SQL");
-		//restaurantreview테이블에 중복된값을 무시한채 내용을 추가해주는 쿼리문
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		
-		
-		pstmt.setString(1,reviewDTO.getMemberID_FK());
+
+		pstmt.setString(1, reviewDTO.getMemberID_FK());
 		pstmt.setString(2, reviewDTO.getRestaurantID_FK());
 		pstmt.setInt(3, reviewDTO.getScore());
 		pstmt.setString(4, reviewDTO.getContent());
-		
+
 		int result = pstmt.executeUpdate();
-		closeConnection(pstmt,conn);
-		System.out.println("Close Connection / Write Completed.");
+		closeConnection(pstmt, conn);
 		return result;
 	}
 }
